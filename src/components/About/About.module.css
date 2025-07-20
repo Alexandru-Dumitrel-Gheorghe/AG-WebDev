@@ -214,7 +214,9 @@
   .section {
     padding: 4rem 1rem;
   }
-
+  .background {
+    display: none;
+  }
   .stats {
     flex-direction: column;
     gap: 1rem;

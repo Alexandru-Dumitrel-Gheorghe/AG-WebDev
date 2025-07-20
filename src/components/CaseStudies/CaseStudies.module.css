@@ -364,7 +364,9 @@
   .titleMain {
     font-size: 2.2rem;
   }
-
+  .background {
+    display: none;
+  }
   .cardTitle {
     font-size: 1.5rem;
   }

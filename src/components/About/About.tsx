@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Spline from "@splinetool/react-spline";
 import Image from "next/image";
 import styles from "./About.module.css";
 
@@ -53,12 +54,12 @@ export default function About() {
 
   return (
     <section ref={sectionRef} className={styles.section}>
-      {/* ==== VIDEO BACKGROUND ==== */}
+      {/* Spline Background */}
       <div className={styles.background}>
-        <video autoPlay loop muted playsInline className={styles.videoBg}>
-          <source src="/images/about.webm" type="video/mp4" />
-          {/* fallback pentru browsere vechi */}
-        </video>
+        <Spline
+          scene="https://prod.spline.design/MirIu4Y42f80N3bD/scene.splinecode"
+          className={styles.spline}
+        />
         <div className={styles.gradientOverlay}></div>
       </div>
 

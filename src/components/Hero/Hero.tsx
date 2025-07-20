@@ -3,6 +3,7 @@ import styles from "./Hero.module.css";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Spline from "@splinetool/react-spline";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -111,18 +112,12 @@ export default function Hero() {
 
   return (
     <section ref={heroRef} className={styles.hero}>
-      {/* ==== VIDEO BACKGROUND ==== */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={styles.videoBg}
-        // Preload, fallback, etc.
-      >
-        <source src="/images/clarity-stream.mp4" type="video/mp4" />
-        {/* fallback pentru browsere vechi */}
-      </video>
+      <div className={styles.canvasContainer}>
+        <Spline
+          scene="https://prod.spline.design/MaTBJhm8aEAjD33f/scene.splinecode"
+          className={styles.spline}
+        />
+      </div>
 
       {/* Glassmorphism overlay with gradient */}
       <div ref={glassRef} className={styles.glassOverlay}></div>
