@@ -148,6 +148,7 @@ const TechStack = () => {
           <p className={styles.subtitle}>
             Moderne Technologien für außergewöhnliche Ergebnisse
           </p>
+
           {/* Tabs */}
           <div className={styles.tabs}>
             <button
@@ -173,6 +174,7 @@ const TechStack = () => {
               Backend
             </button>
           </div>
+
           {/* Tech Details */}
           <AnimatePresence mode="wait">
             {selectedTech ? (
@@ -220,7 +222,12 @@ const TechStack = () => {
         </motion.div>
 
         {/* Right Side - Tech Grid */}
-        <div className={styles.techGrid}>
+        <motion.div
+          className={styles.techGrid}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
           {technologies[activeTab].map((tech) => (
             <motion.button
               key={tech.name}
@@ -232,14 +239,14 @@ const TechStack = () => {
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               style={{ "--tech-color": tech.color } as React.CSSProperties}
             >
               <div className={styles.techIcon}>{tech.icon}</div>
               <span className={styles.techLabel}>{tech.name}</span>
             </motion.button>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

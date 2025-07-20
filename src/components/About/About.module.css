@@ -234,3 +234,14 @@
     margin-top: 0;
   }
 }
+
+.videoBg {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  /* filter: brightness(0.88) blur(1px); */ /* optional pentru efect */
+}

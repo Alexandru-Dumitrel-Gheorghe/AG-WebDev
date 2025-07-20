@@ -406,3 +406,45 @@
     max-width: 92vw; /* mai mic ca sa nu fie lipit de margini */
   }
 }
+.canvasContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.heroVideo {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* Dacă vrei și un efect de blur sau dark overlay:
+  filter: brightness(0.95) blur(1px);
+  */
+}
+
+@media (max-width: 768px) {
+  .heroVideo {
+    height: 60vh; /* sau 70vh, vezi ce arată mai ok */
+  }
+}
+.videoBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  /* poți adăuga și filter dacă vrei */
+  /* filter: brightness(0.85) blur(1px); */
+}
