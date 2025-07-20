@@ -445,6 +445,4 @@
   object-fit: cover;
   z-index: 0;
   pointer-events: none;
-  /* poți adăuga și filter dacă vrei */
-  /* filter: brightness(0.85) blur(1px); */
 }
