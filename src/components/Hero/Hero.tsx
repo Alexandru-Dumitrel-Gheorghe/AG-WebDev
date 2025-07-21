@@ -10,75 +10,150 @@ export default function HeroSection() {
   const leftRef = useRef(null);
   const rightRef = useRef(null);
   const imageRef = useRef(null);
+  const titleRef = useRef(null);
+  const preheadRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const ctaRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Register GSAP plugins
-    if (typeof window !== "undefined") {
-      // Animate elements on load
-      gsap.from(leftRef.current, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
+    // Reset animation props to avoid glitches on fast refresh (Next.js/React strict mode)
+    gsap.set(
+      [
+        leftRef.current,
+        rightRef.current,
+        titleRef.current,
+        preheadRef.current,
+        subtitleRef.current,
+        ctaRef.current,
+        imageRef.current,
+      ],
+      { clearProps: "opacity,transform" }
+    );
+
+    // Sequential load animation
+    const tl = gsap.timeline();
+    tl.set(
+      [
+        preheadRef.current,
+        titleRef.current,
+        subtitleRef.current,
+        ctaRef.current,
+        imageRef.current,
+      ],
+      { opacity: 0, y: 30 }
+    )
+      .set([leftRef.current, rightRef.current], { opacity: 1 })
+      .to(preheadRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
         ease: "power3.out",
-        delay: 0.3,
-      });
+      })
+      .to(
+        titleRef.current,
+        { y: 0, opacity: 1, duration: 1, ease: "expo.out" },
+        "-=0.5"
+      )
+      .to(
+        subtitleRef.current,
+        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
+        "-=0.7"
+      )
+      .to(
+        ctaRef.current,
+        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
+        "-=0.5"
+      )
+      .to(
+        imageRef.current,
+        { scale: 1, opacity: 1, duration: 1.1, ease: "expo.out" },
+        "-=1"
+      );
 
-      gsap.from(rightRef.current, {
-        opacity: 0,
-        x: 50,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.6,
-      });
+    // Floating animation for image
+    gsap.to(imageRef.current, {
+      y: 20,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
 
-      // Parallax effect on scroll
-      gsap.to(imageRef.current, {
-        y: -100,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+    // Scroll animations
+    gsap.to(imageRef.current, {
+      y: -100,
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+    gsap.to(titleRef.current, {
+      scale: 0.92,
+      opacity: 0.8,
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+    gsap.to(rightRef.current, {
+      x: 100,
+      opacity: 0.7,
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
 
-      // Scale down title on scroll
-      gsap.to(".heroTitle", {
-        scale: 0.95,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    }
-
+    // Clean-up on unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      gsap.killTweensOf("*");
     };
   }, []);
+
+  // Helper: return fiecare literă cu anim
+  const renderAnimatedLine = (line: string, highlight = false) => (
+    <span className={highlight ? styles.highlight : undefined}>
+      {line.split("").map((char, idx) => (
+        <span
+          key={idx}
+          className={styles.titleChar}
+          style={{ display: char === " " ? "inline" : "inline-block" }}
+        >
+          {char}
+        </span>
+      ))}
+    </span>
+  );
 
   return (
     <section className={styles.hero} ref={heroRef}>
       <div className={styles.left} ref={leftRef}>
-        <span className={`${styles.prehead} preheadAnimation`}>
+        <span className={styles.prehead} ref={preheadRef}>
           → Hey! Ich bin Alex
         </span>
-        <h1 className={`${styles.title} heroTitle`}>
-          DIGITAL <br /> WEB DEVELOPER
-        </h1>
-        <p className={styles.subtitle}>
-          Ich spezialisiere mich auf moderne Webentwicklung & <br />
-          <b>individuelles Webdesign</b> mit Next.js & CSS Modules,
+        <h1 className={styles.title} ref={titleRef}>
+          {renderAnimatedLine("DIGITALER ")}
           <br />
-          blitzschnell, nutzerorientiert & professionell.
+          {renderAnimatedLine("WEBDESIGNER", true)}
+        </h1>
+        <p className={styles.subtitle} ref={subtitleRef}>
+          Ich spezialisiere mich auf moderne Webentwicklung &{" "}
+          <span className={styles.highlight}>individuelles Webdesign</span> mit
+          Next.js & CSS Modules, blitzschnell, nutzerorientiert & professionell.
         </p>
-        <a href="#kontakt" className={styles.ctaBtn}>
+        <a href="#kontakt" className={styles.ctaBtn} ref={ctaRef}>
           <span className={styles.ctaText}>Jetzt Kontakt aufnehmen</span>
           <span className={styles.ctaArrow}>&rarr;</span>
+          <span className={styles.ctaHover}></span>
         </a>
       </div>
       <div className={styles.right} ref={rightRef}>
@@ -93,6 +168,7 @@ export default function HeroSection() {
             ref={imageRef}
           />
           <div className={styles.imageOverlay}></div>
+          <div className={styles.imageDecoration}></div>
         </div>
       </div>
     </section>

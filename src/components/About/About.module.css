@@ -1,292 +1,212 @@
-.about {
+/* About.module.css */
+.aboutSection {
+  width: 100%;
+  padding: 0px clamp(16rem, 12vw, 120px) 0;
+  overflow: hidden;
+}
+
+.topContent {
   display: flex;
+  gap: clamp(32px, 4vw, 64px);
   justify-content: space-between;
-  gap: 80px;
-  max-width: 1340px;
-  margin: 0 auto;
-  padding: 120px 40px;
-  position: relative;
-  background: white;
-  border-radius: 0 0 48px 48px;
-  box-shadow: 0 8px 40px rgba(44, 101, 255, 0.05);
-  z-index: 2;
+  align-items: flex-start;
+  margin-bottom: 48px;
 }
 
 .left {
-  flex: 1;
-  min-width: 320px;
-  position: relative;
+  flex: 3;
 }
 
-.headingContainer {
-  position: relative;
-  margin-bottom: 36px;
+.left h1 {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.16;
+  color: #232323;
+  letter-spacing: -1px;
+  min-height: 1.16em; /* Prevent layout shift during typing */
 }
 
-.heading {
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  font-weight: 900;
-  letter-spacing: -1.8px;
-  line-height: 1.1;
-  color: #111;
-  margin-bottom: 14px;
+.typewriter {
+  border-right: 3px solid #232323; /* Cursor effect */
+  white-space: pre-wrap; /* Preserve line breaks */
+  overflow: hidden;
+  animation: blink-caret 0.75s step-end infinite;
 }
 
-.titleLine {
-  width: 120px;
-  height: 4px;
-  background: linear-gradient(90deg, #ff5d2a, #2c65ff 85%);
-  border-radius: 2px;
-  margin-top: 8px;
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #232323;
+  }
 }
 
-.expertiseBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #111;
-  color: white;
-  padding: 8px 18px;
-  border-radius: 50px;
-  font-weight: 600;
-  margin-bottom: 28px;
-  font-size: 0.96rem;
-  box-shadow: 0 2px 12px rgba(34, 34, 34, 0.05);
-}
-
-.badgeIcon {
-  width: 16px;
-  height: 16px;
-  color: #ff5d2a;
-  flex-shrink: 0;
-}
-
-.leftText {
-  font-size: 1.13rem;
-  line-height: 1.7;
-  color: #444;
-  margin-bottom: 32px;
-}
-
-.leftText strong {
-  color: #2c65ff;
-  font-weight: 600;
-  position: relative;
-}
-
-.leftText strong::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s;
-}
-
-.leftText strong:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-.techStack {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.techItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #f8f8f8;
-  padding: 8px 16px;
-  border-radius: 50px;
-  font-size: 0.95rem;
+.name {
   font-weight: 500;
-  transition: all 0.3s;
-  cursor: pointer;
-  box-shadow: 0 1px 5px rgba(44, 101, 255, 0.05);
-  border: 1px solid #f0f0f0;
-}
-
-.techItem:hover {
-  background: #111;
-  color: white;
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 4px 12px rgba(44, 101, 255, 0.1);
-}
-
-.techIcon {
-  width: 19px;
-  height: 19px;
-}
-
-.funFact {
-  font-size: 0.98rem;
-  color: #666;
-  padding: 16px;
-  background: #fafafa;
-  border-left: 3px solid #ff5d2a;
-  border-radius: 0 4px 4px 0;
-  margin-top: 8px;
-  margin-bottom: 0;
-  box-shadow: 0 1px 4px rgba(255, 93, 42, 0.05);
-  font-style: italic;
-}
-
-.funFactIcon {
-  margin-right: 8px;
+  color: #2a5bd7; /* Slightly different color for name */
 }
 
 .right {
-  flex: 1;
-  min-width: 280px;
+  flex: 2;
   display: flex;
   flex-direction: column;
-  gap: 42px;
+  gap: 24px;
   justify-content: flex-start;
+  margin-top: 32px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.6s ease-out 0.2s, opacity 0.6s ease-out 0.2s;
 }
 
-.statsCard {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  background: #f8f8f8;
-  padding: 24px;
+.right p {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: #232323;
+  line-height: 1.6;
+}
+
+.button {
+  background: #232323;
+  color: #fff;
+  padding: 14px 36px 14px 26px;
+  width: min(240px, 100%);
+  border-radius: 14px;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.button:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+.icon {
+  display: flex;
+  transition: transform 0.2s;
+}
+
+.button:hover .icon {
+  transform: translateX(3px);
+}
+
+.stats {
+  display: flex;
+  gap: clamp(16px, 2vw, 32px);
+  margin-top: 32px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.6s ease-out 0.4s, opacity 0.6s ease-out 0.4s;
+}
+
+.statCard {
+  background: #f2f2f2;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(44, 101, 255, 0.03);
-  margin-bottom: 8px;
-}
-
-.statItem {
+  flex: 1;
+  padding: clamp(24px, 2.5vw, 36px) clamp(16px, 2vw, 32px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  gap: 38px;
+  min-width: 0;
+  position: relative; /* Important pentru overlay! */
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.statNumber {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #111;
-  margin-bottom: 4px;
-  letter-spacing: -1.5px;
+.statCard::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -40%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    #ff6d3d 95%,
+    rgba(255, 109, 61, 0.85) 60%,
+    transparent 100%
+  );
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.32s, bottom 0.32s;
+  border-radius: 0 0 12px 12px;
+}
+
+.statCard:hover::after {
+  opacity: 1;
+  bottom: 0;
+}
+
+.statCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 28px rgba(255, 109, 61, 0.11), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Dacă vrei ca și textul din card (label & value) să devină alb când overlay-ul apare */
+.statCard:hover .statLabel,
+.statCard:hover .statValue {
+  color: #000000;
+  position: relative;
+  z-index: 3;
+  transition: color 0.28s;
 }
 
 .statLabel {
-  font-size: 0.86rem;
-  color: #666;
+  color: #708090;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  margin-bottom: 12px;
 }
 
-.rightText {
-  font-size: 1.13rem;
-  line-height: 1.7;
-  color: #444;
+.statValue {
+  color: #232323;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  font-weight: 500;
+  line-height: 1;
 }
 
-.rightText strong {
-  color: #111;
-  font-weight: 600;
-  position: relative;
+/* Animation classes */
+.animateOnScroll.animate {
+  transform: translateY(0);
+  opacity: 1;
 }
 
-.rightText strong::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #ff5d2a;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s;
-}
-
-.rightText strong:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-.ctaBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #111;
-  color: white;
-  padding: 16px 32px;
-  font-size: 1.1rem;
-  border-radius: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: fit-content;
-}
-
-.ctaBtn:hover {
-  background: linear-gradient(90deg, #ff5d2a, #ff8a5d 80%);
-  color: white;
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 6px 24px rgba(255, 93, 42, 0.14);
-}
-
-.arrow {
-  transition: transform 0.3s;
-}
-
-.ctaBtn:hover .arrow {
-  transform: translateX(4px);
-}
-
-/* Responsive styles */
-@media (max-width: 1024px) {
-  .about {
-    padding: 80px 24px;
-    gap: 52px;
-  }
-}
-
-@media (max-width: 900px) {
-  .about {
+@media (max-width: 1100px) {
+  .topContent {
     flex-direction: column;
-    gap: 44px;
-    padding: 60px 16px;
-    border-radius: 0 0 28px 28px;
+    gap: 24px;
   }
   .right {
-    align-items: flex-start;
+    margin-top: 0;
   }
 }
 
-@media (max-width: 600px) {
-  .about {
-    padding: 42px 4vw;
-    gap: 30px;
+@media (max-width: 750px) {
+  .aboutSection {
+    padding: 24px clamp(16px, 5vw, 24px) 0;
   }
-  .heading {
-    font-size: 2rem;
-  }
-  .statsCard {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .stats {
+    flex-direction: column;
+    gap: 16px;
   }
 }
 
-@media (max-width: 400px) {
-  .about {
-    padding: 28px 2vw;
+@media (max-width: 480px) {
+  .button {
+    width: 100%;
+    justify-content: center;
   }
-  .techStack {
-    gap: 8px;
+  .statCard {
+    gap: 24px;
   }
-  .techItem {
-    padding: 6px 11px;
-    font-size: 0.83rem;
+  .typewriter {
+    border-right: none; /* Remove cursor on mobile */
   }
 }
