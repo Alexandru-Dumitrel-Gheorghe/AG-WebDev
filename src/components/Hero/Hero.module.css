@@ -9,7 +9,7 @@
   padding: 0;
   position: relative;
   overflow: hidden;
-  padding-inline: clamp(20px, 6vw, 80px);
+  padding-inline: clamp(20px, 6vw, 120px);
   margin-top: 2rem;
 }
 
@@ -295,6 +295,7 @@
     height: 100%;
     border-radius: 0;
     object-position: center top;
+    padding-inline: 1rem;
   }
 
   .imageOverlay {
@@ -399,6 +400,9 @@
 @media (max-width: 480px) {
   .prehead {
     font-size: 0.96rem;
+  }
+  .hero {
+    padding-inline: 0rem;
   }
   .title {
     font-size: 2.3rem;
