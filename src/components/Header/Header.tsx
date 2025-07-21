@@ -37,7 +37,7 @@ export default function Header() {
           <circle cx="18.5" cy="7.5" r="2.5" fill="#111" />
           <circle cx="12" cy="4" r="1.5" fill="#111" />
         </svg>
-        <span className={styles.brand}>Alexandru</span>
+        <span className={styles.brand}>AG WebDev</span>
       </div>
 
       <nav className={styles.right}>

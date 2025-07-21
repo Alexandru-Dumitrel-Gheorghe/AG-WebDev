@@ -4,12 +4,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
-  padding: 36px 5vw 0 4vw;
-  position: absolute;
+  padding: 16px 5vw 16px 4vw; /* TOP | RIGHT | BOTTOM | LEFT */
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(220, 220, 220, 0.11);
+  transition: background 0.28s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .header {
+    padding: 18px 4vw 18px 4vw;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .header {
+    padding: 14px 2vw 16px 2vw; /* Poți mări padding-bottom la 20px dacă vrei și mai mult spațiu */
+  }
+}
+@media (max-width: 600px) {
+  .header {
+    padding: 14px 2vw 12px 2vw !important;
+  }
 }
 
 .left {
