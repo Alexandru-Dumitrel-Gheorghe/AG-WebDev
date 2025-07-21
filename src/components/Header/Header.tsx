@@ -1,40 +1,27 @@
 "use client";
+import { useState, useRef, useEffect } from "react";
 import styles from "./Header.module.css";
-import Image from "next/image";
-import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
-import { gsap } from "gsap";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
-  const navRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
+  // Închide meniul la click în afara lui
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
     };
-    window.addEventListener("scroll", handleScroll);
 
-    // Header animation on mount
-    gsap.from(headerRef.current, {
-      y: -20,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    });
-
-    // Link animations
-    gsap.from(`.${styles.navLinks} li`, {
-      y: -10,
-      opacity: 0,
-      stagger: 0.1,
-      delay: 0.3,
-      ease: "power2.out",
-    });
-
-    return () => window.removeEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const toggleMenu = () => {
@@ -42,81 +29,92 @@ export default function Header() {
   };
 
   return (
-    <header
-      ref={headerRef}
-      className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}
-    >
-      <nav ref={navRef} className={styles.nav}>
-        <div className={styles.logoWrap}>
-          <Link href="/" className={styles.logoLink}>
-            <Image
-              src="/logo-2.png"
-              width={48}
-              height={48}
-              alt="AG WebDev Logo"
-              className={styles.logo}
-            />
-            <span className={styles.logoText}>AG WebDev</span>
-          </Link>
-        </div>
+    <header className={styles.header}>
+      <div className={styles.left}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <circle cx="5.5" cy="7.5" r="2.5" fill="#111" />
+          <circle cx="12" cy="16" r="2.5" fill="#111" />
+          <circle cx="18.5" cy="7.5" r="2.5" fill="#111" />
+          <circle cx="12" cy="4" r="1.5" fill="#111" />
+        </svg>
+        <span className={styles.brand}>Alexandru</span>
+      </div>
 
-        {/* Mobile menu button */}
+      <nav className={styles.right}>
+        {/* Butonul principal de contact */}
+        <button className={styles.contactBtn}>Let&apos;s Contact</button>
+
+        {/* Butonul de menu */}
         <button
-          className={styles.menuButton}
+          ref={buttonRef}
+          className={`${styles.menuBtn} ${isMenuOpen ? styles.active : ""}`}
           onClick={toggleMenu}
           aria-label="Menu"
-          aria-expanded={isMenuOpen}
         >
           <span className={styles.menuIcon}></span>
         </button>
 
-        {/* Navigation links */}
-        <div
-          className={`${styles.navContainer} ${isMenuOpen ? styles.open : ""}`}
-        >
-          <ul className={styles.navLinks}>
-            <li>
-              <Link href="/" onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>Home</span>
-                <span className={styles.linkHover}></span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/leistungen" onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>Leistungen</span>
-                <span className={styles.linkHover}></span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/referenzen" onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>Referenzen</span>
-                <span className={styles.linkHover}></span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/ueber-mich" onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>Über mich</span>
-                <span className={styles.linkHover}></span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/kontakt" onClick={() => setIsMenuOpen(false)}>
-                <span className={styles.linkText}>Kontakt</span>
-                <span className={styles.linkHover}></span>
-              </Link>
-            </li>
-          </ul>
-          <div className={styles.ctaWrap}>
-            <Link
-              href="/beratung"
-              className={styles.ctaBtn}
+        {/* Meniul compact */}
+        {isMenuOpen && (
+          <div ref={menuRef} className={styles.dropdownMenu}>
+            <button
+              className={styles.closeBtn}
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
             >
-              <span className={styles.ctaText}>Kostenlose Beratung</span>
-              <span className={styles.ctaHover}></span>
-            </Link>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M1 1L15 15M15 1L1 15"
+                  stroke="#ff5d2a"
+                  strokeWidth="2"
+                />
+              </svg>
+            </button>
+
+            <div className={styles.menuContent}>
+              <a href="#about" className={styles.menuItem}>
+                <span>About</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M1 6H11M11 6L6 1M11 6L6 11"
+                    stroke="#ff5d2a"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </a>
+              <a href="#projects" className={styles.menuItem}>
+                <span>Projects</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M1 6H11M11 6L6 1M11 6L6 11"
+                    stroke="#ff5d2a"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </a>
+              <a href="#services" className={styles.menuItem}>
+                <span>Services</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M1 6H11M11 6L6 1M11 6L6 11"
+                    stroke="#ff5d2a"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </a>
+              <a href="#testimonials" className={styles.menuItem}>
+                <span>Testimonials</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M1 6H11M11 6L6 1M11 6L6 11"
+                    stroke="#ff5d2a"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
-        </div>
+        )}
       </nav>
     </header>
   );
