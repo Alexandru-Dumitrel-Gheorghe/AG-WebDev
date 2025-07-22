@@ -1,196 +1,127 @@
 "use client";
-import { useState, useRef } from "react";
-import { gsap } from "gsap";
 import styles from "./Leistungen.module.css";
 
 const services = [
   {
-    title: "Premium Webdesign",
+    title: "UI/UX Design",
     description:
-      "Exklusives, responsives Design das Kunden begeistert und überzeugt. Wir kreieren visuelle Erlebnisse die bleibenden Eindruck hinterlassen.",
-    content: [
-      "Custom UI/UX Design",
-      "Mobile-First Konzept",
-      "Performance optimiert",
-      "Brand Identity Integration",
-      "3D & Animationen",
-    ],
-    icon: "💎",
+      "Wir gestalten moderne, responsive Websites, die nicht nur gut aussehen, sondern auch Ergebnisse liefern.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <rect
+          x="3"
+          y="3"
+          width="18"
+          height="4"
+          rx="1.5"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <rect
+          x="3"
+          y="9"
+          width="18"
+          height="4"
+          rx="1.5"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <rect
+          x="3"
+          y="15"
+          width="18"
+          height="4"
+          rx="1.5"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+      </svg>
+    ),
   },
   {
-    title: "High-Performance Entwicklung",
+    title: "Brand Design",
     description:
-      "Blitzschnelle Websites mit modernsten Technologien für maximale Conversion und Nutzererlebnis.",
-    content: [
-      "Next.js/React Entwicklung",
-      "Headless CMS Integration",
-      "Serverless Architecture",
-      "Micro-Interaktionen",
-      "Progressive Web Apps",
-    ],
-    icon: "⚡",
+      "Egal ob Markenlaunch, Auffrischung oder Skalierung – wir bringen Ihre Marke auf das nächste Level.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M4 19V18C4 14.6863 6.68629 12 10 12H14C17.3137 12 20 14.6863 20 18V19"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="1.7" />
+      </svg>
+    ),
   },
   {
-    title: "SEO Excellence",
+    title: "Webdesign",
     description:
-      "Garantierte Top-Platzierungen in Suchmaschinen durch strategische Optimierung und Content-Performance.",
-    content: [
-      "Technische SEO Audits",
-      "Keyword Strategie",
-      "Content Optimierung",
-      "Backlink Aufbau",
-      "Lokale SEO",
-    ],
-    icon: "🚀",
+      "Unsere UI/UX-Prozesse vereinen Strategie, Storytelling und Nutzerpsychologie zu perfekten digitalen Erlebnissen.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <rect
+          x="3"
+          y="4"
+          width="18"
+          height="16"
+          rx="2"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <rect
+          x="7"
+          y="8"
+          width="10"
+          height="8"
+          rx="1.5"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+      </svg>
+    ),
   },
   {
-    title: "Digitale Sichtbarkeit",
+    title: "App Design",
     description:
-      "Sofortige Indexierung und maximale Reichweite durch strategische Online-Positionierung.",
-    content: [
-      "Google Ads Management",
-      "Social Media Integration",
-      "Influencer Marketing",
-      "E-Mail Kampagnen",
-      "Analytics & Reporting",
-    ],
-    icon: "🔍",
+      "Von Wireframes bis zum pixelperfekten Interface – wir begleiten Sie bei jedem Schritt zur perfekten App.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <rect
+          x="7"
+          y="2"
+          width="10"
+          height="20"
+          rx="3"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <circle cx="12" cy="18" r="1" fill="currentColor" />
+      </svg>
+    ),
   },
 ];
 
 export default function Leistungen() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const contentRefs = useRef<Array<HTMLDivElement | null>>([]);
-
-  // Animare smooth pe height când se schimbă accordionul activ
-  const toggleAccordion = (index: number) => {
-    if (activeIndex === index) {
-      // Inchidere
-      const contentEl = contentRefs.current[index];
-      if (contentEl) {
-        gsap.to(contentEl, {
-          height: 0,
-          duration: 0.5,
-          opacity: 0,
-          ease: "power2.inOut",
-          onComplete: () => setActiveIndex(null),
-        });
-      } else {
-        setActiveIndex(null);
-      }
-    } else {
-      // Deschidere nou
-      if (activeIndex !== null) {
-        // Inchide vechiul
-        const oldContentEl = contentRefs.current[activeIndex];
-        if (oldContentEl) {
-          gsap.to(oldContentEl, {
-            height: 0,
-            duration: 0.4,
-            opacity: 0,
-            ease: "power2.inOut",
-          });
-        }
-      }
-      setActiveIndex(index);
-      // Asteapta un frame ca sa existe deja DOM-ul deschis
-      setTimeout(() => {
-        const contentEl = contentRefs.current[index];
-        if (contentEl) {
-          contentEl.style.display = "block";
-          gsap.fromTo(
-            contentEl,
-            { height: 0, opacity: 0 },
-            {
-              height: contentEl.scrollHeight,
-              opacity: 1,
-              duration: 0.7,
-              ease: "power2.out",
-              clearProps: "height",
-            }
-          );
-        }
-      }, 30);
-    }
-  };
-
   return (
-    <section className={styles.leistungen}>
-      <div className={styles.container}>
-        <div className={styles.leftPanel}>
-          <div className={styles.panelContent}>
-            <h2 className={styles.sectionTitle}>
-              <span className={styles.titleLine}>Unsere</span>
-              <span className={styles.titleLine}>Dienstleistungen</span>
-            </h2>
-            <div className={styles.divider}></div>
-            <p className={styles.sectionDescription}>
-              Wir bieten exklusive Lösungen für anspruchsvolle Kunden, die Wert
-              auf höchste Qualität und individuelle Betreuung legen. Jedes
-              Projekt wird mit Präzision und Leidenschaft umgesetzt.
-            </p>
-            <div className={styles.highlightBox}>
-              <div className={styles.highlightIcon}>✨</div>
-              <p className={styles.highlightText}>
-                Individuelle Konzepte | 24/7 Support | Garantierte Ergebnisse
-              </p>
-            </div>
+    <section className={styles.leistungenSection}>
+      <div className={styles.header}>
+        <div className={styles.headerContent}>
+          <h2 className={styles.sectionTitle}>Leistungen</h2>
+          <p className={styles.sectionDesc}>
+            Hochwertige Dienstleistungen für moderne Unternehmen. Von kreativen
+            Markenauftritten bis zu leistungsstarken Web-Lösungen.
+          </p>
+        </div>
+      </div>
+      <div className={styles.cardsGrid}>
+        {services.map((service, idx) => (
+          <div className={styles.card} key={idx}>
+            <div className={styles.icon}>{service.icon}</div>
+            <h3 className={styles.title}>{service.title}</h3>
+            <p className={styles.description}>{service.description}</p>
+            <div className={styles.hoverIndicator}></div>
           </div>
-        </div>
-
-        <div className={styles.accordion}>
-          {services.map((service, idx) => (
-            <div
-              key={idx}
-              className={`${styles.accordionItem} ${
-                activeIndex === idx ? styles.active : ""
-              }`}
-              data-active={activeIndex === idx}
-              onClick={() => toggleAccordion(idx)}
-            >
-              <div className={styles.accordionHeader}>
-                <div className={styles.serviceIcon}>{service.icon}</div>
-                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                <div className={styles.accordionArrow}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M6 9L12 15L18 9"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div
-                className={styles.accordionContent}
-                ref={(el) => {
-                  contentRefs.current[idx] = el;
-                }}
-                style={{
-                  display: activeIndex === idx ? "block" : "none",
-                  height: activeIndex === idx ? "auto" : 0,
-                  overflow: "hidden",
-                }}
-                // Prevent click on content from toggling accordion
-                onClick={(e) => e.stopPropagation()}
-              >
-                <p className={styles.serviceDescription}>
-                  {service.description}
-                </p>
-                <ul className={styles.serviceFeatures}>
-                  {service.content.map((feature, i) => (
-                    <li key={i} className={styles.featureItem}>
-                      <div className={styles.featureMarker}></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </section>
   );

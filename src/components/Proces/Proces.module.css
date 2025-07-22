@@ -1,0 +1,304 @@
+/* components/DesignThinkingProcess.module.css */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.titleWrapper {
+  display: inline-block;
+  position: relative;
+  max-width: 800px;
+}
+
+.subTitle {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  color: #fc6b28;
+  margin-bottom: 1.5rem;
+}
+
+.mainTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111;
+  margin: 0 0 2rem 0;
+}
+
+.divider {
+  position: relative;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #fc6b28 0%, #ff9a52 100%);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+.processContainer {
+  position: relative;
+}
+
+/* Desktop Stages */
+.stages {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.stageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.stageContainer.active .stageNumber {
+  background: #fc6b28;
+  color: white;
+  transform: scale(1.1);
+}
+
+.stageContainer.active .stage {
+  color: #fc6b28;
+  font-weight: 700;
+}
+
+.stageContainer.active .stageIcon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stageMarker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.stageNumber {
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border: 2px solid #fc6b28;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #fc6b28;
+  margin-bottom: 1.5rem;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.stageLine {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(252, 107, 40, 0.1) 0%,
+    rgba(252, 107, 40, 0.3) 50%,
+    rgba(252, 107, 40, 0.1) 100%
+  );
+  position: relative;
+  top: -30px;
+}
+
+.stage {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: #666;
+  text-align: center;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.stageIcon {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+/* Desktop Step */
+.processSteps {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.step {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.stepContent {
+  padding: 3rem;
+  text-align: center;
+}
+
+.stepContent p {
+  margin: 0;
+  line-height: 1.8;
+  color: #555;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Mobile Process */
+.mobileProcess {
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobileStep {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.mobileStepHeader {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(
+    90deg,
+    rgba(252, 107, 40, 0.1) 0%,
+    rgba(252, 107, 40, 0.05) 100%
+  );
+  border-bottom: 1px solid rgba(252, 107, 40, 0.1);
+}
+
+.mobileStepNumber {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border: 2px solid #fc6b28;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #fc6b28;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.mobileStepIcon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.mobileStepTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: #333;
+  margin: 0;
+}
+
+.mobileStepContent {
+  padding: 1.5rem;
+}
+
+.mobileStepContent p {
+  margin: 0;
+  line-height: 1.7;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 4rem 1.5rem;
+  }
+
+  .header {
+    margin-bottom: 4rem;
+  }
+
+  .stages,
+  .processSteps {
+    display: none;
+  }
+
+  .mobileProcess {
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 3rem 1rem;
+  }
+
+  .subTitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .mainTitle {
+    margin-bottom: 1.5rem;
+  }
+
+  .mobileStepHeader {
+    padding: 1.2rem;
+  }
+
+  .mobileStepContent {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileStepNumber {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .mobileStepIcon {
+    font-size: 1.2rem;
+  }
+
+  .mobileStepTitle {
+    font-size: 0.9rem;
+  }
+
+  .mobileStepContent p {
+    font-size: 0.95rem;
+  }
+}
