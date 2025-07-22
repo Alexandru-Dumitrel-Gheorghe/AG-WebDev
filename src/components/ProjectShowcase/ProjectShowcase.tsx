@@ -1,9 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./ProjectShowcase.module.css";
 
 export default function ProjectShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    // Set initial width
+    setWindowWidth(window.innerWidth);
+
+    // Handle resize
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const projects = [
     {
@@ -13,7 +27,8 @@ export default function ProjectShowcase() {
         "Elevating Digital Banking for Gen-Z Users Through Micro-Interactions",
       buttonText: "View Project",
       year: "7",
-      image: "/images/case-mockup-oberholzer.png",
+      image: "/images/tablet-mockup-oberholzer.png",
+      mobileImage: "/images/hero-fraga.png", // Optional mobile-specific image
       accentColor: "#4A6CF7",
     },
     {
@@ -23,6 +38,7 @@ export default function ProjectShowcase() {
       buttonText: "View Project",
       year: "6",
       image: "/images/case-mockup-oberholzer.png",
+      mobileImage: "/images/case-mockup-oberholzer-mobile.png",
       accentColor: "#8B5FBF",
     },
     {
@@ -32,9 +48,19 @@ export default function ProjectShowcase() {
       buttonText: "View Project",
       year: "5",
       image: "/images/case-mockup-oberholzer.png",
+      mobileImage: "/images/case-mockup-oberholzer-mobile.png",
       accentColor: "#2A7F8C",
     },
   ];
+
+  const getImageSource = () => {
+    const project = projects[activeIndex];
+    // Use mobile image if available and screen is small
+    if (windowWidth <= 768 && project.mobileImage) {
+      return project.mobileImage;
+    }
+    return project.image;
+  };
 
   return (
     <section className={styles.projectShowcase}>
@@ -56,7 +82,10 @@ export default function ProjectShowcase() {
           <div className={styles.projectImageWrapper}>
             <div
               className={styles.projectImage}
-              style={{ backgroundImage: `url(${projects[activeIndex].image})` }}
+              style={{
+                backgroundImage: `url(${getImageSource()})`,
+                backgroundSize: windowWidth <= 768 ? "contain" : "cover",
+              }}
             />
           </div>
 
