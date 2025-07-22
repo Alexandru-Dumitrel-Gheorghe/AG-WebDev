@@ -1,4 +1,3 @@
-// components/DesignThinkingProcess.tsx
 "use client";
 import { useState, useEffect } from "react";
 import styles from "./Proces.module.css";
@@ -11,8 +10,14 @@ export default function DesignThinkingProcess() {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
     };
+
+    // Inițializare la mount
     handleResize();
+
+    // Ascultător pentru resize
     window.addEventListener("resize", handleResize);
+
+    // Cleanup
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -50,13 +55,16 @@ export default function DesignThinkingProcess() {
   ];
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.titleWrapper}>
-          <span className={styles.subTitle}>METHODOLOGIE</span>
-          <h1 className={styles.mainTitle}>Design Thinking Prozess</h1>
-          <div className={styles.divider}></div>
-        </div>
+    <div className={styles.container} id="design-process">
+      <div className={styles.sectionHeader}>
+        <h1 className={styles.sectionTitle}>
+          <span className={styles.underline}>Design Thinking Prozess</span>
+        </h1>
+        <p className={styles.sectionDesc}>
+          Ein bewährtes Vorgehen für kreative, nutzerzentrierte Lösungen. Von
+          der Empathie bis zum Testen – jeder Schritt bringt Ihr Projekt näher
+          zum Erfolg.
+        </p>
       </div>
 
       <div className={styles.processContainer}>

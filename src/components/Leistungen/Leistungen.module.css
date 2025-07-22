@@ -169,3 +169,25 @@
     height: calc(100% - 0.5rem);
   }
 }
+.leistungen-section {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.45, 1.1, 0.43, 1.03),
+    transform 0.8s cubic-bezier(0.45, 1.1, 0.43, 1.03);
+}
+.leistungen-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cards effect */
+.leistungen-card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s cubic-bezier(0.45, 1.1, 0.43, 1.03),
+    transform 0.55s cubic-bezier(0.45, 1.1, 0.43, 1.03);
+}
+.leistungen-section.in-view .leistungen-card {
+  opacity: 1;
+  transform: translateY(0);
+}

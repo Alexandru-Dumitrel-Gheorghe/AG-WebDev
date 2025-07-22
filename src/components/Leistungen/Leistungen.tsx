@@ -103,7 +103,7 @@ const services = [
 
 export default function Leistungen() {
   return (
-    <section className={styles.leistungenSection}>
+    <section className={`${styles.leistungenSection} leistungen-section`}>
       <div className={styles.header}>
         <div className={styles.headerContent}>
           <h2 className={styles.sectionTitle}>Leistungen</h2>

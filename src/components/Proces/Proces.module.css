@@ -1,9 +1,10 @@
-/* components/DesignThinkingProcess.module.css */
+/* components/Proces.module.css */
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 6rem 2rem;
   font-family: "Inter", system-ui, sans-serif;
+  background: #fafafa;
 }
 
 .header {
@@ -32,7 +33,7 @@
   font-weight: 700;
   line-height: 1.2;
   color: #111;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.5rem 0;
 }
 
 .divider {
@@ -41,11 +42,23 @@
   height: 4px;
   background: linear-gradient(90deg, #fc6b28 0%, #ff9a52 100%);
   border-radius: 2px;
+  margin: 0 auto 2rem auto;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 .processContainer {
   position: relative;
+  background: white;
+  border-radius: 16px;
+  padding: 4rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
 /* Desktop Stages */
@@ -249,6 +262,10 @@
     margin-bottom: 4rem;
   }
 
+  .processContainer {
+    padding: 2rem;
+  }
+
   .stages,
   .processSteps {
     display: none;
@@ -271,7 +288,11 @@
   }
 
   .mainTitle {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 1rem;
   }
 
   .mobileStepHeader {
@@ -300,5 +321,73 @@
 
   .mobileStepContent p {
     font-size: 0.95rem;
+  }
+}
+/* Proces.module.css – adaugă/înlocuiește secțiunea de mai jos */
+
+.sectionHeader {
+  margin-bottom: 44px;
+  text-align: left;
+  max-width: 700px;
+  padding-left: 0.3rem;
+}
+
+.sectionTitle {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.16;
+  color: #232323;
+  letter-spacing: -1px;
+  margin-bottom: 0.7rem;
+  min-height: 1.16em;
+  display: inline-block;
+}
+
+.underline {
+  position: relative;
+  display: inline-block;
+}
+
+.underline::after {
+  content: "";
+  display: block;
+  height: 3.5px;
+  width: 56%;
+  background: #fc6b28;
+  border-radius: 2px;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+.sectionDesc {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: #232323;
+  max-width: 530px;
+  line-height: 1.6;
+  margin: 0 0 0.2rem 0;
+  font-family: "Inter", sans-serif;
+}
+
+/* Mobile style */
+@media (max-width: 1050px) {
+  .sectionHeader {
+    text-align: left;
+    padding-left: 0.2rem;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sectionHeader {
+    text-align: left;
+    margin-bottom: 28px;
+    padding-left: 0.1rem;
+  }
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+  .sectionDesc {
+    font-size: 1rem;
   }
 }
