@@ -9,7 +9,7 @@
   padding: 0;
   position: relative;
   overflow: hidden;
-  padding-inline: clamp(20px, 6vw, 120px);
+  padding-inline: clamp(180px, 6vw, 180px);
 }
 
 .left {

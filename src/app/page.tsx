@@ -3,6 +3,7 @@ import AboutMe from "@/components/About/About";
 import Leistungen from "@/components/Leistungen/Leistungen";
 import Proces from "@/components/Proces/Process";
 import { ScrollAnimationProvider } from "@/components/ScrollAnimationProvider/ScrollAnimationProvider";
+import ProjectShowcase from "@/components/ProjectShowcase/ProjectShowcase";
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
         <Hero />
         <AboutMe />
         <Leistungen />
+        <ProjectShowcase />
         <Proces />
       </ScrollAnimationProvider>
     </main>

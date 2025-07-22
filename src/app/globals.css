@@ -66,31 +66,6 @@ a {
   cursor: pointer;
 }
 
-/* ---- BUTTONS ---- */
-button,
-.button,
-.ctaBtn {
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 1.1rem;
-  padding: 1rem 2.2rem;
-  background: #111;
-  color: #fff;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: background 0.18s, color 0.18s;
-  box-shadow: 0 3px 14px #0001;
-  display: inline-block;
-  outline: none;
-}
-button:hover,
-.button:hover,
-.ctaBtn:hover {
-  background: #ff5d2a;
-  color: #fff;
-}
-
 /* ---- LISTS ---- */
 ul,
 ol {
