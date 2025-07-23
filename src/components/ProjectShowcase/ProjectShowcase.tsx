@@ -8,7 +8,6 @@ type Project = {
   title: string;
   subtitle: string;
   description: string;
-  features: string[];
   tech: string[];
   background: string;
   thumbnail: string;
@@ -24,10 +23,6 @@ const projects: Project[] = [
     title: "FRAGA Fashion Shop",
     subtitle: "Modernes E-Commerce für nachhaltige Mode.",
     description: "",
-    features: [
-      "Shopify-Integration & animierte Produktseiten",
-      "Nachhaltige, handgefertigte Kollektionen",
-    ],
     tech: ["Next.js", "TypeScript", "React"],
     background: "/images/fraga-showcase.png",
     thumbnail: "/images/fraga-mockup.png",
@@ -37,10 +32,6 @@ const projects: Project[] = [
     title: "Oberholzer GmbH",
     subtitle: "Responsive Webprojekt für Schweizer Umzüge.",
     description: "",
-    features: [
-      "Conversion-optimierte Landingpage",
-      "Scroll-Animation & mobile Ansicht",
-    ],
     tech: ["Next.js", "React"],
     background: "/images/oberholzer-showcase.png",
     thumbnail: "/images/tablet-mockup-oberholzer.png",
@@ -50,38 +41,28 @@ const projects: Project[] = [
     title: "Certus Solutions",
     subtitle: "Unternehmenswebsite für Fenster & Zäune.",
     description: "",
-    features: ["Produktkatalog mit Filter", "Buchungssystem für Angebote"],
     tech: ["Next.js", "TypeScript"],
     background: "/images/certuss-showcase.png",
     thumbnail: "/images/certuss-showcase-small.png",
   },
 ];
 
-// Animation variants
+// Animation variants (rămân la fel)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
+    transition: { staggerChildren: 0.2, delayChildren: 0.3 },
   },
 };
-
 const itemVariants = {
   hidden: { y: 50, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    transition: {
-      type: "spring" as const,
-      damping: 12,
-      stiffness: 100,
-    },
+    transition: { type: "spring" as const, damping: 12, stiffness: 100 },
   },
 };
-
 const cardVariants = {
   hidden: { y: 50, opacity: 0 },
   visible: {
@@ -169,6 +150,7 @@ export default function ProjectsShowcase() {
                   {project.subtitle}
                 </motion.p>
 
+                {/* Tech Stack */}
                 <motion.div
                   className={styles.techStack}
                   initial={{ opacity: 0 }}
