@@ -6,6 +6,9 @@ type Project = {
   id: number;
   title: string;
   subtitle: string;
+  description: string;
+  features: string[];
+  tech: string[];
   background: string;
   thumbnail: string;
 };
@@ -17,22 +20,37 @@ const sectionDesc =
 const projects: Project[] = [
   {
     id: 1,
-    title: "Fraga",
-    subtitle: "Clean, minimal corporate website redesign",
+    title: "FRAGA Fashion Shop",
+    subtitle: "Modernes E-Commerce für nachhaltige Mode.",
+    description: "",
+    features: [
+      "Shopify-Integration & animierte Produktseiten",
+      "Nachhaltige, handgefertigte Kollektionen",
+    ],
+    tech: ["Next.js", "TypeScript", "React"],
     background: "/images/fraga-showcase.png",
     thumbnail: "/images/fraga-mockup.png",
   },
   {
     id: 2,
-    title: "Helio Brand Identity",
-    subtitle: "Career guidance app with smooth onboarding",
+    title: "Oberholzer GmbH",
+    subtitle: "Responsive Webprojekt für Schweizer Umzüge.",
+    description: "",
+    features: [
+      "Conversion-optimierte Landingpage",
+      "Scroll-Animation & mobile Ansicht",
+    ],
+    tech: ["Next.js", "React"],
     background: "/images/oberholzer-showcase.png",
     thumbnail: "/images/tablet-mockup-oberholzer.png",
   },
   {
     id: 3,
-    title: "Made in Webflow",
-    subtitle: "Portfolio website with custom animations",
+    title: "Certus Solutions",
+    subtitle: "Unternehmenswebsite für Fenster & Zäune.",
+    description: "",
+    features: ["Produktkatalog mit Filter", "Buchungssystem für Angebote"],
+    tech: ["Next.js", "TypeScript"],
     background: "/images/certuss-showcase.png",
     thumbnail: "/images/certuss-showcase-small.png",
   },
@@ -97,6 +115,19 @@ export default function ProjectsShowcase() {
                 </div>
                 <h3 className={styles.projectTitle}>{project.title}</h3>
                 <p className={styles.projectSubtitle}>{project.subtitle}</p>
+
+                <ul className={styles.features}>
+                  {project.features.map((feature, i) => (
+                    <li key={i}>{feature}</li>
+                  ))}
+                </ul>
+
+                <div className={styles.techStack}>
+                  {project.tech.map((tech, i) => (
+                    <span key={i}>{tech}</span>
+                  ))}
+                </div>
+
                 <button className={styles.button}>
                   View Project <span className={styles.arrow}>↗</span>
                 </button>
