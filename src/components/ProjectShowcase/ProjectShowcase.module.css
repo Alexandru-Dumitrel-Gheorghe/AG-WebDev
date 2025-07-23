@@ -1,15 +1,22 @@
-.projectShowcase {
+.section {
   width: 100%;
-  padding: 5rem 0;
-  background: #f8f8f8;
-  box-sizing: border-box;
+  padding: 8rem 0 6rem;
+  background: #fff;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
 
-/* Header */
+.container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 5rem);
+}
+
 .header {
-  max-width: 1400px;
-  margin: 0 auto 3rem auto;
-  padding: 0 1rem;
+  margin: 0 auto 5rem;
+  text-align: left;
 }
 
 .headerContent {
@@ -17,22 +24,21 @@
 }
 
 .sectionTitle {
-  font-size: clamp(2.2rem, 5vw, 2.9rem);
+  font-size: clamp(2.5rem, 6vw, 3.2rem);
   font-weight: 400;
-  font-family: "Inter", sans-serif;
   color: #232323;
   letter-spacing: -0.05em;
-  margin: 0 0 1rem 0;
-  line-height: 1.13;
+  margin: 0 0 1.5rem;
+  line-height: 1.1;
   position: relative;
 }
 
 .sectionTitle::after {
   content: "";
   position: absolute;
-  bottom: -0.75rem;
+  bottom: -1rem;
   left: 0;
-  width: 3.5rem;
+  width: 4rem;
   height: 4px;
   background: #fc6b28;
   border-radius: 4px;
@@ -40,11 +46,11 @@
 
 .sectionDesc {
   color: #5a5a5a;
-  font-size: clamp(1.05rem, 1.4vw, 1.17rem);
+  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
   font-weight: 400;
-  line-height: 1.6;
-  margin: 1.5rem 0 0 0;
-  padding-left: 0.5rem;
+  line-height: 1.7;
+  margin: 2rem 0 0;
+  padding-left: 1rem;
   position: relative;
 }
 
@@ -58,262 +64,284 @@
   background: #e0e0e0;
 }
 
-/* Container principal */
-.showcaseContainer {
+/* Projects Grid */
+.projectsGrid {
   display: flex;
-  max-width: 1400px;
-  margin: 0 auto;
-  min-height: 700px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-  background: white;
-}
-
-/* Project Display */
-.projectDisplay {
-  flex: 3;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  padding: 3rem;
-  transition: background-color 0.5s ease;
-  border-radius: 20px 0 0 20px;
-  overflow: hidden;
-}
-
-/* Wrapper imagine fundal */
-.projectImageWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
+  flex-direction: column;
+  gap: 5rem;
   width: 100%;
-  height: 100%;
-  border-radius: 20px 0 0 20px;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.projectImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.4;
-  mix-blend-mode: multiply;
-  transition: background-image 0.5s ease;
-}
-
-.projectCard {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 600px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 2;
-}
-
-.projectNumber {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.projectTitle {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #222;
-  margin: 0 0 1rem 0;
-  line-height: 1.2;
-}
-
-.projectDescription {
-  font-size: 1.2rem;
-  color: #555;
-  line-height: 1.6;
-  margin: 0 0 2rem 0;
-}
-
-.projectFooter {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.projectButton {
-  background: #222;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.8rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.card {
+  width: 100%;
+  max-width: 1400px;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.projectButton:hover {
-  background: #333;
-  transform: translateY(-2px);
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.projectYear {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #999;
-}
-
-/* Project Selector */
-.projectSelector {
-  flex: 1;
-  background: white;
-  padding: 2rem;
+.cardContent {
+  margin: 4rem 0 0 4rem;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 1.25rem;
+  padding: 3rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  border-left: 1px solid #eee;
-  border-radius: 0 20px 20px 0;
-  overflow-y: auto;
-  max-height: 700px;
-}
-
-.selectorItem {
-  padding: 1.5rem;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
+  gap: 1.5rem;
+  align-items: flex-start;
   transition: all 0.3s ease;
 }
 
-.selectorItem:last-child {
-  border-bottom: none;
+.card:hover .cardContent {
+  transform: translateY(-5px);
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.1);
 }
 
-.selectorItem:hover {
-  background: #f9f9f9;
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.selectorItem.active {
-  background: #f5f5f5;
+.index {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #161a21;
+  letter-spacing: -1px;
+  font-family: "Inter", sans-serif;
 }
 
-.selectorNumber {
-  font-size: 1rem;
+.thumbnail {
+  width: 120px;
+  height: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-left: 2rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.card:hover .thumbnail {
+  transform: scale(1.05);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+}
+
+.projectTitle {
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: 500;
+  color: #232323;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-family: "Inter", sans-serif;
+}
+
+.projectSubtitle {
+  font-size: clamp(1.1rem, 1.3vw, 1.2rem);
+  color: #5a5a5a;
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0 0 2rem 0;
+}
+
+.button {
+  margin-top: 1rem;
+  background: #161a21;
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border-radius: 10px;
+  border: none;
   font-weight: 600;
-  color: #999;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.selectorContent h4 {
   font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
-  margin: 0 0 0.3rem 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 
-.selectorContent p {
-  font-size: 0.9rem;
-  color: #777;
-  margin: 0;
-  line-height: 1.5;
+.button:hover {
+  background: #fc6b28;
+  color: #161a21;
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .showcaseContainer {
-    flex-direction: column;
-    min-height: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    box-sizing: border-box;
-    border-radius: 20px;
+.arrow {
+  font-size: 1.4rem;
+  margin-left: 0.25rem;
+  transition: transform 0.3s ease;
+}
+
+.button:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .section {
+    padding: 6rem 0 4rem;
   }
 
-  .projectDisplay {
-    border-radius: 20px 20px 0 0;
-    min-height: 500px;
+  .card {
+    height: 500px;
+  }
+
+  .cardContent {
+    margin: 3rem 0 0 3rem;
+    padding: 2.5rem;
+    max-width: 450px;
+  }
+
+  .thumbnail {
+    width: 100px;
+    height: 85px;
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 5rem 0 3rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .card {
+    height: 450px;
+    border-radius: 1.25rem;
+  }
+
+  .cardContent {
+    margin: 2.5rem 0 0 2.5rem;
     padding: 2rem;
-  }
-
-  .projectImage {
-    opacity: 0.3;
-  }
-
-  .projectSelector {
-    flex-direction: row;
-    border-left: none;
-    border-top: 1px solid #eee;
-    border-radius: 0 0 20px 20px;
-    max-height: none;
-    overflow-x: auto;
-    padding: 1.5rem;
-  }
-
-  .selectorItem {
-    min-width: 250px;
-    border-bottom: none;
-    border-right: 1px solid #eee;
-  }
-}
-
-@media (max-width: 768px) {
-  .projectShowcase {
-    padding: 3rem 0;
-  }
-
-  .projectCard {
-    padding: 2rem;
+    max-width: 380px;
+    gap: 1.25rem;
   }
 
   .projectTitle {
-    font-size: 1.8rem;
+    margin-bottom: 1rem;
   }
 
-  .projectDescription {
-    font-size: 1.1rem;
-  }
-
-  .projectImage {
-    background-size: contain !important;
-    opacity: 0.25;
-  }
-}
-
-@media (max-width: 480px) {
-  .projectDisplay {
-    padding: 3rem 1.5rem 1.5rem;
-    min-height: 400px;
-  }
-
-  .showcaseContainer {
-    padding-inline: 1rem;
-  }
-
-  .projectCard {
-    padding: 1.5rem;
-  }
-
-  .projectTitle {
-    font-size: 1.5rem;
-  }
-
-  .projectDescription {
+  .projectSubtitle {
+    margin-bottom: 1.5rem;
     font-size: 1rem;
   }
 
-  .selectorItem {
-    min-width: 220px;
-    padding: 1.2rem;
+  .thumbnail {
+    width: 90px;
+    height: 75px;
+    margin-left: 1.5rem;
   }
 
-  .projectImageWrapper {
-    background-color: rgba(255, 255, 255, 0.2);
+  .button {
+    padding: 0.9rem 2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .card {
+    height: 400px;
+  }
+
+  .cardContent {
+    margin: 2rem 0 0 2rem;
+    padding: 1.75rem;
+    max-width: 320px;
+  }
+
+  .index {
+    font-size: 2rem;
+  }
+
+  .thumbnail {
+    width: 80px;
+    height: 65px;
+  }
+
+  .button {
+    padding: 0.8rem 1.75rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .section {
+    padding: 4rem 0 2rem;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .card {
+    height: 350px;
+    border-radius: 1rem;
+  }
+
+  .cardContent {
+    margin: 1.5rem 0 0 2rem;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .index {
+    font-size: 1.75rem;
+  }
+
+  .thumbnail {
+    width: 70px;
+    height: 55px;
+    margin-left: 1rem;
+    border-radius: 8px;
+  }
+
+  .projectTitle {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .projectSubtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .cardContent {
+    max-width: 240px;
+    padding: 1.25rem;
+  }
+
+  .thumbnail {
+    width: 60px;
+    height: 50px;
   }
 }

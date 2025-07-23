@@ -1,129 +1,105 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./ProjectShowcase.module.css";
 
-export default function ProjectShowcase() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0);
+type Project = {
+  id: number;
+  title: string;
+  subtitle: string;
+  background: string;
+  thumbnail: string;
+};
+
+const sectionTitle = "Completed Projects";
+const sectionDesc =
+  "Discover how we transformed digital experiences for various industries. Every project is a story of collaboration, innovation and measurable results.";
+
+const projects: Project[] = [
+  {
+    id: 1,
+    title: "Fraga",
+    subtitle: "Clean, minimal corporate website redesign",
+    background: "/images/fraga-showcase.png",
+    thumbnail: "/images/fraga-mockup.png",
+  },
+  {
+    id: 2,
+    title: "Helio Brand Identity",
+    subtitle: "Career guidance app with smooth onboarding",
+    background: "/images/certus-case-ag.png",
+    thumbnail: "/images/hero-fraga.png",
+  },
+  {
+    id: 3,
+    title: "Made in Webflow",
+    subtitle: "Portfolio website with custom animations",
+    background: "/images/certus-case-ag.png",
+    thumbnail: "/images/hero-fraga.png",
+  },
+];
+
+export default function ProjectsShowcase() {
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    // Set initial width
-    setWindowWidth(window.innerWidth);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.visible);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    // Handle resize
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardsRef.current.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
     };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const projects = [
-    {
-      number: "01",
-      title: "Beacon Flownest",
-      description:
-        "Elevating Digital Banking for Gen-Z Users Through Micro-Interactions",
-      buttonText: "View Project",
-      year: "7",
-      image: "/images/tablet-mockup-oberholzer.png",
-      mobileImage: "/images/hero-fraga.png", // Optional mobile-specific image
-      accentColor: "#4A6CF7",
-    },
-    {
-      number: "02",
-      title: "Luxury Platform",
-      description: "Immersive 3D experiences for high-end fashion",
-      buttonText: "View Project",
-      year: "6",
-      image: "/images/case-mockup-oberholzer.png",
-      mobileImage: "/images/case-mockup-oberholzer-mobile.png",
-      accentColor: "#8B5FBF",
-    },
-    {
-      number: "03",
-      title: "Fintech Dashboard",
-      description: "Wealth management with intuitive data visualization",
-      buttonText: "View Project",
-      year: "5",
-      image: "/images/case-mockup-oberholzer.png",
-      mobileImage: "/images/case-mockup-oberholzer-mobile.png",
-      accentColor: "#2A7F8C",
-    },
-  ];
-
-  const getImageSource = () => {
-    const project = projects[activeIndex];
-    // Use mobile image if available and screen is small
-    if (windowWidth <= 768 && project.mobileImage) {
-      return project.mobileImage;
-    }
-    return project.image;
-  };
-
   return (
-    <section className={styles.projectShowcase}>
-      <div className={styles.header}>
-        <div className={styles.headerContent}>
-          <h2 className={styles.sectionTitle}>Our Featured Projects</h2>
-          <p className={styles.sectionDesc}>
-            Discover the work that sets us apart
-          </p>
-        </div>
-      </div>
-
-      <div className={styles.showcaseContainer}>
-        {/* Project Display */}
-        <div
-          className={styles.projectDisplay}
-          style={{ backgroundColor: projects[activeIndex].accentColor }}
-        >
-          <div className={styles.projectImageWrapper}>
-            <div
-              className={styles.projectImage}
-              style={{
-                backgroundImage: `url(${getImageSource()})`,
-                backgroundSize: windowWidth <= 768 ? "contain" : "cover",
-              }}
-            />
-          </div>
-
-          <div className={styles.projectCard}>
-            <span className={styles.projectNumber}>
-              {projects[activeIndex].number}
-            </span>
-            <h3 className={styles.projectTitle}>
-              {projects[activeIndex].title}
-            </h3>
-            <p className={styles.projectDescription}>
-              {projects[activeIndex].description}
-            </p>
-            <div className={styles.projectFooter}>
-              <button className={styles.projectButton}>
-                {projects[activeIndex].buttonText}
-              </button>
-              <span className={styles.projectYear}>
-                {projects[activeIndex].year}
-              </span>
-            </div>
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <div className={styles.headerContent}>
+            <h2 className={styles.sectionTitle}>{sectionTitle}</h2>
+            <p className={styles.sectionDesc}>{sectionDesc}</p>
           </div>
         </div>
-
-        {/* Project Selector */}
-        <div className={styles.projectSelector}>
+        <div className={styles.projectsGrid}>
           {projects.map((project, index) => (
             <div
-              key={index}
-              className={`${styles.selectorItem} ${
-                activeIndex === index ? styles.active : ""
-              }`}
-              onClick={() => setActiveIndex(index)}
+              key={project.id}
+              className={`${styles.card} ${styles.cardAnimation}`}
+              style={{ backgroundImage: `url(${project.background})` }}
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
             >
-              <span className={styles.selectorNumber}>{project.number}</span>
-              <div className={styles.selectorContent}>
-                <h4>{project.title}</h4>
-                <p>{project.description}</p>
+              <div className={styles.cardContent}>
+                <div className={styles.topRow}>
+                  <span className={styles.index}>
+                    {String(project.id).padStart(2, "0")}
+                  </span>
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className={styles.thumbnail}
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectSubtitle}>{project.subtitle}</p>
+                <button className={styles.button}>
+                  View Project <span className={styles.arrow}>↗</span>
+                </button>
               </div>
             </div>
           ))}
