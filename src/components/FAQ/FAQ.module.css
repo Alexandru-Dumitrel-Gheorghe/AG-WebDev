@@ -1,0 +1,194 @@
+.faqSection {
+  width: 100%;
+  padding: 6rem 0 4rem;
+  background: #fff;
+  position: relative;
+}
+
+.header {
+  max-width: 1500px;
+  margin: 0 auto 3.5rem;
+  padding: 0 clamp(1rem, 4vw, 4rem);
+}
+
+.headerContent {
+  max-width: 42rem;
+  margin-left: 0;
+  text-align: left;
+}
+
+.sectionTitle {
+  font-size: clamp(2.2rem, 5vw, 2.9rem);
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #232323;
+  letter-spacing: -0.05em;
+  margin: 0 0 1rem;
+  line-height: 1.13;
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -0.75rem;
+  left: 0;
+  width: 3.5rem;
+  height: 4px;
+  background: #fc6b28;
+  border-radius: 4px;
+}
+
+.sectionDesc {
+  color: #5a5a5a;
+  font-size: clamp(1.05rem, 1.4vw, 1.17rem);
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 1.5rem 0 0;
+  padding-left: 0.5rem;
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+.sectionDesc::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  height: calc(100% - 1rem);
+  width: 2px;
+  background: #e0e0e0;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 2rem;
+  max-width: 87.5rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 4rem);
+}
+
+.card {
+  background: #f9f9f9;
+  border-radius: 1.125rem;
+  box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.04);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 18rem;
+  border: 1px solid #eee;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1rem 2rem rgba(252, 107, 40, 0.1);
+  border-color: #fc6b28;
+  background: #fff;
+}
+
+.card:hover .icon svg {
+  transform: scale(1.1);
+}
+
+.icon {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #232323;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(252, 107, 40, 0.1);
+  padding: 0.75rem;
+  transition: all 0.25s ease;
+}
+
+.icon svg {
+  transition: all 0.25s ease;
+}
+
+.title {
+  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+  font-weight: 500;
+  color: #232323;
+  margin: 0 0 1rem;
+  letter-spacing: -0.03em;
+  font-family: "Inter", sans-serif;
+}
+
+.description {
+  font-size: clamp(1rem, 1.2vw, 1.05rem);
+  color: #5a5a5a;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hoverIndicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #fc6b28;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .hoverIndicator {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  .faqSection {
+    padding: 4rem 0 2rem;
+  }
+
+  .header {
+    margin-bottom: 2.5rem;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 1.75rem 1.5rem;
+  }
+
+  .icon {
+    margin-bottom: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .sectionDesc::before {
+    top: 0.25rem;
+    height: calc(100% - 0.5rem);
+  }
+
+  .headerContent {
+    margin-left: unset;
+    text-align: left;
+  }
+  .sectionTitle,
+  .sectionDesc {
+    text-align: left;
+  }
+  .sectionTitle::after {
+    left: 0;
+    right: unset;
+  }
+  .sectionDesc::before {
+    left: 0;
+    right: unset;
+  }
+}

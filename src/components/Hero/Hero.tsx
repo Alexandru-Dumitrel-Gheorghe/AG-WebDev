@@ -18,7 +18,7 @@ export default function HeroSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Reset animation props to avoid glitches on fast refresh (Next.js/React strict mode)
+    // Reset animation props to avoid glitches
     gsap.set(
       [
         leftRef.current,
@@ -32,6 +32,9 @@ export default function HeroSection() {
       { clearProps: "opacity,transform" }
     );
 
+    // Check if mobile view
+    const isMobile = window.innerWidth < 800;
+
     // Sequential load animation
     const tl = gsap.timeline();
     tl.set(
@@ -42,7 +45,7 @@ export default function HeroSection() {
         ctaRef.current,
         imageRef.current,
       ],
-      { opacity: 0, y: 30 }
+      { opacity: 0, y: isMobile ? 20 : 30 }
     )
       .set([leftRef.current, rightRef.current], { opacity: 1 })
       .to(preheadRef.current, {
@@ -68,58 +71,64 @@ export default function HeroSection() {
       )
       .to(
         imageRef.current,
-        { scale: 1, opacity: 1, duration: 1.1, ease: "expo.out" },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.1,
+          ease: "expo.out",
+          y: isMobile ? 0 : 20, // Only float on desktop
+        },
         "-=1"
       );
 
-    // Floating animation for image
-    gsap.to(imageRef.current, {
-      y: 20,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
+    // Floating animation for image (desktop only)
+    if (!isMobile) {
+      gsap.to(imageRef.current, {
+        y: 20,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
 
-    // Scroll animations
-    gsap.to(imageRef.current, {
-      y: -100,
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-    gsap.to(titleRef.current, {
-      scale: 0.92,
-      opacity: 0.8,
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
-    gsap.to(rightRef.current, {
-      x: 100,
-      opacity: 0.7,
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+      // Scroll animations (desktop only)
+      gsap.to(imageRef.current, {
+        y: -100,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(titleRef.current, {
+        scale: 0.92,
+        opacity: 0.8,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+      gsap.to(rightRef.current, {
+        x: 100,
+        opacity: 0.7,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
 
-    // Clean-up on unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       gsap.killTweensOf("*");
     };
   }, []);
 
-  // Helper: return fiecare literă cu anim
   const renderAnimatedLine = (line: string, highlight = false) => (
     <span className={highlight ? styles.highlight : undefined}>
       {line.split("").map((char, idx) => (

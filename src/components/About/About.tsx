@@ -70,14 +70,14 @@ export default function About() {
         </div>
         <div className={`${styles.right} ${styles.animateOnScroll}`}>
           <p>
-            Mit über <b>5 Jahren Erfahrung</b> in Webdesign, UI/UX und Branding
-            habe ich zahlreiche Projekte für Start-ups, Agenturen und
-            Unternehmen erfolgreich umgesetzt.
-            <br />
-            <br />
             <b>Über mich:</b> <br />
             Ich setze auf Qualität, Zuverlässigkeit und kreative Lösungen –
             immer mit Fokus auf die Ziele meiner Kunden.
+            <br />
+            <br />
+            Mit über <b>5 Jahren Erfahrung</b> in Webdesign, UI/UX und Branding
+            habe ich zahlreiche Projekte für Start-ups, Agenturen und
+            Unternehmen erfolgreich umgesetzt.
           </p>
           <a className={styles.button} href="/about">
             Über mich

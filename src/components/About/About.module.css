@@ -200,8 +200,13 @@
 
 @media (max-width: 480px) {
   .button {
-    width: 100%;
-    justify-content: center;
+    width: auto; /* nu ocupa tot */
+    min-width: 135px; /* optional, cât să nu devină prea mic */
+    max-width: 240px;
+    display: flex;
+    justify-content: flex-start; /* aliniat stânga */
+    margin-left: 0; /* lipit de stânga */
+    margin-right: auto; /* să nu fie centrat */
   }
   .statCard {
     gap: 24px;

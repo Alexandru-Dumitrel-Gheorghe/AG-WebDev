@@ -1,4 +1,3 @@
-/* Hero.module.css */
 .hero {
   display: flex;
   min-height: 100vh;
@@ -9,16 +8,18 @@
   padding: 0;
   position: relative;
   overflow: hidden;
-  padding-inline: clamp(180px, 6vw, 180px);
+  padding-inline: clamp(1rem, 6vw, 180px);
 }
 
 .left {
   flex: 1;
-  padding-left: clamp(20px, 7vw, 80px);
+  padding-left: clamp(1rem, 7vw, 80px);
+  padding-right: clamp(1rem, 3vw, 40px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 2;
+  min-height: 100vh;
 }
 
 .prehead {
@@ -35,13 +36,12 @@
 .title {
   font-size: clamp(2.5rem, 8vw, 5.2rem);
   font-weight: 900;
-  letter-spacing: -2px;
+  letter-spacing: -0.03em;
   color: #111;
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   line-height: 1.04;
   transform-origin: left center;
   will-change: transform, opacity;
-  overflow: hidden;
 }
 
 .titleChar {
@@ -74,7 +74,7 @@
   color: #222;
   max-width: clamp(300px, 40vw, 520px);
   margin-bottom: clamp(1.5rem, 3vw, 2.6rem);
-  line-height: 1.4;
+  line-height: 1.5;
   opacity: 0;
   will-change: transform, opacity;
 }
@@ -137,7 +137,7 @@
 
 .right {
   flex: 1.2;
-  min-width: 350px;
+  min-width: min(350px, 40%);
   height: 100vh;
   position: relative;
   display: flex;
@@ -153,6 +153,8 @@
   height: 92vh;
   overflow: hidden;
   will-change: transform;
+
+  padding-inline: clamp(1rem, 3vw, 40px);
 }
 
 .heroImage {
@@ -195,52 +197,14 @@
   opacity: 0.3;
 }
 
-.scrollText {
-  font-size: 0.8rem;
-  color: #888;
-  margin-bottom: 10px;
-  animation: fadeInOut 2s infinite;
-}
-
-.scrollLine {
-  width: 1px;
-  height: 40px;
-  background: #888;
-  animation: scrollLine 2s infinite;
-}
-
-@keyframes fadeInOut {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes scrollLine {
-  0% {
-    transform: translateY(0);
-    height: 0;
-  }
-  50% {
-    height: 40px;
-  }
-  100% {
-    transform: translateY(20px);
-    height: 0;
-  }
-}
-
 /* Responsive styles */
 @media (max-width: 1100px) {
   .left {
-    padding-left: clamp(20px, 3vw, 40px);
+    padding-left: clamp(1rem, 3vw, 40px);
   }
 
   .right {
-    min-width: 220px;
+    min-width: min(220px, 35%);
   }
 
   .heroImage {
@@ -253,39 +217,43 @@
     flex-direction: column;
     min-height: auto;
     padding-top: 80px;
-    gap: 40px;
+    gap: 0;
+    padding-inline: 0;
   }
 
   .left {
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     order: 2;
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: flex-start;
+    min-height: auto;
+    width: 100%;
   }
 
   .title {
-    text-align: center;
-    transform-origin: center center;
+    text-align: left;
+    font-size: clamp(2.1rem, 8vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
   }
 
   .subtitle {
-    text-align: center;
+    text-align: left;
     max-width: 100%;
-  }
-
-  .ctaBtn {
-    margin: 0 auto;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-bottom: 2rem;
   }
 
   .right {
     width: 100%;
     height: auto;
-    min-height: 400px;
+    min-height: 60vh;
     order: 1;
+    min-width: auto;
   }
 
   .imageWrapper {
-    height: 400px;
+    height: 60vh;
     width: 100%;
   }
 
@@ -294,7 +262,6 @@
     height: 100%;
     border-radius: 0;
     object-position: center top;
-    padding-inline: 1rem;
   }
 
   .imageOverlay {
@@ -312,108 +279,37 @@
 }
 
 @media (max-width: 480px) {
+  .left {
+    padding: 1.5rem;
+  }
+
   .prehead {
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
   }
 
   .title {
-    font-size: 2.2rem;
-    letter-spacing: -1px;
-    margin-bottom: 1.5rem;
+    font-size: 2.3rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
   }
 
   .subtitle {
-    font-size: 1rem;
-    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.5;
   }
 
   .ctaBtn {
-    padding: 0.9rem 1.8rem;
+    padding: 0.9rem 1.6rem;
     font-size: 1rem;
   }
 
   .right {
-    min-height: 320px;
+    min-height: 50vh;
   }
 
   .imageWrapper {
-    height: 420px;
-  }
-}
-@media (max-width: 800px) {
-  .right {
-    width: 100%;
-    min-height: unset;
-    order: 1;
-    height: auto;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .left {
-    padding: 0 18px 32px 18px;
-    order: 2;
-    align-items: flex-start !important;
-    text-align: left !important;
-    width: 100%;
-  }
-
-  .prehead {
-    text-align: left !important;
-    margin-bottom: 1.3rem;
-    font-size: 1.05rem;
-  }
-
-  .title {
-    text-align: left !important;
-    font-size: 2.1rem;
-    margin-bottom: 1.1rem;
-    line-height: 1.1;
-    letter-spacing: -1px;
-  }
-
-  .subtitle {
-    text-align: left !important;
-    margin-bottom: 2rem;
-    font-size: 1.08rem;
-    line-height: 1.45;
-    max-width: 100%;
-  }
-
-  .ctaBtn {
-    margin: 0;
-    align-self: flex-start;
-    width: auto;
-    min-width: 165px;
-    padding: 0.9rem 1.6rem;
-    font-size: 1rem;
-    border-radius: 10px;
-  }
-
-  .scrollIndicator {
-    display: none;
-  }
-}
-@media (max-width: 480px) {
-  .prehead {
-    font-size: 0.96rem;
-  }
-  .hero {
-    padding-inline: 0rem;
-  }
-  .title {
-    font-size: 2.3rem;
-    margin-bottom: 1rem;
-  }
-  .subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 1.4rem;
-  }
-  .ctaBtn {
-    padding: 0.7rem 1.2rem;
-    font-size: 0.96rem;
-    border-radius: 8px;
+    height: 50vh;
   }
 }
