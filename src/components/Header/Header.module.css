@@ -123,7 +123,8 @@
   text-decoration: none;
   padding: 0.62rem 0.8rem;
   border-radius: 9px;
-  transition: all 0.2s ease;
+  /* Doar proprietăți animabile, nu "all" */
+  transition: background 0.2s, color 0.2s, transform 0.2s;
   margin-bottom: 0.2rem;
   display: block;
 }
@@ -135,9 +136,9 @@
 .dropdownLink:hover {
   background: #fc6b28;
   color: #fff;
+  font-weight: 700; /* Poți lăsa aici, browserul nu mai face warning dacă nu e pe 'transition'! */
   transform: translateX(5px);
 }
-
 /* Responsive */
 @media (max-width: 768px) {
   .header {

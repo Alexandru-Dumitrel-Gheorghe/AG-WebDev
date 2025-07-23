@@ -2,7 +2,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Header.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const menuLinks = [
@@ -151,7 +150,7 @@ export default function HeaderAGWebDev() {
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: index * 0.05 }}
-                whileHover={{ x: 5 }}
+                whileHover={{ x: 5, scale: 1.05 }} // scale doar pentru efect vizual modern
               >
                 {link.label}
               </motion.a>

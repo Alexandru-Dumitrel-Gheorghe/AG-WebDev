@@ -1,0 +1,245 @@
+.warumIchSection {
+  width: 100%;
+  padding: 6rem 0 4rem;
+  background: #fff;
+  position: relative;
+}
+
+.header {
+  max-width: 1500px;
+  margin: 0 auto 3.5rem;
+  padding: 0 clamp(1rem, 4vw, 4rem);
+}
+
+.badge {
+  display: inline-block;
+  color: #fc6b28;
+  background: rgba(252, 107, 40, 0.08);
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 0.18em 1.3em 0.22em;
+  border-radius: 2em;
+  margin-bottom: 1.15rem;
+  letter-spacing: 0.04em;
+}
+
+.sectionTitle {
+  font-size: clamp(2.2rem, 5vw, 2.9rem);
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #232323;
+  letter-spacing: -0.05em;
+  margin: 0 0 1rem;
+  line-height: 1.13;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -0.75rem;
+  left: 0;
+  width: 3.5rem;
+  height: 4px;
+  background: #fc6b28;
+  border-radius: 4px;
+}
+
+.sectionDesc {
+  color: #5a5a5a;
+  font-size: clamp(1.05rem, 1.4vw, 1.17rem);
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 1.5rem 0 0;
+  padding-left: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionDesc::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  height: calc(100% - 1rem);
+  width: 2px;
+  background: #e0e0e0;
+}
+
+.inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 3.2rem;
+  padding: 0 clamp(1rem, 4vw, 4rem);
+}
+
+.leftCol {
+  flex: 0 0 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrap {
+  width: 100%;
+  max-width: 390px;
+  aspect-ratio: 1 / 1;
+  background: #faf9f6;
+  border-radius: 1.3rem;
+  overflow: hidden;
+  box-shadow: 0 1.4rem 3.5rem rgba(252, 107, 40, 0.1),
+    0 0.5rem 2rem rgba(40, 41, 56, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: none;
+}
+
+.divider {
+  width: 5px;
+  min-height: 250px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, #fc6b28 0%, #fff 100%);
+  margin: 0 2.2rem;
+  opacity: 0.14;
+  display: block;
+}
+
+.grundList {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grundItem {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 2.2rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0.8rem 2.2rem rgba(252, 107, 40, 0.08),
+    0 2px 8px rgba(40, 41, 56, 0.06);
+  font-size: 1.17rem;
+  font-family: "Inter", sans-serif;
+  color: #232323;
+  border: 1px solid #f2f2f2;
+  transition: box-shadow 0.24s cubic-bezier(0.39, 0.57, 0.56, 1),
+    background 0.2s, border-color 0.2s;
+  cursor: pointer;
+  position: relative;
+  will-change: transform, box-shadow;
+}
+
+.grundItem:hover {
+  background: rgba(252, 107, 40, 0.06);
+  box-shadow: 0 0.8rem 2.2rem rgba(252, 107, 40, 0.18),
+    0 2px 8px rgba(40, 41, 56, 0.08);
+  border-color: #fc6b2822;
+}
+
+.grundNr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  background: #fc6b28;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-right: 1.4rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(252, 107, 40, 0.12),
+    0 0.2rem 1rem rgba(252, 107, 40, 0.22);
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+
+.grundItem:hover .grundNr {
+  box-shadow: 0 0 0 12px rgba(252, 107, 40, 0.12),
+    0 0.2rem 1rem rgba(252, 107, 40, 0.22);
+  transform: scale(1.08);
+}
+
+.grundText {
+  flex: 1;
+  font-size: clamp(1.12rem, 1.3vw, 1.18rem);
+  color: #232323;
+  font-family: inherit;
+  font-weight: 400;
+}
+
+@media (max-width: 1200px) {
+  .inner {
+    gap: 2rem;
+  }
+  .imageWrap {
+    max-width: 320px;
+  }
+  .leftCol {
+    flex: 0 0 260px;
+  }
+}
+
+@media (max-width: 950px) {
+  .inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.5rem;
+  }
+  .divider {
+    display: none;
+  }
+  .leftCol {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .imageWrap {
+    margin: 0 auto;
+    height: auto;
+    aspect-ratio: 1/1;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .warumIchSection {
+    padding: 3rem 0 2rem;
+  }
+  .header {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  .inner {
+    padding: 0 1rem;
+  }
+  .imageWrap {
+    max-width: 260px;
+  }
+  .grundItem {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+  }
+  .grundNr {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+  .grundText {
+    font-size: 1rem;
+  }
+}

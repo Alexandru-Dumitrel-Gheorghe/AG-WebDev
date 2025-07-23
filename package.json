@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.1.0",
-    "framer-motion": "^12.23.6",
+    "framer-motion": "^12.23.7",
     "gsap": "^3.13.0",
     "next": "15.4.2",
     "next-seo": "^6.8.0",

@@ -5,6 +5,7 @@ import Proces from "@/components/Proces/Process";
 import { ScrollAnimationProvider } from "@/components/ScrollAnimationProvider/ScrollAnimationProvider";
 import ProjectShowcase from "@/components/ProjectShowcase/ProjectShowcase";
 import FAQ from "@/components/FAQ/FAQ";
+import WarumIch from "@/components/WarumIch/WarumIch";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
         <Leistungen />
         <ProjectShowcase />
         <Proces />
+        <WarumIch />
         <FAQ />
       </ScrollAnimationProvider>
     </main>
