@@ -8,12 +8,25 @@ export default function HeroSection() {
   const heroRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const splineRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef(null);
   const preheadRef = useRef(null);
   const subtitleRef = useRef(null);
   const ctaRef = useRef(null);
 
+  // Inject Spline script o singură dată
+  useEffect(() => {
+    if (!document.getElementById("spline-viewer-script")) {
+      const script = document.createElement("script");
+      script.id = "spline-viewer-script";
+      script.type = "module";
+      script.src =
+        "https://unpkg.com/@splinetool/viewer@1.10.35/build/spline-viewer.js";
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  // GSAP Animation
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +38,7 @@ export default function HeroSection() {
         preheadRef.current,
         subtitleRef.current,
         ctaRef.current,
-        videoRef.current,
+        splineRef.current,
       ],
       { clearProps: "opacity,transform" }
     );
@@ -38,7 +51,7 @@ export default function HeroSection() {
         titleRef.current,
         subtitleRef.current,
         ctaRef.current,
-        videoRef.current,
+        splineRef.current,
       ],
       { opacity: 0, y: isMobile ? 20 : 30 }
     )
@@ -65,7 +78,7 @@ export default function HeroSection() {
         "-=0.5"
       )
       .to(
-        videoRef.current,
+        splineRef.current,
         {
           scale: 1,
           opacity: 1,
@@ -77,14 +90,14 @@ export default function HeroSection() {
       );
 
     if (!isMobile) {
-      gsap.to(videoRef.current, {
+      gsap.to(splineRef.current, {
         y: 20,
         duration: 3,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
-      gsap.to(videoRef.current, {
+      gsap.to(splineRef.current, {
         y: -100,
         scrollTrigger: {
           trigger: heroRef.current,
@@ -158,17 +171,23 @@ export default function HeroSection() {
         </a>
       </div>
       <div className={styles.right} ref={rightRef}>
-        <div className={styles.videoWrapper}>
-          <video
-            ref={videoRef}
-            className={styles.heroVideo}
-            src="/videos/hero-video3.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster="/images/hero-video-poster.jpg"
+        <div className={styles.videoWrapper} ref={splineRef}>
+          {/* Inject Spline Viewer Web Component */}
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: "2rem",
+              overflow: "hidden",
+            }}
+            dangerouslySetInnerHTML={{
+              __html: `
+                <spline-viewer
+                  url="https://prod.spline.design/mJSz379-hZOozSNA/scene.splinecode"
+                  style="width:100%;height:100%;border:none;background:transparent;border-radius:2rem;"
+                ></spline-viewer>
+              `,
+            }}
           />
           <div className={styles.videoOverlay}></div>
           <div className={styles.imageDecoration}></div>
