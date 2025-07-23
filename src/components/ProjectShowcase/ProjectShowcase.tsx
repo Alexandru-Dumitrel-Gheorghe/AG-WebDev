@@ -169,18 +169,6 @@ export default function ProjectsShowcase() {
                   {project.subtitle}
                 </motion.p>
 
-                <motion.ul
-                  className={styles.features}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                >
-                  {project.features.map((feature, i) => (
-                    <li key={i}>{feature}</li>
-                  ))}
-                </motion.ul>
-
                 <motion.div
                   className={styles.techStack}
                   initial={{ opacity: 0 }}

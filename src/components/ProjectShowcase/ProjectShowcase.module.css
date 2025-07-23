@@ -76,7 +76,6 @@
 .card {
   width: 100%;
   max-width: 1400px;
-  height: 650px; /* Increased height to accommodate more content */
   background-size: cover;
   background-position: center;
   border-radius: 1.5rem;
@@ -110,6 +109,7 @@
   transition: all 0.3s ease;
   max-height: 85%; /* Ensure it doesn't overflow card */
   overflow-y: auto; /* Add scroll if content is too long */
+  margin-bottom: 4rem;
 }
 
 .cardContent::-webkit-scrollbar {
@@ -348,7 +348,7 @@
     max-width: 100%;
     gap: 0.5rem;
     max-height: none; /* elimină limitarea! */
-    overflow: visible; /* elimină scroll-ul intern! */
+    overflow-y: auto;
   }
 
   .index {
