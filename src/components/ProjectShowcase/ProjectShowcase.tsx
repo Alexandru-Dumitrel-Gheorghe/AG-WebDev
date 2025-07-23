@@ -13,7 +13,7 @@ type Project = {
   thumbnail: string;
 };
 
-const sectionTitle = "Abgeschlossene Projekte";
+const sectionTitle = "Referenzen";
 const sectionDesc =
   "Entdecken Sie, wie wir digitale Erlebnisse für verschiedene Branchen transformiert haben. Jedes Projekt ist eine Geschichte von Zusammenarbeit, Innovation und messbaren Ergebnissen.";
 

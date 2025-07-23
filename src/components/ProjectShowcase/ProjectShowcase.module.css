@@ -142,6 +142,7 @@
   object-fit: contain;
   margin-left: 2.5rem;
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 0 !important;
 }
 
 .projectTitle {
