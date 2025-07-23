@@ -26,7 +26,7 @@ const projects: Project[] = [
     id: 2,
     title: "Helio Brand Identity",
     subtitle: "Career guidance app with smooth onboarding",
-    background: "/images/certus-case-ag.png",
+    background: "/images/oberholzer-showcase.png",
     thumbnail: "/images/hero-fraga.png",
   },
   {

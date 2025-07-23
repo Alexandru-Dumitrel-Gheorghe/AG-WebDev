@@ -70,9 +70,8 @@
   flex-direction: column;
   gap: 5rem;
   width: 100%;
-  align-items: center;
+  align-items: flex-start; /* Aliniere stânga pe desktop */
 }
-
 .card {
   width: 100%;
   max-width: 1400px;
@@ -83,11 +82,8 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  justify-content: flex-start; /* Aliniere la stânga */
+  /* ... restul codului ... */
 }
 
 .card.visible {
@@ -131,19 +127,16 @@
 }
 
 .thumbnail {
-  width: 120px;
-  height: 100px;
-  border-radius: 12px;
-  object-fit: cover;
-  margin-left: 2rem;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
-  background: #fff;
+  width: 140px; /* Mărește width */
+  height: 110px; /* Mărește height */
+  object-fit: contain; /* Să nu taie marginile telefonului */
+  border-radius: 16px;
+  margin-left: 2.5rem;
   transition: all 0.3s ease;
 }
 
 .card:hover .thumbnail {
   transform: scale(1.05);
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
 }
 
 .projectTitle {
@@ -261,15 +254,49 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .card {
-    height: 400px;
+    align-items: center;
+    justify-content: center;
   }
 
   .cardContent {
-    margin: 2rem 0 0 2rem;
-    padding: 1.75rem;
-    max-width: 320px;
+    margin: 2rem auto 0;
+    padding: 2rem;
+    max-width: 85%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .topRow {
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .thumbnail {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 4rem 0 2rem;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .card {
+    height: 400px;
+    border-radius: 1rem;
+  }
+
+  .cardContent {
+    margin: 1.5rem auto 0;
+    padding: 1.5rem;
+    max-width: 90%;
+    gap: 1rem;
   }
 
   .index {
@@ -281,30 +308,30 @@
     height: 65px;
   }
 
+  .projectTitle {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .projectSubtitle {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
   .button {
     padding: 0.8rem 1.75rem;
     font-size: 1rem;
   }
 }
 
-@media (max-width: 500px) {
-  .section {
-    padding: 4rem 0 2rem;
-  }
-
-  .container {
-    padding: 0 1.5rem;
-  }
-
+@media (max-width: 480px) {
   .card {
-    height: 350px;
-    border-radius: 1rem;
+    height: 380px;
   }
 
   .cardContent {
-    margin: 1.5rem 0 0 2rem;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 1.25rem;
+    max-width: 95%;
   }
 
   .index {
@@ -312,20 +339,19 @@
   }
 
   .thumbnail {
-    width: 70px;
-    height: 55px;
-    margin-left: 1rem;
-    border-radius: 8px;
+    width: 120px;
+    height: 90px;
+    margin-left: 0.5rem;
+    margin-top: 0;
+    border-radius: 10px;
   }
 
   .projectTitle {
     font-size: 1.3rem;
-    margin-bottom: 0.75rem;
   }
 
   .projectSubtitle {
     font-size: 0.95rem;
-    margin-bottom: 1.25rem;
   }
 
   .button {
@@ -334,10 +360,19 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 380px) {
   .cardContent {
-    max-width: 240px;
-    padding: 1.25rem;
+    padding: 1rem;
+  }
+
+  .topRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .index {
+    font-size: 1.5rem;
   }
 
   .thumbnail {
