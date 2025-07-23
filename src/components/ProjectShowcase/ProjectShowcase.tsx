@@ -27,14 +27,14 @@ const projects: Project[] = [
     title: "Helio Brand Identity",
     subtitle: "Career guidance app with smooth onboarding",
     background: "/images/oberholzer-showcase.png",
-    thumbnail: "/images/hero-fraga.png",
+    thumbnail: "/images/tablet-mockup-oberholzer.png",
   },
   {
     id: 3,
     title: "Made in Webflow",
     subtitle: "Portfolio website with custom animations",
-    background: "/images/certus-case-ag.png",
-    thumbnail: "/images/hero-fraga.png",
+    background: "/images/certuss-showcase.png",
+    thumbnail: "/images/certuss-showcase-small.png",
   },
 ];
 
