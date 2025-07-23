@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styles from "./ProjectShowcase.module.css";
+import useIsMobile from "@/components/Hooks/useIsMobile";
 
 type Project = {
   id: number;
@@ -47,7 +48,6 @@ const projects: Project[] = [
   },
 ];
 
-// Animation variants (bleiben gleich)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -78,6 +78,8 @@ const cardVariants = {
 };
 
 export default function ProjectsShowcase() {
+  const isMobile = useIsMobile(600);
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -101,93 +103,113 @@ export default function ProjectsShowcase() {
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className={styles.card}
-              style={{ backgroundImage: `url(${project.background})` }}
-              variants={cardVariants}
-              custom={index}
-            >
-              <motion.div
-                className={styles.cardContent}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-              >
-                <div className={styles.topRow}>
-                  <span className={styles.index}>
-                    {String(project.id).padStart(2, "0")}
-                  </span>
-                  <motion.img
-                    src={project.thumbnail}
-                    alt={project.title}
-                    className={styles.thumbnail}
-                    loading="lazy"
-                    initial={{ scale: 0.9 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
-                  />
-                </div>
-                <motion.h3
-                  className={styles.projectTitle}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                >
-                  {project.title}
-                </motion.h3>
-                <motion.p
-                  className={styles.projectSubtitle}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                >
-                  {project.subtitle}
-                </motion.p>
+          {projects.map((project, index) => {
+            // Fallback: nu setezi nimic la SSR
+            let cardStyle: React.CSSProperties = {};
 
-                {/* Tech Stack */}
+            if (isMobile === null) {
+              cardStyle = {};
+            } else if (isMobile) {
+              cardStyle = {
+                backgroundImage:
+                  "linear-gradient(135deg, #fff5e7 0%, #ffba8b 30%, #fc6b28 100%), radial-gradient(circle at 85% 20%, #ffe6d1 20%, transparent 70%)",
+              };
+            } else {
+              cardStyle = {
+                backgroundImage: `url(${project.background})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              };
+            }
+
+            return (
+              <motion.div
+                key={project.id}
+                className={styles.card}
+                style={cardStyle}
+                variants={cardVariants}
+                custom={index}
+              >
                 <motion.div
-                  className={styles.techStack}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.7 + index * 0.1 }}
+                  className={styles.cardContent}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
                 >
-                  {project.tech.map((tech, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ scale: 0 }}
+                  <div className={styles.topRow}>
+                    <span className={styles.index}>
+                      {String(project.id).padStart(2, "0")}
+                    </span>
+                    <motion.img
+                      src={project.thumbnail}
+                      alt={project.title}
+                      className={styles.thumbnail}
+                      loading="lazy"
+                      initial={{ scale: 0.9 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{
-                        delay: 0.8 + index * 0.1 + i * 0.1,
-                        type: "spring",
-                      }}
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                </motion.div>
+                      transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
+                    />
+                  </div>
+                  <motion.h3
+                    className={styles.projectTitle}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + index * 0.1 }}
+                  >
+                    {project.title}
+                  </motion.h3>
+                  <motion.p
+                    className={styles.projectSubtitle}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                  >
+                    {project.subtitle}
+                  </motion.p>
 
-                <motion.button
-                  className={styles.button}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.05 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.9 + index * 0.1 }}
-                  aria-label="Projekt ansehen"
-                >
-                  Projekt ansehen <span className={styles.arrow}>↗</span>
-                </motion.button>
+                  {/* Tech Stack */}
+                  <motion.div
+                    className={styles.techStack}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                  >
+                    {project.tech.map((tech, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          delay: 0.8 + index * 0.1 + i * 0.1,
+                          type: "spring",
+                        }}
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+
+                  <motion.button
+                    className={styles.button}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ scale: 1.05 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.9 + index * 0.1 }}
+                    aria-label="Projekt ansehen"
+                  >
+                    Projekt ansehen <span className={styles.arrow}>↗</span>
+                  </motion.button>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>
