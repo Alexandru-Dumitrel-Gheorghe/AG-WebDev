@@ -63,6 +63,7 @@
   background: #e0e0e0;
 }
 
+/* Desktop Grid */
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
@@ -99,6 +100,81 @@
   transform: scale(1.1);
 }
 
+/* Mobile Slider */
+.mobileSliderContainer {
+  max-width: 87.5rem;
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+  position: relative;
+}
+
+.sliderWrapper {
+  position: relative;
+  height: 22rem;
+  margin-bottom: 1.5rem;
+}
+
+.sliderCard {
+  background: #f9f9f9;
+  border-radius: 1.125rem;
+  box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.04);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  border: 1px solid #eee;
+  position: absolute;
+  width: 100%;
+}
+
+.sliderControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.controlButton {
+  background: none;
+  border: none;
+  color: #fc6b28;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.controlButton:hover {
+  background: rgba(252, 107, 40, 0.1);
+}
+
+.sliderDots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #e0e0e0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activeDot {
+  background: #fc6b28;
+  transform: scale(1.3);
+}
+
+/* Shared Styles */
 .icon {
   margin-bottom: 2rem;
   display: flex;
@@ -146,7 +222,8 @@
   transition: transform 0.3s ease;
 }
 
-.card:hover .hoverIndicator {
+.card:hover .hoverIndicator,
+.sliderCard:hover .hoverIndicator {
   transform: scaleX(1);
 }
 
@@ -159,7 +236,8 @@
     margin-bottom: 2.5rem;
   }
 
-  .card {
+  .card,
+  .sliderCard {
     min-height: auto;
     padding: 1.75rem 1.5rem;
   }
@@ -190,5 +268,23 @@
   .sectionDesc::before {
     left: 0;
     right: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .sliderWrapper {
+    height: 20rem;
+  }
+
+  .sliderCard {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 1rem;
   }
 }
