@@ -25,7 +25,7 @@ const projects: Project[] = [
     description: "",
     tech: ["Next.js", "TypeScript", "React"],
     background: "/images/fraga-showcase.png",
-    thumbnail: "/images/fraga-mockup.png",
+    thumbnail: "/images/fraga-tablet.png",
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const projects: Project[] = [
     description: "",
     tech: ["Next.js", "TypeScript"],
     background: "/images/certuss-showcase.png",
-    thumbnail: "/images/certuss-showcase-small.png",
+    thumbnail: "/images/certus-tablet.png",
   },
 ];
 
