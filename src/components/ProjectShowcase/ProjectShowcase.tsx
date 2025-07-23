@@ -13,9 +13,9 @@ type Project = {
   thumbnail: string;
 };
 
-const sectionTitle = "Completed Projects";
+const sectionTitle = "Abgeschlossene Projekte";
 const sectionDesc =
-  "Discover how we transformed digital experiences for various industries. Every project is a story of collaboration, innovation and measurable results.";
+  "Entdecken Sie, wie wir digitale Erlebnisse für verschiedene Branchen transformiert haben. Jedes Projekt ist eine Geschichte von Zusammenarbeit, Innovation und messbaren Ergebnissen.";
 
 const projects: Project[] = [
   {
@@ -30,7 +30,7 @@ const projects: Project[] = [
   {
     id: 2,
     title: "Oberholzer GmbH",
-    subtitle: "Responsive Webprojekt für Schweizer Umzüge.",
+    subtitle: "Responsives Webprojekt für Schweizer Umzüge.",
     description: "",
     tech: ["Next.js", "React"],
     background: "/images/oberholzer-showcase.png",
@@ -47,7 +47,7 @@ const projects: Project[] = [
   },
 ];
 
-// Animation variants (rămân la fel)
+// Animation variants (bleiben gleich)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -181,8 +181,9 @@ export default function ProjectsShowcase() {
                   whileHover={{ scale: 1.05 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.9 + index * 0.1 }}
+                  aria-label="Projekt ansehen"
                 >
-                  View Project <span className={styles.arrow}>↗</span>
+                  Projekt ansehen <span className={styles.arrow}>↗</span>
                 </motion.button>
               </motion.div>
             </motion.div>
