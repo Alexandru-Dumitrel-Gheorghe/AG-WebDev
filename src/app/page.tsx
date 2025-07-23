@@ -6,6 +6,7 @@ import { ScrollAnimationProvider } from "@/components/ScrollAnimationProvider/Sc
 import ProjectShowcase from "@/components/ProjectShowcase/ProjectShowcase";
 import FAQ from "@/components/FAQ/FAQ";
 import WarumIch from "@/components/WarumIch/WarumIch";
+import WowFooter from "@/components/Footer/Footer";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Proces />
         <WarumIch />
         <FAQ />
+        <WowFooter />
       </ScrollAnimationProvider>
     </main>
   );
