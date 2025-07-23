@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import styles from "./ProjectShowcase.module.css";
 
 type Project = {
@@ -56,85 +57,167 @@ const projects: Project[] = [
   },
 ];
 
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring" as const,
+      damping: 12,
+      stiffness: 100,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring" as const,
+      damping: 15,
+      stiffness: 100,
+      duration: 0.5,
+    },
+  },
+};
+
 export default function ProjectsShowcase() {
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    cardsRef.current.forEach((card) => {
-      if (card) observer.observe(card);
-    });
-
-    return () => {
-      cardsRef.current.forEach((card) => {
-        if (card) observer.unobserve(card);
-      });
-    };
-  }, []);
-
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <div className={styles.headerContent}>
+        <motion.div
+          className={styles.header}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.div className={styles.headerContent} variants={itemVariants}>
             <h2 className={styles.sectionTitle}>{sectionTitle}</h2>
             <p className={styles.sectionDesc}>{sectionDesc}</p>
-          </div>
-        </div>
-        <div className={styles.projectsGrid}>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className={styles.projectsGrid}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={project.id}
-              className={`${styles.card} ${styles.cardAnimation}`}
+              className={styles.card}
               style={{ backgroundImage: `url(${project.background})` }}
-              ref={(el) => {
-                cardsRef.current[index] = el;
-              }}
+              variants={cardVariants}
+              custom={index}
             >
-              <div className={styles.cardContent}>
+              <motion.div
+                className={styles.cardContent}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+              >
                 <div className={styles.topRow}>
                   <span className={styles.index}>
                     {String(project.id).padStart(2, "0")}
                   </span>
-                  <img
+                  <motion.img
                     src={project.thumbnail}
                     alt={project.title}
                     className={styles.thumbnail}
                     loading="lazy"
+                    initial={{ scale: 0.9 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
                   />
                 </div>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.projectSubtitle}>{project.subtitle}</p>
+                <motion.h3
+                  className={styles.projectTitle}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 + index * 0.1 }}
+                >
+                  {project.title}
+                </motion.h3>
+                <motion.p
+                  className={styles.projectSubtitle}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 + index * 0.1 }}
+                >
+                  {project.subtitle}
+                </motion.p>
 
-                <ul className={styles.features}>
+                <motion.ul
+                  className={styles.features}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 + index * 0.1 }}
+                >
                   {project.features.map((feature, i) => (
                     <li key={i}>{feature}</li>
                   ))}
-                </ul>
+                </motion.ul>
 
-                <div className={styles.techStack}>
+                <motion.div
+                  className={styles.techStack}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.7 + index * 0.1 }}
+                >
                   {project.tech.map((tech, i) => (
-                    <span key={i}>{tech}</span>
+                    <motion.span
+                      key={i}
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        delay: 0.8 + index * 0.1 + i * 0.1,
+                        type: "spring",
+                      }}
+                    >
+                      {tech}
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
 
-                <button className={styles.button}>
+                <motion.button
+                  className={styles.button}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.05 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.9 + index * 0.1 }}
+                >
                   View Project <span className={styles.arrow}>↗</span>
-                </button>
-              </div>
-            </div>
+                </motion.button>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
