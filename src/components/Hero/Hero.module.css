@@ -371,3 +371,22 @@
     margin-top: 0px !important;
   }
 }
+/* Ascunde și afișează pe device */
+.desktopOnly {
+  display: block;
+}
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .desktopOnly {
+    display: none !important;
+  }
+  .mobileOnly {
+    display: block;
+  }
+  .videoWrapper {
+    display: none !important;
+  }
+}
