@@ -313,3 +313,60 @@
     height: 50vh;
   }
 }
+/* ...restul stilurilor (rămâne neschimbat)... */
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  height: 92vh;
+  overflow: hidden;
+  will-change: transform;
+  padding-inline: clamp(1rem, 3vw, 40px);
+  display: flex;
+  align-items: flex-start; /* <-- de la flex-end la flex-start */
+  justify-content: center;
+}
+
+/* Dacă vrei să fie chiar mai aproape de top, adaugă și un margin-top: */
+.heroVideo {
+  width: 100%;
+  max-width: 700px;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 0 0 0 80px;
+  box-shadow: 0 14px 68px rgba(17, 17, 17, 0.2),
+    0 2px 18px rgba(255, 93, 42, 0.08);
+  background: #fafafa;
+  will-change: transform;
+  transform-origin: center bottom;
+  opacity: 1;
+  z-index: 2;
+  margin-top: 20px !important; /* Asigură-te că nu există margin-top */
+}
+
+/* Opțional, dacă vrei să fie și mai sus: */
+@media (min-width: 800px) {
+  .videoWrapper {
+    height: 92vh;
+    align-items: flex-start;
+  }
+  .heroVideo {
+    margin-top: 0; /* sau chiar margin-top: -20px; dacă vrei și mai sus */
+  }
+}
+
+@media (max-width: 800px) {
+  .videoWrapper {
+    height: 60vh;
+    padding-inline: 0;
+    align-items: flex-start;
+  }
+  .heroVideo {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    object-position: center top;
+    max-width: 100vw;
+    margin-top: 0px !important;
+  }
+}

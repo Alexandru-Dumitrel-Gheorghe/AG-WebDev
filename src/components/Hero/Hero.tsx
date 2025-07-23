@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import styles from "./Hero.module.css";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -9,7 +8,7 @@ export default function HeroSection() {
   const heroRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
-  const imageRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef(null);
   const preheadRef = useRef(null);
   const subtitleRef = useRef(null);
@@ -18,7 +17,6 @@ export default function HeroSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Reset animation props to avoid glitches
     gsap.set(
       [
         leftRef.current,
@@ -27,15 +25,12 @@ export default function HeroSection() {
         preheadRef.current,
         subtitleRef.current,
         ctaRef.current,
-        imageRef.current,
+        videoRef.current,
       ],
       { clearProps: "opacity,transform" }
     );
 
-    // Check if mobile view
     const isMobile = window.innerWidth < 800;
-
-    // Sequential load animation
     const tl = gsap.timeline();
     tl.set(
       [
@@ -43,7 +38,7 @@ export default function HeroSection() {
         titleRef.current,
         subtitleRef.current,
         ctaRef.current,
-        imageRef.current,
+        videoRef.current,
       ],
       { opacity: 0, y: isMobile ? 20 : 30 }
     )
@@ -70,29 +65,26 @@ export default function HeroSection() {
         "-=0.5"
       )
       .to(
-        imageRef.current,
+        videoRef.current,
         {
           scale: 1,
           opacity: 1,
           duration: 1.1,
           ease: "expo.out",
-          y: isMobile ? 0 : 20, // Only float on desktop
+          y: isMobile ? 0 : 20,
         },
         "-=1"
       );
 
-    // Floating animation for image (desktop only)
     if (!isMobile) {
-      gsap.to(imageRef.current, {
+      gsap.to(videoRef.current, {
         y: 20,
         duration: 3,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
-
-      // Scroll animations (desktop only)
-      gsap.to(imageRef.current, {
+      gsap.to(videoRef.current, {
         y: -100,
         scrollTrigger: {
           trigger: heroRef.current,
@@ -166,17 +158,19 @@ export default function HeroSection() {
         </a>
       </div>
       <div className={styles.right} ref={rightRef}>
-        <div className={styles.imageWrapper}>
-          <Image
-            src="/images/profil.jpg"
-            alt="Profilbild"
-            width={720}
-            height={900}
-            priority
-            className={styles.heroImage}
-            ref={imageRef}
+        <div className={styles.videoWrapper}>
+          <video
+            ref={videoRef}
+            className={styles.heroVideo}
+            src="/videos/hero-video3.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/images/hero-video-poster.jpg"
           />
-          <div className={styles.imageOverlay}></div>
+          <div className={styles.videoOverlay}></div>
           <div className={styles.imageDecoration}></div>
         </div>
       </div>

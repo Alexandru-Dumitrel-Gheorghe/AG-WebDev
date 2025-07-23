@@ -1,10 +1,11 @@
 /* WowFooter.module.css */
 .footer {
   position: relative;
-  background-color: #161a21;
-  color: #fff;
+  background-color: #0a0c10; /* Darker background for more contrast */
+  color: #ffffff;
   padding: 5rem 0 2rem;
   overflow: hidden;
+  border-top: 1px solid rgba(252, 107, 40, 0.1); /* Subtle top border */
 }
 
 .backgroundElements {
@@ -23,7 +24,7 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: rgba(252, 107, 40, 0.05);
+  background: rgba(252, 107, 40, 0.08); /* More visible glow */
   filter: blur(60px);
 }
 
@@ -34,7 +35,7 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: rgba(252, 107, 40, 0.03);
+  background: rgba(252, 107, 40, 0.06); /* More visible glow */
   filter: blur(40px);
 }
 
@@ -68,9 +69,10 @@
 .brandName {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #fff;
+  color: #ffffff; /* Pure white */
   letter-spacing: -0.03em;
   transition: color 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
 }
 
 .brand:hover .brandName {
@@ -79,15 +81,15 @@
 
 .brandTagline {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85); /* Higher contrast */
+  font-weight: 500; /* Bolder */
   margin-top: 0.3rem;
 }
 
 .brandDescription {
   font-size: 1rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.75); /* Higher contrast */
   max-width: 300px;
 }
 
@@ -99,8 +101,8 @@
 
 .columnTitle {
   font-size: 1.2rem;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 700; /* Bolder */
+  color: #ffffff;
   margin-bottom: 0.5rem;
   position: relative;
   display: inline-block;
@@ -112,7 +114,7 @@
   bottom: -5px;
   left: 0;
   width: 40px;
-  height: 2px;
+  height: 3px; /* Thicker */
   background: #fc6b28;
 }
 
@@ -126,16 +128,19 @@
 }
 
 .link {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.85); /* Higher contrast */
   text-decoration: none;
   font-size: 1rem;
-  transition: color 0.3s ease, transform 0.3s ease;
+  font-weight: 500; /* Bolder */
+  transition: all 0.3s ease;
   display: inline-block;
+  padding: 0.25rem 0;
 }
 
 .link:hover {
   color: #fc6b28;
   transform: translateX(5px);
+  text-shadow: 0 0 8px rgba(252, 107, 40, 0.3); /* Glow effect */
 }
 
 .contactColumn {
@@ -162,6 +167,7 @@
 .contactIcon {
   font-size: 1.2rem;
   color: #fc6b28;
+  min-width: 24px; /* Ensures alignment */
 }
 
 .socialLinks {
@@ -174,16 +180,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 42px; /* Slightly larger */
+  height: 42px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15); /* More visible */
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow */
 }
 
 .socialLink:hover {
   background: #fc6b28;
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.1); /* More pronounced effect */
+  box-shadow: 0 4px 12px rgba(252, 107, 40, 0.3);
 }
 
 .socialIcon {
@@ -196,12 +204,13 @@
   align-items: center;
   gap: 1.5rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.15); /* More visible */
 }
 
 .copyright {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7); /* Higher contrast */
+  font-weight: 500; /* Bolder */
 }
 
 .legalLinks {
@@ -210,20 +219,33 @@
 }
 
 .legalLink {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7); /* Higher contrast */
   font-size: 0.9rem;
+  font-weight: 500; /* Bolder */
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .legalLink:hover {
   color: #fc6b28;
 }
 
+.legalLink:not(:last-child)::after {
+  content: "•";
+  position: absolute;
+  right: -0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .grid {
     gap: 2rem;
+  }
+
+  .brandName {
+    font-size: 1.7rem;
   }
 }
 
@@ -239,6 +261,10 @@
 
   .brandColumn {
     grid-column: span 2;
+  }
+
+  .link {
+    font-size: 0.95rem;
   }
 }
 
@@ -266,6 +292,10 @@
     flex-direction: column;
     gap: 0.5rem;
   }
+
+  .legalLink:not(:last-child)::after {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -274,7 +304,7 @@
   }
 
   .brandName {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .brandDescription {
@@ -282,10 +312,26 @@
   }
 
   .columnTitle {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+  }
+
+  .socialLink {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background-color: #0a0c10;
   }
 
   .link {
-    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .link:hover {
+    color: #fc6b28;
   }
 }
