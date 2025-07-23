@@ -1,12 +1,8 @@
 "use client";
 import styles from "./Hero.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Helper pentru a detecta mobil
-const isMobileDevice = () =>
-  typeof window !== "undefined" && window.innerWidth < 800;
 
 export default function HeroSection() {
   const heroRef = useRef(null);
@@ -18,21 +14,15 @@ export default function HeroSection() {
   const subtitleRef = useRef(null);
   const ctaRef = useRef(null);
 
-  // Arată Spline doar pe desktop
-  const [showSpline, setShowSpline] = useState(false);
-
-  // Inject Spline script o singură dată (doar desktop)
+  // Inject Spline script o singură dată
   useEffect(() => {
-    if (!isMobileDevice()) {
-      setShowSpline(true);
-      if (!document.getElementById("spline-viewer-script")) {
-        const script = document.createElement("script");
-        script.id = "spline-viewer-script";
-        script.type = "module";
-        script.src =
-          "https://unpkg.com/@splinetool/viewer@1.10.35/build/spline-viewer.js";
-        document.body.appendChild(script);
-      }
+    if (!document.getElementById("spline-viewer-script")) {
+      const script = document.createElement("script");
+      script.id = "spline-viewer-script";
+      script.type = "module";
+      script.src =
+        "https://unpkg.com/@splinetool/viewer@1.10.35/build/spline-viewer.js";
+      document.body.appendChild(script);
     }
   }, []);
 
@@ -53,7 +43,7 @@ export default function HeroSection() {
       { clearProps: "opacity,transform" }
     );
 
-    const isMobile = isMobileDevice();
+    const isMobile = window.innerWidth < 800;
     const tl = gsap.timeline();
     tl.set(
       [
@@ -142,7 +132,7 @@ export default function HeroSection() {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       gsap.killTweensOf("*");
     };
-  }, [showSpline]);
+  }, []);
 
   const renderAnimatedLine = (line: string, highlight = false) => (
     <span className={highlight ? styles.highlight : undefined}>
@@ -182,38 +172,23 @@ export default function HeroSection() {
       </div>
       <div className={styles.right} ref={rightRef}>
         <div className={styles.videoWrapper} ref={splineRef}>
-          {/* Pe mobil - imagine statică, pe desktop - Spline Viewer */}
-          {showSpline ? (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "2rem",
-                overflow: "hidden",
-              }}
-              dangerouslySetInnerHTML={{
-                __html: `
-                  <spline-viewer
-                    url="https://prod.spline.design/mJSz379-hZOozSNA/scene.splinecode"
-                    style="width:100%;height:100%;border:none;background:transparent;border-radius:2rem;margin-left:32px"
-                  ></spline-viewer>
-                `,
-              }}
-            />
-          ) : (
-            <img
-              src="/images/robot-static.png"
-              alt="Robot 3D"
-              style={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "2rem",
-                objectFit: "contain",
-                background: "#0e0e11",
-                marginLeft: 32,
-              }}
-            />
-          )}
+          {/* Inject Spline Viewer Web Component */}
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: "2rem",
+              overflow: "hidden",
+            }}
+            dangerouslySetInnerHTML={{
+              __html: `
+                <spline-viewer
+                  url="https://prod.spline.design/mJSz379-hZOozSNA/scene.splinecode"
+                  style="width:100%;height:100%;border:none;background:transparent;border-radius:2rem;"
+                ></spline-viewer>
+              `,
+            }}
+          />
           <div className={styles.videoOverlay}></div>
           <div className={styles.imageDecoration}></div>
         </div>
