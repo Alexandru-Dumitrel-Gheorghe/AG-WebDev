@@ -32,11 +32,7 @@ export default function HeaderAGWebDev() {
 
   // Initialize theme
   useEffect(() => {
-    const savedTheme =
-      localStorage.getItem("theme") ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
+    const savedTheme = localStorage.getItem("theme") || "light"; // fără detectare sistem
     setDarkMode(savedTheme === "dark");
     document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);
