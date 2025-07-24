@@ -1,243 +1,110 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./ProjectShowcase.module.css";
-import useIsMobile from "@/components/Hooks/useIsMobile";
 
 type Project = {
   id: number;
   title: string;
   subtitle: string;
-  description: string;
-  tech: string[];
   background: string;
   thumbnail: string;
 };
 
-const sectionTitle = "Referenzen";
+const sectionTitle = "Completed Projects";
 const sectionDesc =
-  "Entdecken Sie, wie wir digitale Erlebnisse für verschiedene Branchen transformiert haben. Jedes Projekt ist eine Geschichte von Zusammenarbeit, Innovation und messbaren Ergebnissen.";
+  "Discover how we transformed digital experiences for various industries. Every project is a story of collaboration, innovation and measurable results.";
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "FRAGA Fashion Shop",
-    subtitle: "Modernes E-Commerce für nachhaltige Mode.",
-    description: "",
-    tech: ["Next.js", "TypeScript", "React"],
+    title: "Fraga",
+    subtitle: "Clean, minimal corporate website redesign",
     background: "/images/fraga-showcase.png",
-    thumbnail: "/images/fraga-tablet.png",
+    thumbnail: "/images/fraga-mockup.png",
   },
   {
     id: 2,
-    title: "Oberholzer GmbH",
-    subtitle: "Responsives Webprojekt für Schweizer Umzüge.",
-    description: "",
-    tech: ["Next.js", "React"],
-    background: "/images/oberholzer-showcase.png",
-    thumbnail: "/images/tablet-mockup-oberholzer.png",
+    title: "Helio Brand Identity",
+    subtitle: "Career guidance app with smooth onboarding",
+    background: "/images/certus-case-ag.png",
+    thumbnail: "/images/hero-fraga.png",
   },
   {
     id: 3,
-    title: "Certus Solutions",
-    subtitle: "Unternehmenswebsite für Fenster & Zäune.",
-    description: "",
-    tech: ["Next.js", "TypeScript"],
-    background: "/images/certuss-showcase.png",
-    thumbnail: "/images/certus-tablet.png",
+    title: "Made in Webflow",
+    subtitle: "Portfolio website with custom animations",
+    background: "/images/certus-case-ag.png",
+    thumbnail: "/images/hero-fraga.png",
   },
 ];
 
 export default function ProjectsShowcase() {
-  const isMobile = useIsMobile(768);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Parallax values
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const scaleCards = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.visible);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardsRef.current.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, []);
 
   return (
-    <section className={styles.section} ref={sectionRef}>
-      {/* Parallax Background */}
-      {!isMobile && (
-        <motion.div
-          className={styles.parallaxBg}
-          style={{
-            y: yBg,
-            backgroundImage: `linear-gradient(135deg, rgba(255,245,231,0.8) 0%, rgba(255,186,139,0.6) 30%, rgba(252,107,40,0.4) 100%)`,
-          }}
-        />
-      )}
-
+    <section className={styles.section}>
       <div className={styles.container}>
-        <motion.div className={styles.header} style={{ y: yText }}>
+        <div className={styles.header}>
           <div className={styles.headerContent}>
             <h2 className={styles.sectionTitle}>{sectionTitle}</h2>
             <p className={styles.sectionDesc}>{sectionDesc}</p>
           </div>
-        </motion.div>
-
-        <motion.div
-          className={styles.projectsGrid}
-          style={{ scale: scaleCards }}
-        >
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              isMobile={isMobile}
-            />
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function ProjectCard({
-  project,
-  index,
-  isMobile,
-}: {
-  project: Project;
-  index: number;
-  isMobile: boolean | null;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [index % 2 === 0 ? -50 : 50, 0]
-  );
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
-
-  const cardStyle: React.CSSProperties = isMobile
-    ? {
-        backgroundImage:
-          "linear-gradient(135deg, #fff5e7 0%, #ffba8b 30%, #fc6b28 100%)",
-      }
-    : {
-        backgroundImage: `url(${project.background})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      };
-
-  return (
-    <motion.div
-      ref={cardRef}
-      className={styles.card}
-      style={{
-        ...cardStyle,
-        y,
-        opacity,
-        scale,
-      }}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-      transition={{
-        type: "spring",
-        damping: 15,
-        stiffness: 100,
-        delay: index * 0.1,
-      }}
-    >
-      <motion.div
-        className={styles.cardContent}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 + index * 0.1 }}
-      >
-        <div className={styles.topRow}>
-          <span className={styles.index}>
-            {String(project.id).padStart(2, "0")}
-          </span>
-          <motion.img
-            src={project.thumbnail}
-            alt={project.title}
-            className={styles.thumbnail}
-            loading="lazy"
-            initial={{ scale: 0.9, rotate: -5 }}
-            whileInView={{ scale: 1, rotate: 0 }}
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            viewport={{ once: true }}
-            transition={{
-              delay: 0.3 + index * 0.1,
-              type: "spring",
-              stiffness: 200,
-            }}
-          />
         </div>
-
-        <motion.h3
-          className={styles.projectTitle}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 + index * 0.1 }}
-        >
-          {project.title}
-        </motion.h3>
-
-        <motion.p
-          className={styles.projectSubtitle}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 + index * 0.1 }}
-        >
-          {project.subtitle}
-        </motion.p>
-
-        <motion.div
-          className={styles.techStack}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 + index * 0.1 }}
-        >
-          {project.tech.map((tech, i) => (
-            <motion.span
-              key={i}
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                delay: 0.7 + index * 0.1 + i * 0.1,
-                type: "spring",
+        <div className={styles.projectsGrid}>
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              className={`${styles.card} ${styles.cardAnimation}`}
+              style={{ backgroundImage: `url(${project.background})` }}
+              ref={(el) => {
+                cardsRef.current[index] = el;
               }}
             >
-              {tech}
-            </motion.span>
+              <div className={styles.cardContent}>
+                <div className={styles.topRow}>
+                  <span className={styles.index}>
+                    {String(project.id).padStart(2, "0")}
+                  </span>
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className={styles.thumbnail}
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectSubtitle}>{project.subtitle}</p>
+                <button className={styles.button}>
+                  View Project <span className={styles.arrow}>↗</span>
+                </button>
+              </div>
+            </div>
           ))}
-        </motion.div>
-
-        <motion.button
-          className={styles.button}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8 + index * 0.1 }}
-          aria-label="Projekt ansehen"
-        >
-          Projekt ansehen <span className={styles.arrow}>↗</span>
-        </motion.button>
-      </motion.div>
-    </motion.div>
+        </div>
+      </div>
+    </section>
   );
 }
