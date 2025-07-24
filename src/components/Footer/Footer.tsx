@@ -1,4 +1,3 @@
-// WowFooter.tsx
 "use client";
 import { motion } from "framer-motion";
 import styles from "./Footer.module.css";
