@@ -312,8 +312,9 @@
   }
 
   .cardContent {
-    margin: 2rem;
+    margin: 2rem auto;
     max-width: 100%;
+    padding: 2rem;
   }
 
   .index {
@@ -328,12 +329,12 @@
 
 @media (max-width: 576px) {
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
 
   .cardContent {
-    padding: 1.5rem;
-    margin: 1.5rem;
+    padding: 1.2rem;
+    margin: 1.2rem auto;
   }
 
   .index {
@@ -362,8 +363,8 @@
 
 @media (max-width: 400px) {
   .cardContent {
-    padding: 1.25rem;
-    margin: 1rem;
+    padding: 1rem;
+    margin: 1rem auto;
   }
 
   .thumbnail {

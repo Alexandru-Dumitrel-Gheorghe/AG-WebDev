@@ -1,8 +1,8 @@
 import "./globals.css";
 import { ReactNode } from "react";
 import Header from "@/components/Header/Header";
+import { ThemeProvider } from "@/components/context/ThemeContext";
 
-// Adaugă link-ul pentru Google Fonts în <head>
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="de">
@@ -13,8 +13,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body>
-        <Header />
-        {children}
+        <ThemeProvider>
+          <Header />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

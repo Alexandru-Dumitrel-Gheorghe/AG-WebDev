@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   FaReact,
   FaHtml5,
@@ -102,16 +102,33 @@ const technologies: Record<Tab, Tech[]> = {
 const Technologies = () => {
   const [activeTab, setActiveTab] = useState<Tab>("frontend");
   const [selectedTech, setSelectedTech] = useState<Tech | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} ref={ref}>
       <div className={styles.container}>
         {/* Left Side - Title Card */}
         <motion.div
           className={styles.titleCard}
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, x: -100, rotateY: 45 }}
+          animate={
+            isInView
+              ? {
+                  opacity: 1,
+                  x: 0,
+                  rotateY: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 60,
+                    damping: 12,
+                    delay: 0.2,
+                  },
+                }
+              : {}
+          }
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.7 }}
         >
           <h2 className={styles.title}>
             <span className={styles.titleMain}>Tech Stack</span>
@@ -205,9 +222,24 @@ const Technologies = () => {
         {/* Right Side - Tech Grid */}
         <motion.div
           className={styles.techGrid}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          initial={{ opacity: 0, x: 100, rotateY: -45 }}
+          animate={
+            isInView
+              ? {
+                  opacity: 1,
+                  x: 0,
+                  rotateY: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 60,
+                    damping: 12,
+                    delay: 0.4,
+                  },
+                }
+              : {}
+          }
+          exit={{ opacity: 0, x: 100 }}
+          transition={{ duration: 0.7 }}
         >
           {technologies[activeTab].map((tech) => (
             <motion.button

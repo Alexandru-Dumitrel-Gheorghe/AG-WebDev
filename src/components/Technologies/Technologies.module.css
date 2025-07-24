@@ -4,6 +4,7 @@
   font-family: "Inter", sans-serif;
   margin-bottom: 5rem;
   transition: background 0.3s ease;
+  perspective: 1200px;
 }
 
 .container {
@@ -13,6 +14,7 @@
   grid-template-columns: 1fr 1.5fr;
   gap: 3rem;
   align-items: start;
+  transform-style: preserve-3d;
 }
 
 .titleCard {
@@ -26,8 +28,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  animation: fadeInUp 0.6s;
-  transition: all 0.3s ease;
+  transform-origin: left center;
+  backface-visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .title {
@@ -207,6 +210,9 @@
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 2.1rem 1.7rem;
   align-content: start;
+  transform-origin: right center;
+  backface-visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .techItem {
