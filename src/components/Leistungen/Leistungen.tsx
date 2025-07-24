@@ -3,12 +3,39 @@ import styles from "./Leistungen.module.css";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link"; // Doar dacă folosești Next.js
 
 const services = [
   {
-    title: "UI/UX Design",
-    description:
-      "Wir gestalten moderne, responsive Websites, die nicht nur gut aussehen, sondern auch Ergebnisse liefern.",
+    title: "Webdesign",
+    description: "Modernes, responsives und performantes Webdesign.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <rect
+          x="3"
+          y="4"
+          width="18"
+          height="16"
+          rx="2"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <rect
+          x="7"
+          y="8"
+          width="10"
+          height="8"
+          rx="1.5"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+      </svg>
+    ),
+    link: "/leistungen/webdesign",
+  },
+  {
+    title: "Webentwicklung",
+    description: "Moderne Websites und Web-Apps mit neuesten Technologien.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <rect
@@ -40,11 +67,80 @@ const services = [
         />
       </svg>
     ),
+    link: "/leistungen/webentwicklung",
   },
   {
-    title: "Brand Design",
+    title: "SEO & Marketing",
+    description: "Ihre Website auf Top-Positionen bei Google.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <path
+          d="M9 12l2 2 4-4"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+    link: "/leistungen/seo-marketing",
+  },
+  {
+    title: "Google Indexierung",
     description:
-      "Egal ob Markenlaunch, Auffrischung oder Skalierung – wir bringen Ihre Marke auf das nächste Level.",
+      "Wir sorgen dafür, dass Ihre Website von Google schnell & effektiv gefunden wird.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <path
+          d="M12 8v8M9.5 10.5C9.5 9.11929 10.6193 8 12 8s2.5 1.11929 2.5 2.5c0 1.3807-1.1193 2.5-2.5 2.5"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+    link: "/leistungen/google-indexierung",
+  },
+  {
+    title: "Wartung & Support",
+    description: "Zuverlässige Pflege und technische Unterstützung.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <rect
+          x="4"
+          y="5"
+          width="16"
+          height="14"
+          rx="2"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <path
+          d="M4 8l8 5 8-5"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+    link: "/leistungen/wartung-support",
+  },
+  {
+    title: "Beratung",
+    description: "Individuelle Strategien für Ihren Online-Erfolg.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <path
@@ -55,52 +151,7 @@ const services = [
         <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="1.7" />
       </svg>
     ),
-  },
-  {
-    title: "Webdesign",
-    description:
-      "Unsere UI/UX-Prozesse vereinen Strategie, Storytelling und Nutzerpsychologie zu perfekten digitalen Erlebnissen.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <rect
-          x="3"
-          y="4"
-          width="18"
-          height="16"
-          rx="2"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <rect
-          x="7"
-          y="8"
-          width="10"
-          height="8"
-          rx="1.5"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "App Design",
-    description:
-      "Von Wireframes bis zum pixelperfekten Interface – wir begleiten Sie bei jedem Schritt zur perfekten App.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <rect
-          x="7"
-          y="2"
-          width="10"
-          height="20"
-          rx="3"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <circle cx="12" cy="18" r="1" fill="currentColor" />
-      </svg>
-    ),
+    link: "/leistungen/beratung",
   },
 ];
 
@@ -123,7 +174,6 @@ export default function Leistungen() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Reset animation props to avoid glitches
     gsap.set(
       [
         titleRef.current,
@@ -136,7 +186,6 @@ export default function Leistungen() {
       { clearProps: "opacity,transform" }
     );
 
-    // Main timeline for section entrance
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -292,6 +341,9 @@ export default function Leistungen() {
             <div className={styles.icon}>{service.icon}</div>
             <h3 className={styles.title}>{service.title}</h3>
             <p className={styles.description}>{service.description}</p>
+            <Link href={service.link} className={styles.learnMore}>
+              Mehr erfahren<span className={styles.arrow}>&rarr;</span>
+            </Link>
             <div className={styles.hoverIndicator}></div>
           </div>
         ))}

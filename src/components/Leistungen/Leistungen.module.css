@@ -76,6 +76,36 @@
     display: none;
   }
 }
+.learnMore {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+  color: #fc6b28;
+  font-weight: 500;
+  font-size: 1.07rem;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  transition: color 0.25s;
+  border-bottom: 1.5px solid transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.learnMore:hover {
+  color: #cf530f;
+  border-bottom: 1.5px solid #fc6b28;
+}
+
+.arrow {
+  margin-left: 6px;
+  font-size: 1.13em;
+  transition: transform 0.22s cubic-bezier(0.4, 1.5, 0.5, 1.2);
+}
+
+.learnMore:hover .arrow {
+  transform: translateX(3px);
+}
 
 .header {
   max-width: 1500px;

@@ -257,30 +257,64 @@
   color: #e74c3c;
   border: 1px solid rgba(231, 76, 60, 0.2);
 }
-
-.submitButton[type="submit"] {
-  background: #fc6b28;
-  color: white;
+.submitButton {
+  background: linear-gradient(90deg, #fc6b28 0%, #ff9736 100%);
+  color: #fff;
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 1.05rem 2.5rem;
+  border-radius: 0.6rem;
+  font-size: 1.12rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 16px rgba(252, 107, 40, 0.13);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all 0.2s;
+  gap: 0.6rem;
+  transition: background 0.21s cubic-bezier(0.57, 1.52, 0.49, 0.87),
+    box-shadow 0.21s cubic-bezier(0.57, 1.52, 0.49, 0.87),
+    transform 0.21s cubic-bezier(0.57, 1.52, 0.49, 0.87);
+  position: relative;
+  overflow: hidden;
 }
 
-button[type="submit"]:hover {
-  background: #e05a1a;
-  transform: translateY(-1px);
+.submitButton:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: rgba(255, 255, 255, 0.18);
+  transition: width 0.28s cubic-bezier(0.57, 1.52, 0.49, 0.87);
+  border-radius: 0.6rem 0 0 0.6rem;
+  z-index: 1;
+  pointer-events: none;
 }
 
-button[type="submit"]:disabled {
-  background: #ccc;
+.submitButton:hover {
+  background: linear-gradient(90deg, #ff9736 0%, #fc6b28 100%);
+  box-shadow: 0 4px 28px rgba(252, 107, 40, 0.18);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.submitButton:hover:before {
+  width: 100%;
+}
+
+.submitButton:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 7px rgba(252, 107, 40, 0.11);
+}
+
+.submitButton:disabled {
+  background: #eee;
+  color: #aaa;
   cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.75;
 }
 
 .spinner {
