@@ -261,7 +261,7 @@ export default function HeroSection() {
       <div className={styles.right} ref={rightRef}>
         <div className={styles.imageWrapper}>
           <Image
-            src="/images/profil.jpg"
+            src="/images/hero.svg"
             alt="Profilbild"
             width={720}
             height={900}

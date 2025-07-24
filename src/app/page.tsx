@@ -7,6 +7,7 @@ import ProjectShowcase from "@/components/ProjectShowcase/ProjectShowcase";
 import TechStack from "@/components/Technologies/Technologies";
 import FAQ from "@/components/FAQ/FAQ";
 import WarumIch from "@/components/WarumIch/WarumIch";
+import Testimonials from "@/components/Testimonials/Testimonials";
 import WowFooter from "@/components/Footer/Footer";
 
 export default function HomePage() {
@@ -21,6 +22,7 @@ export default function HomePage() {
         <Proces />
         <WarumIch />
         <FAQ />
+        <Testimonials />
         <WowFooter />
       </ScrollAnimationProvider>
     </main>
