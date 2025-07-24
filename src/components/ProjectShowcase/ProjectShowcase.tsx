@@ -53,15 +53,13 @@ export default function ProjectsShowcase() {
 
   return (
     <section className={styles.section} ref={sectionRef}>
-      {/* Parallax Background */}
+      {/* Parallax Glow Background */}
       <motion.div
         className={styles.parallaxBg}
         style={{
           y: yBg,
-          background: `radial-gradient(circle at 30% 50%, rgba(252,107,40,0.1) 0%, transparent 40%)`,
         }}
       />
-
       <div className={styles.container}>
         <motion.div
           className={styles.header}
@@ -72,15 +70,9 @@ export default function ProjectsShowcase() {
             <p className={styles.sectionDesc}>{sectionDesc}</p>
           </div>
         </motion.div>
-
         <div className={styles.projectsGrid}>
           {projects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              scrollYProgress={scrollYProgress}
-            />
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       </div>
@@ -88,60 +80,32 @@ export default function ProjectsShowcase() {
   );
 }
 
-function ProjectCard({
-  project,
-  index,
-  scrollYProgress,
-}: {
-  project: Project;
-  index: number;
-  scrollYProgress: any;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: cardScrollY } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Parallax effects for each card
-  const y = useTransform(cardScrollY, [0, 1], [index % 2 === 0 ? -50 : 50, 0]);
-  const opacity = useTransform(cardScrollY, [0, 0.5, 1], [0, 1, 1]);
-  const scale = useTransform(cardScrollY, [0, 1], [0.9, 1]);
-
-  // Background parallax (different direction for variety)
-  const yBg = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [index % 2 === 0 ? "0%" : "0%", index % 2 === 0 ? "0%" : "0%"]
-  );
-
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <motion.div
-      ref={cardRef}
       className={styles.card}
-      style={{
-        y,
-        opacity,
-        scale,
-      }}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 60, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "0px 0px -100px 0px" }}
       transition={{
         type: "spring",
         damping: 15,
-        stiffness: 100,
+        stiffness: 120,
         delay: index * 0.1,
       }}
+      whileHover={{
+        scale: 1.015,
+        boxShadow: "0 8px 50px 0 rgba(252,107,40,0.17)",
+      }}
     >
-      <motion.div
+      <div
         className={styles.cardBackground}
         style={{
           backgroundImage: `url(${project.background})`,
-          y: yBg,
         }}
       />
-
+      {/* Glass effect overlay */}
+      <div className={styles.glassOverlay} />
       <motion.div
         className={styles.cardContent}
         initial={{ opacity: 0 }}
@@ -158,46 +122,33 @@ function ProjectCard({
             alt={project.title}
             className={styles.thumbnail}
             loading="lazy"
-            initial={{ scale: 0.9, rotate: -5 }}
+            initial={{ scale: 0.92, rotate: -6 }}
             whileInView={{ scale: 1, rotate: 0 }}
-            whileHover={{ scale: 1.05, rotate: 2 }}
+            whileHover={{ scale: 1.07, rotate: 2 }}
             viewport={{ once: true }}
             transition={{
               delay: 0.3 + index * 0.1,
               type: "spring",
-              stiffness: 200,
+              stiffness: 180,
             }}
           />
         </div>
-
-        <motion.h3
-          className={styles.projectTitle}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 + index * 0.1 }}
-        >
-          {project.title}
-        </motion.h3>
-
-        <motion.p
-          className={styles.projectSubtitle}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 + index * 0.1 }}
-        >
+        <motion.h3 className={styles.projectTitle}>{project.title}</motion.h3>
+        <motion.p className={styles.projectSubtitle}>
           {project.subtitle}
         </motion.p>
-
         <motion.button
           className={styles.button}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{
+            scale: 1.07,
+            backgroundColor: "#fc6b28",
+            color: "#fff",
+          }}
+          whileTap={{ scale: 0.96 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6 + index * 0.1 }}
+          transition={{ delay: 0.5 + index * 0.1 }}
           aria-label={`View ${project.title} project`}
         >
           View Project <span className={styles.arrow}>↗</span>
