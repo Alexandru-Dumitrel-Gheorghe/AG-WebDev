@@ -237,17 +237,21 @@ export default function HeroSection() {
     <section className={styles.hero} ref={heroRef}>
       <div className={styles.left} ref={leftRef}>
         <span className={styles.prehead} ref={preheadRef}>
-          → Hey! Ich bin Alex
+          → WEBDESIGN & WEBENTWICKLUNG
         </span>
+
         <h1 className={styles.title} ref={titleRef}>
           DIGITALER <br />
           <span className={styles.highlight}>WEBDESIGNER</span>
         </h1>
         <p className={styles.subtitle} ref={subtitleRef}>
-          Ich spezialisiere mich auf moderne Webentwicklung &{" "}
-          <span className={styles.highlight}>individuelles Webdesign</span> mit
-          Next.js & CSS Modules, blitzschnell, nutzerorientiert & professionell.
+          Maßgeschneidertes <span className={styles.highlight}>Webdesign</span>{" "}
+          & moderne Webentwicklung – vom Konzept bis zur fertigen Website.{" "}
+          <br />
+          Beratung, Umsetzung und Support – alles aus einer Hand, für Ihren
+          nachhaltigen Online-Erfolg.
         </p>
+
         <a href="#kontakt" className={styles.ctaBtn} ref={ctaRef}>
           <span className={styles.ctaText}>Jetzt Kontakt aufnehmen</span>
           <span className={styles.ctaArrow}>&rarr;</span>

@@ -1,14 +1,27 @@
 .warumIchSection {
   width: 100%;
-  padding: 6rem 0 4rem;
+  padding: 8rem 0;
   background: #fff;
   position: relative;
+  overflow: hidden;
+}
+
+.parallaxBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  z-index: 0;
+  will-change: transform;
 }
 
 .header {
   max-width: 1500px;
-  margin: 0 auto 3.5rem;
+  margin: 0 auto 4rem;
   padding: 0 clamp(1rem, 4vw, 4rem);
+  position: relative;
+  z-index: 1;
 }
 
 .badge {
@@ -21,11 +34,12 @@
   border-radius: 2em;
   margin-bottom: 1.15rem;
   letter-spacing: 0.04em;
+  will-change: transform;
 }
 
 .sectionTitle {
   font-size: clamp(2.2rem, 5vw, 2.9rem);
-  font-weight: 400;
+  font-weight: 700;
   font-family: "Inter", sans-serif;
   color: #232323;
   letter-spacing: -0.05em;
@@ -43,6 +57,12 @@
   height: 4px;
   background: #fc6b28;
   border-radius: 4px;
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sectionTitle:hover::after {
+  transform: scaleX(1.2);
 }
 
 .sectionDesc {
@@ -64,6 +84,11 @@
   height: calc(100% - 1rem);
   width: 2px;
   background: #e0e0e0;
+  transition: height 0.3s ease;
+}
+
+.sectionDesc:hover::before {
+  height: calc(100% - 0.5rem);
 }
 
 .inner {
@@ -73,6 +98,9 @@
   align-items: flex-start;
   gap: 3.2rem;
   padding: 0 clamp(1rem, 4vw, 4rem);
+  position: relative;
+  z-index: 1;
+  will-change: transform;
 }
 
 .leftCol {
@@ -94,6 +122,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: transform;
 }
 
 .image {
@@ -101,7 +130,11 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageWrap:hover .image {
+  transform: scale(1.05);
 }
 
 .divider {
@@ -111,7 +144,7 @@
   background: linear-gradient(to bottom, #fc6b28 0%, #fff 100%);
   margin: 0 2.2rem;
   opacity: 0.14;
-  display: block;
+  will-change: transform;
 }
 
 .grundList {
@@ -136,18 +169,38 @@
   font-family: "Inter", sans-serif;
   color: #232323;
   border: 1px solid #f2f2f2;
-  transition: box-shadow 0.24s cubic-bezier(0.39, 0.57, 0.56, 1),
-    background 0.2s, border-color 0.2s;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
   position: relative;
   will-change: transform, box-shadow;
+  overflow: hidden;
+}
+
+.grundItem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(252, 107, 40, 0.03) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .grundItem:hover {
   background: rgba(252, 107, 40, 0.06);
-  box-shadow: 0 0.8rem 2.2rem rgba(252, 107, 40, 0.18),
-    0 2px 8px rgba(40, 41, 56, 0.08);
+  box-shadow: 0 1rem 2.5rem rgba(252, 107, 40, 0.18),
+    0 4px 12px rgba(40, 41, 56, 0.1);
   border-color: #fc6b2822;
+}
+
+.grundItem:hover::before {
+  opacity: 1;
 }
 
 .grundNr {
@@ -165,7 +218,9 @@
   flex-shrink: 0;
   box-shadow: 0 0 0 0 rgba(252, 107, 40, 0.12),
     0 0.2rem 1rem rgba(252, 107, 40, 0.22);
-  transition: box-shadow 0.18s, transform 0.18s;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  z-index: 1;
 }
 
 .grundItem:hover .grundNr {
@@ -180,8 +235,11 @@
   color: #232323;
   font-family: inherit;
   font-weight: 400;
+  position: relative;
+  z-index: 1;
 }
 
+/* Responsive Design */
 @media (max-width: 1200px) {
   .inner {
     gap: 2rem;
@@ -195,101 +253,103 @@
 }
 
 @media (max-width: 950px) {
+  .warumIchSection {
+    padding: 6rem 0;
+  }
+
   .inner {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: 2.5rem;
   }
+
   .divider {
     display: none;
   }
+
   .leftCol {
     justify-content: center;
     margin-bottom: 2rem;
+    flex: 0 0 auto;
   }
+
   .imageWrap {
     margin: 0 auto;
     height: auto;
     aspect-ratio: 1/1;
     max-width: 320px;
   }
+
+  .grundList {
+    width: 100%;
+    max-width: 600px;
+  }
 }
 
 @media (max-width: 600px) {
   .warumIchSection {
-    padding: 3rem 0 2rem;
+    padding: 4rem 0;
   }
+
   .header {
     margin-bottom: 2rem;
     padding: 0 1rem;
+    text-align: center;
   }
+
+  .sectionTitle::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sectionDesc {
+    padding-left: 0;
+    margin-left: 0;
+    text-align: center;
+    display: block;
+  }
+
+  .sectionDesc::before {
+    display: none;
+  }
+
   .inner {
     padding: 0 1rem;
   }
+
   .imageWrap {
     max-width: 260px;
   }
+
   .grundItem {
     padding: 1rem 1.2rem;
     font-size: 1rem;
   }
+
   .grundNr {
     width: 2rem;
     height: 2rem;
     font-size: 1rem;
     margin-right: 1rem;
   }
+
   .grundText {
     font-size: 1rem;
   }
+
   .badge {
     display: none;
   }
 }
-@media (max-width: 950px) {
-  .inner {
-    flex-direction: column;
-    align-items: center; /* <-- Adaugă această linie */
-    gap: 2.5rem;
-  }
-  .leftCol {
-    justify-content: center;
-    align-items: center; /* <-- Adaugă această linie */
-    width: 100%; /* Asigură lățime completă */
-    margin-bottom: 2rem;
-    display: flex;
-  }
-}
 
-@media (max-width: 600px) {
-  .header {
-    margin-bottom: 2rem;
-    padding: 0 1rem;
-    text-align: center; /* <-- Adaugă această linie pentru titlu și desc */
-  }
-  .sectionTitle::after {
-    left: 50%;
-    transform: translateX(-50%); /* <-- Linie sub titlu centrată pe mobil */
-  }
-  .sectionDesc {
-    padding-left: 0;
-    margin-left: 0;
-    text-align: center; /* Centrare descriere */
-    display: block;
-  }
-  .sectionDesc::before {
-    display: none; /* Elimină bara verticală de pe mobil */
-  }
-  .inner {
-    padding: 0 0.5rem; /* Reduce padding-ul pe mobil */
-    align-items: center; /* Sigură centrare orizontală */
-  }
-  .grundList {
-    align-items: center; /* Centrare lista pe mobil */
-  }
+@media (max-width: 400px) {
   .grundItem {
-    width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .grundNr {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.9rem;
   }
 }
