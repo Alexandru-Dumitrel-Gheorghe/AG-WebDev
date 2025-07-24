@@ -1,227 +1,11 @@
 .section {
   width: 100%;
-  padding: 4rem 0;
-  background: #fff;
-  position: relative;
-  font-family: "Inter", sans-serif;
-  overflow: hidden;
-}
-
-.parallaxBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  z-index: 0;
-  will-change: transform;
-}
-
-.container {
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 5vw, 5rem);
-  position: relative;
-  z-index: 1;
-}
-
-.header {
-  margin: 0 auto 5rem;
-  text-align: left;
-  will-change: transform;
-}
-
-.headerContent {
-  max-width: 42rem;
-}
-
-.sectionTitle {
-  font-size: clamp(2.5rem, 6vw, 3.2rem);
-  font-weight: 700;
-  color: #232323;
-  letter-spacing: -0.05em;
-  margin: 0 0 1.5rem;
-  line-height: 1.1;
-  position: relative;
-}
-
-.sectionTitle::after {
-  content: "";
-  position: absolute;
-  bottom: -1rem;
-  left: 0;
-  width: 4rem;
-  height: 4px;
-  background: #fc6b28;
-  border-radius: 4px;
-}
-
-.sectionDesc {
-  color: #5a5a5a;
-  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-  font-weight: 400;
-  line-height: 1.7;
-  margin: 2rem 0 0;
-  padding-left: 1rem;
-  position: relative;
-}
-
-.sectionDesc::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.5rem;
-  height: calc(100% - 1rem);
-  width: 2px;
-  background: #e0e0e0;
-}
-
-/* Projects Grid */
-.projectsGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  width: 100%;
-  align-items: center;
-}
-
-.card {
-  width: 100%;
-  max-width: 1400px;
-  min-height: 500px;
-  border-radius: 1.5rem;
-  position: relative;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  will-change: transform;
-}
-
-.cardBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-  will-change: transform;
-  opacity: 0.7;
-}
-
-.cardContent {
-  margin: 2rem;
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 1.25rem;
-  padding: 3rem;
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: flex-start;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
-
-.card:hover .cardContent {
-  transform: translateY(-5px);
-  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.1);
-}
-
-.topRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.index {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #161a21;
-  letter-spacing: -1px;
-}
-
-.thumbnail {
-  width: 120px;
-  height: 100px;
-  border-radius: 12px;
-  object-fit: cover;
-  margin-left: 2rem;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
-  background: #fff;
-  transition: all 0.3s ease;
-}
-
-.card:hover .thumbnail {
-  transform: scale(1.05);
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
-}
-
-.projectTitle {
-  font-size: clamp(1.6rem, 2.5vw, 2rem);
-  font-weight: 600;
-  color: #232323;
-  margin: 0 0 1rem;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-
-.projectSubtitle {
-  font-size: clamp(1.1rem, 1.3vw, 1.2rem);
-  color: #5a5a5a;
-  font-weight: 400;
-  line-height: 1.7;
-  margin: 0 0 1.5rem 0;
-}
-
-.button {
-  margin-top: 0.5rem;
-  background: #161a21;
-  color: #fff;
-  padding: 1rem 2.5rem;
-  border-radius: 10px;
-  border: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-}
-
-.button:hover {
-  background: #fc6b28;
-  color: #161a21;
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-
-.arrow {
-  font-size: 1.4rem;
-  margin-left: 0.25rem;
-  transition: transform 0.3s ease;
-}
-
-.button:hover .arrow {
-  transform: translate(3px, -3px);
-}
-
-.section {
-  width: 100%;
   padding: 5rem 0 5rem 0;
-  background: #fcfcfd;
+  background: var(--projects-bg);
   position: relative;
   font-family: "Inter", sans-serif;
   overflow: hidden;
+  transition: background 0.3s ease;
 }
 
 .parallaxBg {
@@ -231,20 +15,12 @@
   width: 100%;
   height: 130%;
   pointer-events: none;
-  background: radial-gradient(
-      ellipse 60% 80% at 30% 40%,
-      rgba(252, 107, 40, 0.12) 0%,
-      transparent 80%
-    ),
-    radial-gradient(
-      circle at 90% 30%,
-      rgba(252, 107, 40, 0.07) 0%,
-      transparent 50%
-    );
+  background: var(--projects-parallax-bg);
   z-index: 0;
   filter: blur(10px);
   opacity: 0.85;
   will-change: transform;
+  transition: background 0.5s ease;
 }
 
 .container {
@@ -269,11 +45,12 @@
 .sectionTitle {
   font-size: clamp(2.7rem, 6vw, 3.4rem);
   font-weight: 700;
-  color: #232323;
+  color: var(--section-title-color);
   letter-spacing: -0.05em;
   margin: 0 0 1.5rem;
   line-height: 1.08;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .sectionTitle::after {
@@ -283,18 +60,20 @@
   left: 0;
   width: 4rem;
   height: 4px;
-  background: #fc6b28;
+  background: var(--accent-color);
   border-radius: 4px;
+  transition: background 0.3s ease;
 }
 
 .sectionDesc {
-  color: #5a5a5a;
+  color: var(--section-desc-color);
   font-size: clamp(1.15rem, 1.4vw, 1.22rem);
   font-weight: 400;
   line-height: 1.7;
   margin: 2rem 0 0;
   padding-left: 1rem;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .sectionDesc::before {
@@ -304,7 +83,8 @@
   top: 0.5rem;
   height: calc(100% - 1rem);
   width: 2px;
-  background: #e0e0e0;
+  background: var(--section-desc-line);
+  transition: background 0.3s ease;
 }
 
 .projectsGrid {
@@ -323,19 +103,17 @@
   position: relative;
   display: flex;
   align-items: center;
-  box-shadow: 0 1.5rem 4rem 0 rgba(0, 0, 0, 0.09),
-    0 0.5rem 1rem rgba(252, 107, 40, 0.04);
+  box-shadow: var(--card-shadow);
   overflow: hidden;
   will-change: transform;
-  background: transparent;
-  border: 1.5px solid rgba(252, 107, 40, 0.13);
-  transition: box-shadow 0.25s, border-color 0.25s;
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  transition: box-shadow 0.25s, border-color 0.25s, background 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 2.5rem 6rem 0 rgba(252, 107, 40, 0.16),
-    0 0.75rem 2rem rgba(252, 107, 40, 0.1);
-  border-color: rgba(252, 107, 40, 0.27);
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--card-hover-border);
 }
 
 .cardBackground {
@@ -350,32 +128,31 @@
   will-change: transform;
   opacity: 0.7;
   transition: filter 0.3s;
-  filter: blur(1.5px) brightness(0.96);
+  filter: var(--card-bg-filter);
 }
+
 .card:hover .cardBackground {
-  filter: blur(0.5px) brightness(1.01) saturate(1.13);
+  filter: var(--card-bg-hover-filter);
 }
+
 .glassOverlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    125deg,
-    rgba(255, 255, 255, 0.1) 64%,
-    rgba(252, 107, 40, 0.03) 95%
-  );
+  background: var(--glass-overlay);
   backdrop-filter: blur(2.5px) saturate(1.12);
   z-index: 2;
   pointer-events: none;
   border-radius: 2rem;
-  border: 1.2px solid rgba(255, 255, 255, 0.19);
+  border: 1.2px solid var(--glass-border);
+  transition: all 0.5s ease;
 }
 
 .cardContent {
   margin: 2.7rem 2.5rem;
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--card-content-bg);
   border-radius: 1.5rem;
   padding: 2.4rem 2.7rem;
   width: 100%;
@@ -387,8 +164,9 @@
   align-items: flex-start;
   position: relative;
   z-index: 3;
-  border: 1.2px solid rgba(252, 107, 40, 0.07);
-  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1.2px solid var(--card-content-border);
+  transition: box-shadow 0.2s, transform 0.2s, background 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .card:hover .cardContent {
@@ -406,9 +184,10 @@
 .index {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #fc6b28;
+  color: var(--index-color);
   letter-spacing: -1px;
   text-shadow: 0 2px 10px rgba(252, 107, 40, 0.08);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .thumbnail {
@@ -418,38 +197,40 @@
   object-fit: cover;
   margin-left: 2rem;
   box-shadow: 0 0.25rem 1rem rgba(252, 107, 40, 0.07);
-  background: #fff;
+  background: var(--thumbnail-bg);
   transition: all 0.26s cubic-bezier(0.31, 1.1, 0.34, 1.01);
-  border: 1.5px solid #fff8f5;
+  border: 1.5px solid var(--thumbnail-border);
 }
 
 .card:hover .thumbnail {
   transform: scale(1.1);
   box-shadow: 0 0.8rem 2rem rgba(252, 107, 40, 0.1);
-  border: 1.5px solid #fc6b28;
+  border: 1.5px solid var(--thumbnail-hover-border);
 }
 
 .projectTitle {
   font-size: clamp(1.8rem, 2.7vw, 2.3rem);
   font-weight: 600;
-  color: #232323;
+  color: var(--project-title-color);
   margin: 0 0 0.7rem;
   letter-spacing: -0.03em;
   line-height: 1.18;
+  transition: color 0.3s ease;
 }
 
 .projectSubtitle {
   font-size: clamp(1.12rem, 1.3vw, 1.18rem);
-  color: #5a5a5a;
+  color: var(--project-subtitle-color);
   font-weight: 400;
   line-height: 1.7;
   margin: 0 0 1.2rem 0;
+  transition: color 0.3s ease;
 }
 
 .button {
   margin-top: 0.2rem;
-  background: #161a21;
-  color: #fff;
+  background: var(--button-bg);
+  color: var(--button-text);
   padding: 1rem 2.6rem;
   border-radius: 10px;
   border: none;
@@ -466,8 +247,8 @@
 }
 
 .button:hover {
-  background: #fc6b28;
-  color: #fff;
+  background: var(--button-hover-bg);
+  color: var(--button-hover-text);
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 0.7rem 1.9rem rgba(252, 107, 40, 0.13);
 }

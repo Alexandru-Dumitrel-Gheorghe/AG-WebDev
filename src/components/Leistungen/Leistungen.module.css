@@ -1,11 +1,12 @@
 .leistungenSection {
   width: 100%;
   padding: 120px 0;
-  background: #fff;
+  background: var(--leistungen-bg);
   position: relative;
   overflow: hidden;
   z-index: 1;
   perspective: 1000px;
+  transition: background 0.3s ease;
 }
 
 /* Floating orbs background */
@@ -27,12 +28,13 @@
   will-change: transform;
   opacity: 0.15;
   transform-style: preserve-3d;
+  transition: background 0.5s ease;
 }
 
 .orb1 {
   width: 320px;
   height: 320px;
-  background: linear-gradient(135deg, #ff5d2a 0%, #ff9a5a 100%);
+  background: var(--orb1-gradient);
   left: 4vw;
   top: 12vh;
 }
@@ -40,7 +42,7 @@
 .orb2 {
   width: 240px;
   height: 240px;
-  background: linear-gradient(135deg, #2a5bd7 0%, #6b8cff 100%);
+  background: var(--orb2-gradient);
   right: 12vw;
   top: 36vh;
 }
@@ -48,7 +50,7 @@
 .orb3 {
   width: 180px;
   height: 180px;
-  background: linear-gradient(135deg, #ffd4c2 0%, #ffa97a 100%);
+  background: var(--orb3-gradient);
   right: 6vw;
   bottom: 8vh;
 }
@@ -76,16 +78,17 @@
     display: none;
   }
 }
+
 .learnMore {
   display: inline-flex;
   align-items: center;
   margin-top: 20px;
-  color: #fc6b28;
+  color: var(--learn-more-color);
   font-weight: 500;
   font-size: 1.07rem;
   font-family: "Inter", sans-serif;
   text-decoration: none;
-  transition: color 0.25s;
+  transition: color 0.25s, border-color 0.25s;
   border-bottom: 1.5px solid transparent;
   cursor: pointer;
   position: relative;
@@ -93,8 +96,8 @@
 }
 
 .learnMore:hover {
-  color: #cf530f;
-  border-bottom: 1.5px solid #fc6b28;
+  color: var(--learn-more-hover);
+  border-bottom: 1.5px solid var(--accent-color);
 }
 
 .arrow {
@@ -123,13 +126,14 @@
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 700;
   font-family: "Inter", sans-serif;
-  color: #232323;
+  color: var(--section-title-color);
   letter-spacing: -0.05em;
   margin: 0 0 20px;
   line-height: 1.13;
   position: relative;
   transform-style: preserve-3d;
   will-change: transform;
+  transition: color 0.3s ease;
 }
 
 .sectionTitle::after {
@@ -139,13 +143,14 @@
   left: 0;
   width: 56px;
   height: 4px;
-  background: #fc6b28;
+  background: var(--accent-color);
   border-radius: 4px;
   transform: translateZ(0);
+  transition: background 0.3s ease;
 }
 
 .sectionDesc {
-  color: #5a5a5a;
+  color: var(--section-desc-color);
   font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   font-weight: 400;
   line-height: 1.6;
@@ -154,6 +159,7 @@
   position: relative;
   transform-style: preserve-3d;
   will-change: transform;
+  transition: color 0.3s ease;
 }
 
 .sectionDesc::before {
@@ -163,8 +169,9 @@
   top: 8px;
   height: calc(100% - 16px);
   width: 2px;
-  background: #e0e0e0;
+  background: var(--section-desc-line);
   transform: translateZ(0);
+  transition: background 0.3s ease;
 }
 
 .cardsGrid {
@@ -179,15 +186,15 @@
 }
 
 .card {
-  background: #f9f9f9;
+  background: var(--card-bg);
   border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--card-shadow);
   padding: 40px 32px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-height: 288px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--card-border);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
   position: relative;
@@ -204,20 +211,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(252, 107, 40, 0.03) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: var(--card-hover-gradient);
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 0;
 }
 
 .card:hover {
-  box-shadow: 0 16px 32px rgba(252, 107, 40, 0.12);
-  border-color: rgba(252, 107, 40, 0.2);
-  background: #fff;
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--card-hover-border);
+  background: var(--card-hover-bg);
 }
 
 .card:hover::before {
@@ -229,11 +232,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #232323;
+  color: var(--card-title-color);
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(252, 107, 40, 0.08);
+  background: var(--card-icon-bg);
   padding: 12px;
   transition: all 0.4s ease;
   position: relative;
@@ -247,22 +250,24 @@
 .title {
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   font-weight: 600;
-  color: #232323;
+  color: var(--card-title-color);
   margin: 0 0 16px;
   letter-spacing: -0.03em;
   font-family: "Inter", sans-serif;
   position: relative;
   z-index: 1;
+  transition: color 0.3s ease;
 }
 
 .description {
   font-size: clamp(1rem, 1.2vw, 1.05rem);
-  color: #5a5a5a;
+  color: var(--card-desc-color);
   font-weight: 400;
   line-height: 1.6;
   margin: 0;
   position: relative;
   z-index: 1;
+  transition: color 0.3s ease;
 }
 
 .hoverIndicator {
@@ -271,16 +276,12 @@
   left: 0;
   width: 100%;
   height: 4px;
-  background: #fc6b28;
+  background: var(--accent-color);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1),
+    background 0.3s ease;
   z-index: 1;
-}
-
-/* Particle effect on hover */
-.card:hover .hoverParticles {
-  opacity: 1;
 }
 
 @media (max-width: 768px) {

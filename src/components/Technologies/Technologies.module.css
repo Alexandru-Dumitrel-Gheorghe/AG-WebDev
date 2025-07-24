@@ -1,8 +1,9 @@
 .section {
   padding: 5rem 1.5rem;
-  background: #fff;
+  background: var(--section-bg);
   font-family: "Inter", sans-serif;
   margin-bottom: 5rem;
+  transition: background 0.3s ease;
 }
 
 .container {
@@ -15,25 +16,25 @@
 }
 
 .titleCard {
-  background: rgba(255, 255, 255, 0.98);
-  border: 1.5px solid #f3efe9;
+  background: var(--title-card-bg);
+  border: 1.5px solid var(--title-card-border);
   border-radius: 22px;
   padding: 2.7rem 2.2rem 2.2rem 2.2rem;
-  box-shadow: 0 8px 36px rgba(252, 107, 40, 0.06),
-    0 1.5px 7px rgba(50, 50, 100, 0.04);
+  box-shadow: var(--title-card-shadow);
   min-width: 320px;
   min-height: 410px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   animation: fadeInUp 0.6s;
+  transition: all 0.3s ease;
 }
 
 .title {
   font-size: clamp(2.2rem, 4vw, 2.7rem);
   font-weight: 800;
   letter-spacing: -0.035em;
-  color: #161a21;
+  color: var(--title-color);
   margin-bottom: 0.4rem;
   line-height: 1.08;
   display: flex;
@@ -41,20 +42,23 @@
   gap: 1rem;
   position: relative;
   flex-direction: row;
+  transition: color 0.3s ease;
 }
 
 .titleMain {
-  color: #161a21;
+  color: var(--title-color);
   font-weight: 700;
   margin-right: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 .titleAccent {
-  color: #fc6b28;
+  color: var(--accent-color);
   font-weight: 900;
   letter-spacing: -0.05em;
   margin-left: 0.2rem;
   font-size: 2.6rem;
+  transition: color 0.3s ease;
 }
 
 .underline {
@@ -63,18 +67,20 @@
   left: 0;
   width: 48px;
   height: 4px;
-  background: #fc6b28;
+  background: var(--accent-color);
   border-radius: 4px;
   margin-top: 0.5rem;
+  transition: background 0.3s ease;
 }
 
 .subtitle {
   font-size: 1.11rem;
-  color: #5a5a5a;
+  color: var(--subtitle-color);
   font-weight: 500;
   margin-bottom: 2.1rem;
   margin-top: 2.2rem;
   line-height: 1.5;
+  transition: color 0.3s ease;
 }
 
 .tabs {
@@ -84,28 +90,28 @@
 }
 
 .tab {
-  background: #f9f7f3;
-  color: #6a6c78;
-  border: 1px solid #ede7df;
+  background: var(--tab-bg);
+  color: var(--tab-text);
+  border: 1px solid var(--tab-border);
   padding: 0.7rem 2rem;
   border-radius: 50px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.22s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 1.5px 4px rgba(252, 107, 40, 0.05);
+  box-shadow: var(--tab-shadow);
 }
 
 .tab.active {
-  background: #fc6b28;
-  color: #fff;
-  border: 1.5px solid #fc6b28;
-  box-shadow: 0 6px 22px rgba(252, 107, 40, 0.1);
+  background: var(--accent-color);
+  color: var(--tab-active-text);
+  border: 1.5px solid var(--accent-color);
+  box-shadow: var(--tab-active-shadow);
 }
 
 .tab:hover:not(.active) {
-  background: #fff2ea;
-  color: #fc6b28;
+  background: var(--tab-hover-bg);
+  color: var(--accent-color);
 }
 
 .techDetail {
@@ -115,10 +121,11 @@
   margin-top: 1.3rem;
   padding: 1.7rem 1.2rem 1.2rem 1.2rem;
   border-radius: 16px;
-  background: #fff6f1;
-  border: 1px solid #fc6b28;
-  box-shadow: 0 1.5px 9px rgba(252, 107, 40, 0.06);
+  background: var(--tech-detail-bg);
+  border: 1px solid var(--accent-color);
+  box-shadow: var(--tech-detail-shadow);
   min-height: 128px;
+  transition: all 0.3s ease;
 }
 
 .techDetailIcon {
@@ -126,22 +133,24 @@
   margin-top: 0.2rem;
   margin-right: 1.2rem;
   flex-shrink: 0;
-  filter: drop-shadow(0 1.5px 7px rgba(252, 107, 40, 0.13));
+  filter: drop-shadow(0 1.5px 7px var(--tech-icon-shadow));
 }
 
 .techName {
   font-size: 1.32rem;
   font-weight: 800;
-  color: #fc6b28;
+  color: var(--accent-color);
   margin-bottom: 0.18rem;
+  transition: color 0.3s ease;
 }
 
 .techDescription {
   font-size: 1.02rem;
-  color: #232323;
+  color: var(--tech-description-color);
   margin-bottom: 1.2rem;
   line-height: 1.55;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .proficiency {
@@ -155,23 +164,25 @@
 .proficiencyBar {
   width: 100px;
   height: 7px;
-  background: #ede7df;
+  background: var(--proficiency-bar-bg);
   border-radius: 6px;
   overflow: hidden;
+  transition: background 0.3s ease;
 }
 
 .proficiencyFill {
   height: 100%;
   border-radius: 6px;
-  background: #fc6b28;
-  transition: width 0.8s cubic-bezier(0.6, 0.2, 0.3, 1);
+  background: var(--accent-color);
+  transition: width 0.8s cubic-bezier(0.6, 0.2, 0.3, 1), background 0.3s ease;
 }
 
 .proficiencyValue {
   font-size: 1.01rem;
   font-weight: 600;
-  color: #fc6b28;
+  color: var(--accent-color);
   margin-left: 2px;
+  transition: color 0.3s ease;
 }
 
 .placeholder {
@@ -179,14 +190,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #c9c9c9;
+  color: var(--placeholder-color);
   font-size: 1.1rem;
-  background: #f8f8f9;
-  border: 1.3px dashed #ede7df;
+  background: var(--placeholder-bg);
+  border: 1.3px dashed var(--placeholder-border);
   border-radius: 14px;
   margin-top: 1.2rem;
   padding: 2.2rem 1rem 2rem 1rem;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .techGrid {
@@ -198,8 +210,8 @@
 }
 
 .techItem {
-  background: #fff;
-  border: 1.7px solid #f1ece6;
+  background: var(--tech-item-bg);
+  border: 1.7px solid var(--tech-item-border);
   border-radius: 14px;
   padding: 2.2rem 0.8rem 1.3rem 0.8rem;
   display: flex;
@@ -207,7 +219,7 @@
   align-items: center;
   cursor: pointer;
   transition: all 0.22s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 5px 28px rgba(252, 107, 40, 0.08);
+  box-shadow: var(--tech-item-shadow);
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -215,9 +227,9 @@
 
 .techItem:hover,
 .techItem.active {
-  background: linear-gradient(140deg, #fff7ef 30%, #ffe5cc 100%);
-  border: 1.7px solid #fc6b28;
-  box-shadow: 0 7px 38px rgba(252, 107, 40, 0.11);
+  background: var(--tech-item-hover-bg);
+  border: 1.7px solid var(--accent-color);
+  box-shadow: var(--tech-item-hover-shadow);
   z-index: 2;
 }
 
@@ -228,7 +240,11 @@
   left: 10%;
   width: 80%;
   height: 60%;
-  background: radial-gradient(circle, #fc6b2820 0%, transparent 80%);
+  background: radial-gradient(
+    circle,
+    var(--tech-item-glow) 0%,
+    transparent 80%
+  );
   opacity: 0;
   pointer-events: none;
   z-index: 0;
@@ -242,10 +258,10 @@
 
 .techIcon {
   font-size: 2.1rem;
-  color: var(--tech-color, #fc6b28);
+  color: var(--tech-color, var(--accent-color));
   margin-bottom: 0.7rem;
-  filter: drop-shadow(0 1.5px 9px #fc6b282a);
-  transition: transform 0.16s;
+  filter: drop-shadow(0 1.5px 9px var(--tech-icon-shadow));
+  transition: transform 0.16s, color 0.3s ease;
 }
 
 .techItem:hover .techIcon,
@@ -256,9 +272,10 @@
 .techLabel {
   font-size: 1.08rem;
   font-weight: 700;
-  color: #232323;
+  color: var(--tech-label-color);
   text-align: center;
   letter-spacing: -0.01em;
+  transition: color 0.3s ease;
 }
 
 /* Responsive */

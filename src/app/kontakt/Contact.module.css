@@ -2,18 +2,20 @@
 .contactPage {
   width: 100%;
   min-height: 100vh;
-  background: #fff;
+  background: var(--contact-bg);
   margin-top: 2rem;
+  transition: background 0.3s ease;
 }
 
 /* Hero Section */
 .hero {
   width: 100%;
   padding: 8rem 2rem 6rem;
-  background: linear-gradient(135deg, #fc6b2810 0%, #ffffff 100%);
+  background: var(--hero-bg);
   text-align: center;
   position: relative;
   overflow: hidden;
+  transition: background 0.5s ease;
 }
 
 .heroContent {
@@ -26,16 +28,18 @@
 .hero h1 {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
-  color: #232323;
+  color: var(--hero-title-color);
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  transition: color 0.3s ease;
 }
 
 .hero p {
   font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-  color: #5a5a5a;
+  color: var(--hero-text-color);
   max-width: 700px;
   margin: 0 auto;
+  transition: color 0.3s ease;
 }
 
 /* Contact Content */
@@ -55,19 +59,21 @@
 
 /* Contact Information */
 .contactInfo {
-  background: #f9f9f9;
+  background: var(--contact-info-bg);
   border-radius: 1rem;
   padding: 2.5rem;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
-  border: 1px solid #eee;
+  box-shadow: var(--contact-info-shadow);
+  border: 1px solid var(--contact-info-border);
+  transition: all 0.3s ease;
 }
 
 .contactInfo h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #232323;
+  color: var(--contact-title-color);
   position: relative;
   padding-bottom: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 .contactInfo h2::after {
@@ -77,13 +83,15 @@
   left: 0;
   width: 3rem;
   height: 3px;
-  background: #fc6b28;
+  background: var(--accent-color);
+  transition: background 0.3s ease;
 }
 
 .contactInfo p {
-  color: #5a5a5a;
+  color: var(--contact-text-color);
   margin-bottom: 2rem;
   line-height: 1.6;
+  transition: color 0.3s ease;
 }
 
 .infoGrid {
@@ -103,23 +111,25 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: rgba(252, 107, 40, 0.1);
+  background: var(--info-icon-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fc6b28;
+  color: var(--accent-color);
   flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
 .infoText h3 {
   font-size: 1.1rem;
   margin-bottom: 0.3rem;
-  color: #232323;
+  color: var(--contact-title-color);
+  transition: color 0.3s ease;
 }
 
 .infoText a,
 .infoText p {
-  color: #5a5a5a;
+  color: var(--contact-text-color);
   text-decoration: none;
   transition: color 0.2s;
   margin: 0;
@@ -127,7 +137,7 @@
 }
 
 .infoText a:hover {
-  color: #fc6b28;
+  color: var(--accent-color);
 }
 
 .socialLinks {
@@ -140,36 +150,38 @@
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 50%;
-  background: rgba(252, 107, 40, 0.1);
+  background: var(--social-icon-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fc6b28;
+  color: var(--accent-color);
   font-size: 1.2rem;
   transition: all 0.2s;
 }
 
 .socialLinks a:hover {
-  background: #fc6b28;
-  color: white;
+  background: var(--accent-color);
+  color: var(--social-icon-hover-color);
   transform: translateY(-2px);
 }
 
 /* Contact Form */
 .contactForm {
-  background: #f9f9f9;
+  background: var(--contact-form-bg);
   border-radius: 1rem;
   padding: 2.5rem;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
-  border: 1px solid #eee;
+  box-shadow: var(--contact-form-shadow);
+  border: 1px solid var(--contact-form-border);
+  transition: all 0.3s ease;
 }
 
 .contactForm h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #232323;
+  color: var(--contact-title-color);
   position: relative;
   padding-bottom: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 .contactForm h2::after {
@@ -179,13 +191,15 @@
   left: 0;
   width: 3rem;
   height: 3px;
-  background: #fc6b28;
+  background: var(--accent-color);
+  transition: background 0.3s ease;
 }
 
 .contactForm p {
-  color: #5a5a5a;
+  color: var(--contact-text-color);
   margin-bottom: 2rem;
   line-height: 1.6;
+  transition: color 0.3s ease;
 }
 
 .formGroup {
@@ -196,29 +210,31 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #232323;
+  color: var(--form-label-color);
+  transition: color 0.3s ease;
 }
 
 .required {
-  color: #fc6b28;
+  color: var(--accent-color);
 }
 
 .formGroup input,
 .formGroup textarea {
   width: 100%;
   padding: 0.8rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--form-input-border);
   border-radius: 0.5rem;
   font-size: 1rem;
   transition: all 0.2s;
-  background: white;
+  background: var(--form-input-bg);
+  color: var(--form-input-color);
 }
 
 .formGroup input:focus,
 .formGroup textarea:focus {
   outline: none;
-  border-color: #fc6b28;
-  box-shadow: 0 0 0 3px rgba(252, 107, 40, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--form-input-focus-shadow);
 }
 
 .formGroup textarea {
@@ -227,11 +243,11 @@
 }
 
 .error {
-  border-color: #e74c3c !important;
+  border-color: var(--error-color) !important;
 }
 
 .errorMessage {
-  color: #e74c3c;
+  color: var(--error-color);
   font-size: 0.9rem;
   margin-top: 0.3rem;
   display: block;
@@ -247,19 +263,24 @@
 }
 
 .successMessage {
-  background: rgba(46, 204, 113, 0.1);
-  color: #2ecc71;
-  border: 1px solid rgba(46, 204, 113, 0.2);
+  background: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid var(--success-border);
 }
 
 .errorMessage {
-  background: rgba(231, 76, 60, 0.1);
-  color: #e74c3c;
-  border: 1px solid rgba(231, 76, 60, 0.2);
+  background: var(--error-bg);
+  color: var(--error-color);
+  border: 1px solid var(--error-border);
 }
+
 .submitButton {
-  background: linear-gradient(90deg, #fc6b28 0%, #ff9736 100%);
-  color: #fff;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--accent-light) 100%
+  );
+  color: var(--button-text-color);
   border: none;
   padding: 1.05rem 2.5rem;
   border-radius: 0.6rem;
@@ -267,14 +288,12 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
   letter-spacing: 0.01em;
-  box-shadow: 0 2px 16px rgba(252, 107, 40, 0.13);
+  box-shadow: var(--button-shadow);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  transition: background 0.21s cubic-bezier(0.57, 1.52, 0.49, 0.87),
-    box-shadow 0.21s cubic-bezier(0.57, 1.52, 0.49, 0.87),
-    transform 0.21s cubic-bezier(0.57, 1.52, 0.49, 0.87);
+  transition: all 0.21s cubic-bezier(0.57, 1.52, 0.49, 0.87);
   position: relative;
   overflow: hidden;
 }
@@ -286,7 +305,7 @@
   top: 0;
   bottom: 0;
   width: 0;
-  background: rgba(255, 255, 255, 0.18);
+  background: var(--button-hover-overlay);
   transition: width 0.28s cubic-bezier(0.57, 1.52, 0.49, 0.87);
   border-radius: 0.6rem 0 0 0.6rem;
   z-index: 1;
@@ -294,8 +313,12 @@
 }
 
 .submitButton:hover {
-  background: linear-gradient(90deg, #ff9736 0%, #fc6b28 100%);
-  box-shadow: 0 4px 28px rgba(252, 107, 40, 0.18);
+  background: linear-gradient(
+    90deg,
+    var(--accent-light) 0%,
+    var(--accent-color) 100%
+  );
+  box-shadow: var(--button-hover-shadow);
   transform: translateY(-2px) scale(1.03);
 }
 
@@ -305,12 +328,12 @@
 
 .submitButton:active {
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 1px 7px rgba(252, 107, 40, 0.11);
+  box-shadow: var(--button-active-shadow);
 }
 
 .submitButton:disabled {
-  background: #eee;
-  color: #aaa;
+  background: var(--button-disabled-bg);
+  color: var(--button-disabled-color);
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
@@ -320,9 +343,9 @@
 .spinner {
   width: 1.2rem;
   height: 1.2rem;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--spinner-border);
   border-radius: 50%;
-  border-top-color: white;
+  border-top-color: var(--spinner-color);
   animation: spin 1s ease-in-out infinite;
 }
 

@@ -118,12 +118,12 @@ export default function About() {
         })
         .to(
           card.querySelector(`.${styles.statLabel}`),
-          { color: "#fff", duration: 0.2 },
+          { color: "var(--stat-hover-text)", duration: 0.2 },
           0
         )
         .to(
           card.querySelector(`.${styles.statValue}`),
-          { color: "#fff", duration: 0.2 },
+          { color: "var(--stat-hover-text)", duration: 0.2 },
           0
         );
 

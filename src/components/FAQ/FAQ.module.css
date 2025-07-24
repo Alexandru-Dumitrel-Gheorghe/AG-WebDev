@@ -2,9 +2,11 @@
 .faqSection {
   width: 100%;
   padding: 0rem 0 4rem;
-  background: #fff;
+  background: var(--faq-bg);
   position: relative;
+  transition: background 0.3s ease;
 }
+
 .header {
   max-width: 1500px;
   margin: 0 auto 60px;
@@ -22,14 +24,16 @@
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 700;
   font-family: "Inter", sans-serif;
-  color: #232323;
+  color: var(--section-title-color);
   letter-spacing: -0.05em;
   margin: 0 0 20px;
   line-height: 1.13;
   position: relative;
   display: inline-block;
   text-align: left;
+  transition: color 0.3s ease;
 }
+
 .sectionTitle::after {
   content: "";
   position: absolute;
@@ -37,12 +41,13 @@
   left: 0;
   width: 56px;
   height: 4px;
-  background: #fc6b28;
+  background: var(--accent-color);
   border-radius: 4px;
+  transition: background 0.3s ease;
 }
 
 .sectionDesc {
-  color: #5a5a5a;
+  color: var(--section-desc-color);
   font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   font-weight: 400;
   line-height: 1.6;
@@ -51,7 +56,9 @@
   position: relative;
   display: inline-block;
   text-align: left;
+  transition: color 0.3s ease;
 }
+
 .sectionDesc::before {
   content: "";
   position: absolute;
@@ -59,27 +66,28 @@
   top: 8px;
   height: calc(100% - 16px);
   width: 2px;
-  background: #e0e0e0;
+  background: var(--section-desc-line);
+  transition: background 0.3s ease;
 }
 
 /* Accordion Styles */
 .accordionContainer {
-  max-width: 87.5rem;
+  max-width: 60.5rem;
   margin: 0 auto;
   padding: 0 clamp(1rem, 4vw, 4rem);
 }
 
 .accordionItem {
-  border: 1px solid #eee;
+  border: 1px solid var(--accordion-border);
   border-radius: 1rem;
   margin-bottom: 1rem;
   overflow: hidden;
-  background: #f9f9f9;
+  background: var(--accordion-bg);
   transition: all 0.3s ease;
 }
 
 .accordionItem:hover {
-  border-color: #fc6b28;
+  border-color: var(--accent-color);
 }
 
 .accordionButton {
@@ -96,11 +104,11 @@
 }
 
 .accordionButton:hover {
-  background: rgba(252, 107, 40, 0.05);
+  background: var(--accordion-hover-bg);
 }
 
 .accordionButton.active {
-  background: #fff;
+  background: var(--accordion-active-bg);
 }
 
 .accordionHeader {
@@ -110,31 +118,33 @@
 }
 
 .icon {
-  color: #232323;
+  color: var(--accordion-icon-color);
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  background: rgba(252, 107, 40, 0.1);
+  background: var(--accordion-icon-bg);
   padding: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
 .title {
   font-size: clamp(1.15rem, 1.7vw, 1.35rem);
   font-weight: 500;
-  color: #232323;
+  color: var(--accordion-title-color);
   margin: 0;
   letter-spacing: -0.03em;
   font-family: "Inter", sans-serif;
+  transition: color 0.3s ease;
 }
 
 .accordionIcon {
   flex-shrink: 0;
-  transition: transform 0.3s ease;
-  color: #fc6b28;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: var(--accent-color);
 }
 
 .accordionButton.active .accordionIcon {
@@ -151,10 +161,11 @@
 
 .description {
   font-size: clamp(1rem, 1.2vw, 1.05rem);
-  color: #5a5a5a;
+  color: var(--accordion-desc-color);
   font-weight: 400;
   line-height: 1.6;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 @media (max-width: 768px) {

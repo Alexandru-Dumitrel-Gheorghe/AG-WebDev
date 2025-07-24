@@ -1,9 +1,10 @@
 .warumIchSection {
   width: 100%;
   padding: 8rem 0;
-  background: #fff;
+  background: var(--warum-bg);
   position: relative;
   overflow: hidden;
+  transition: background 0.3s ease;
 }
 
 .parallaxBg {
@@ -26,8 +27,8 @@
 
 .badge {
   display: inline-block;
-  color: #fc6b28;
-  background: rgba(252, 107, 40, 0.08);
+  color: var(--warum-badge-text);
+  background: var(--warum-badge-bg);
   font-weight: 600;
   font-size: 1.08rem;
   padding: 0.18em 1.3em 0.22em;
@@ -35,17 +36,19 @@
   margin-bottom: 1.15rem;
   letter-spacing: 0.04em;
   will-change: transform;
+  transition: color 0.3s ease, background 0.3s ease;
 }
 
 .sectionTitle {
   font-size: clamp(2.2rem, 5vw, 2.9rem);
   font-weight: 700;
   font-family: "Inter", sans-serif;
-  color: #232323;
+  color: var(--warum-title-color);
   letter-spacing: -0.05em;
   margin: 0 0 1rem;
   line-height: 1.13;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .sectionTitle::after {
@@ -55,10 +58,10 @@
   left: 0;
   width: 3.5rem;
   height: 4px;
-  background: #fc6b28;
+  background: var(--warum-title-underline);
   border-radius: 4px;
   transform-origin: left;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
 }
 
 .sectionTitle:hover::after {
@@ -66,7 +69,7 @@
 }
 
 .sectionDesc {
-  color: #5a5a5a;
+  color: var(--warum-desc-color);
   font-size: clamp(1.05rem, 1.4vw, 1.17rem);
   font-weight: 400;
   line-height: 1.6;
@@ -74,6 +77,7 @@
   padding-left: 0.5rem;
   position: relative;
   display: inline-block;
+  transition: color 0.3s ease;
 }
 
 .sectionDesc::before {
@@ -83,8 +87,8 @@
   top: 0.5rem;
   height: calc(100% - 1rem);
   width: 2px;
-  background: #e0e0e0;
-  transition: height 0.3s ease;
+  background: var(--warum-desc-line);
+  transition: height 0.3s ease, background 0.3s ease;
 }
 
 .sectionDesc:hover::before {
@@ -114,15 +118,16 @@
   width: 100%;
   max-width: 390px;
   aspect-ratio: 1 / 1;
-  background: #faf9f6;
+  background: var(--warum-image-bg);
   border-radius: 1.3rem;
   overflow: hidden;
-  box-shadow: 0 1.4rem 3.5rem rgba(252, 107, 40, 0.1),
-    0 0.5rem 2rem rgba(40, 41, 56, 0.08);
+  box-shadow: 0 1.4rem 3.5rem var(--warum-image-shadow1),
+    0 0.5rem 2rem var(--warum-image-shadow2);
   display: flex;
   align-items: center;
   justify-content: center;
   will-change: transform;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .image {
@@ -141,10 +146,11 @@
   width: 5px;
   min-height: 250px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, #fc6b28 0%, #fff 100%);
+  background: var(--warum-divider-gradient);
   margin: 0 2.2rem;
-  opacity: 0.14;
+  opacity: var(--warum-divider-opacity);
   will-change: transform;
+  transition: background 0.3s ease, opacity 0.3s ease;
 }
 
 .grundList {
@@ -160,15 +166,15 @@
 .grundItem {
   display: flex;
   align-items: center;
-  background: #fff;
+  background: var(--warum-item-bg);
   border-radius: 2.2rem;
   padding: 1.5rem 2rem;
-  box-shadow: 0 0.8rem 2.2rem rgba(252, 107, 40, 0.08),
-    0 2px 8px rgba(40, 41, 56, 0.06);
+  box-shadow: 0 0.8rem 2.2rem var(--warum-item-shadow1),
+    0 2px 8px var(--warum-item-shadow2);
   font-size: 1.17rem;
   font-family: "Inter", sans-serif;
-  color: #232323;
-  border: 1px solid #f2f2f2;
+  color: var(--warum-item-text);
+  border: 1px solid var(--warum-item-border);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
   position: relative;
@@ -183,20 +189,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(252, 107, 40, 0.03) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: var(--warum-item-gradient);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .grundItem:hover {
-  background: rgba(252, 107, 40, 0.06);
-  box-shadow: 0 1rem 2.5rem rgba(252, 107, 40, 0.18),
-    0 4px 12px rgba(40, 41, 56, 0.1);
-  border-color: #fc6b2822;
+  background: var(--warum-item-hover-bg);
+  box-shadow: 0 1rem 2.5rem var(--warum-item-hover-shadow1),
+    0 4px 12px var(--warum-item-hover-shadow2);
+  border-color: var(--warum-item-hover-border);
 }
 
 .grundItem:hover::before {
@@ -209,34 +211,35 @@
   justify-content: center;
   width: 2.7rem;
   height: 2.7rem;
-  background: #fc6b28;
-  color: #fff;
+  background: var(--warum-number-bg);
+  color: var(--warum-number-text);
   border-radius: 50%;
   font-weight: 700;
   font-size: 1.2rem;
   margin-right: 1.4rem;
   flex-shrink: 0;
-  box-shadow: 0 0 0 0 rgba(252, 107, 40, 0.12),
-    0 0.2rem 1rem rgba(252, 107, 40, 0.22);
+  box-shadow: 0 0 0 0 var(--warum-number-shadow1),
+    0 0.2rem 1rem var(--warum-number-shadow2);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   z-index: 1;
 }
 
 .grundItem:hover .grundNr {
-  box-shadow: 0 0 0 12px rgba(252, 107, 40, 0.12),
-    0 0.2rem 1rem rgba(252, 107, 40, 0.22);
+  box-shadow: 0 0 0 12px var(--warum-number-hover-shadow1),
+    0 0.2rem 1rem var(--warum-number-shadow2);
   transform: scale(1.08);
 }
 
 .grundText {
   flex: 1;
   font-size: clamp(1.12rem, 1.3vw, 1.18rem);
-  color: #232323;
+  color: var(--warum-item-text);
   font-family: inherit;
   font-weight: 400;
   position: relative;
   z-index: 1;
+  transition: color 0.3s ease;
 }
 
 /* Responsive Design */

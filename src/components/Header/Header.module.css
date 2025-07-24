@@ -1,13 +1,14 @@
+/* Header.module.css */
 .header {
   width: 100%;
   height: 74px;
-  background: #fff;
+  background: var(--header-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 3vw;
   box-sizing: border-box;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--header-shadow);
   position: fixed;
   top: 0;
   left: 0;
@@ -17,8 +18,8 @@
 
 .header.scrolled {
   height: 60px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--header-shadow-scrolled);
+  background: var(--header-bg-scrolled);
   backdrop-filter: blur(5px);
 }
 
@@ -32,14 +33,14 @@
 .logoImg {
   border-radius: 8px;
   display: block;
-  background: #fff;
+  background: var(--logo-bg);
   transition: transform 0.2s ease;
 }
 
 .logoText {
   font-size: 2rem;
   font-weight: 700;
-  color: #232323;
+  color: var(--text-primary);
   font-family: "Inter", sans-serif;
   letter-spacing: -1px;
   transition: color 0.2s ease;
@@ -48,27 +49,45 @@
 .menuBox {
   display: flex;
   align-items: center;
-  background: #fc6b28;
+  background: var(--menu-box-bg);
   padding: 0rem 0.5rem;
   border-radius: 13px;
   gap: 0.75rem;
-  box-shadow: 0 2px 10px rgba(252, 107, 40, 0.08);
+  box-shadow: var(--menu-box-shadow);
   transition: all 0.3s ease;
 }
 
-.menuBtn {
-  background: #fc6b28;
+.themeToggle {
+  background: transparent;
   border: none;
-  border-radius: 8px 0 0 8px;
-  padding: 0.55rem 1.15rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--theme-toggle-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.themeToggle:hover {
+  background: var(--theme-toggle-hover-bg);
+}
+
+.menuBtn {
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: background 0.18s;
+  color: var(--menu-btn-color);
 }
 
 .menuBtn:hover {
-  background: #ff843f;
+  background: var(--menu-btn-hover-bg);
 }
 
 .menuIcon {
@@ -76,10 +95,10 @@
 }
 
 .contactBtn {
-  background: #191919;
-  color: #fff;
+  background: var(--contact-btn-bg);
+  color: var(--contact-btn-text);
   border: none;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
   padding: 0.55rem 1.5rem;
   font-size: 1.11rem;
   font-family: "Inter", sans-serif;
@@ -91,8 +110,8 @@
 }
 
 .contactBtn:hover {
-  background: #fff;
-  color: #fc6b28;
+  background: var(--contact-btn-hover-bg);
+  color: var(--contact-btn-hover-text);
   transform: translateY(-1px);
 }
 
@@ -102,9 +121,9 @@
   top: 70px;
   right: 3vw;
   min-width: 210px;
-  background: #fff;
+  background: var(--dropdown-bg);
   border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--dropdown-shadow);
   display: flex;
   flex-direction: column;
   padding: 1.3rem 1.3rem 1.1rem 1.3rem;
@@ -117,13 +136,12 @@
 }
 
 .dropdownLink {
-  color: #181818;
+  color: var(--dropdown-link-text);
   font-size: 1.13rem;
   font-weight: 500;
   text-decoration: none;
   padding: 0.62rem 0.8rem;
   border-radius: 9px;
-  /* Doar proprietăți animabile, nu "all" */
   transition: background 0.2s, color 0.2s, transform 0.2s;
   margin-bottom: 0.2rem;
   display: block;
@@ -134,11 +152,12 @@
 }
 
 .dropdownLink:hover {
-  background: #fc6b28;
-  color: #fff;
-  font-weight: 700; /* Poți lăsa aici, browserul nu mai face warning dacă nu e pe 'transition'! */
+  background: var(--dropdown-link-hover-bg);
+  color: var(--dropdown-link-hover-text);
+  font-weight: 700;
   transform: translateX(5px);
 }
+
 /* Responsive */
 @media (max-width: 768px) {
   .header {

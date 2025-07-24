@@ -1,11 +1,12 @@
 .container {
   width: 100%;
-  padding: 8rem 0;
-  background: #fafafa;
+  padding: 4rem 0;
+  background: var(--bg-color);
   position: relative;
   overflow: hidden;
   font-family: "Inter", system-ui, sans-serif;
   margin-top: -4rem;
+  transition: background 0.3s ease;
 }
 
 .parallaxBg {
@@ -38,10 +39,11 @@
   font-size: clamp(2rem, 5vw, 2.7rem);
   font-weight: 700;
   line-height: 1.16;
-  color: #232323;
+  color: var(--text-primary);
   letter-spacing: -0.05em;
   margin-bottom: 1rem;
   display: inline-block;
+  transition: color 0.3s ease;
 }
 
 .underline {
@@ -54,11 +56,11 @@
   display: block;
   height: 4px;
   width: 60%;
-  background: #fc6b28;
+  background: var(--accent-color);
   border-radius: 2px;
   margin-top: 6px;
   transform-origin: left;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
 }
 
 .sectionTitle:hover .underline::after {
@@ -67,21 +69,23 @@
 
 .sectionDesc {
   font-size: clamp(1.1rem, 1.5vw, 1.2rem);
-  color: #232323;
+  color: var(--text-primary);
   max-width: 530px;
   line-height: 1.6;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 .processContainer {
   position: relative;
-  background: white;
+  background: var(--container-bg);
   border-radius: 24px;
   padding: 4rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 60px var(--shadow-color);
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-color);
   will-change: transform;
+  transition: all 0.3s ease;
 }
 
 /* Desktop Stages */
@@ -116,30 +120,25 @@
 .stageNumber {
   width: 48px;
   height: 48px;
-  background: #fff;
-  border: 2px solid #fc6b28;
+  background: var(--container-bg);
+  border: 2px solid var(--accent-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: #fc6b28;
+  color: var(--accent-color);
   margin-bottom: 1.5rem;
   z-index: 2;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(252, 107, 40, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-number);
   will-change: transform;
 }
 
 .stageLine {
   height: 3px;
   width: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(252, 107, 40, 0.1) 0%,
-    rgba(252, 107, 40, 0.3) 50%,
-    rgba(252, 107, 40, 0.1) 100%
-  );
+  background: var(--stage-line-bg);
   position: relative;
   top: -30px;
 }
@@ -149,12 +148,12 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  color: #666;
+  color: var(--text-tertiary);
   text-align: center;
   padding: 0 1rem;
   position: relative;
   z-index: 2;
-  background: #fff;
+  background: var(--container-bg);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -164,7 +163,7 @@
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 2px 4px var(--shadow-icon));
 }
 
 /* Desktop Step */
@@ -176,12 +175,12 @@
 }
 
 .step {
-  background: #fff;
+  background: var(--container-bg);
   border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 50px var(--shadow-step);
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-color);
   height: 240px;
   display: flex;
   align-items: center;
@@ -195,11 +194,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(252, 107, 40, 0.03) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: var(--gradient-step);
   z-index: 0;
 }
 
@@ -213,9 +208,10 @@
 .stepContent p {
   margin: 0;
   line-height: 1.8;
-  color: #555;
+  color: var(--text-secondary);
   font-size: 1.1rem;
   font-weight: 400;
+  transition: color 0.3s ease;
 }
 
 /* Mobile Process */
@@ -226,25 +222,25 @@
 }
 
 .mobileStep {
-  background: #fff;
+  background: var(--container-bg);
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px var(--shadow-mobile);
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
   will-change: transform;
 }
 
 .mobileStep:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 40px var(--shadow-hover);
 }
 
 .mobileStepHeader {
   display: flex;
   align-items: center;
   padding: 1.5rem;
-  border-bottom: 1px solid rgba(252, 107, 40, 0.1);
+  border-bottom: 1px solid var(--border-mobile-header);
   position: relative;
   overflow: hidden;
 }
@@ -256,19 +252,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(252, 107, 40, 0.1) 0%,
-    rgba(252, 107, 40, 0.05) 100%
-  );
+  background: var(--gradient-mobile-header);
   z-index: 0;
 }
 
 .mobileStepNumber {
   width: 36px;
   height: 36px;
-  background: #fff;
-  border: 2px solid #fc6b28;
+  background: var(--container-bg);
+  border: 2px solid var(--accent-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -277,14 +269,16 @@
   margin-right: 1rem;
   flex-shrink: 0;
   z-index: 1;
-  box-shadow: 0 2px 8px rgba(252, 107, 40, 0.1);
+  box-shadow: 0 2px 8px var(--shadow-number);
+  transition: all 0.3s ease;
 }
 
 .mobileStepIcon {
   font-size: 1.5rem;
   margin-right: 1rem;
   z-index: 1;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 1px 2px var(--shadow-icon));
+  transition: all 0.3s ease;
 }
 
 .mobileStepTitle {
@@ -292,9 +286,10 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
-  color: #333;
+  color: var(--text-mobile-title);
   margin: 0;
   z-index: 1;
+  transition: color 0.3s ease;
 }
 
 .mobileStepContent {
@@ -309,21 +304,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(252, 107, 40, 0.02) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: var(--gradient-mobile-content);
   z-index: 0;
 }
 
 .mobileStepContent p {
   margin: 0;
   line-height: 1.7;
-  color: #555;
+  color: var(--text-secondary);
   font-size: 1rem;
   position: relative;
   z-index: 1;
+  transition: color 0.3s ease;
 }
 
 /* Responsive Design */
@@ -334,7 +326,7 @@
 
   .processContainer {
     padding: 2rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 40px var(--shadow-color);
   }
 
   .stages,

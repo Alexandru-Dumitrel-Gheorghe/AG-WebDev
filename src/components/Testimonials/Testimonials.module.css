@@ -1,10 +1,11 @@
-/* Testimonials.module.css */
 .testimonialsSection {
   width: 100%;
   padding: 4rem 0;
-  background: #fff;
+  background: var(--testimonials-bg);
   position: relative;
+  transition: background 0.3s ease;
 }
+
 .header {
   max-width: 1500px;
   margin: 0 auto 3.5rem;
@@ -19,15 +20,16 @@
 
 .sectionTitle {
   font-size: clamp(2.2rem, 5vw, 2.9rem);
-  font-weight: 700; /* sau 600 dacă preferi, să fie mai bold ca la carduri */
+  font-weight: 700;
   font-family: "Inter", sans-serif;
-  color: #232323;
+  color: var(--testimonials-title-color);
   letter-spacing: -0.05em;
   margin: 0 0 1rem;
   line-height: 1.13;
   position: relative;
   display: inline-block;
   text-align: left;
+  transition: color 0.3s ease;
 }
 
 .sectionTitle::after {
@@ -37,12 +39,13 @@
   left: 0;
   width: 3.5rem;
   height: 4px;
-  background: #fc6b28;
+  background: var(--testimonials-title-underline);
   border-radius: 4px;
+  transition: background 0.3s ease;
 }
 
 .sectionDesc {
-  color: #5a5a5a;
+  color: var(--testimonials-desc-color);
   font-size: clamp(1.05rem, 1.4vw, 1.17rem);
   font-weight: 400;
   line-height: 1.6;
@@ -51,6 +54,7 @@
   position: relative;
   display: inline-block;
   text-align: left;
+  transition: color 0.3s ease;
 }
 
 .sectionDesc::before {
@@ -60,7 +64,8 @@
   top: 0.5rem;
   height: calc(100% - 1rem);
   width: 2px;
-  background: #e0e0e0;
+  background: var(--testimonials-desc-line);
+  transition: background 0.3s ease;
 }
 
 .testimonialsContainer {
@@ -71,12 +76,12 @@
 }
 
 .testimonialCard {
-  background: #f9f9f9;
+  background: var(--testimonials-card-bg);
   border-radius: 1.125rem;
-  box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0.25rem 1.5rem var(--testimonials-card-shadow);
   padding: 2rem;
   height: 100%;
-  border: 1px solid #eee;
+  border: 1px solid var(--testimonials-card-border);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
@@ -85,9 +90,9 @@
 
 .testimonialCard:hover {
   transform: translateY(-0.5rem);
-  box-shadow: 0 1rem 2rem rgba(252, 107, 40, 0.1);
-  border-color: #fc6b28;
-  background: #fff;
+  box-shadow: 0 1rem 2rem var(--testimonials-card-hover-shadow);
+  border-color: var(--testimonials-card-hover-border);
+  background: var(--testimonials-card-hover-bg);
 }
 
 .testimonialHeader {
@@ -100,7 +105,8 @@
 .source {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #5a5a5a;
+  color: var(--testimonials-source-color);
+  transition: color 0.3s ease;
 }
 
 .rating {
@@ -108,11 +114,13 @@
 }
 
 .star {
-  color: #e0e0e0;
+  color: var(--testimonials-star-inactive);
+  transition: color 0.3s ease;
 }
 
 .starActive {
-  color: #fc6b28;
+  color: var(--testimonials-star-active);
+  transition: color 0.3s ease;
 }
 
 .testimonialContent {
@@ -121,9 +129,10 @@
 
 .testimonialContent p {
   font-size: 1rem;
-  color: #5a5a5a;
+  color: var(--testimonials-text-color);
   line-height: 1.6;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 .testimonialFooter {
@@ -134,12 +143,14 @@
 
 .author {
   font-weight: 600;
-  color: #232323;
+  color: var(--testimonials-author-color);
+  transition: color 0.3s ease;
 }
 
 .date {
   font-size: 0.9rem;
-  color: #8a8a8a;
+  color: var(--testimonials-date-color);
+  transition: color 0.3s ease;
 }
 
 .controls {
@@ -154,19 +165,19 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: #f9f9f9;
-  border: 1px solid #eee;
+  background: var(--testimonials-nav-bg);
+  border: 1px solid var(--testimonials-nav-border);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: #fc6b28;
+  color: var(--testimonials-nav-color);
 }
 
 .navButton:hover {
-  background: #fc6b28;
-  color: white;
+  background: var(--testimonials-nav-hover-bg);
+  color: var(--testimonials-nav-hover-color);
 }
 
 .pagination {
@@ -180,13 +191,13 @@
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: #e0e0e0;
+  background: var(--testimonials-bullet-inactive);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .bulletActive {
-  background: #fc6b28;
+  background: var(--testimonials-bullet-active);
   transform: scale(1.3);
 }
 
