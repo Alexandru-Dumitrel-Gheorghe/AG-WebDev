@@ -5,6 +5,7 @@
   position: relative;
   overflow: hidden;
   font-family: "Inter", system-ui, sans-serif;
+  margin-top: -4rem;
 }
 
 .parallaxBg {

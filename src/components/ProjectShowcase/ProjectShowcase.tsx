@@ -112,7 +112,7 @@ function ProjectCard({
   const yBg = useTransform(
     scrollYProgress,
     [0, 1],
-    [index % 2 === 0 ? "0%" : "10%", index % 2 === 0 ? "20%" : "0%"]
+    [index % 2 === 0 ? "0%" : "0%", index % 2 === 0 ? "0%" : "0%"]
   );
 
   return (
