@@ -348,7 +348,7 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 4rem 1rem;
+    padding: 4rem 0rem;
   }
 
   .sectionHeader {
@@ -366,7 +366,7 @@
 
 @media (max-width: 480px) {
   .container {
-    padding: 3rem 1rem;
+    padding: 3rem 0rem;
   }
 
   .mobileStepNumber {
