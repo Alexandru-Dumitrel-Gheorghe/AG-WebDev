@@ -9,7 +9,6 @@ import {
   FaGitAlt,
   FaFigma,
   FaBootstrap,
-  FaSass,
 } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -18,10 +17,6 @@ import {
   SiJavascript,
   SiMongodb,
   SiExpress,
-  SiDocker,
-  SiPostgresql,
-  SiFirebase,
-  SiGraphql,
   SiRedux,
   SiJest,
   SiStorybook,
@@ -38,37 +33,28 @@ type Tech = {
 type Tab = "frontend" | "backend";
 
 const techDetails = {
-  React: "Building interactive UIs with reusable components",
-  "Next.js": "Server-side rendering and static site generation",
-  TypeScript: "Type-safe JavaScript development",
-  JavaScript: "Core web programming language",
-  HTML5: "Structure and content of modern websites",
-  CSS3: "Styling, layouts and animations",
-  Tailwind: "Utility-first CSS framework",
-  Bootstrap: "Responsive component library",
-  Redux: "State management for complex apps",
-  Figma: "UI/UX design and prototyping",
-  Jest: "Testing framework for JavaScript",
-  Storybook: "UI component development environment",
-  "Node.js": "JavaScript runtime for backend services",
-  Express: "Minimalist web framework for Node.js",
-  MongoDB: "NoSQL database for flexible data",
-  PostgreSQL: "Powerful relational database",
-  Firebase: "Backend-as-a-service platform",
-  GraphQL: "Query language for APIs",
-  Docker: "Containerization platform",
-  Git: "Version control system",
+  React: "Building interactive UIs with reusable components.",
+  "Next.js": "Server-side rendering and static site generation.",
+  TypeScript: "Type-safe JavaScript development.",
+  JavaScript: "Core web programming language.",
+  HTML5: "Structure and content of modern websites.",
+  CSS3: "Styling, layouts and animations.",
+  Tailwind: "Utility-first CSS framework.",
+  Bootstrap: "Responsive component library.",
+  Redux: "State management for complex apps.",
+  Figma: "UI/UX design and prototyping.",
+  Jest: "Testing framework for JavaScript.",
+  Storybook: "UI component development environment.",
+  "Node.js": "JavaScript runtime for backend services.",
+  Express: "Minimalist web framework for Node.js.",
+  MongoDB: "NoSQL database for flexible data.",
+  Git: "Version control system.",
 };
 
 const technologies: Record<Tab, Tech[]> = {
   frontend: [
     { name: "React", icon: <FaReact />, color: "#61DAFB", proficiency: 95 },
-    {
-      name: "Next.js",
-      icon: <SiNextdotjs />,
-      color: "#000000",
-      proficiency: 90,
-    },
+    { name: "Next.js", icon: <SiNextdotjs />, color: "#111", proficiency: 90 },
     {
       name: "TypeScript",
       icon: <SiTypescript />,
@@ -107,27 +93,13 @@ const technologies: Record<Tab, Tech[]> = {
   ],
   backend: [
     { name: "Node.js", icon: <FaNodeJs />, color: "#68A063", proficiency: 90 },
-    { name: "Express", icon: <SiExpress />, color: "#000000", proficiency: 85 },
+    { name: "Express", icon: <SiExpress />, color: "#111", proficiency: 85 },
     { name: "MongoDB", icon: <SiMongodb />, color: "#47A248", proficiency: 80 },
-    {
-      name: "PostgreSQL",
-      icon: <SiPostgresql />,
-      color: "#336791",
-      proficiency: 75,
-    },
-    {
-      name: "Firebase",
-      icon: <SiFirebase />,
-      color: "#FFCA28",
-      proficiency: 70,
-    },
-    { name: "GraphQL", icon: <SiGraphql />, color: "#E535AB", proficiency: 65 },
-    { name: "Docker", icon: <SiDocker />, color: "#2496ED", proficiency: 60 },
     { name: "Git", icon: <FaGitAlt />, color: "#F05032", proficiency: 90 },
   ],
 };
 
-const TechStack = () => {
+const Technologies = () => {
   const [activeTab, setActiveTab] = useState<Tab>("frontend");
   const [selectedTech, setSelectedTech] = useState<Tech | null>(null);
 
@@ -137,19 +109,17 @@ const TechStack = () => {
         {/* Left Side - Title Card */}
         <motion.div
           className={styles.titleCard}
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           <h2 className={styles.title}>
-            <span className={styles.titleMain}>Unser</span>
-            <span className={styles.titleAccent}>Tech Stack</span>
+            <span className={styles.titleMain}>Tech Stack</span>
+            <div className={styles.underline} />
           </h2>
           <p className={styles.subtitle}>
-            Moderne Technologien für außergewöhnliche Ergebnisse
+            Moderne Technologien für außergewöhnliche Ergebnisse.
           </p>
-
-          {/* Tabs */}
           <div className={styles.tabs}>
             <button
               className={`${styles.tab} ${
@@ -159,6 +129,7 @@ const TechStack = () => {
                 setActiveTab("frontend");
                 setSelectedTech(null);
               }}
+              aria-selected={activeTab === "frontend"}
             >
               Frontend
             </button>
@@ -170,52 +141,62 @@ const TechStack = () => {
                 setActiveTab("backend");
                 setSelectedTech(null);
               }}
+              aria-selected={activeTab === "backend"}
             >
-              Backend
+              Backend & Tools
             </button>
           </div>
-
-          {/* Tech Details */}
           <AnimatePresence mode="wait">
             {selectedTech ? (
               <motion.div
                 key={selectedTech.name}
                 className={styles.techDetail}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className={styles.techName}>{selectedTech.name}</h3>
-                <p className={styles.techDescription}>
-                  {techDetails[selectedTech.name]}
-                </p>
-                <div className={styles.proficiency}>
-                  <div className={styles.proficiencyLabel}>Expertise:</div>
-                  <div className={styles.proficiencyBar}>
-                    <motion.div
-                      className={styles.proficiencyFill}
-                      initial={{ width: 0 }}
-                      animate={{ width: `${selectedTech.proficiency}%` }}
-                      transition={{ duration: 0.8, delay: 0.2 }}
-                      style={{ backgroundColor: selectedTech.color }}
-                    />
-                  </div>
-                  <div className={styles.proficiencyValue}>
-                    {selectedTech.proficiency}%
+                <div
+                  className={styles.techDetailIcon}
+                  style={{ color: selectedTech.color }}
+                >
+                  {selectedTech.icon}
+                </div>
+                <div>
+                  <h3 className={styles.techName}>{selectedTech.name}</h3>
+                  <p className={styles.techDescription}>
+                    {techDetails[selectedTech.name]}
+                  </p>
+                  <div className={styles.proficiency}>
+                    <div className={styles.proficiencyBar}>
+                      <motion.div
+                        className={styles.proficiencyFill}
+                        initial={{ width: 0 }}
+                        animate={{ width: `${selectedTech.proficiency}%` }}
+                        transition={{ duration: 0.7, delay: 0.15 }}
+                        style={{ backgroundColor: selectedTech.color }}
+                      />
+                    </div>
+                    <span className={styles.proficiencyValue}>
+                      {selectedTech.proficiency}%
+                    </span>
                   </div>
                 </div>
               </motion.div>
             ) : (
               <motion.div
                 className={styles.placeholder}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                key="placeholder"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3 }}
               >
-                <p>Wählen Sie eine Technologie aus</p>
-                <p>um Details anzuzeigen</p>
+                <span>
+                  Wähle eine Technologie
+                  <br />
+                  für Details
+                </span>
               </motion.div>
             )}
           </AnimatePresence>
@@ -224,8 +205,8 @@ const TechStack = () => {
         {/* Right Side - Tech Grid */}
         <motion.div
           className={styles.techGrid}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
           {technologies[activeTab].map((tech) => (
@@ -235,12 +216,10 @@ const TechStack = () => {
                 selectedTech?.name === tech.name ? styles.active : ""
               }`}
               onClick={() => setSelectedTech(tech)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ y: -4, scale: 1.07 }}
+              whileTap={{ scale: 0.97 }}
               style={{ "--tech-color": tech.color } as React.CSSProperties}
+              aria-label={tech.name}
             >
               <div className={styles.techIcon}>{tech.icon}</div>
               <span className={styles.techLabel}>{tech.name}</span>
@@ -252,4 +231,4 @@ const TechStack = () => {
   );
 };
 
-export default TechStack;
+export default Technologies;
