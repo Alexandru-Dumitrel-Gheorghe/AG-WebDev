@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import styles from "./FAQ.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -160,29 +160,17 @@ const faqs = [
 ];
 
 export default function FAQ() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === faqs.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? faqs.length - 1 : prev - 1));
+  const toggleAccordion = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
     <section className={styles.faqSection}>
       <div className={styles.header}>
         <div className={styles.headerContent}>
+          {/* TITLU & SUBTITLU ÎN STIL LEISTUNGEN */}
           <h2 className={styles.sectionTitle}>FAQ</h2>
           <p className={styles.sectionDesc}>
             Antworten auf häufig gestellte Fragen rund um Webentwicklung, Design
@@ -191,73 +179,55 @@ export default function FAQ() {
         </div>
       </div>
 
-      {isMobile ? (
-        <div className={styles.mobileSliderContainer}>
-          <div className={styles.sliderWrapper} ref={sliderRef}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                className={styles.sliderCard}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.3 }}
+      <div className={styles.accordionContainer}>
+        {faqs.map((faq, index) => (
+          <div className={styles.accordionItem} key={index}>
+            <button
+              className={`${styles.accordionButton} ${
+                activeIndex === index ? styles.active : ""
+              }`}
+              onClick={() => toggleAccordion(index)}
+              aria-expanded={activeIndex === index}
+              aria-controls={`accordion-content-${index}`}
+            >
+              <div className={styles.accordionHeader}>
+                <div className={styles.icon}>{faq.icon}</div>
+                <h3 className={styles.title}>{faq.question}</h3>
+              </div>
+              <svg
+                className={styles.accordionIcon}
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
               >
-                <div className={styles.icon}>{faqs[currentSlide].icon}</div>
-                <h3 className={styles.title}>{faqs[currentSlide].question}</h3>
-                <p className={styles.description}>
-                  {faqs[currentSlide].answer}
-                </p>
-                <div className={styles.hoverIndicator}></div>
-              </motion.div>
+                <path
+                  d={activeIndex === index ? "M18 15l-6-6-6 6" : "M6 9l6 6 6-6"}
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+            <AnimatePresence>
+              {activeIndex === index && (
+                <motion.div
+                  id={`accordion-content-${index}`}
+                  className={styles.accordionContent}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <div className={styles.accordionAnswer}>
+                    <p className={styles.description}>{faq.answer}</p>
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
-          <div className={styles.sliderControls}>
-            <button onClick={prevSlide} className={styles.controlButton}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M15 18l-6-6 6-6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
-            <div className={styles.sliderDots}>
-              {faqs.map((_, idx) => (
-                <button
-                  key={idx}
-                  className={`${styles.dot} ${
-                    currentSlide === idx ? styles.activeDot : ""
-                  }`}
-                  onClick={() => setCurrentSlide(idx)}
-                />
-              ))}
-            </div>
-            <button onClick={nextSlide} className={styles.controlButton}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M9 18l6-6-6-6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className={styles.cardsGrid}>
-          {faqs.map((faq, idx) => (
-            <div className={styles.card} key={idx}>
-              <div className={styles.icon}>{faq.icon}</div>
-              <h3 className={styles.title}>{faq.question}</h3>
-              <p className={styles.description}>{faq.answer}</p>
-              <div className={styles.hoverIndicator}></div>
-            </div>
-          ))}
-        </div>
-      )}
+        ))}
+      </div>
     </section>
   );
 }

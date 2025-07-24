@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Header.module.css";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const menuLinks = [
@@ -9,7 +10,7 @@ const menuLinks = [
   { label: "Über uns", href: "#about" },
   { label: "Projekte", href: "#projects" },
   { label: "Leistungen", href: "#services" },
-  { label: "Kontakt", href: "#contact" },
+  { label: "Kontakt", href: "/kontakt" }, // updated to full page
 ];
 
 export default function HeaderAGWebDev() {
@@ -28,7 +29,7 @@ export default function HeaderAGWebDev() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
-  // Add scroll effect
+  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -121,16 +122,16 @@ export default function HeaderAGWebDev() {
             </svg>
           )}
         </motion.button>
-        <motion.button
-          className={styles.contactBtn}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Kontakt
-        </motion.button>
+
+        {/* Kontakt button to page */}
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Link href="/kontakt" className={styles.contactBtn}>
+            Kontakt
+          </Link>
+        </motion.div>
       </div>
 
-      {/* Dropdown */}
+      {/* Dropdown Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -142,18 +143,21 @@ export default function HeaderAGWebDev() {
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             {menuLinks.map((link, index) => (
-              <motion.a
-                href={link.href}
+              <motion.div
                 key={link.href}
-                className={styles.dropdownLink}
-                onClick={() => setOpen(false)}
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: index * 0.05 }}
-                whileHover={{ x: 5, scale: 1.05 }} // scale doar pentru efect vizual modern
+                whileHover={{ x: 5, scale: 1.05 }}
               >
-                {link.label}
-              </motion.a>
+                <Link
+                  href={link.href}
+                  className={styles.dropdownLink}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
           </motion.div>
         )}
