@@ -22,23 +22,24 @@
   background: var(--header-bg-scrolled);
   backdrop-filter: blur(5px);
 }
-
 .logoBox {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 1rem; /* puțin mai spațiat pentru logo mare */
   cursor: pointer;
 }
 
 .logoImg {
-  border-radius: 8px;
+  width: 70px; /* setează lățimea dorită */
+  height: 70px; /* setează înălțimea dorită */
+  border-radius: 12px;
   display: block;
-  background: var(--logo-bg);
   transition: transform 0.2s ease;
+  object-fit: contain; /* asigură păstrarea proporțiilor imaginii */
 }
 
 .logoText {
-  font-size: 2rem;
+  font-size: 2.5rem; /* mărire text */
   font-weight: 700;
   color: var(--text-primary);
   font-family: "Inter", sans-serif;

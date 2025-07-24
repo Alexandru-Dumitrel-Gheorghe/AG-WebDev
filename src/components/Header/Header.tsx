@@ -74,24 +74,29 @@ export default function HeaderAGWebDev() {
     >
       <div className={styles.logoBox}>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Image
-            src="/logo.png"
-            width={38}
-            height={38}
-            alt="AG WebDev Logo"
-            className={styles.logoImg}
-          />
+          <Link href="/">
+            {darkMode ? (
+              <Image
+                src="/logo-2.png" // Your dark mode logo path
+                width={38}
+                height={38}
+                alt="AG WebDev Logo"
+                className={styles.logoImg}
+              />
+            ) : (
+              <Image
+                src="/logo.png" // Your light mode logo path
+                width={38}
+                height={38}
+                alt="AG WebDev Logo"
+                className={styles.logoImg}
+              />
+            )}
+          </Link>
         </motion.div>
-        <motion.span
-          className={styles.logoText}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          AG WebDev
-        </motion.span>
       </div>
 
+      {/* Rest of your header code remains the same */}
       <div className={styles.menuBox}>
         {/* Theme Toggle Button */}
         <motion.button
