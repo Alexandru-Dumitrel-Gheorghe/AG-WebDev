@@ -20,21 +20,21 @@ const projects: Project[] = [
     title: "Fraga",
     subtitle: "Clean, minimal corporate website redesign",
     background: "/images/fraga-showcase.png",
-    thumbnail: "/images/fraga-mockup.png",
+    thumbnail: "/images/fraga-tablet.png",
   },
   {
     id: 2,
     title: "Helio Brand Identity",
     subtitle: "Career guidance app with smooth onboarding",
-    background: "/images/certus-case-ag.png",
-    thumbnail: "/images/hero-fraga.png",
+    background: "/images/certuss-showcase.png",
+    thumbnail: "/images/certus-tablet.png",
   },
   {
     id: 3,
     title: "Made in Webflow",
     subtitle: "Portfolio website with custom animations",
-    background: "/images/certus-case-ag.png",
-    thumbnail: "/images/hero-fraga.png",
+    background: "/images/oberholzer-showcase.png",
+    thumbnail: "/images/tablet-mockup-oberholzer.png",
   },
 ];
 
