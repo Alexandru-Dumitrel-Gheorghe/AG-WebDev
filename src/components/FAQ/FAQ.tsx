@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styles from "./FAQ.module.css";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const faqs = [
   {
@@ -161,27 +161,114 @@ const faqs = [
 
 export default function FAQ() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
 
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
-    <section className={styles.faqSection}>
-      <div className={styles.header}>
+    <motion.section
+      className={styles.faqSection}
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className={styles.header}
+        initial={{ y: 50, opacity: 0 }}
+        animate={
+          isInView
+            ? {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.6,
+                  ease: "easeOut",
+                },
+              }
+            : {}
+        }
+      >
         <div className={styles.headerContent}>
-          {/* TITLU & SUBTITLU ÎN STIL LEISTUNGEN */}
-          <h2 className={styles.sectionTitle}>FAQ</h2>
-          <p className={styles.sectionDesc}>
+          <motion.h2
+            className={styles.sectionTitle}
+            initial={{ x: -30 }}
+            animate={
+              isInView
+                ? {
+                    x: 0,
+                    transition: {
+                      delay: 0.1,
+                      type: "spring",
+                      stiffness: 100,
+                    },
+                  }
+                : {}
+            }
+          >
+            FAQ
+          </motion.h2>
+          <motion.p
+            className={styles.sectionDesc}
+            initial={{ x: -30 }}
+            animate={
+              isInView
+                ? {
+                    x: 0,
+                    transition: {
+                      delay: 0.2,
+                      type: "spring",
+                      stiffness: 100,
+                    },
+                  }
+                : {}
+            }
+          >
             Antworten auf häufig gestellte Fragen rund um Webentwicklung, Design
             & Zusammenarbeit.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
 
-      <div className={styles.accordionContainer}>
+      <motion.div
+        className={styles.accordionContainer}
+        initial={{ y: 50, opacity: 0 }}
+        animate={
+          isInView
+            ? {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  delay: 0.3,
+                  duration: 0.6,
+                  ease: "easeOut",
+                },
+              }
+            : {}
+        }
+      >
         {faqs.map((faq, index) => (
-          <div className={styles.accordionItem} key={index}>
+          <motion.div
+            className={styles.accordionItem}
+            key={index}
+            initial={{ y: 20, opacity: 0 }}
+            animate={
+              isInView
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: {
+                      delay: 0.4 + index * 0.05,
+                      duration: 0.5,
+                      ease: "easeOut",
+                    },
+                  }
+                : {}
+            }
+          >
             <button
               className={`${styles.accordionButton} ${
                 activeIndex === index ? styles.active : ""
@@ -225,9 +312,9 @@ export default function FAQ() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
