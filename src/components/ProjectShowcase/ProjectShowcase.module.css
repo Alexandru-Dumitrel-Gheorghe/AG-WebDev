@@ -1,22 +1,35 @@
 .section {
   width: 100%;
-  padding: 8rem 0 6rem;
+  padding: 8rem 0;
   background: #fff;
   position: relative;
   font-family: "Inter", sans-serif;
-  overflow-x: hidden;
+  overflow: hidden;
+}
+
+.parallaxBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  z-index: 0;
+  will-change: transform;
 }
 
 .container {
   width: 100%;
-  max-width: 1500px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 clamp(1rem, 5vw, 5rem);
+  position: relative;
+  z-index: 1;
 }
 
 .header {
   margin: 0 auto 5rem;
   text-align: left;
+  will-change: transform;
 }
 
 .headerContent {
@@ -25,7 +38,7 @@
 
 .sectionTitle {
   font-size: clamp(2.5rem, 6vw, 3.2rem);
-  font-weight: 400;
+  font-weight: 700;
   color: #232323;
   letter-spacing: -0.05em;
   margin: 0 0 1.5rem;
@@ -68,178 +81,184 @@
 .projectsGrid {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 4rem;
   width: 100%;
   align-items: center;
+  will-change: transform;
 }
 
 .card {
   width: 100%;
   max-width: 1400px;
-  background-size: cover;
-  background-position: center;
+  min-height: 500px;
   border-radius: 1.5rem;
   position: relative;
   display: flex;
-  align-items: flex-start;
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
+  align-items: center;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
+  will-change: transform;
 }
 
 .cardContent {
-  margin: 4rem 0 0 4rem;
-  background: rgba(255, 255, 255, 0.98);
+  margin: 2rem;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 1.25rem;
-  padding: 2.5rem; /* Reduced padding */
+  padding: 2.5rem;
   width: 100%;
-  max-width: 480px;
+  max-width: 500px;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Reduced gap */
-  align-items: flex-start;
+  gap: 1rem;
   transition: all 0.3s ease;
-  max-height: 85%; /* Ensure it doesn't overflow card */
-  overflow-y: auto; /* Add scroll if content is too long */
-  margin-bottom: 4rem;
-}
-
-.cardContent::-webkit-scrollbar {
-  width: 5px;
-}
-
-.cardContent::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
 }
 
 .topRow {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .index {
-  font-size: 2.2rem; /* Slightly smaller */
-  font-weight: 400;
+  font-size: 2.2rem;
+  font-weight: 700;
   color: #161a21;
   letter-spacing: -1px;
-  font-family: "Inter", sans-serif;
 }
+
 .thumbnail {
-  width: 170px;
-  height: 130px;
+  width: 150px;
+  height: 120px;
   object-fit: contain;
-  margin-left: 2.5rem;
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  border-radius: 0 !important;
+  transition: all 0.3s ease;
 }
 
 .projectTitle {
-  font-size: clamp(1.5rem, 2.3vw, 1.8rem); /* Slightly smaller */
-  font-weight: 500;
+  font-size: clamp(1.5rem, 2.3vw, 1.8rem);
+  font-weight: 600;
   color: #232323;
-  margin: 0.5rem 0 1rem; /* Adjusted margins */
+  margin: 0.5rem 0 1rem;
   letter-spacing: -0.03em;
   line-height: 1.2;
-  font-family: "Inter", sans-serif;
 }
 
 .projectSubtitle {
-  font-size: clamp(1rem, 1.2vw, 1.1rem); /* Slightly smaller */
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: #5a5a5a;
   font-weight: 400;
   line-height: 1.6;
-  margin: 0 0 1rem 0; /* Reduced margin */
-}
-
-.features {
-  margin: 0.5rem 0;
-  padding-left: 1.3rem;
-  color: #393939;
-  font-size: 0.95rem; /* Smaller font */
-  line-height: 1.5; /* Tighter line height */
-  font-family: "Inter", sans-serif;
-  list-style: disc inside;
-}
-
-.features li {
-  margin-bottom: 0.5rem;
+  margin: 0 0 1.5rem 0;
 }
 
 .techStack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem; /* Smaller gap */
-  margin: 0.5rem 0 1rem; /* Adjusted margins */
+  gap: 0.5rem;
+  margin: 0.5rem 0 1.5rem;
 }
 
 .techStack span {
   background: #f2f2f2;
   border-radius: 7px;
-  padding: 0.25em 0.6em; /* Smaller padding */
-  font-size: 0.85rem; /* Smaller font */
+  padding: 0.4em 0.8em;
+  font-size: 0.85rem;
   color: #fc6b28;
   font-weight: 600;
-  letter-spacing: 0.01em;
-  font-family: "Inter", sans-serif;
-  box-shadow: 0 2px 7px rgba(252, 107, 40, 0.06);
+  box-shadow: 0 2px 7px rgba(252, 107, 40, 0.1);
 }
 
 .button {
-  margin-top: 0.5rem; /* Reduced margin */
+  margin-top: 0.5rem;
   background: #161a21;
   color: #fff;
-  padding: 0.9rem 2rem; /* Slightly smaller */
+  padding: 1rem 2rem;
   border-radius: 10px;
   border: none;
   font-weight: 600;
-  font-size: 1rem; /* Slightly smaller */
+  font-size: 1rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
   background: #fc6b28;
-  color: #161a21;
   transform: translateY(-2px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 .arrow {
-  font-size: 1.2rem; /* Slightly smaller */
+  font-size: 1.2rem;
   margin-left: 0.25rem;
   transition: transform 0.3s ease;
+}
+
+.button:hover .arrow {
+  transform: translate(3px, -3px);
 }
 
 /* Responsive Adjustments */
 @media (max-width: 1200px) {
   .section {
-    padding: 6rem 0 4rem;
+    padding: 6rem 0;
   }
 
   .card {
-    height: 580px;
+    min-height: 450px;
+  }
+}
+
+@media (max-width: 992px) {
+  .cardContent {
+    max-width: 420px;
+    padding: 2rem;
+  }
+
+  .thumbnail {
+    width: 120px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 0;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .card {
+    flex-direction: column;
+    min-height: auto;
+    padding: 2rem 1rem;
+    background: linear-gradient(
+      135deg,
+      #fff5e7 0%,
+      #ffba8b 30%,
+      #fc6b28 100%
+    ) !important;
   }
 
   .cardContent {
-    margin: 3rem 0 0 3rem;
-    padding: 2rem;
-    max-width: 420px;
+    margin: 0;
+    max-width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+  }
+
+  .topRow {
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .index {
+    font-size: 2rem;
   }
 
   .thumbnail {
@@ -248,181 +267,13 @@
   }
 }
 
-@media (max-width: 900px) {
-  .section {
-    padding: 5rem 0 3rem;
-  }
-
-  .header {
-    margin-bottom: 3rem;
-  }
-
-  .card {
-    height: 500px;
-    border-radius: 1.25rem;
-  }
-
-  .cardContent {
-    margin: 2.5rem 0 0 2.5rem;
-    padding: 1.75rem;
-    max-width: 380px;
-    gap: 0.8rem;
-  }
-
-  .projectTitle {
-    margin-bottom: 0.8rem;
-  }
-
-  .projectSubtitle {
-    margin-bottom: 0.8rem;
-  }
-
-  .thumbnail {
-    width: 90px;
-    height: 70px;
-    margin-left: 1.5rem;
-  }
-
-  .button {
-    padding: 0.8rem 1.8rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    align-items: center;
-    justify-content: center;
-    height: 500px;
-  }
-
-  .cardContent {
-    margin: 2rem auto 0;
-    padding: 1.75rem;
-    max-width: 85%;
-    align-items: center;
-    text-align: center;
-    max-height: 90%;
-  }
-
-  .topRow {
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .thumbnail {
-    width: 120px;
-    height: 90px;
-    margin-left: 1.3rem;
-  }
-
-  .features {
-    text-align: left;
-    padding-left: 1rem;
-  }
-
-  .techStack {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 600px) {
-  .section {
-    padding: 4rem 0 2rem;
-  }
-
+@media (max-width: 576px) {
   .container {
     padding: 0 1.5rem;
   }
 
-  .card {
-    height: auto;
-    min-height: 370px;
-    padding-bottom: 2rem;
-  }
-
   .cardContent {
-    margin: 1rem auto 0;
-    padding: 1rem 5px;
-    max-width: 100%;
-    gap: 0.5rem;
-    max-height: none; /* elimină limitarea! */
-    overflow-y: auto;
-  }
-
-  .index {
-    font-size: 2rem;
-  }
-
-  .thumbnail {
-    width: 90px;
-    height: 68px;
-    margin-left: 0.8rem;
-  }
-
-  .projectTitle {
-    font-size: 1.3rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .projectSubtitle {
-    font-size: 0.95rem;
-    margin-bottom: 0.7rem;
-  }
-
-  .features {
-    font-size: 0.9rem;
-  }
-
-  .techStack span {
-    font-size: 0.8rem;
-  }
-
-  .button {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    height: 460px;
-  }
-
-  .cardContent {
-    padding: 1.25rem;
-    max-width: 95%;
-  }
-
-  .index {
-    font-size: 1.75rem;
-  }
-
-  .thumbnail {
-    width: 75px;
-    height: 56px;
-    margin-left: 0.5rem;
-  }
-  .projectTitle {
-    font-size: 1.2rem;
-  }
-
-  .projectSubtitle {
-    font-size: 0.9rem;
-  }
-
-  .features {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 380px) {
-  .card {
-    height: 440px;
-  }
-
-  .cardContent {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .topRow {
@@ -432,17 +283,37 @@
   }
 
   .index {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .thumbnail {
-    width: 75px;
-    height: 56px;
-    margin-left: 0.5rem;
+    width: 80px;
+    height: 60px;
+  }
+
+  .projectTitle {
+    text-align: center;
+  }
+
+  .projectSubtitle {
+    text-align: center;
+  }
+
+  .techStack {
+    justify-content: center;
+  }
+
+  .button {
+    align-self: center;
   }
 }
-@media (max-width: 600px) {
+
+@media (max-width: 400px) {
+  .cardContent {
+    padding: 1.25rem;
+  }
+
   .index {
-    display: none !important;
+    display: none;
   }
 }

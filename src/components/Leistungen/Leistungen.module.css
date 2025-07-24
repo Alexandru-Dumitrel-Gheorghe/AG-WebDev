@@ -1,14 +1,88 @@
 .leistungenSection {
   width: 100%;
-  padding: 6rem 0 4rem;
+  padding: 120px 0;
   background: #fff;
   position: relative;
+  overflow: hidden;
+  z-index: 1;
+  perspective: 1000px;
+}
+
+/* Floating orbs background */
+.parallaxOrbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.orb1,
+.orb2,
+.orb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0.15;
+  transform-style: preserve-3d;
+}
+
+.orb1 {
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(135deg, #ff5d2a 0%, #ff9a5a 100%);
+  left: 4vw;
+  top: 12vh;
+}
+
+.orb2 {
+  width: 240px;
+  height: 240px;
+  background: linear-gradient(135deg, #2a5bd7 0%, #6b8cff 100%);
+  right: 12vw;
+  top: 36vh;
+}
+
+.orb3 {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, #ffd4c2 0%, #ffa97a 100%);
+  right: 6vw;
+  bottom: 8vh;
+}
+
+@media (max-width: 900px) {
+  .orb1 {
+    width: 200px;
+    height: 200px;
+    filter: blur(40px);
+  }
+  .orb2 {
+    width: 150px;
+    height: 150px;
+    filter: blur(30px);
+  }
+  .orb3 {
+    width: 120px;
+    height: 120px;
+    filter: blur(25px);
+  }
+}
+
+@media (max-width: 600px) {
+  .parallaxOrbs {
+    display: none;
+  }
 }
 
 .header {
   max-width: 1500px;
-  margin: 0 auto 3.5rem;
+  margin: 0 auto 60px;
   padding: 0 clamp(1rem, 4vw, 4rem);
+  position: relative;
+  z-index: 2;
 }
 
 .headerContent {
@@ -16,108 +90,139 @@
 }
 
 .sectionTitle {
-  font-size: clamp(2.2rem, 5vw, 2.9rem);
-  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
   font-family: "Inter", sans-serif;
   color: #232323;
   letter-spacing: -0.05em;
-  margin: 0 0 1rem;
+  margin: 0 0 20px;
   line-height: 1.13;
   position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .sectionTitle::after {
   content: "";
   position: absolute;
-  bottom: -0.75rem;
+  bottom: -12px;
   left: 0;
-  width: 3.5rem;
+  width: 56px;
   height: 4px;
   background: #fc6b28;
   border-radius: 4px;
+  transform: translateZ(0);
 }
 
 .sectionDesc {
   color: #5a5a5a;
-  font-size: clamp(1.05rem, 1.4vw, 1.17rem);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   font-weight: 400;
   line-height: 1.6;
-  margin: 1.5rem 0 0;
-  padding-left: 0.5rem;
+  margin: 24px 0 0;
+  padding-left: 16px;
   position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .sectionDesc::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.5rem;
-  height: calc(100% - 1rem);
+  top: 8px;
+  height: calc(100% - 16px);
   width: 2px;
   background: #e0e0e0;
+  transform: translateZ(0);
 }
 
 .cardsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-  gap: 2rem;
-  max-width: 87.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 clamp(1rem, 4vw, 4rem);
+  position: relative;
+  z-index: 2;
 }
 
 .card {
   background: #f9f9f9;
-  border-radius: 1.125rem;
-  box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.04);
-  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  padding: 40px 32px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 18rem;
-  border: 1px solid #eee;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 288px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(252, 107, 40, 0.03) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
 }
 
 .card:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1rem 2rem rgba(252, 107, 40, 0.1);
-  border-color: #fc6b28;
+  box-shadow: 0 16px 32px rgba(252, 107, 40, 0.12);
+  border-color: rgba(252, 107, 40, 0.2);
   background: #fff;
 }
 
-.card:hover .icon svg {
-  transform: scale(1.1);
+.card:hover::before {
+  opacity: 1;
 }
 
 .icon {
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #232323;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: rgba(252, 107, 40, 0.1);
-  padding: 0.75rem;
-  transition: all 0.25s ease;
+  background: rgba(252, 107, 40, 0.08);
+  padding: 12px;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .icon svg {
-  transition: all 0.25s ease;
+  transition: all 0.4s ease;
 }
 
 .title {
   font-size: clamp(1.4rem, 2vw, 1.6rem);
-  font-weight: 500;
+  font-weight: 600;
   color: #232323;
-  margin: 0 0 1rem;
+  margin: 0 0 16px;
   letter-spacing: -0.03em;
   font-family: "Inter", sans-serif;
+  position: relative;
+  z-index: 1;
 }
 
 .description {
@@ -126,6 +231,8 @@
   font-weight: 400;
   line-height: 1.6;
   margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .hoverIndicator {
@@ -137,57 +244,43 @@
   background: #fc6b28;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
 }
 
-.card:hover .hoverIndicator {
-  transform: scaleX(1);
+/* Particle effect on hover */
+.card:hover .hoverParticles {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
   .leistungenSection {
-    padding: 4rem 0 2rem;
+    padding: 80px 0 40px;
   }
 
   .header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 40px;
   }
 
   .card {
     min-height: auto;
-    padding: 1.75rem 1.5rem;
+    padding: 32px 24px;
   }
 
   .icon {
-    margin-bottom: 1.5rem;
-    width: 3rem;
-    height: 3rem;
+    margin-bottom: 24px;
+    width: 48px;
+    height: 48px;
   }
+}
 
+@media (max-width: 480px) {
   .sectionDesc::before {
-    top: 0.25rem;
-    height: calc(100% - 0.5rem);
+    top: 4px;
+    height: calc(100% - 8px);
   }
-}
-.leistungen-section {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s cubic-bezier(0.45, 1.1, 0.43, 1.03),
-    transform 0.8s cubic-bezier(0.45, 1.1, 0.43, 1.03);
-}
-.leistungen-section.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
 
-/* Cards effect */
-.leistungen-card {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.55s cubic-bezier(0.45, 1.1, 0.43, 1.03),
-    transform 0.55s cubic-bezier(0.45, 1.1, 0.43, 1.03);
-}
-.leistungen-section.in-view .leistungen-card {
-  opacity: 1;
-  transform: translateY(0);
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
 }

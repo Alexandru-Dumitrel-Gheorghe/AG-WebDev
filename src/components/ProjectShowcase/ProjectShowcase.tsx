@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./ProjectShowcase.module.css";
 import useIsMobile from "@/components/Hooks/useIsMobile";
 
@@ -48,170 +48,196 @@ const projects: Project[] = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.3 },
-  },
-};
-const itemVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { type: "spring" as const, damping: 12, stiffness: 100 },
-  },
-};
-const cardVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring" as const,
-      damping: 15,
-      stiffness: 100,
-      duration: 0.5,
-    },
-  },
-};
-
 export default function ProjectsShowcase() {
-  const isMobile = useIsMobile(600);
+  const isMobile = useIsMobile(768);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax values
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const scaleCards = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>
+    <section className={styles.section} ref={sectionRef}>
+      {/* Parallax Background */}
+      {!isMobile && (
         <motion.div
-          className={styles.header}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
-          <motion.div className={styles.headerContent} variants={itemVariants}>
+          className={styles.parallaxBg}
+          style={{
+            y: yBg,
+            backgroundImage: `linear-gradient(135deg, rgba(255,245,231,0.8) 0%, rgba(255,186,139,0.6) 30%, rgba(252,107,40,0.4) 100%)`,
+          }}
+        />
+      )}
+
+      <div className={styles.container}>
+        <motion.div className={styles.header} style={{ y: yText }}>
+          <div className={styles.headerContent}>
             <h2 className={styles.sectionTitle}>{sectionTitle}</h2>
             <p className={styles.sectionDesc}>{sectionDesc}</p>
-          </motion.div>
+          </div>
         </motion.div>
 
         <motion.div
           className={styles.projectsGrid}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
+          style={{ scale: scaleCards }}
         >
-          {projects.map((project, index) => {
-            // Fallback: nu setezi nimic la SSR
-            let cardStyle: React.CSSProperties = {};
-
-            if (isMobile === null) {
-              cardStyle = {};
-            } else if (isMobile) {
-              cardStyle = {
-                backgroundImage:
-                  "linear-gradient(135deg, #fff5e7 0%, #ffba8b 30%, #fc6b28 100%), radial-gradient(circle at 85% 20%, #ffe6d1 20%, transparent 70%)",
-              };
-            } else {
-              cardStyle = {
-                backgroundImage: `url(${project.background})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              };
-            }
-
-            return (
-              <motion.div
-                key={project.id}
-                className={styles.card}
-                style={cardStyle}
-                variants={cardVariants}
-                custom={index}
-              >
-                <motion.div
-                  className={styles.cardContent}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                >
-                  <div className={styles.topRow}>
-                    <span className={styles.index}>
-                      {String(project.id).padStart(2, "0")}
-                    </span>
-                    <motion.img
-                      src={project.thumbnail}
-                      alt={project.title}
-                      className={styles.thumbnail}
-                      loading="lazy"
-                      initial={{ scale: 0.9 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
-                    />
-                  </div>
-                  <motion.h3
-                    className={styles.projectTitle}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                  >
-                    {project.title}
-                  </motion.h3>
-                  <motion.p
-                    className={styles.projectSubtitle}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    {project.subtitle}
-                  </motion.p>
-
-                  {/* Tech Stack */}
-                  <motion.div
-                    className={styles.techStack}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.7 + index * 0.1 }}
-                  >
-                    {project.tech.map((tech, i) => (
-                      <motion.span
-                        key={i}
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          delay: 0.8 + index * 0.1 + i * 0.1,
-                          type: "spring",
-                        }}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </motion.div>
-
-                  <motion.button
-                    className={styles.button}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ scale: 1.05 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.9 + index * 0.1 }}
-                    aria-label="Projekt ansehen"
-                  >
-                    Projekt ansehen <span className={styles.arrow}>↗</span>
-                  </motion.button>
-                </motion.div>
-              </motion.div>
-            );
-          })}
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              isMobile={isMobile}
+            />
+          ))}
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function ProjectCard({
+  project,
+  index,
+  isMobile,
+}: {
+  project: Project;
+  index: number;
+  isMobile: boolean | null;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [index % 2 === 0 ? -50 : 50, 0]
+  );
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+
+  const cardStyle: React.CSSProperties = isMobile
+    ? {
+        backgroundImage:
+          "linear-gradient(135deg, #fff5e7 0%, #ffba8b 30%, #fc6b28 100%)",
+      }
+    : {
+        backgroundImage: `url(${project.background})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      className={styles.card}
+      style={{
+        ...cardStyle,
+        y,
+        opacity,
+        scale,
+      }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+      transition={{
+        type: "spring",
+        damping: 15,
+        stiffness: 100,
+        delay: index * 0.1,
+      }}
+    >
+      <motion.div
+        className={styles.cardContent}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 + index * 0.1 }}
+      >
+        <div className={styles.topRow}>
+          <span className={styles.index}>
+            {String(project.id).padStart(2, "0")}
+          </span>
+          <motion.img
+            src={project.thumbnail}
+            alt={project.title}
+            className={styles.thumbnail}
+            loading="lazy"
+            initial={{ scale: 0.9, rotate: -5 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            whileHover={{ scale: 1.05, rotate: 2 }}
+            viewport={{ once: true }}
+            transition={{
+              delay: 0.3 + index * 0.1,
+              type: "spring",
+              stiffness: 200,
+            }}
+          />
+        </div>
+
+        <motion.h3
+          className={styles.projectTitle}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 + index * 0.1 }}
+        >
+          {project.title}
+        </motion.h3>
+
+        <motion.p
+          className={styles.projectSubtitle}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 + index * 0.1 }}
+        >
+          {project.subtitle}
+        </motion.p>
+
+        <motion.div
+          className={styles.techStack}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 + index * 0.1 }}
+        >
+          {project.tech.map((tech, i) => (
+            <motion.span
+              key={i}
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: 0.7 + index * 0.1 + i * 0.1,
+                type: "spring",
+              }}
+            >
+              {tech}
+            </motion.span>
+          ))}
+        </motion.div>
+
+        <motion.button
+          className={styles.button}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.8 + index * 0.1 }}
+          aria-label="Projekt ansehen"
+        >
+          Projekt ansehen <span className={styles.arrow}>↗</span>
+        </motion.button>
+      </motion.div>
+    </motion.div>
   );
 }
