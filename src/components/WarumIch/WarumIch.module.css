@@ -246,3 +246,50 @@
     display: none;
   }
 }
+@media (max-width: 950px) {
+  .inner {
+    flex-direction: column;
+    align-items: center; /* <-- Adaugă această linie */
+    gap: 2.5rem;
+  }
+  .leftCol {
+    justify-content: center;
+    align-items: center; /* <-- Adaugă această linie */
+    width: 100%; /* Asigură lățime completă */
+    margin-bottom: 2rem;
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    text-align: center; /* <-- Adaugă această linie pentru titlu și desc */
+  }
+  .sectionTitle::after {
+    left: 50%;
+    transform: translateX(-50%); /* <-- Linie sub titlu centrată pe mobil */
+  }
+  .sectionDesc {
+    padding-left: 0;
+    margin-left: 0;
+    text-align: center; /* Centrare descriere */
+    display: block;
+  }
+  .sectionDesc::before {
+    display: none; /* Elimină bara verticală de pe mobil */
+  }
+  .inner {
+    padding: 0 0.5rem; /* Reduce padding-ul pe mobil */
+    align-items: center; /* Sigură centrare orizontală */
+  }
+  .grundList {
+    align-items: center; /* Centrare lista pe mobil */
+  }
+  .grundItem {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}

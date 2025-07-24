@@ -1,43 +1,26 @@
 "use client";
+import Image from "next/image";
 import styles from "./Hero.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image"; // Nu uita importul dacă folosești next/image!
-
-const isMobileDevice = () =>
-  typeof window !== "undefined" && window.innerWidth < 800;
+import { SplitText } from "gsap/SplitText";
 
 export default function HeroSection() {
-  const heroRef = useRef(null);
-  const leftRef = useRef(null);
-  const rightRef = useRef(null);
-  const splineRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef(null);
-  const preheadRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const ctaRef = useRef(null);
-
-  const [showSpline, setShowSpline] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const preheadRef = useRef<HTMLSpanElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLAnchorElement>(null);
+  const decorationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isMobileDevice()) {
-      setShowSpline(true);
-      if (!document.getElementById("spline-viewer-script")) {
-        const script = document.createElement("script");
-        script.id = "spline-viewer-script";
-        script.type = "module";
-        script.src =
-          "https://unpkg.com/@splinetool/viewer@1.10.35/build/spline-viewer.js";
-        document.body.appendChild(script);
-      }
-    }
-  }, []);
+    gsap.registerPlugin(ScrollTrigger, SplitText);
 
-  // GSAP Animation -- nu modificăm
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
+    // Reset animation props to avoid glitches
     gsap.set(
       [
         leftRef.current,
@@ -46,20 +29,37 @@ export default function HeroSection() {
         preheadRef.current,
         subtitleRef.current,
         ctaRef.current,
-        splineRef.current,
+        imageRef.current,
+        decorationRef.current,
       ],
-      { clearProps: "opacity,transform" }
+      { clearProps: "opacity,transform,scale" }
     );
 
-    const isMobile = isMobileDevice();
+    // Check if mobile view
+    const isMobile = window.innerWidth < 800;
+
+    // Split text for title animation
+    if (titleRef.current) {
+      const splitTitle = new SplitText(titleRef.current, {
+        type: "chars,words",
+        charsClass: styles.titleChar,
+      });
+
+      gsap.set(splitTitle.chars, {
+        y: 40,
+        opacity: 0,
+        rotateX: 90,
+      });
+    }
+
+    // Sequential load animation
     const tl = gsap.timeline();
     tl.set(
       [
         preheadRef.current,
-        titleRef.current,
         subtitleRef.current,
         ctaRef.current,
-        splineRef.current,
+        imageRef.current,
       ],
       { opacity: 0, y: isMobile ? 20 : 30 }
     )
@@ -71,9 +71,18 @@ export default function HeroSection() {
         ease: "power3.out",
       })
       .to(
-        titleRef.current,
-        { y: 0, opacity: 1, duration: 1, ease: "expo.out" },
-        "-=0.5"
+        titleRef.current
+          ? titleRef.current.querySelectorAll(`.${styles.titleChar}`)
+          : [],
+        {
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
+          duration: 1.2,
+          stagger: 0.03,
+          ease: "back.out(1.7)",
+        },
+        "-=0.3"
       )
       .to(
         subtitleRef.current,
@@ -86,7 +95,7 @@ export default function HeroSection() {
         "-=0.5"
       )
       .to(
-        splineRef.current,
+        imageRef.current,
         {
           scale: 1,
           opacity: 1,
@@ -95,66 +104,134 @@ export default function HeroSection() {
           y: isMobile ? 0 : 20,
         },
         "-=1"
+      )
+      .to(
+        decorationRef.current,
+        {
+          scale: 1,
+          opacity: 0.3,
+          duration: 1.5,
+          ease: "elastic.out(1, 0.5)",
+        },
+        "-=1.2"
       );
 
+    // Floating animation for image (desktop only)
     if (!isMobile) {
-      gsap.to(splineRef.current, {
+      // Multi-axis floating effect
+      gsap.to(imageRef.current, {
         y: 20,
-        duration: 3,
+        x: 10,
+        duration: 4,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
-      gsap.to(splineRef.current, {
-        y: -100,
+
+      // Decoration rotation
+      gsap.to(decorationRef.current, {
+        rotation: 360,
+        duration: 120,
+        repeat: -1,
+        ease: "none",
+      });
+
+      // Parallax scroll animations
+      const parallaxTl = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: true,
+          scrub: 1.5,
         },
       });
-      gsap.to(titleRef.current, {
-        scale: 0.92,
-        opacity: 0.8,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
-      gsap.to(rightRef.current, {
-        x: 100,
-        opacity: 0.7,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+
+      parallaxTl
+        .to(
+          imageRef.current,
+          {
+            y: -200,
+            scale: 1.05,
+            ease: "none",
+          },
+          0
+        )
+        .to(
+          rightRef.current,
+          {
+            x: 150,
+            opacity: 0.8,
+            ease: "none",
+          },
+          0
+        )
+        .to(
+          leftRef.current,
+          {
+            y: 100,
+            opacity: 0.9,
+            ease: "none",
+          },
+          0
+        )
+        .to(
+          titleRef.current,
+          {
+            scale: 0.9,
+            y: 50,
+            opacity: 0.8,
+            ease: "none",
+          },
+          0
+        )
+        .to(
+          decorationRef.current,
+          {
+            y: -100,
+            x: 50,
+            scale: 1.2,
+            ease: "none",
+          },
+          0
+        );
+
+      // Mouse move parallax effect
+      if (heroRef.current) {
+        heroRef.current.addEventListener("mousemove", (e) => {
+          const xPos = e.clientX / window.innerWidth - 0.5;
+          const yPos = e.clientY / window.innerHeight - 0.5;
+
+          gsap.to(imageRef.current, {
+            x: xPos * 30,
+            y: yPos * 20,
+            duration: 1.5,
+            ease: "power1.out",
+          });
+
+          gsap.to(decorationRef.current, {
+            x: xPos * 40,
+            y: yPos * 30,
+            duration: 1.5,
+            ease: "power1.out",
+          });
+
+          gsap.to(titleRef.current, {
+            x: xPos * -10,
+            duration: 1.5,
+            ease: "power1.out",
+          });
+        });
+      }
     }
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       gsap.killTweensOf("*");
+      if (heroRef.current) {
+        heroRef.current.removeEventListener("mousemove", () => {});
+      }
     };
-  }, [showSpline]);
-
-  const renderAnimatedLine = (line: string, highlight = false) => (
-    <span className={highlight ? styles.highlight : undefined}>
-      {line.split("").map((char, idx) => (
-        <span
-          key={idx}
-          className={styles.titleChar}
-          style={{ display: char === " " ? "inline" : "inline-block" }}
-        >
-          {char}
-        </span>
-      ))}
-    </span>
-  );
+  }, []);
 
   return (
     <section className={styles.hero} ref={heroRef}>
@@ -163,9 +240,8 @@ export default function HeroSection() {
           → Hey! Ich bin Alex
         </span>
         <h1 className={styles.title} ref={titleRef}>
-          {renderAnimatedLine("DIGITALER ")}
-          <br />
-          {renderAnimatedLine("WEBDESIGNER", true)}
+          DIGITALER <br />
+          <span className={styles.highlight}>WEBDESIGNER</span>
         </h1>
         <p className={styles.subtitle} ref={subtitleRef}>
           Ich spezialisiere mich auf moderne Webentwicklung &{" "}
@@ -178,50 +254,8 @@ export default function HeroSection() {
           <span className={styles.ctaHover}></span>
         </a>
       </div>
-
-      {/* Pe desktop: Spline/robot */}
       <div className={styles.right} ref={rightRef}>
-        <div
-          className={styles.videoWrapper + " " + styles.desktopOnly}
-          ref={splineRef}
-        >
-          {showSpline ? (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "2rem",
-                overflow: "hidden",
-              }}
-              dangerouslySetInnerHTML={{
-                __html: `
-                  <spline-viewer
-                    url="https://prod.spline.design/mJSz379-hZOozSNA/scene.splinecode"
-                    style="width:100%;height:100%;border:none;background:transparent;border-radius:2rem;margin-left:32px"
-                  ></spline-viewer>
-                `,
-              }}
-            />
-          ) : (
-            <img
-              src="/images/profil.jpg"
-              alt="Robot 3D"
-              style={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "2rem",
-                objectFit: "contain",
-                background: "#0e0e11",
-                marginLeft: 32,
-              }}
-            />
-          )}
-          <div className={styles.videoOverlay}></div>
-          <div className={styles.imageDecoration}></div>
-        </div>
-
-        {/* Pe mobil: poză profil */}
-        <div className={styles.imageWrapper + " " + styles.mobileOnly}>
+        <div className={styles.imageWrapper}>
           <Image
             src="/images/profil.jpg"
             alt="Profilbild"
@@ -229,9 +263,10 @@ export default function HeroSection() {
             height={900}
             priority
             className={styles.heroImage}
+            ref={imageRef}
           />
           <div className={styles.imageOverlay}></div>
-          <div className={styles.imageDecoration}></div>
+          <div className={styles.imageDecoration} ref={decorationRef}></div>
         </div>
       </div>
     </section>
