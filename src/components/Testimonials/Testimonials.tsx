@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import styles from "./Testimonials.module.css";
@@ -16,7 +16,7 @@ const testimonials = [
     rating: 5,
     source: "Google",
     content:
-      "Ich habe mit Alex an meiner neuen Website gearbeitet und bin absolut begeistert! Von der ersten Idee bis zur finalen Umsetzung war alles professionell, schnell und auf meine Wünsche abgestimmt. ",
+      "Ich habe mit Alex an meiner neuen Website gearbeitet und bin absolut begeistert! Von der ersten Idee bis zur finalen Umsetzung war alles professionell, schnell und auf meine Wünsche abgestimmt.",
   },
   {
     id: 2,
@@ -39,21 +39,92 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <section className={styles.testimonialsSection}>
-      <div className={styles.header}>
+    <motion.section
+      className={styles.testimonialsSection}
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.6 }}
+    >
+      <motion.div
+        className={styles.header}
+        initial={{ y: 50, opacity: 0 }}
+        animate={
+          isInView
+            ? {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.6,
+                  ease: "easeOut",
+                },
+              }
+            : {}
+        }
+      >
         <div className={styles.headerContent}>
-          <h2 className={styles.sectionTitle}>Kundenstimmen</h2>
-          <p className={styles.sectionDesc}>
+          <motion.h2
+            className={styles.sectionTitle}
+            initial={{ x: -30 }}
+            animate={
+              isInView
+                ? {
+                    x: 0,
+                    transition: {
+                      delay: 0.1,
+                      type: "spring",
+                      stiffness: 100,
+                    },
+                  }
+                : {}
+            }
+          >
+            Kundenstimmen
+          </motion.h2>
+          <motion.p
+            className={styles.sectionDesc}
+            initial={{ x: -30 }}
+            animate={
+              isInView
+                ? {
+                    x: 0,
+                    transition: {
+                      delay: 0.2,
+                      type: "spring",
+                      stiffness: 100,
+                    },
+                  }
+                : {}
+            }
+          >
             Was meine Kunden über die Zusammenarbeit mit AG WebDev sagen
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
 
-      <div className={styles.testimonialsContainer}>
+      <motion.div
+        className={styles.testimonialsContainer}
+        initial={{ y: 50, opacity: 0 }}
+        animate={
+          isInView
+            ? {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  delay: 0.3,
+                  duration: 0.6,
+                  ease: "easeOut",
+                },
+              }
+            : {}
+        }
+      >
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={30}
@@ -90,27 +161,42 @@ export default function Testimonials() {
             swiper.navigation.update();
           }}
         >
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <SwiperSlide key={testimonial.id}>
               <motion.div
                 className={styles.testimonialCard}
-                whileHover={{ y: -5 }}
+                initial={{ y: 30, opacity: 0 }}
+                animate={
+                  isInView
+                    ? {
+                        y: 0,
+                        opacity: 1,
+                        transition: {
+                          delay: 0.4 + index * 0.1,
+                          duration: 0.6,
+                        },
+                      }
+                    : {}
+                }
+                whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
                 <div className={styles.testimonialHeader}>
                   <div className={styles.source}>{testimonial.source}</div>
                   <div className={styles.rating}>
                     {[...Array(5)].map((_, i) => (
-                      <span
+                      <motion.span
                         key={i}
                         className={
                           i < testimonial.rating
                             ? styles.starActive
                             : styles.star
                         }
+                        whileHover={{ scale: 1.2 }}
+                        transition={{ duration: 0.2 }}
                       >
                         ★
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </div>
@@ -126,8 +212,27 @@ export default function Testimonials() {
           ))}
         </Swiper>
 
-        <div className={styles.controls}>
-          <button ref={prevRef} className={styles.navButton}>
+        <motion.div
+          className={styles.controls}
+          initial={{ opacity: 0 }}
+          animate={
+            isInView
+              ? {
+                  opacity: 1,
+                  transition: {
+                    delay: 0.7,
+                    duration: 0.6,
+                  },
+                }
+              : {}
+          }
+        >
+          <motion.button
+            ref={prevRef}
+            className={styles.navButton}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M15 18l-6-6 6-6"
@@ -136,9 +241,14 @@ export default function Testimonials() {
                 strokeLinecap="round"
               />
             </svg>
-          </button>
+          </motion.button>
           <div className={styles.pagination}></div>
-          <button ref={nextRef} className={styles.navButton}>
+          <motion.button
+            ref={nextRef}
+            className={styles.navButton}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M9 18l6-6-6-6"
@@ -147,9 +257,9 @@ export default function Testimonials() {
                 strokeLinecap="round"
               />
             </svg>
-          </button>
-        </div>
-      </div>
-    </section>
+          </motion.button>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }

@@ -168,10 +168,9 @@
   position: relative;
   width: 100%;
   height: 92vh;
+  min-height: 350px;
+  aspect-ratio: 4/5; /* Adaugă asta */
   overflow: hidden;
-  will-change: transform;
-  transform-style: preserve-3d;
-  padding-inline: clamp(1rem, 3vw, 40px);
 }
 
 .heroImage {
@@ -186,6 +185,7 @@
   transform-origin: center bottom;
   transform-style: preserve-3d;
   transition: box-shadow 0.3s ease, background 0.3s ease;
+  aspect-ratio: 4/5;
 }
 
 .imageOverlay {
