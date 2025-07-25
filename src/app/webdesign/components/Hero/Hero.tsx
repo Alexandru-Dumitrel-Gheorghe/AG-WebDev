@@ -5,47 +5,93 @@ import styles from "./Hero.module.css";
 
 export default function WebDesignHero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const lettersRef = useRef<(HTMLSpanElement | null)[]>([]);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
 
+  // Animatie titlu litera cu litera
   useEffect(() => {
-    const animateElements = () => {
+    const animateTitle = () => {
       if (titleRef.current) {
-        titleRef.current.style.animation = `${styles.fadeInUp} 0.8s ease-out forwards`;
-      }
-      if (subtitleRef.current) {
-        subtitleRef.current.style.animation = `${styles.fadeInUp} 0.8s ease-out 0.2s forwards`;
-      }
-      if (buttonRef.current) {
-        buttonRef.current.style.animation = `${styles.fadeInUp} 0.8s ease-out 0.4s forwards`;
+        titleRef.current.style.opacity = "1";
+        const letters = lettersRef.current;
+        letters.forEach((letter, index) => {
+          if (letter) {
+            letter.style.animation = `${
+              styles.letterFadeIn
+            } 0.4s ease-out forwards ${index * 0.05}s`;
+          }
+        });
       }
     };
+    const timer = setTimeout(animateTitle, 300);
+    return () => clearTimeout(timer);
+  }, []);
 
+  // Animatie subtitle & butoane
+  useEffect(() => {
+    const animateElements = () => {
+      if (subtitleRef.current) {
+        subtitleRef.current.style.animation = `${styles.fadeInUp} 0.8s ease-out 0.6s forwards`;
+      }
+      if (buttonRef.current) {
+        buttonRef.current.style.animation = `${styles.fadeInUp} 0.8s ease-out 0.8s forwards`;
+      }
+    };
     animateElements();
   }, []);
 
+  const titleText = "Digitale Erlebnisse";
+  const highlightStart = 0;
+  const highlightEnd = "Digitale".length;
+
   return (
     <section className={styles.hero}>
-      <div className={styles.backgroundPattern} aria-hidden="true" />
+      {/* Elemente decorative */}
+      <div className={styles.decorativeCircle1} />
+      <div className={styles.decorativeCircle2} />
+      <div className={styles.decorativeLine} />
 
       <div className={styles.container}>
         <div className={styles.content}>
-          <h1 className={styles.title} ref={titleRef}>
-            Webdesign auf{" "}
-            <span className={styles.highlight}>höchstem Niveau</span>
+          <h1 className={styles.title} ref={titleRef} style={{ opacity: 0 }}>
+            {titleText.split("").map((char, index) => {
+              const isHighlight =
+                index >= highlightStart && index < highlightEnd;
+              const isSpace = char === " ";
+              return (
+                <span
+                  key={index}
+                  ref={(el) => {
+                    lettersRef.current[index] = el;
+                  }}
+                  className={`${styles.letter} ${
+                    isHighlight ? styles.highlightLetter : ""
+                  }`}
+                  style={{
+                    opacity: 0,
+                    display: isSpace ? "inline" : "inline-block",
+                  }}
+                >
+                  {char}
+                </span>
+              );
+            })}
           </h1>
-
+          <div className={styles.titleUnderline} />
           <p className={styles.subtitle} ref={subtitleRef}>
-            Wir schaffen unvergessliche digitale Erlebnisse, individuell
-            abgestimmt auf Ihr Unternehmen. Jeder Pixel ist darauf ausgerichtet,
-            Besucher in Kunden zu verwandeln.
+            Wir kreieren{" "}
+            <span className={styles.subtitleHighlight}>
+              maßgeschneiderte digitale Erlebnisse
+            </span>
+            , die Ihre Marke auf ein neues Level heben und bleibenden Eindruck
+            hinterlassen.
           </p>
-
           <div className={styles.buttons} ref={buttonRef}>
             <a href="#contact" className={styles.primaryButton}>
               Projekt besprechen
               <span className={styles.buttonArrow}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                   <path
                     d="M3.33325 12.6667L12.6666 3.33337"
                     stroke="currentColor"
@@ -63,28 +109,26 @@ export default function WebDesignHero() {
                 </svg>
               </span>
             </a>
-
             <a href="#portfolio" className={styles.secondaryButton}>
-              Zum Portfolio
+              <span className={styles.buttonText}>Zum Portfolio</span>
+              <span className={styles.buttonHoverEffect} />
             </a>
           </div>
         </div>
-
         <div className={styles.visual}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/hero-webdesign.svg"
+              src="/images/hero-about1.png"
               alt="Moderne Webdesign Benutzeroberfläche"
               fill
               className={styles.image}
-              quality={90}
+              quality={100}
               priority
             />
           </div>
-          <div className={styles.gradientOverlay} />
+          <div className={styles.imageDecoration} />
         </div>
       </div>
-
       <div className={styles.scrollIndicator}>
         <span className={styles.scrollText}>Scrollen</span>
         <div className={styles.scrollLine} />
