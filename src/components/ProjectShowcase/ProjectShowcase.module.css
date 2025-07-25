@@ -1,5 +1,5 @@
 .section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   background: var(--projects-bg);
   position: relative;
   overflow: hidden;
@@ -19,9 +19,11 @@
 
 .title {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  position: relative;
+  gap: 0.2rem; /* sau cât vrei spațiu între titlu și linie */
 }
 
 .titleText {
@@ -29,13 +31,16 @@
   font-weight: 700;
   color: var(--section-title-color);
   line-height: 1.1;
+  /* Fără gap lateral */
 }
 
-.titleLine {
-  flex: 1;
+.titleUnderline {
+  display: block;
+  margin-top: 0.5rem; /* spațiu sub titlu */
+  width: 110px; /* sau ce vrei tu, se poate cu clamp pentru responsive */
   height: 3px;
   background: var(--accent-color);
-  max-width: 200px;
+  border-radius: 1.5px;
 }
 
 .subtitle {
@@ -89,13 +94,21 @@
 .imageContainer {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 200px; /* sau 200px, în funcție de mockup */
   overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: var(--thumbnail-bg, #f8f8f8);
 }
 
 .projectImage {
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  object-fit: contain !important; /* ATENȚIE: CONTAIN, nu cover! */
+  max-width: 100%; /* Limitezi lățimea imaginii */
+  max-height: 95%; /* Eventual și înălțimea */
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 .projectCard:hover .projectImage {

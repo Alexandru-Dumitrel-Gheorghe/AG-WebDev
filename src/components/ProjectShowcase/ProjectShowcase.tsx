@@ -67,12 +67,13 @@ export default function ProjectShowcase() {
       <div className={styles.container}>
         <header className={styles.header}>
           <h2 className={styles.title}>
-            <span className={styles.titleText}>Projekte</span>
-            <span className={styles.titleLine} />
+            <span className={styles.titleText}>Referenzen</span>
+            <span className={styles.titleUnderline} />
           </h2>
+
           <p className={styles.subtitle}>
-            Soluții digitale custom create pentru a transforma ideile în
-            realitate
+            Individuelle digitale Lösungen, die Ihre Ideen in die Realität
+            umsetzen.
           </p>
         </header>
 
