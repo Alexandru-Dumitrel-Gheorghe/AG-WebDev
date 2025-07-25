@@ -44,6 +44,13 @@ export default function Testimonials() {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
 
+  // Dacă vrei să ajustezi logică pentru breakpoints:
+  // slidesPerView este 1 la mobil, 2 la tabletă, 3 la desktop
+  // Deci ai nevoie de minim 4 slide-uri pentru loop perfect pe desktop
+  // Pentru simplitate, folosești slidesPerView maxim (3) ca referință
+  const maxSlidesPerView = 3;
+  const enableLoop = testimonials.length > maxSlidesPerView;
+
   return (
     <motion.section
       className={styles.testimonialsSection}
@@ -129,11 +136,15 @@ export default function Testimonials() {
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={30}
           slidesPerView={1}
-          loop={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
+          loop={enableLoop}
+          autoplay={
+            enableLoop
+              ? {
+                  delay: 5000,
+                  disableOnInteraction: false,
+                }
+              : false
+          }
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,

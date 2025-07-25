@@ -1,77 +1,91 @@
 "use client";
-import styles from "./Leistungen.module.css";
+import styles from "./WebDesignServicesSection.module.css";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link"; // Doar dacă folosești Next.js
+import Link from "next/link"; // dacă e Next.js, altfel pune <a href=...>
 
 const services = [
   {
-    title: "Webdesign",
-    description: "Modernes, responsives und performantes Webdesign.",
+    title: "Responsive Webdesign",
+    description:
+      "Optimale Darstellung auf allen Geräten – Desktop, Tablet & Smartphone.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <rect
-          x="3"
-          y="4"
-          width="18"
-          height="16"
+          x="4"
+          y="5"
+          width="16"
+          height="14"
           rx="2"
           stroke="currentColor"
           strokeWidth="1.7"
         />
         <rect
-          x="7"
-          y="8"
-          width="10"
-          height="8"
+          x="8"
+          y="7"
+          width="8"
+          height="10"
           rx="1.5"
           stroke="currentColor"
           strokeWidth="1.7"
         />
       </svg>
     ),
-    link: "/webdesign",
+    link: "#responsive",
   },
   {
-    title: "Webentwicklung",
-    description: "Moderne Websites und Web-Apps mit neuesten Technologien.",
+    title: "UI/UX-Konzept",
+    description:
+      "Intuitive, benutzerfreundliche Interfaces mit Fokus auf Nutzererlebnis.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <rect
-          x="3"
-          y="3"
-          width="18"
-          height="4"
-          rx="1.5"
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
           stroke="currentColor"
           strokeWidth="1.7"
         />
-        <rect
-          x="3"
-          y="9"
-          width="18"
-          height="4"
-          rx="1.5"
+        <path
+          d="M8 15s1.5-2 4-2 4 2 4 2"
           stroke="currentColor"
           strokeWidth="1.7"
+          strokeLinecap="round"
         />
-        <rect
-          x="3"
-          y="15"
-          width="18"
-          height="4"
-          rx="1.5"
+        <circle cx="9" cy="10" r="1" fill="currentColor" />
+        <circle cx="15" cy="10" r="1" fill="currentColor" />
+      </svg>
+    ),
+    link: "#uiux",
+  },
+  {
+    title: "Performance-Optimierung",
+    description:
+      "Schnelle Ladezeiten, optimale Bilder und beste Core Web Vitals.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 19V5M12 5l-5 7M12 5l5 7"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+        />
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
           stroke="currentColor"
           strokeWidth="1.7"
         />
       </svg>
     ),
-    link: "/leistungen/webentwicklung",
+    link: "#performance",
   },
   {
-    title: "SEO & Marketing",
-    description: "Ihre Website auf Top-Positionen bei Google.",
+    title: "SEO-Basics",
+    description:
+      "Saubere Struktur, Meta-Tags & technische SEO – für Top-Rankings.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <circle
@@ -89,34 +103,12 @@ const services = [
         />
       </svg>
     ),
-    link: "/leistungen/seo-marketing",
-  },
-  {
-    title: "Google Indexierung",
-    description:
-      "Wir sorgen dafür, dass Ihre Website von Google schnell & effektiv gefunden wird.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="M12 8v8M9.5 10.5C9.5 9.11929 10.6193 8 12 8s2.5 1.11929 2.5 2.5c0 1.3807-1.1193 2.5-2.5 2.5"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-    link: "/leistungen/google-indexierung",
+    link: "#seo",
   },
   {
     title: "Wartung & Support",
-    description: "Zuverlässige Pflege und technische Unterstützung.",
+    description:
+      "Regelmäßige Updates, schnelle Fehlerbehebung & persönliche Beratung.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <rect
@@ -136,26 +128,11 @@ const services = [
         />
       </svg>
     ),
-    link: "/leistungen/wartung-support",
-  },
-  {
-    title: "Beratung",
-    description: "Individuelle Strategien für Ihren Online-Erfolg.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M4 19V18C4 14.6863 6.68629 12 10 12H14C17.3137 12 20 14.6863 20 18V19"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="1.7" />
-      </svg>
-    ),
-    link: "/leistungen/beratung",
+    link: "#support",
   },
 ];
 
-export default function Leistungen() {
+export default function WebDesignServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
@@ -164,7 +141,6 @@ export default function Leistungen() {
   const orb2Ref = useRef<HTMLSpanElement>(null);
   const orb3Ref = useRef<HTMLSpanElement>(null);
 
-  // Add card to ref array
   const addToCardsRef = (el: HTMLDivElement | null, index: number) => {
     if (el && !cardsRef.current.includes(el)) {
       cardsRef.current[index] = el;
@@ -321,11 +297,11 @@ export default function Leistungen() {
       <div className={styles.header}>
         <div className={styles.headerContent}>
           <h2 className={styles.sectionTitle} ref={titleRef}>
-            Leistungen
+            Webdesign Leistungen
           </h2>
           <p className={styles.sectionDesc} ref={descRef}>
-            Hochwertige Dienstleistungen für moderne Unternehmen. Von kreativen
-            Markenauftritten bis zu leistungsstarken Web-Lösungen.
+            Maßgeschneiderte Lösungen für Ihren digitalen Auftritt – modern,
+            schnell und nutzerorientiert.
           </p>
         </div>
       </div>
@@ -341,9 +317,7 @@ export default function Leistungen() {
             <div className={styles.icon}>{service.icon}</div>
             <h3 className={styles.title}>{service.title}</h3>
             <p className={styles.description}>{service.description}</p>
-            <Link href={service.link} className={styles.learnMore}>
-              Mehr erfahren<span className={styles.arrow}>&rarr;</span>
-            </Link>
+
             <div className={styles.hoverIndicator}></div>
           </div>
         ))}

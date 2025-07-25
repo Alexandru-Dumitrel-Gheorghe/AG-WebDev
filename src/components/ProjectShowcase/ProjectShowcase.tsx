@@ -52,7 +52,7 @@ export default function ProjectShowcase() {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     projectRefs.current.forEach((project) => {
@@ -63,7 +63,7 @@ export default function ProjectShowcase() {
   }, []);
 
   return (
-    <section className={styles.section} ref={sectionRef}>
+    <section className={styles.section} ref={sectionRef} id="projects">
       <div className={styles.container}>
         <header className={styles.header}>
           <h2 className={styles.title}>
@@ -87,14 +87,18 @@ export default function ProjectShowcase() {
               }}
             >
               <div className={styles.imageContainer}>
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className={styles.projectImage}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                <div className={styles.imageWrapper}>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className={styles.projectImage}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={90}
+                  />
+                </div>
                 <div className={styles.imageOverlay} />
+                <div className={styles.imageGradient} />
               </div>
 
               <div className={styles.content}>
@@ -111,10 +115,12 @@ export default function ProjectShowcase() {
                   </div>
                 </div>
 
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.projectDescription}>
-                  {project.description}
-                </p>
+                <div className={styles.textContent}>
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  <p className={styles.projectDescription}>
+                    {project.description}
+                  </p>
+                </div>
 
                 <div className={styles.buttons}>
                   {project.liveUrl && (
@@ -123,9 +129,33 @@ export default function ProjectShowcase() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.primaryButton}
+                      aria-label={`View ${project.title} live demo`}
                     >
                       View Live
-                      <span className={styles.buttonArrow}>→</span>
+                      <span className={styles.buttonArrow}>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M3.33325 12.6667L12.6666 3.33337"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M5.33325 3.33337H12.6666V10.6667"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
                     </a>
                   )}
                   {project.codeUrl && (
@@ -134,6 +164,7 @@ export default function ProjectShowcase() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.secondaryButton}
+                      aria-label={`View ${project.title} source code`}
                     >
                       View Code
                     </a>
