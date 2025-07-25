@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ/FAQ";
 import WarumAgWebdev from "./webdesign/components/WarumAgWebdev/WarumAgWebdev";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import WowFooter from "@/components/Footer/Footer";
+import PricingCTA from "./webdesign/components/PricingCTA/PricingCTA";
 
 export default function HomePage() {
   return (
@@ -20,8 +21,8 @@ export default function HomePage() {
         <ProjectShowcase />
         <WarumAgWebdev />
         <TechStack />
+        <PricingCTA />
         <Proces />
-
         <FAQ />
         <Testimonials />
         <WowFooter />

@@ -1,0 +1,220 @@
+/* === STRUCTURE === */
+
+.ctaSection {
+  width: 100%;
+  padding: 0 0 5rem;
+  position: relative;
+  overflow: visible;
+}
+
+.bgDecor {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10%;
+  width: 100%;
+  height: 80%;
+  background: var(--cta-bg-decor);
+  border-radius: 1.5rem;
+  z-index: 0;
+  filter: drop-shadow(0 8px 40px rgba(0, 0, 0, 0.05));
+}
+
+.cardsWrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* === CARDS === */
+.card {
+  background: var(--cta-card-bg);
+  border-radius: 1.2rem;
+  box-shadow: var(--cta-card-shadow);
+  padding: 2.1rem 1.5rem 2rem;
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: box-shadow 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1.5px solid var(--cta-border);
+}
+
+.card:hover {
+  box-shadow: var(--cta-card-shadow-hover);
+  border-color: var(--cta-accent);
+}
+
+.leftCard {
+  transform: rotate(-8deg) translateY(35px);
+}
+.rightCard {
+  transform: rotate(8deg) translateY(35px);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--cta-card-title);
+}
+
+.cardHeader svg {
+  color: var(--cta-card-icon);
+  stroke: var(--cta-card-icon);
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--cta-card-title);
+}
+
+.cardDesc {
+  font-size: 0.96rem;
+  color: var(--cta-card-desc);
+  margin-bottom: 0.6rem;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cta-card-title);
+  margin-bottom: 0.7rem;
+}
+
+/* List */
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.32rem;
+}
+
+.featureList li {
+  display: flex;
+  align-items: center;
+  font-size: 0.97rem;
+  color: var(--cta-card-desc);
+  gap: 0.5rem;
+}
+
+.featureList li span {
+  font-size: 1.08rem;
+  color: var(--cta-card-check);
+}
+
+/* Card Button */
+.cardButton {
+  margin-top: 0.7rem;
+  border: none;
+  outline: none;
+  background: var(--cta-btn-bg);
+  color: var(--cta-btn-color);
+  padding: 0.82rem 0;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: var(--cta-btn-shadow);
+  transition: background 0.18s, color 0.18s;
+}
+
+.cardButton:hover {
+  background: var(--cta-btn-hover-bg);
+  color: #fff;
+}
+
+/* === CENTER === */
+.centerContent {
+  flex: 1 1 380px;
+  text-align: center;
+  padding: 8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+}
+.centerContent h2 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin: 0 0 1.2rem 0;
+  color: var(--cta-title);
+  line-height: 1.19;
+  letter-spacing: -0.01em;
+}
+.centerContent p {
+  color: var(--cta-desc);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.62;
+}
+
+.centerButton {
+  border: none;
+  background: var(--cta-btn2-bg);
+  color: var(--cta-btn2-color);
+  padding: 0.95rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  box-shadow: var(--cta-btn-shadow);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.centerButton:hover {
+  background: var(--cta-btn2-hover-bg);
+  color: var(--cta-btn2-hover-color, #fff);
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+  .cardsWrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.7rem;
+  }
+  .leftCard,
+  .rightCard {
+    transform: none;
+    margin: 0 auto;
+  }
+  .centerContent {
+    min-width: unset;
+    padding: 0 0.2rem;
+  }
+}
+@media (max-width: 600px) {
+  .ctaSection {
+    padding: 2rem 0 2rem;
+  }
+  .cardsWrapper {
+    gap: 1.6rem;
+  }
+  .card {
+    width: 94vw;
+    max-width: 340px;
+    padding: 1.1rem 0.8rem 1.25rem;
+  }
+  .centerContent h2 {
+    font-size: 1.28rem;
+  }
+  .centerContent p {
+    font-size: 0.99rem;
+  }
+}
