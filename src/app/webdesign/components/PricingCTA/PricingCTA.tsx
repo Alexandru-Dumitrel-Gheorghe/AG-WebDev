@@ -1,13 +1,31 @@
 "use client";
+
 import styles from "./PricingCTA.module.css";
+import { useState, useEffect } from "react";
 
 export default function PricingCTA() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section className={styles.ctaSection}>
       <div className={styles.bgDecor} />
       <div className={styles.cardsWrapper}>
         {/* Left Card */}
-        <div className={`${styles.card} ${styles.leftCard}`}>
+        <div
+          className={`${styles.card} ${styles.leftCard} ${
+            !isMobile ? styles.rotatedCard : ""
+          }`}
+        >
           <div className={styles.cardHeader}>
             <svg width={22} height={22} fill="none" viewBox="0 0 24 24">
               <path
@@ -62,7 +80,11 @@ export default function PricingCTA() {
         </div>
 
         {/* Right Card */}
-        <div className={`${styles.card} ${styles.rightCard}`}>
+        <div
+          className={`${styles.card} ${styles.rightCard} ${
+            !isMobile ? styles.rotatedCard : ""
+          }`}
+        >
           <div className={styles.cardHeader}>
             <svg width={22} height={22} fill="none" viewBox="0 0 24 24">
               <path

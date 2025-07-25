@@ -1,5 +1,4 @@
 /* === STRUCTURE === */
-
 .ctaSection {
   width: 100%;
   padding: 0 0 5rem;
@@ -42,19 +41,23 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  transition: box-shadow 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1.5px solid var(--cta-border);
 }
 
 .card:hover {
   box-shadow: var(--cta-card-shadow-hover);
   border-color: var(--cta-accent);
+  transform: translateY(-5px);
 }
 
-.leftCard {
+.rotatedCard {
+  transform: translateY(35px);
+}
+.leftCard.rotatedCard {
   transform: rotate(-8deg) translateY(35px);
 }
-.rightCard {
+.rightCard.rotatedCard {
   transform: rotate(8deg) translateY(35px);
 }
 
@@ -103,15 +106,18 @@
 
 .featureList li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   font-size: 0.97rem;
   color: var(--cta-card-desc);
   gap: 0.5rem;
+  line-height: 1.4;
 }
 
 .featureList li span {
   font-size: 1.08rem;
   color: var(--cta-card-check);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
 }
 
 /* Card Button */
@@ -128,12 +134,13 @@
   letter-spacing: 0.03em;
   cursor: pointer;
   box-shadow: var(--cta-btn-shadow);
-  transition: background 0.18s, color 0.18s;
+  transition: all 0.3s ease;
 }
 
 .cardButton:hover {
   background: var(--cta-btn-hover-bg);
   color: #fff;
+  transform: translateY(-2px);
 }
 
 /* === CENTER === */
@@ -160,6 +167,7 @@
   font-size: 1.05rem;
   margin-bottom: 1.5rem;
   line-height: 1.62;
+  max-width: 380px;
 }
 
 .centerButton {
@@ -171,7 +179,7 @@
   font-weight: 600;
   border-radius: 999px;
   cursor: pointer;
-  transition: background 0.18s, color 0.18s;
+  transition: all 0.3s ease;
   box-shadow: var(--cta-btn-shadow);
   display: inline-flex;
   align-items: center;
@@ -180,6 +188,7 @@
 .centerButton:hover {
   background: var(--cta-btn2-hover-bg);
   color: var(--cta-btn2-hover-color, #fff);
+  transform: translateY(-2px);
 }
 
 /* Responsive */
@@ -188,33 +197,67 @@
     flex-direction: column;
     align-items: center;
     gap: 2.7rem;
+    padding: 0 1rem;
   }
   .leftCard,
   .rightCard {
-    transform: none;
+    transform: none !important;
     margin: 0 auto;
   }
   .centerContent {
     min-width: unset;
     padding: 0 0.2rem;
+    order: -1;
   }
 }
-@media (max-width: 600px) {
+
+@media (max-width: 768px) {
   .ctaSection {
-    padding: 2rem 0 2rem;
+    padding: 2rem 0 3rem;
+  }
+  .bgDecor {
+    top: 5%;
+    height: 90%;
   }
   .cardsWrapper {
-    gap: 1.6rem;
+    gap: 1.8rem;
   }
   .card {
-    width: 94vw;
-    max-width: 340px;
-    padding: 1.1rem 0.8rem 1.25rem;
+    width: 100%;
+    max-width: 380px;
+    padding: 1.5rem 1.2rem;
+  }
+  .centerContent {
+    padding: 0;
   }
   .centerContent h2 {
-    font-size: 1.28rem;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
   }
   .centerContent p {
-    font-size: 0.99rem;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .centerButton {
+    padding: 0.85rem 1.8rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaSection {
+    padding: 1.5rem 0 2.5rem;
+  }
+  .card {
+    padding: 1.3rem 1rem;
+  }
+  .centerContent h2 {
+    font-size: 1.4rem;
+  }
+  .centerContent p {
+    font-size: 0.95rem;
+  }
+  .featureList li {
+    font-size: 0.92rem;
   }
 }
