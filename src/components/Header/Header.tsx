@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const menuLinks = [
   { label: "Home", href: "/" },
-  { label: "Über uns", href: "#about" },
+  { label: "Über uns", href: "/about" },
   { label: "Projekte", href: "#projects" },
   { label: "Leistungen", href: "#services" },
   { label: "Kontakt", href: "/kontakt" },

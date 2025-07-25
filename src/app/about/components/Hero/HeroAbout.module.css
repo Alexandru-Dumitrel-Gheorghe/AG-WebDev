@@ -1,0 +1,240 @@
+.hero {
+  --image-width: 540px; /* MODIFICAT - imagine mult mai mare */
+  --image-height: 700px; /* MODIFICAT - proporție verticală mai premium */
+  --image-padding: 1.5rem 2.2rem 2.2rem 1.5rem; /* mai generos */
+  --image-border: 5px solid rgba(0, 0, 0, 0.05);
+
+  background: var(--bg-color);
+  width: 100%;
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.hero.inView {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5.5rem;
+  max-width: 1500px; /* MODIFICAT - la fel ca AboutIntro */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.imageWrapper {
+  background: var(--image-bg);
+  border: var(--image-border);
+  box-shadow: var(--image-shadow);
+  border-radius: 13px;
+  padding: var(--image-padding);
+  display: flex;
+  min-width: calc(var(--image-width) + 2rem);
+  min-height: calc(var(--image-height) + 2rem);
+  transition: all 0.3s ease;
+}
+
+.image {
+  display: block;
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  max-width: var(--image-width);
+  max-height: var(--image-height);
+  object-fit: cover;
+  object-position: center top;
+  background: var(--image-bg);
+  transition: all 0.3s ease;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 630px; /* puțin mai lat dacă vrei */
+  flex: 1;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.7vw, 1.4rem);
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.18em;
+  margin: 2rem 0 1.5rem 0;
+  text-transform: uppercase;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.title {
+  font-size: clamp(2.6rem, 5vw, 5.7rem);
+  color: var(--text-color);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.name {
+  font-size: clamp(1.5rem, 2vw, 3.2rem);
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  margin: 1.5rem 0;
+}
+
+.highlight {
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+
+.divider {
+  height: 2px;
+  width: 90%;
+  background: var(--text-secondary);
+  opacity: 0.22;
+  margin: 0.5rem 0;
+  align-self: flex-start;
+}
+
+/* Orbs */
+.orb1,
+.orb2 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(40px);
+  opacity: 0.7;
+  mix-blend-mode: overlay;
+}
+
+.orb1 {
+  width: min(400px, 30vw);
+  height: min(400px, 30vw);
+  left: -10%;
+  top: 10%;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  animation: float 18s ease-in-out infinite alternate;
+}
+
+.orb2 {
+  width: min(300px, 25vw);
+  height: min(300px, 25vw);
+  right: -8%;
+  bottom: -5%;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  animation: float 22s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(30px) rotate(5deg);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1000px;
+    gap: 3.2rem;
+    padding: 0 1.5rem;
+  }
+  .imageWrapper {
+    min-width: calc(var(--image-width) * 0.7);
+    min-height: calc(var(--image-height) * 0.7);
+  }
+  .image {
+    max-width: 430px;
+    max-height: 540px;
+  }
+  .divider {
+    width: 85%;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    gap: 2.3rem;
+    padding: 0 1rem;
+    max-width: 98vw;
+  }
+  .imageWrapper {
+    min-width: 220px;
+    min-height: 200px;
+    padding: 0.7rem 1.1rem;
+  }
+  .image {
+    max-width: 98vw;
+    min-width: 120px;
+    height: auto;
+  }
+  .content {
+    align-items: center;
+    text-align: center;
+    max-width: 100vw;
+  }
+  .subtitle {
+    margin: 1rem 0;
+    text-align: center;
+  }
+  .divider {
+    width: 70%;
+    align-self: center;
+  }
+  .orb1,
+  .orb2 {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 4rem 0 1.3rem;
+  }
+  .imageWrapper {
+    min-width: 130px;
+    min-height: 120px;
+    padding: 0.25rem 0.5rem 0.5rem 0.25rem;
+  }
+  .image {
+    max-width: 92vw;
+    min-width: 90px;
+    height: auto;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+    margin: 0.5rem 0;
+  }
+  .title {
+    margin-bottom: 1rem;
+    font-size: 2.3rem;
+  }
+  .name {
+    margin: 1rem 0;
+  }
+  .divider {
+    width: 60%;
+    margin: 0.25rem 0;
+  }
+  .orb1,
+  .orb2 {
+    display: none;
+  }
+}

@@ -2,6 +2,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import Header from "@/components/Header/Header";
 import { ThemeProvider } from "@/components/context/ThemeContext";
+import ScrollToTop from "@/components/ScrollToTop/ScrollToTop"; // 🔹 import nou
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <ThemeProvider>
+          <ScrollToTop /> {/* 🔹 plasat direct aici */}
           <Header />
           {children}
         </ThemeProvider>

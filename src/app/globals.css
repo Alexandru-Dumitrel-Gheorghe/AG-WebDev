@@ -47,6 +47,39 @@
   --image-shadow: 0 14px 68px rgba(0, 0, 0, 0.4),
     0 2px 18px rgba(255, 125, 90, 0.1);
 }
+.aboutIntro {
+  --bg-color: #fff;
+  --text-color: #161616;
+  --text-secondary: #8b8b8b;
+  --accent-color: #ff5d2a;
+  --btn-bg: #171717;
+  --btn-text: #fff;
+  --btn-hover-bg: #232323;
+  --image-bg: #e6e6e6;
+  --image-shadow: 0 10px 48px rgba(80, 80, 80, 0.09);
+  --stat-value-color: #171717;
+  --stat-label-color: #818181;
+
+  width: 100%;
+  background: var(--bg-color);
+  padding: 5.5rem 0 4rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.aboutIntro.dark {
+  --bg-color: #111;
+  --text-color: #f5f5f5;
+  --text-secondary: #b0b0b0;
+  --accent-color: #ff7d5a;
+  --btn-bg: #f5f5f5;
+  --btn-text: #111;
+  --btn-hover-bg: #ff7d5a;
+  --image-bg: #222;
+  --image-shadow: 0 10px 48px rgba(0, 0, 0, 0.3);
+  --stat-value-color: #f5f5f5;
+  --stat-label-color: #b0b0b0;
+}
+
 /* global.css */
 :root {
   /* Light mode colors */
@@ -908,6 +941,7 @@
   --step-content-bg: #111;
   --step-content-border: rgba(255, 255, 255, 0.05);
 }
+
 /* ---- RESET ---- */
 *,
 *::before,
