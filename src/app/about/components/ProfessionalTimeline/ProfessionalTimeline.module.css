@@ -1,0 +1,479 @@
+.journeySection {
+  width: 100%;
+  min-height: 100vh;
+  padding: 8rem 2rem;
+  background: var(--bg-color);
+  position: relative; /* <-- ASTA E CHEIA */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.journeyContainer {
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity, scale;
+}
+
+.sectionHeader {
+  max-width: 1500px;
+  margin: 0 auto 60px;
+  padding: 0 clamp(1rem, 4vw, 4rem);
+  position: relative;
+  z-index: 2;
+  text-align: left; /* nu centrat */
+}
+.headerContent {
+  max-width: 42rem;
+}
+.sectionTitle {
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  color: var(--section-title-color, #222);
+  letter-spacing: -0.05em;
+  margin: 0 0 20px;
+  line-height: 1.13;
+  position: relative;
+  transition: color 0.3s ease;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: #222; /* fallback dacă nu ai variabilă */
+  display: block;
+}
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 56px;
+  height: 4px;
+  background: var(--accent-color, #fc6b28);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+.sectionDesc {
+  color: var(--section-desc-color, #555);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 24px 0 0;
+  padding-left: 16px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.sectionDesc::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  height: calc(100% - 16px);
+  width: 2px;
+  background: var(--section-desc-line, #eee);
+  transition: background 0.3s ease;
+}
+.sectionSubtitle {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.timelineWrapper {
+  position: relative;
+  display: flex;
+  padding: 4rem 0;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 60px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  height: 100%;
+  background: rgba(255, 93, 42, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 1;
+}
+.progressIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--accent-color);
+  will-change: height;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.timelineItems {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-left: 120px;
+  width: 100%;
+}
+
+.timelineItem {
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.itemMarker {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid;
+  padding-bottom: 1rem;
+  transition: all 0.3s ease;
+  transform-origin: left center;
+}
+.timelineItem.active .itemMarker {
+  border-bottom: none !important;
+}
+.itemIcon {
+  width: 70px;
+  height: 70px;
+  background: var(--bg-color);
+  border: 3px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.timelineItem.active .itemIcon {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+.itemYear {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.itemContent {
+  overflow: hidden;
+  padding-left: 90px;
+  margin-top: -1.5rem;
+  padding-bottom: 2rem;
+}
+
+.itemHeader {
+  margin-bottom: 1.5rem;
+}
+
+.itemTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.itemCompany {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+}
+
+.itemDescription {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.itemHighlights {
+  margin-bottom: 2rem;
+}
+
+.highlightsTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.highlightsList {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.highlightItem {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.highlightBullet {
+  color: var(--accent-color);
+  margin-right: 0.8rem;
+  font-weight: bold;
+}
+
+.itemTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tag {
+  background: var(--bg-color);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  padding: 0.5rem 1.2rem;
+  border-radius: 2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.timelineItem.active .tag {
+  background: var(--accent-color);
+  color: white;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.controlButton {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.controlButton:hover:not(:disabled) {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.controlButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.dots {
+  display: flex;
+  gap: 1rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  opacity: 0.3;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--accent-color);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Decorative elements */
+.decorativeOrb1,
+.decorativeOrb2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.decorativeOrb1 {
+  width: 500px;
+  height: 500px;
+  left: -200px;
+  top: 100px;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  opacity: 0.15;
+}
+
+.decorativeOrb2 {
+  width: 400px;
+  height: 400px;
+  right: -150px;
+  bottom: -100px;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  opacity: 0.1;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .timelineItems {
+    padding-left: 80px;
+    gap: 2.5rem;
+  }
+
+  .timelineLine {
+    left: 40px;
+  }
+
+  .itemMarker {
+    gap: 1.5rem;
+  }
+
+  .itemIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  .itemContent {
+    padding-left: 70px;
+  }
+
+  .itemTitle {
+    font-size: 1.6rem;
+  }
+
+  .itemDescription {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .journeySection {
+    padding: 6rem 1.5rem;
+  }
+
+  .sectionHeader {
+    margin-bottom: 3rem;
+  }
+
+  .timelineWrapper {
+    padding: 3rem 0;
+  }
+
+  .timelineLine {
+    left: 30px;
+  }
+
+  .timelineItems {
+    padding-left: 60px;
+    gap: 2rem;
+  }
+
+  .itemMarker {
+    gap: 1rem;
+  }
+
+  .itemIcon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .itemYear {
+    font-size: 1.1rem;
+  }
+
+  .itemContent {
+    padding-left: 50px;
+  }
+
+  .itemTitle {
+    font-size: 1.4rem;
+  }
+
+  .itemDescription,
+  .highlightItem {
+    font-size: 1rem;
+  }
+
+  .tag {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .journeySection {
+    padding: 4rem 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+
+  .timelineLine {
+    left: 20px;
+  }
+
+  .timelineItems {
+    padding-left: 40px;
+    gap: 1.5rem;
+  }
+
+  .itemMarker {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .itemIcon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  .itemContent {
+    padding-left: 0;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .dots {
+    order: -1;
+  }
+
+  .decorativeOrb1,
+  .decorativeOrb2 {
+    display: none;
+  }
+}
