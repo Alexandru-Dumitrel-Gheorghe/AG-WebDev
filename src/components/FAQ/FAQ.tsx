@@ -176,145 +176,116 @@ export default function FAQ() {
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ duration: 0.5 }}
     >
-      <motion.div
-        className={styles.header}
-        initial={{ y: 50, opacity: 0 }}
-        animate={
-          isInView
-            ? {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  duration: 0.6,
-                  ease: "easeOut",
-                },
-              }
-            : {}
-        }
-      >
-        <div className={styles.headerContent}>
-          <motion.h2
-            className={styles.sectionTitle}
-            initial={{ x: -30 }}
-            animate={
-              isInView
-                ? {
-                    x: 0,
-                    transition: {
-                      delay: 0.1,
-                      type: "spring",
-                      stiffness: 100,
-                    },
-                  }
-                : {}
-            }
-          >
-            FAQ
-          </motion.h2>
-          <motion.p
-            className={styles.sectionDesc}
-            initial={{ x: -30 }}
-            animate={
-              isInView
-                ? {
-                    x: 0,
-                    transition: {
-                      delay: 0.2,
-                      type: "spring",
-                      stiffness: 100,
-                    },
-                  }
-                : {}
-            }
-          >
-            Antworten auf häufig gestellte Fragen rund um Webentwicklung, Design
-            & Zusammenarbeit.
-          </motion.p>
-        </div>
-      </motion.div>
-
-      <motion.div
-        className={styles.accordionContainer}
-        initial={{ y: 50, opacity: 0 }}
-        animate={
-          isInView
-            ? {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  delay: 0.3,
-                  duration: 0.6,
-                  ease: "easeOut",
-                },
-              }
-            : {}
-        }
-      >
-        {faqs.map((faq, index) => (
+      <div className={styles.container}>
+        <div className={styles.faqGrid}>
+          {/* LEFT - Header Content */}
           <motion.div
-            className={styles.accordionItem}
-            key={index}
-            initial={{ y: 20, opacity: 0 }}
+            className={styles.left}
+            initial={{ x: -40, opacity: 0 }}
+            animate={
+              isInView
+                ? { x: 0, opacity: 1, transition: { duration: 0.5 } }
+                : {}
+            }
+          >
+            <div className={styles.headerContent}>
+              <h2 className={styles.sectionTitle}>
+                Häufig gestellte <span>Fragen</span>
+              </h2>
+              <p className={styles.sectionDesc}>
+                Antworten auf häufig gestellte Fragen rund um Webentwicklung,
+                Design & Zusammenarbeit.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* RIGHT - Accordion */}
+          <motion.div
+            className={styles.right}
+            initial={{ x: 40, opacity: 0 }}
             animate={
               isInView
                 ? {
-                    y: 0,
+                    x: 0,
                     opacity: 1,
-                    transition: {
-                      delay: 0.4 + index * 0.05,
-                      duration: 0.5,
-                      ease: "easeOut",
-                    },
+                    transition: { duration: 0.5, delay: 0.1 },
                   }
                 : {}
             }
           >
-            <button
-              className={`${styles.accordionButton} ${
-                activeIndex === index ? styles.active : ""
-              }`}
-              onClick={() => toggleAccordion(index)}
-              aria-expanded={activeIndex === index}
-              aria-controls={`accordion-content-${index}`}
-            >
-              <div className={styles.accordionHeader}>
-                <div className={styles.icon}>{faq.icon}</div>
-                <h3 className={styles.title}>{faq.question}</h3>
-              </div>
-              <svg
-                className={styles.accordionIcon}
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  d={activeIndex === index ? "M18 15l-6-6-6 6" : "M6 9l6 6 6-6"}
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
-            <AnimatePresence>
-              {activeIndex === index && (
+            <div className={styles.accordionContainer}>
+              {faqs.map((faq, index) => (
                 <motion.div
-                  id={`accordion-content-${index}`}
-                  className={styles.accordionContent}
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className={styles.accordionItem}
+                  key={index}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={
+                    isInView
+                      ? {
+                          y: 0,
+                          opacity: 1,
+                          transition: {
+                            delay: 0.2 + index * 0.06,
+                            duration: 0.45,
+                            ease: "easeOut",
+                          },
+                        }
+                      : {}
+                  }
                 >
-                  <div className={styles.accordionAnswer}>
-                    <p className={styles.description}>{faq.answer}</p>
-                  </div>
+                  <button
+                    className={`${styles.accordionButton} ${
+                      activeIndex === index ? styles.active : ""
+                    }`}
+                    onClick={() => toggleAccordion(index)}
+                    aria-expanded={activeIndex === index}
+                    aria-controls={`accordion-content-${index}`}
+                  >
+                    <div className={styles.accordionHeader}>
+                      <div className={styles.icon}>{faq.icon}</div>
+                      <h3 className={styles.title}>{faq.question}</h3>
+                    </div>
+                    <svg
+                      className={styles.accordionIcon}
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d={
+                          activeIndex === index
+                            ? "M18 15l-6-6-6 6"
+                            : "M6 9l6 6 6-6"
+                        }
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {activeIndex === index && (
+                      <motion.div
+                        id={`accordion-content-${index}`}
+                        className={styles.accordionContent}
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      >
+                        <div className={styles.accordionAnswer}>
+                          <p className={styles.description}>{faq.answer}</p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
-              )}
-            </AnimatePresence>
+              ))}
+            </div>
           </motion.div>
-        ))}
-      </motion.div>
+        </div>
+      </div>
     </motion.section>
   );
 }
