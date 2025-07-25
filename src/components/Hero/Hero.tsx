@@ -237,19 +237,20 @@ export default function HeroSection() {
     <section className={styles.hero} ref={heroRef}>
       <div className={styles.left} ref={leftRef}>
         <span className={styles.prehead} ref={preheadRef}>
-          → WEBDESIGN & WEBENTWICKLUNG
+          → BRANDING
         </span>
 
         <h1 className={styles.title} ref={titleRef}>
-          DIGITALER <br />
-          <span className={styles.highlight}>WEBDESIGNER</span>
+          DIGITALE <br />
+          <span className={styles.highlight}>LÖSUNGEN</span>
         </h1>
         <p className={styles.subtitle} ref={subtitleRef}>
-          Maßgeschneidertes <span className={styles.highlight}>Webdesign</span>{" "}
-          & moderne Webentwicklung – vom Konzept bis zur fertigen Website.{" "}
-          <br />
-          Beratung, Umsetzung und Support – alles aus einer Hand, für Ihren
-          nachhaltigen Online-Erfolg.
+          Wir entwickeln{" "}
+          <span className={styles.highlight}>Leistungsstarke,</span>{" "}
+          benutzerfreundliche Websites, die Marken sichtbar machen, Vertrauen
+          schaffen <br />
+          und nachweislich Ergebnisse bringen für Ihren nachhaltigen
+          Online-Erfolg.
         </p>
 
         <a href="#kontakt" className={styles.ctaBtn} ref={ctaRef}>

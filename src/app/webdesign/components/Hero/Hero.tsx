@@ -80,13 +80,16 @@ export default function WebDesignHero() {
           </h1>
           <div className={styles.titleUnderline} />
           <p className={styles.subtitle} ref={subtitleRef}>
-            Wir kreieren{" "}
+            Unser Ziel ist es, nicht einfach nur schöne Webseiten zu erstellen,
+            sondern{" "}
             <span className={styles.subtitleHighlight}>
-              maßgeschneiderte digitale Erlebnisse
+              digitale Erlebnisse zu schaffen
             </span>
-            , die Ihre Marke auf ein neues Level heben und bleibenden Eindruck
-            hinterlassen.
+            , die Ihre Zielgruppe emotional erreichen, Ihre Marke stärken und
+            nachhaltig zum geschäftlichen Wachstum beitragen – mit einem klaren
+            Fokus auf Benutzerfreundlichkeit, Performance und Sichtbarkeit.
           </p>
+
           <div className={styles.buttons} ref={buttonRef}>
             <a href="#contact" className={styles.primaryButton}>
               Projekt besprechen
