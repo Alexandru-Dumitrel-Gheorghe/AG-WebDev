@@ -21,8 +21,8 @@ export default function HomePage() {
         <ProjectShowcase />
         <WarumAgWebdev />
         <TechStack />
-        <PricingCTA />
         <Proces />
+        <PricingCTA />
         <FAQ />
         <Testimonials />
         <WowFooter />

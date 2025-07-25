@@ -1,10 +1,10 @@
-/* FAQ.module.css */
 .faqSection {
   width: 100%;
   padding: 5rem 0;
   background: var(--faq-bg);
   position: relative;
   transition: background 0.3s ease;
+  overflow-x: clip; /* ← adaugă asta */
 }
 
 .container {
@@ -24,7 +24,7 @@
 /* Left Column - Header */
 .left {
   position: sticky;
-  top: 5rem;
+  top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
