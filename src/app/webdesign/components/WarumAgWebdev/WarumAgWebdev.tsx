@@ -136,13 +136,13 @@ export default function WarumAgWebdev() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className={styles.header}
+            className={styles.headerContainer}
           >
             <span className={styles.preTitle}>Warum uns wählen?</span>
-            <h2 className={styles.headline}>
-              Die <span>AG WebDev</span> Differenz
+            <h2 className={styles.sectionTitle}>
+              Warum <span>AG WebDev</span>
             </h2>
-            <p className={styles.subtext}>
+            <p className={styles.sectionDesc}>
               Digitale Lösungen mit maximalem Impact: Effizient, modern und auf
               Ihr Business abgestimmt.
             </p>

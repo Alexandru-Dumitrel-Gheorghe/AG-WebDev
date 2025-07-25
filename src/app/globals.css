@@ -738,18 +738,6 @@
 }
 
 :root {
-  --hero-bg: #fff;
-  --hero-title-color: #202124;
-  --hero-subtitle-color: #5a5a5a;
-  --accent-color: #fc6b28;
-  --accent-rgb: 252, 107, 40;
-  --button-bg: #181818;
-  --button-text: #fff;
-  --button-hover-bg: #fc6b28;
-  --button-hover-text: #fff;
-  --scroll-indicator-color: #b0b0b0;
-}
-:root {
   /* Light mode colors */
   --footer-bg: #2a2a2a;
   --footer-text: #f5f5f5;

@@ -16,7 +16,7 @@ export default function DesignProzess() {
     offset: ["start start", "end start"],
   });
 
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   const steps = [
     {
@@ -152,7 +152,7 @@ export default function DesignProzess() {
   const progressWidth = `${(activeStep / (steps.length - 1)) * 100}%`;
 
   return (
-    <div className={styles.section} id="design-prozess" ref={containerRef}>
+    <section className={styles.section} id="design-prozess" ref={containerRef}>
       <div className={styles.container}>
         <motion.div className={styles.header} style={{ y: yText }}>
           <motion.h2
@@ -162,9 +162,8 @@ export default function DesignProzess() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Designprozess
+            Unser <span>Designprozess</span>
           </motion.h2>
-          {/* Sub-linia portocalie, apare pe mobile */}
           <div className={styles.titleUnderline} />
           <motion.p
             className={styles.subtitle}
@@ -191,7 +190,7 @@ export default function DesignProzess() {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -208,8 +207,7 @@ function DesktopProcess({
 }) {
   return (
     <>
-      <div className={styles.stepsNavigation} style={{ position: "relative" }}>
-        {/* Progress bar */}
+      <div className={styles.stepsNavigation}>
         <div className={styles.progressBar} style={{ width: progressWidth }} />
         {steps.map((step, index) => (
           <motion.div
@@ -220,7 +218,7 @@ function DesktopProcess({
             onClick={() => setActiveStep(index)}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.11 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
             <div className={styles.stepNavIndicator}>
@@ -237,10 +235,10 @@ function DesktopProcess({
           <motion.div
             key={activeStep}
             className={styles.stepContent}
-            initial={{ opacity: 0, x: 26 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -26 }}
-            transition={{ duration: 0.38 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4 }}
           >
             <p>{steps[activeStep].description}</p>
           </motion.div>
@@ -259,7 +257,7 @@ function MobileProcess({ steps }: { steps: any[] }) {
           className={styles.mobileStep}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.13 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
           viewport={{ once: true, margin: "0px 0px -50px 0px" }}
         >
           <div className={styles.mobileStepHeader}>
