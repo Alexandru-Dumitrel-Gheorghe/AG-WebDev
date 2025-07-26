@@ -24,14 +24,14 @@ const projects: Project[] = [
   {
     title: "Yoga Platform",
     description: "Platformă de învățare online cu lecții video interactive",
-    image: "/images/certus-case.png",
+    image: "/images/case-mockup-oberholzer.png",
     technologies: ["React", "Sanity", "Cloudinary"],
     liveUrl: "#",
   },
   {
     title: "Portfolio Creative",
     description: "Website portofoliu cu animații custom și design minimalist",
-    image: "/images/certus-case.png",
+    image: "/images/Fraga-projekt.png",
     technologies: ["GSAP", "Webflow", "Figma"],
     liveUrl: "#",
     codeUrl: "#",

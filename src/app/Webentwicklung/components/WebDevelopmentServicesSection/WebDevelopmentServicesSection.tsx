@@ -1,77 +1,62 @@
 "use client";
-import styles from "./Leistungen.module.css";
+import styles from "./WebDesignServicesSection.module.css";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link"; // Doar dacă folosești Next.js
 
 const services = [
   {
-    title: "Webdesign",
-    description: "Modernes, responsives und performantes Webdesign.",
+    title: "Individuelle Webentwicklung",
+    description:
+      "Maßgeschneiderte Lösungen und Programmierung für Ihre Anforderungen.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <rect
           x="3"
-          y="4"
+          y="5"
           width="18"
-          height="16"
-          rx="2"
+          height="14"
+          rx="2.5"
           stroke="currentColor"
           strokeWidth="1.7"
         />
-        <rect
-          x="7"
-          y="8"
-          width="10"
-          height="8"
-          rx="1.5"
+        <path
+          d="M8 10l4 4 4-4"
           stroke="currentColor"
           strokeWidth="1.7"
+          strokeLinecap="round"
         />
       </svg>
     ),
-    link: "/webdesign",
+    link: "#entwicklung",
   },
   {
-    title: "Webentwicklung",
-    description: "Moderne Websites und Web-Apps mit neuesten Technologien.",
+    title: "Google Indexierung",
+    description:
+      "Optimale technische Voraussetzungen für schnelle & nachhaltige Aufnahme im Google-Index.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <rect
-          x="3"
-          y="3"
-          width="18"
-          height="4"
-          rx="1.5"
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
           stroke="currentColor"
           strokeWidth="1.7"
         />
-        <rect
-          x="3"
-          y="9"
-          width="18"
-          height="4"
-          rx="1.5"
+        <path
+          d="M7 12l3 3 7-7"
           stroke="currentColor"
           strokeWidth="1.7"
-        />
-        <rect
-          x="3"
-          y="15"
-          width="18"
-          height="4"
-          rx="1.5"
-          stroke="currentColor"
-          strokeWidth="1.7"
+          strokeLinecap="round"
         />
       </svg>
     ),
-    link: "/Webentwicklung",
+    link: "#indexierung",
   },
   {
-    title: "SEO & Marketing",
-    description: "Ihre Website auf Top-Positionen bei Google.",
+    title: "SEO-Optimierung",
+    description:
+      "Modernste technische und strukturelle SEO-Maßnahmen für Top-Sichtbarkeit.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <circle
@@ -89,34 +74,38 @@ const services = [
         />
       </svg>
     ),
-    link: "/leistungen/seo-marketing",
+    link: "#seo",
   },
   {
-    title: "Google Indexierung",
+    title: "Sicherheit & Datenschutz",
     description:
-      "Wir sorgen dafür, dass Ihre Website von Google schnell & effektiv gefunden wird.",
+      "Schutz vor Angriffen, DSGVO-konforme Entwicklung und sichere Datenübertragung.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
+        <rect
+          x="5"
+          y="8"
+          width="14"
+          height="10"
+          rx="2"
           stroke="currentColor"
           strokeWidth="1.7"
         />
         <path
-          d="M12 8v8M9.5 10.5C9.5 9.11929 10.6193 8 12 8s2.5 1.11929 2.5 2.5c0 1.3807-1.1193 2.5-2.5 2.5"
+          d="M12 12v3"
           stroke="currentColor"
           strokeWidth="1.7"
           strokeLinecap="round"
         />
+        <circle cx="12" cy="11" r="1" fill="currentColor" />
       </svg>
     ),
-    link: "/leistungen/google-indexierung",
+    link: "#sicherheit",
   },
   {
     title: "Wartung & Support",
-    description: "Zuverlässige Pflege und technische Unterstützung.",
+    description:
+      "Updates, Monitoring und schnelle Fehlerbehebung – alles aus einer Hand.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <rect
@@ -136,26 +125,11 @@ const services = [
         />
       </svg>
     ),
-    link: "/leistungen/wartung-support",
-  },
-  {
-    title: "Beratung",
-    description: "Individuelle Strategien für Ihren Online-Erfolg.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M4 19V18C4 14.6863 6.68629 12 10 12H14C17.3137 12 20 14.6863 20 18V19"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="1.7" />
-      </svg>
-    ),
-    link: "/leistungen/beratung",
+    link: "#wartung",
   },
 ];
 
-export default function Leistungen() {
+export default function WebDevelopmentServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
@@ -164,7 +138,6 @@ export default function Leistungen() {
   const orb2Ref = useRef<HTMLSpanElement>(null);
   const orb3Ref = useRef<HTMLSpanElement>(null);
 
-  // Add card to ref array
   const addToCardsRef = (el: HTMLDivElement | null, index: number) => {
     if (el && !cardsRef.current.includes(el)) {
       cardsRef.current[index] = el;
@@ -321,11 +294,11 @@ export default function Leistungen() {
       <div className={styles.header}>
         <div className={styles.headerContent}>
           <h2 className={styles.sectionTitle} ref={titleRef}>
-            Leistungen
+            Webentwicklung Leistungen
           </h2>
           <p className={styles.sectionDesc} ref={descRef}>
-            Hochwertige Dienstleistungen für moderne Unternehmen. Von kreativen
-            Markenauftritten bis zu leistungsstarken Web-Lösungen.
+            Zukunftssichere Entwicklung, höchste Performance und maximale
+            Sicherheit – für Ihren nachhaltigen Online-Erfolg.
           </p>
         </div>
       </div>
@@ -341,9 +314,6 @@ export default function Leistungen() {
             <div className={styles.icon}>{service.icon}</div>
             <h3 className={styles.title}>{service.title}</h3>
             <p className={styles.description}>{service.description}</p>
-            <Link href={service.link} className={styles.learnMore}>
-              Mehr erfahren<span className={styles.arrow}>&rarr;</span>
-            </Link>
             <div className={styles.hoverIndicator}></div>
           </div>
         ))}

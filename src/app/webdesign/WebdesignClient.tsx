@@ -6,6 +6,7 @@ import WebdesignProzess from "./components/WebdesignProzess/WebdesignProzess";
 import PricingCTA from "./components/PricingCTA/PricingCTA";
 import FAQ from "@/components/FAQ/FAQ";
 import Testimonials from "@/components/Testimonials/Testimonials";
+import CTASection from "@/components/CTASection/CTASection";
 
 export default function WebdesignClient() {
   return (
@@ -16,6 +17,7 @@ export default function WebdesignClient() {
       <WebdesignProzess />
       <PricingCTA />
       <FAQ />
+      <CTASection />
       <Testimonials />
     </>
   );

@@ -1,0 +1,309 @@
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-color);
+  border-radius: 2rem;
+  padding: 3rem 2.5rem;
+  gap: 4rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  max-width: 80rem;
+  margin: 4rem auto;
+  position: relative;
+  overflow: visible;
+  transition: all 0.3s ease;
+}
+
+.left {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.phoneWrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.phoneImg {
+  border-radius: 1.5rem;
+  border: 0.375rem solid var(--bg-color);
+  width: 14rem;
+  height: 26rem;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+.separator {
+  width: 2px;
+  min-height: 15rem;
+  height: 60%;
+  background: linear-gradient(
+    180deg,
+    rgba(90, 90, 90, 0.06) 0%,
+    var(--accent-color) 49%,
+    rgba(90, 90, 90, 0.06) 100%
+  );
+  margin: 0 2.8rem;
+  border-radius: 10px;
+  align-self: stretch;
+  transition: background 0.3s;
+  z-index: 1;
+  box-shadow: 0 0 10px 0 rgba(255, 93, 42, 0.08);
+}
+
+[data-theme="dark"] .separator {
+  background: linear-gradient(
+    180deg,
+    rgba(245, 245, 245, 0.07) 0%,
+    var(--accent-color) 49%,
+    rgba(245, 245, 245, 0.07) 100%
+  );
+  box-shadow: 0 0 16px 0 rgba(255, 125, 90, 0.11);
+}
+
+/* Tablet & Mobile: ascunde separatorul pentru spațiu */
+@media (max-width: 64rem) {
+  .separator {
+    display: none;
+  }
+}
+
+.badge {
+  position: absolute;
+  left: -2.8rem;
+  top: -2.8rem;
+  background: var(--accent-color);
+  color: var(--active-tag-text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 6.5rem;
+  height: 6.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.08em;
+  transform: rotate(-17deg);
+  box-shadow: 0 6px 32px var(--timeline-line-bg);
+  text-align: center;
+  padding: 0.5rem;
+  z-index: 5;
+  transition: all 0.3s ease;
+  line-height: 1.2;
+}
+
+.smallImgWrapper {
+  position: absolute;
+  left: 9rem;
+  bottom: 1.5rem;
+  z-index: 3;
+  filter: drop-shadow(0 6px 22px rgba(0, 0, 0, 0.14));
+}
+
+/* Landscape, card-style, mai lată */
+.smallImg {
+  border-radius: 1.2rem;
+  width: 14rem; /* <-- Aici lățimea mare */
+  height: 8.5rem; /* <-- Aici înălțimea mică */
+  object-fit: cover;
+  border: 0.25rem solid var(--bg-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 28rem;
+}
+
+.headingWrapper {
+  margin-bottom: 0.5rem;
+}
+
+.mainTitle {
+  color: var(--accent-color);
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.subTitle {
+  color: var(--section-title-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.desc {
+  color: var(--section-desc-color);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.ctaBtn {
+  background: var(--accent-color);
+  color: var(--active-tag-text);
+  border-radius: 0.75rem;
+  padding: 1.1rem 2.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  box-shadow: 0 8px 28px var(--timeline-line-bg);
+  border: none;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.ctaBtn:hover,
+.ctaBtn:focus {
+  background: var(--control-button-hover);
+  color: var(--active-tag-text);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 12px 38px var(--timeline-line-bg);
+}
+
+/* Tablet View */
+@media (max-width: 64rem) {
+  .cta {
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1.5rem;
+    max-width: 95%;
+    margin: 3rem auto;
+  }
+
+  .left {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  .smallImgWrapper {
+    left: 7rem;
+    bottom: 1rem;
+  }
+
+  .right {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .headingWrapper {
+    text-align: center;
+  }
+
+  .ctaBtn {
+    align-self: center;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 48rem) {
+  .mainTitle {
+    font-size: 2.2rem;
+  }
+
+  .subTitle {
+    font-size: 1.5rem;
+  }
+
+  .desc {
+    font-size: 1.05rem;
+  }
+}
+
+/* Small Mobile View */
+@media (max-width: 33.75rem) {
+  .cta {
+    padding: 1.5rem 1rem 2rem 1rem;
+    border-radius: 1rem;
+    margin: 2rem auto;
+    gap: 1.5rem;
+  }
+
+  .left {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .phoneImg {
+    width: 8rem;
+    height: 15rem;
+    border-width: 0.25rem;
+    display: none;
+  }
+
+  .smallImgWrapper {
+    left: 0.5rem;
+    bottom: -1rem;
+  }
+
+  .smallImg {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .badge {
+    width: 4rem;
+    height: 4rem;
+    font-size: 0.5rem;
+    left: -1rem;
+    top: -1rem;
+    padding: 0.25rem;
+  }
+
+  .mainTitle {
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .subTitle {
+    font-size: 1.3rem;
+  }
+
+  .desc {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .ctaBtn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.05rem;
+    border-radius: 0.5rem;
+  }
+}
+
+/* Extra Small Mobile View */
+@media (max-width: 23.4375rem) {
+  .mainTitle {
+    font-size: 1.6rem;
+  }
+
+  .subTitle {
+    font-size: 1.1rem;
+  }
+
+  .ctaBtn {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+  }
+}

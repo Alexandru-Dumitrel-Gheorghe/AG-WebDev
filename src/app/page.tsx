@@ -10,6 +10,7 @@ import WarumAgWebdev from "./webdesign/components/WarumAgWebdev/WarumAgWebdev";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import WowFooter from "@/components/Footer/Footer";
 import PricingCTA from "./webdesign/components/PricingCTA/PricingCTA";
+import CTASection from "@/components/CTASection/CTASection";
 
 export default function HomePage() {
   return (
@@ -24,6 +25,7 @@ export default function HomePage() {
         <Proces />
         <PricingCTA />
         <FAQ />
+        <CTASection />
         <Testimonials />
         <WowFooter />
       </ScrollAnimationProvider>
