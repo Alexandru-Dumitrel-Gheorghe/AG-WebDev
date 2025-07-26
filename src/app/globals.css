@@ -101,38 +101,6 @@
   --active-item-icon-border: #ff8c5a;
 }
 
-:root {
-  --bg-color: #ffffff;
-  --text-color: #222222;
-  --text-secondary: #555555;
-  --accent-color: #fc6b28;
-  --section-title-color: #222222;
-  --section-subtitle-color: #555555;
-  --section-subtitle-line: #eeeeee;
-  --fact-bg: #f9f9f9;
-  --fact-text: #333333;
-  --highlight-bg: rgba(252, 107, 40, 0.1);
-  --highlight-text: #fc6b28;
-  --nav-dot: #cccccc;
-  --active-nav-dot: #fc6b28;
-  --theme-toggle-bg: transparent;
-}
-
-[data-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #f5f5f5;
-  --text-secondary: #aaaaaa;
-  --accent-color: #ff8c5a;
-  --section-title-color: #f5f5f5;
-  --section-subtitle-color: #aaaaaa;
-  --section-subtitle-line: #333333;
-  --fact-bg: #1e1e1e;
-  --fact-text: #f0f0f0;
-  --highlight-bg: rgba(255, 140, 90, 0.15);
-  --highlight-text: #ff8c5a;
-  --nav-dot: #444444;
-  --active-nav-dot: #ff8c5a;
-}
 .aboutIntro {
   --bg-color: #fff;
   --text-color: #161616;
