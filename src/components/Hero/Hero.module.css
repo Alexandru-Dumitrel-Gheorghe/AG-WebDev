@@ -186,6 +186,8 @@
   transform-origin: center bottom;
   transform-style: preserve-3d;
   transition: box-shadow 0.3s ease, background 0.3s ease;
+  opacity: 1 !important; /* <--- ADĂUGĂ această linie */
+  transform: none !important; /* <--- ADĂUGĂ această linie */
 }
 
 .imageOverlay {

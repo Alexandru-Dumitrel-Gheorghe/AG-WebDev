@@ -20,7 +20,7 @@ export default function HeroSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    // Reset animation props to avoid glitches
+    // Reset animation props to avoid glitches (nu include imaginea!)
     gsap.set(
       [
         leftRef.current,
@@ -29,14 +29,10 @@ export default function HeroSection() {
         preheadRef.current,
         subtitleRef.current,
         ctaRef.current,
-        imageRef.current,
         decorationRef.current,
       ],
       { clearProps: "opacity,transform,scale" }
     );
-
-    // Check if mobile view
-    const isMobile = window.innerWidth < 800;
 
     // Split text for title animation
     if (titleRef.current) {
@@ -52,14 +48,17 @@ export default function HeroSection() {
       });
     }
 
-    // Sequential load animation
+    // Check if mobile view
+    const isMobile = window.innerWidth < 800;
+
+    // Sequential load animation (NU include imaginea in tl.set!)
     const tl = gsap.timeline();
     tl.set(
       [
         preheadRef.current,
         subtitleRef.current,
         ctaRef.current,
-        imageRef.current,
+        // imageRef.current, // SCAOS imaginea de aici!
       ],
       { opacity: 0, y: isMobile ? 20 : 30 }
     )
@@ -94,12 +93,12 @@ export default function HeroSection() {
         { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
         "-=0.5"
       )
+      // Dacă vrei efect subtil, doar scale sau y (fără opacity!)
       .to(
         imageRef.current,
         {
           scale: 1,
-          opacity: 1,
-          duration: 1.1,
+          duration: 1,
           ease: "expo.out",
           y: isMobile ? 0 : 20,
         },
@@ -116,9 +115,8 @@ export default function HeroSection() {
         "-=1.2"
       );
 
-    // Floating animation for image (desktop only)
+    // Floating & Parallax (ok, după ce e LCP, nu afectează auditul)
     if (!isMobile) {
-      // Multi-axis floating effect
       gsap.to(imageRef.current, {
         y: 20,
         x: 10,
@@ -128,7 +126,6 @@ export default function HeroSection() {
         ease: "sine.inOut",
       });
 
-      // Decoration rotation
       gsap.to(decorationRef.current, {
         rotation: 360,
         duration: 120,
@@ -136,7 +133,6 @@ export default function HeroSection() {
         ease: "none",
       });
 
-      // Parallax scroll animations
       const parallaxTl = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
@@ -195,7 +191,7 @@ export default function HeroSection() {
           0
         );
 
-      // Mouse move parallax effect
+      // Mouse parallax (opțional)
       if (heroRef.current) {
         heroRef.current.addEventListener("mousemove", (e) => {
           const xPos = e.clientX / window.innerWidth - 0.5;
