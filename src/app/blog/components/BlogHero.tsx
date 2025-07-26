@@ -1,89 +1,57 @@
 "use client";
-import { motion } from "framer-motion";
+
+import Image from "next/image";
 import styles from "./BlogHero.module.css";
 
-export default function BlogHero() {
+export default function BlogMainHero() {
   return (
-    <section className={styles.hero}>
-      {/* Gradient Background */}
-      <div className={styles.gradientBg}></div>
+    <div className={styles.heroContainer}>
+      <div className={styles.heroContent}>
+        <div className={styles.textWrapper}>
+          <div className={styles.badge}>
+            <span>AG WebDev Blog</span>
+            <div className={styles.badgeAccent}></div>
+          </div>
 
-      {/* Abstract Grid Pattern */}
-      <div className={styles.gridPattern}>
-        <div className={styles.gridLine}></div>
-        <div className={styles.gridLine}></div>
-        <div className={styles.gridLine}></div>
-      </div>
+          <h1 className={styles.mainTitle}>
+            Wir verwandeln <span className={styles.highlight}>Ideen</span> in
+            <span className={styles.highlight}> digitale Lösungen</span>
+          </h1>
 
-      {/* Floating Elements */}
-      <motion.div
-        className={styles.floatingCircle}
-        animate={{
-          y: [0, 15, 0],
-          scale: [1, 1.05, 1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      ></motion.div>
+          <p className={styles.subtitle}>
+            Entdecken Sie die neuesten Trends in Webentwicklung, SEO und
+            digitalem Marketing durch unsere gut recherchierten Artikel und
+            praxisnahen Fallstudien.
+          </p>
 
-      <motion.div
-        className={styles.floatingTriangle}
-        animate={{
-          rotate: [0, 5, 0],
-          y: [0, -10, 0],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.5,
-        }}
-      ></motion.div>
-
-      {/* Content */}
-      <motion.div
-        className={styles.content}
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      >
-        <div className={styles.titleWrapper}>
-          <motion.h1
-            className={styles.title}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-          >
-            <span className={styles.titleMain}>Digitales Wissen</span>
-            <span className={styles.titleSub}>
-              Expertenwissen für Ihren Online-Erfolg
-            </span>
-          </motion.h1>
+          <div className={styles.ctaWrapper}>
+            <button className={styles.primaryButton}>
+              Letzten Artikel lesen
+            </button>
+            <button className={styles.secondaryButton}>
+              Kategorien durchsuchen
+            </button>
+          </div>
         </div>
 
-        <motion.p
-          className={styles.desc}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.8 }}
-        >
-          Entdecken Sie aktuelle Trends, bewährte Strategien und innovative
-          Ansätze in Webdesign, Entwicklung und Digitalmarketing.
-        </motion.p>
+        <div className={styles.imageWrapper}>
+          {/* Eliminăm gradientOverlay, gridPattern și circleAccent pentru că vrem doar imaginea */}
+          <Image
+            src="/images/Google-Indexierung-hero2.png" // Înlocuiește cu calea ta corectă
+            alt="Blog Hero Bild"
+            fill
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </div>
+      </div>
 
-        <motion.div
-          className={styles.scrollIndicator}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 1.2 }}
-        >
-          <span className={styles.scrollText}>Scrollen zum Entdecken</span>
-          <div className={styles.scrollLine}></div>
-        </motion.div>
-      </motion.div>
-    </section>
+      <div className={styles.scrollCue}>
+        <div className={styles.mouseIcon}>
+          <div className={styles.mouseWheel}></div>
+        </div>
+        <span>Nach unten scrollen für mehr</span>
+      </div>
+    </div>
   );
 }
