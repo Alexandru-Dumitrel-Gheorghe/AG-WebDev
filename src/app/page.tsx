@@ -20,9 +20,9 @@ export default function HomePage() {
         <AboutMe />
         <Leistungen />
         <ProjectShowcase />
+        <BlogCTA />
         <WarumAgWebdev />
         <TechStack />
-        <BlogCTA />
         <Proces />
         <PricingCTA />
         <FAQ />

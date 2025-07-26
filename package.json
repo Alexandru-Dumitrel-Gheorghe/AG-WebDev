@@ -13,6 +13,7 @@
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.23.7",
     "gsap": "^3.13.0",
+    "lucide-react": "^0.526.0",
     "next": "15.4.2",
     "next-seo": "^6.8.0",
     "react": "19.1.0",

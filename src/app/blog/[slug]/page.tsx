@@ -2,7 +2,7 @@ import BlogPostClient from "./BlogPostClient";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-// Configurare SEO pentru fiecare slug (meta, keywords, OG, canonical etc.)
+// === SEO metadata pentru fiecare slug ===
 const blogMeta: Record<string, Metadata> = {
   "wie-funktioniert-google-indexierung": {
     title: "Wie funktioniert Google Indexierung? - AG WebDev",
@@ -106,7 +106,7 @@ const blogMeta: Record<string, Metadata> = {
   },
 };
 
-// Funcție SEO dinamică pentru fiecare blog
+// === Dynamic SEO metadata pentru fiecare blog ===
 export async function generateMetadata({
   params,
 }: {
@@ -122,7 +122,7 @@ export async function generateMetadata({
   );
 }
 
-// Funcție pentru JSON-LD schema.org (tip Article)
+// === JSON-LD schema.org (tip Article) ===
 function generateJsonLd(meta: Metadata, slug: string) {
   const url = `https://www.ag-webdev.de/blog/${slug}`;
   return {
@@ -154,7 +154,7 @@ function generateJsonLd(meta: Metadata, slug: string) {
   };
 }
 
-// Componenta Page, cu fallback la notFound() pentru slugs necunoscute
+// === Componenta Page ===
 export default async function Page({ params }: { params: { slug: string } }) {
   const awaitedParams = await params;
   if (!blogMeta[awaitedParams.slug]) return notFound();
@@ -164,13 +164,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      {/* Injectează JSON-LD în head pentru SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         key="jsonld"
       />
-      {/* Afișează conținutul blogului */}
       <BlogPostClient slug={awaitedParams.slug} />
     </>
   );
