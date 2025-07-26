@@ -8,6 +8,7 @@ import PricingCTA from "../webdesign/components/PricingCTA/PricingCTA";
 import FAQ from "@/components/FAQ/FAQ";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import CTASection from "@/components/CTASection/CTASection";
+import Technologies from "@/components/Technologies/Technologies";
 
 export default function WebentwicklungClient() {
   return (
@@ -16,6 +17,7 @@ export default function WebentwicklungClient() {
       <WebentwicklungProzess />
       <CTASection />
       <WebDevelopmentServicesSection />
+      <Technologies />
       <WarumAgWebdev />
       <PricingCTA />
       <FAQ />

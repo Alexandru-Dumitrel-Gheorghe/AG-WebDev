@@ -1,0 +1,316 @@
+.blogContainer {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem 1.5rem;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.mainTitle {
+  font-size: 2.4rem;
+  color: var(--section-title-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.introBox {
+  background-color: rgba(252, 107, 40, 0.05);
+  border-left: 4px solid var(--accent-color);
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.introText {
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.section {
+  margin-bottom: 3.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  color: var(--section-title-color);
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--section-desc-line);
+  font-weight: 700;
+}
+
+.cmsUseCases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.useCaseCard {
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.useCaseCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardIcon {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  color: var(--section-title-color);
+}
+
+.cardList {
+  padding-left: 1.2rem;
+}
+
+.cardList li {
+  margin-bottom: 0.75rem;
+  font-size: 0.98rem;
+}
+
+.headlessDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.subsectionTitle {
+  font-size: 1.4rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.techColumn {
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.techHeading {
+  font-size: 1.1rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--section-desc-line);
+}
+
+.techList {
+  padding-left: 1.2rem;
+}
+
+.techList li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.archDiagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.archStep {
+  padding: 0.75rem 1.5rem;
+  background: rgba(252, 107, 40, 0.1);
+  border-radius: 6px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.archArrow {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+}
+
+.caseStudy {
+  background-color: rgba(252, 107, 40, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 3rem 0;
+}
+
+.caseStudyTitle {
+  font-size: 1.4rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.caseStudyText {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.05rem;
+}
+
+.caseStudyList {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.caseStudyList li {
+  margin-bottom: 0.75rem;
+}
+
+.caseStudyResult {
+  margin: 1.5rem 0 0 0;
+  font-size: 1.05rem;
+}
+
+.decisionGuide {
+  margin-bottom: 3rem;
+}
+
+.decisionTitle {
+  font-size: 1.5rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.decisionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.decisionOption {
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.optionTitle {
+  font-size: 1.2rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--section-desc-line);
+}
+
+.optionList {
+  padding-left: 1.2rem;
+}
+
+.optionList li {
+  margin-bottom: 0.75rem;
+}
+
+.conclusion {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--section-desc-line);
+}
+
+.conclusionTitle {
+  font-size: 1.6rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.conclusionText {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.1rem;
+}
+
+.migrationSteps {
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.migrationSteps li {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.finalThought {
+  margin: 2rem 0 0 0;
+  font-size: 1.1rem;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .useCaseCard,
+[data-theme="dark"] .techColumn,
+[data-theme="dark"] .archDiagram,
+[data-theme="dark"] .decisionOption {
+  background-color: var(--tag-bg);
+  border-color: var(--section-desc-line);
+}
+
+[data-theme="dark"] .introBox,
+[data-theme="dark"] .caseStudy {
+  background-color: rgba(255, 140, 90, 0.08);
+  border-left-color: var(--accent-color);
+}
+
+[data-theme="dark"] .archStep {
+  background: rgba(255, 140, 90, 0.15);
+}
+
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .headlessDetails {
+    grid-template-columns: 1fr;
+  }
+
+  .techGrid,
+  .decisionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cmsUseCases {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 1.8rem;
+  }
+
+  .archStep {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+}

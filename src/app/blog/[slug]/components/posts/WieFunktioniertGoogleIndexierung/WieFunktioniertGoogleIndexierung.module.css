@@ -1,0 +1,280 @@
+.blogContainer {
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 2rem 1rem;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.mainTitle {
+  font-size: 2.2rem;
+  color: var(--section-title-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.introBox {
+  background-color: rgba(252, 107, 40, 0.05);
+  border-left: 4px solid var(--accent-color);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  border-radius: 0 4px 4px 0;
+}
+
+.introText {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.statBox {
+  background-color: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sectionSubtitle {
+  font-size: 1.3rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.statsList {
+  padding-left: 1.2rem;
+}
+
+.statsList li {
+  margin-bottom: 0.5rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  color: var(--section-title-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--section-desc-line);
+}
+
+.processSteps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.step {
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stepNumber {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.stepTitle {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  color: var(--section-title-color);
+}
+
+.stepDescription {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.factorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.factorCard {
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.factorCard:hover {
+  transform: translateY(-3px);
+}
+
+.factorIcon {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.factorTitle {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--section-title-color);
+}
+
+.factorList {
+  padding-left: 1.2rem;
+}
+
+.factorList li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.proTip {
+  background-color: rgba(252, 107, 40, 0.05);
+  border-left: 4px solid var(--accent-color);
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.proTipTitle {
+  font-size: 1.3rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.proTipText {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.checklist {
+  background-color: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.checklistTitle {
+  font-size: 1.3rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.checklistItems {
+  padding-left: 1.5rem;
+}
+
+.checklistItems li {
+  margin-bottom: 0.8rem;
+  padding-left: 0.5rem;
+}
+
+.caseStudy {
+  background-color: rgba(252, 107, 40, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.caseStudyTitle {
+  font-size: 1.3rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.caseStudyText {
+  margin: 0 0 1rem 0;
+}
+
+.caseStudyList {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.caseStudyList li {
+  margin-bottom: 0.5rem;
+}
+
+.caseStudyResult {
+  margin: 1rem 0 0 0;
+  font-weight: 500;
+}
+
+.conclusion {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--section-desc-line);
+}
+
+.conclusionTitle {
+  font-size: 1.5rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.conclusionText {
+  margin: 0 0 1.5rem 0;
+}
+
+.conclusionTip {
+  margin: 1.5rem 0 0 0;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .statBox,
+[data-theme="dark"] .step,
+[data-theme="dark"] .factorCard,
+[data-theme="dark"] .checklist {
+  background-color: var(--tag-bg);
+  border-color: var(--section-desc-line);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .introBox,
+[data-theme="dark"] .proTip,
+[data-theme="dark"] .caseStudy {
+  background-color: rgba(255, 140, 90, 0.08);
+  border-left-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 1.8rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .processSteps {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,303 @@
+.blogContainer {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem 1rem;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.mainTitle {
+  font-size: 2.2rem;
+  color: var(--section-title-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.introBox {
+  background-color: rgba(252, 107, 40, 0.05);
+  border-left: 4px solid var(--accent-color);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.introText {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.statBox {
+  background-color: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.statTitle {
+  font-size: 1.3rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.statList {
+  padding-left: 1.2rem;
+}
+
+.statList li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  color: var(--section-title-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--section-desc-line);
+}
+
+.seoPhase {
+  margin-bottom: 2rem;
+}
+
+.phaseSubtitle {
+  font-size: 1.4rem;
+  color: var(--section-title-color);
+  margin-bottom: 1.5rem;
+}
+
+.checklistGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.checklistColumn {
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.checklistHeading {
+  font-size: 1.1rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--section-desc-line);
+}
+
+.checklistItems {
+  padding-left: 1.2rem;
+}
+
+.checklistItems li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.keywordStrategy {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.strategyCard {
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.strategyCard:hover {
+  transform: translateY(-5px);
+}
+
+.strategyNumber {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.strategyTitle {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--section-title-color);
+}
+
+.strategyDetail {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.caseStudy {
+  background-color: rgba(252, 107, 40, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.caseStudyTitle {
+  font-size: 1.3rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.caseStudyText {
+  margin: 0 0 1rem 0;
+}
+
+.caseStudyList {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.caseStudyList li {
+  margin-bottom: 0.5rem;
+}
+
+.caseStudyResult {
+  margin: 1rem 0 0 0;
+  font-size: 1.05rem;
+}
+
+.contentExcellence {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.excellenceCard {
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.excellenceCard:hover {
+  transform: translateY(-5px);
+}
+
+.excellenceIcon {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.excellenceTitle {
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--section-title-color);
+}
+
+.excellenceText {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.proTip {
+  background-color: rgba(252, 107, 40, 0.05);
+  border-left: 4px solid var(--accent-color);
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.proTipTitle {
+  font-size: 1.3rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.proTipText {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.conclusion {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--section-desc-line);
+}
+
+.conclusionTitle {
+  font-size: 1.5rem;
+  color: var(--section-title-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.actionPlan {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.actionItem {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.finalThought {
+  margin: 1.5rem 0 0 0;
+  font-size: 1.05rem;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .statBox,
+[data-theme="dark"] .checklistColumn,
+[data-theme="dark"] .strategyCard,
+[data-theme="dark"] .excellenceCard {
+  background-color: var(--tag-bg);
+  border-color: var(--section-desc-line);
+}
+
+[data-theme="dark"] .introBox,
+[data-theme="dark"] .caseStudy,
+[data-theme="dark"] .proTip {
+  background-color: rgba(255, 140, 90, 0.08);
+  border-left-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 1.8rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .checklistGrid,
+  .keywordStrategy,
+  .contentExcellence {
+    grid-template-columns: 1fr;
+  }
+}

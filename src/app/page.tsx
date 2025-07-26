@@ -10,6 +10,7 @@ import WarumAgWebdev from "./webdesign/components/WarumAgWebdev/WarumAgWebdev";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import PricingCTA from "./webdesign/components/PricingCTA/PricingCTA";
 import CTASection from "@/components/CTASection/CTASection";
+import BlogCTA from "@/components/BlogCTA/BlogCTA";
 
 export default function HomePage() {
   return (
@@ -21,6 +22,7 @@ export default function HomePage() {
         <ProjectShowcase />
         <WarumAgWebdev />
         <TechStack />
+        <BlogCTA />
         <Proces />
         <PricingCTA />
         <FAQ />
