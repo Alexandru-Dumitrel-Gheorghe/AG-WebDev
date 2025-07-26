@@ -8,7 +8,6 @@ import TechStack from "@/components/Technologies/Technologies";
 import FAQ from "@/components/FAQ/FAQ";
 import WarumAgWebdev from "./webdesign/components/WarumAgWebdev/WarumAgWebdev";
 import Testimonials from "@/components/Testimonials/Testimonials";
-import WowFooter from "@/components/Footer/Footer";
 import PricingCTA from "./webdesign/components/PricingCTA/PricingCTA";
 import CTASection from "@/components/CTASection/CTASection";
 
@@ -27,7 +26,6 @@ export default function HomePage() {
         <FAQ />
         <CTASection />
         <Testimonials />
-        <WowFooter />
       </ScrollAnimationProvider>
     </main>
   );

@@ -47,6 +47,7 @@
   --image-shadow: 0 14px 68px rgba(0, 0, 0, 0.4),
     0 2px 18px rgba(255, 125, 90, 0.1);
 }
+
 :root {
   --bg-color: #ffffff;
   --text-color: #222222;

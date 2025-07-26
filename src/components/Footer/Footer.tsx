@@ -1,206 +1,132 @@
-"use client";
-import { motion } from "framer-motion";
+// src/components/Footer/Footer.tsx
 import styles from "./Footer.module.css";
 import Link from "next/link";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
-export default function WowFooter() {
-  const currentYear = new Date().getFullYear();
-
+export default function Footer() {
   return (
     <footer className={styles.footer}>
-      {/* Animated background elements */}
-      <div className={styles.backgroundElements}>
-        <motion.div
-          className={styles.circle}
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.8, 0.9, 0.8],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className={styles.circleSmall}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.6, 0.8, 0.6],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-
-      {/* Main footer content */}
+      <div className={styles.wave}></div>
       <div className={styles.container}>
-        {/* Footer grid */}
-        <div className={styles.grid}>
-          {/* Brand column */}
-          <motion.div
-            className={styles.brandColumn}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <Link href="/" className={styles.brand}>
-              <span className={styles.brandName}>AG WebDev</span>
-              <span className={styles.brandTagline}>Premium Web Solutions</span>
-            </Link>
-            <p className={styles.brandDescription}>
-              Creating exceptional digital experiences with cutting-edge
-              technology and innovative design.
-            </p>
-          </motion.div>
+        {/* Left: Logo & Info */}
+        <div className={styles.left}>
+          <Link href="/" className={styles.logo}>
+            <span className={styles.logoText}>AG</span>
+            <span className={styles.logoSub}>WebDev</span>
+          </Link>
+          <p className={styles.desc}>
+            Individuelle Webentwicklung, SEO & digitales Wachstum aus
+            Deutschland.
+          </p>
+          <div className={styles.socials}>
+            <a
+              className={styles.socialLink}
+              href="https://github.com/agwebdev"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <FaGithub />
+            </a>
+            <a
+              className={styles.socialLink}
+              href="https://www.linkedin.com/in/agwebdev"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              className={styles.socialLink}
+              href="mailto:contact@ag-webdev.de"
+              aria-label="E-Mail"
+            >
+              <FaEnvelope />
+            </a>
+          </div>
+        </div>
 
-          {/* Links columns */}
-          <motion.div
-            className={styles.linksColumn}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <h3 className={styles.columnTitle}>Navigation</h3>
-            <ul className={styles.linksList}>
+        {/* Center: Navigation */}
+        <div className={styles.center}>
+          <nav className={styles.nav}>
+            <span className={styles.navTitle}>Seiten</span>
+            <ul className={styles.navList}>
               <li>
-                <Link href="/" className={styles.link}>
+                <Link className={styles.navLink} href="/">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/services" className={styles.link}>
-                  Services
+                <Link className={styles.navLink} href="/webdesign">
+                  Webdesign
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className={styles.link}>
-                  Portfolio
+                <Link className={styles.navLink} href="/Webentwicklung">
+                  Webentwicklung
                 </Link>
               </li>
               <li>
-                <Link href="/about" className={styles.link}>
-                  About
+                <Link className={styles.navLink} href="/seo">
+                  SEO
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className={styles.link}>
-                  Contact
+                <Link className={styles.navLink} href="/kontakt">
+                  Kontakt
                 </Link>
               </li>
             </ul>
-          </motion.div>
-
-          <motion.div
-            className={styles.linksColumn}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3 className={styles.columnTitle}>Services</h3>
-            <ul className={styles.linksList}>
-              <li>
-                <Link href="/services/web-development" className={styles.link}>
-                  Web Development
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/design" className={styles.link}>
-                  UI/UX Design
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/ecommerce" className={styles.link}>
-                  E-Commerce
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/seo" className={styles.link}>
-                  SEO Optimization
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/maintenance" className={styles.link}>
-                  Maintenance
-                </Link>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Contact column */}
-          <motion.div
-            className={styles.contactColumn}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h3 className={styles.columnTitle}>Get in Touch</h3>
-            <ul className={styles.contactList}>
-              <li className={styles.contactItem}>
-                <span className={styles.contactIcon}>✉️</span>
-                <a href="mailto:contact@agwebdev.com" className={styles.link}>
-                  contact@agwebdev.com
-                </a>
-              </li>
-              <li className={styles.contactItem}>
-                <span className={styles.contactIcon}>📱</span>
-                <a href="tel:+49123456789" className={styles.link}>
-                  +49 123 456 789
-                </a>
-              </li>
-              <li className={styles.contactItem}>
-                <span className={styles.contactIcon}>📍</span>
-                <span className={styles.link}>Berlin, Germany</span>
-              </li>
-            </ul>
-
-            <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialLink} aria-label="Instagram">
-                <span className={styles.socialIcon}>📸</span>
-              </a>
-              <a href="#" className={styles.socialLink} aria-label="LinkedIn">
-                <span className={styles.socialIcon}>💼</span>
-              </a>
-              <a href="#" className={styles.socialLink} aria-label="Twitter">
-                <span className={styles.socialIcon}>🐦</span>
-              </a>
-              <a href="#" className={styles.socialLink} aria-label="GitHub">
-                <span className={styles.socialIcon}>💻</span>
-              </a>
-            </div>
-          </motion.div>
+          </nav>
         </div>
 
-        {/* Footer bottom */}
-        <motion.div
-          className={styles.bottom}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <div className={styles.copyright}>
-            © {currentYear} AG WebDev. All rights reserved.
-          </div>
+        {/* Right: Contact */}
+        <div className={styles.right}>
+          <span className={styles.navTitle}>Kontakt</span>
+          <address className={styles.contact}>
+            <div className={styles.contactItem}>
+              <FaMapMarkerAlt className={styles.contactIcon} />
+              <span>82256 Fürstenfeldbruck, Deutschland</span>
+            </div>
+            <div className={styles.contactItem}>
+              <FaPhone className={styles.contactIcon} />
+              <a href="tel:+4915772158264" className={styles.contactLink}>
+                +49 157 7215 8264
+              </a>
+            </div>
+            <div className={styles.contactItem}>
+              <FaEnvelope className={styles.contactIcon} />
+              <a
+                href="mailto:contact@ag-webdev.de"
+                className={styles.contactLink}
+              >
+                contact@ag-webdev.de
+              </a>
+            </div>
+          </address>
+        </div>
+      </div>
+
+      {/* Bottom Line */}
+      <div className={styles.copy}>
+        <div className={styles.copyContainer}>
+          © {new Date().getFullYear()} AG WebDev. Alle Rechte vorbehalten.
           <div className={styles.legalLinks}>
-            <Link href="/privacy" className={styles.legalLink}>
-              Privacy Policy
+            <Link href="/datenschutz" className={styles.legalLink}>
+              Datenschutz
             </Link>
-            <Link href="/terms" className={styles.legalLink}>
-              Terms of Service
-            </Link>
-            <Link href="/cookies" className={styles.legalLink}>
-              Cookie Policy
+            <Link href="/impressum" className={styles.legalLink}>
+              Impressum
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

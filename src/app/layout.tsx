@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import Header from "@/components/Header/Header";
 import { ThemeProvider } from "@/components/context/ThemeContext";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop"; // 🔹 import nou
+import Footer from "@/components/Footer/Footer";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -19,6 +20,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Header />
           {children}
         </ThemeProvider>
+        <Footer />
+        {/* 🔹 Footer plasat aici pentru a fi vizibil pe toate paginile */}
       </body>
     </html>
   );

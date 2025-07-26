@@ -20,41 +20,40 @@ export default function DesignThinkingProcess() {
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0.2]);
-
   const stages = [
     {
-      title: "EMPATHIE",
+      title: "ANALYSE & BERATUNG",
       description:
-        "Durch gezielte Recherche und Beobachtung wird ein tiefes Verständnis für die Nutzer, deren Bedürfnisse und Herausforderungen entwickelt.",
-      icon: "👂",
+        "Wir analysieren Ihre Ziele, Zielgruppe und den aktuellen Status Ihrer Website. Auf Basis einer persönlichen Beratung entwickeln wir eine maßgeschneiderte Webstrategie.",
+      icon: "🔎",
       color: "#fc6b28",
     },
     {
-      title: "IDEENFINDUNG",
+      title: "KONZEPTION & PLANUNG",
       description:
-        "Innovative Lösungen werden durch strukturiertes Brainstorming und kreative Techniken entwickelt.",
-      icon: "💡",
+        "Gemeinsam erarbeiten wir ein detailliertes Konzept und planen die technische Umsetzung – von der Seitenstruktur bis zur passenden Technologie.",
+      icon: "🗂️",
       color: "#ff8c42",
     },
     {
-      title: "DEFINITION",
+      title: "INDIVIDUELLE ENTWICKLUNG",
       description:
-        "Die Recherche-Ergebnisse werden analysiert und gebündelt, um das zentrale Problem klar zu definieren.",
-      icon: "🎯",
+        "Wir entwickeln Ihr Webprojekt mit modernen Technologien, optimiert für Performance, Sicherheit und Skalierbarkeit.",
+      icon: "💻",
       color: "#ff9a52",
     },
     {
-      title: "PROTOTYPING",
+      title: "TESTING & OPTIMIERUNG",
       description:
-        "Greifbare Prototypen werden erstellt, um Ideen testbar zu machen und schnelle Iterationen zu ermöglichen.",
-      icon: "🛠️",
+        "Vor dem Launch prüfen wir alle Funktionen, beseitigen Fehler und optimieren Ladezeiten sowie Usability auf allen Geräten.",
+      icon: "🧪",
       color: "#ffa96b",
     },
     {
-      title: "TESTEN",
+      title: "GO LIVE & SUPPORT",
       description:
-        "Die Lösungen werden mit echten Nutzern getestet und anhand des erhaltenen Feedbacks gezielt optimiert.",
-      icon: "✅",
+        "Nach dem Launch begleiten wir Sie weiter: Wartung, Updates und persönlicher Support sichern nachhaltigen Erfolg.",
+      icon: "🚀",
       color: "#ffb884",
     },
   ];
