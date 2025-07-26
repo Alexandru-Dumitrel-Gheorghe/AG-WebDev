@@ -7,16 +7,17 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import styles from "./ProfessionalTimeline.module.css";
+import { Briefcase, GraduationCap, Code, Rocket } from "lucide-react";
 
 const journeyData = [
   {
     year: "2020 – 2021",
-    title: "Front-End Web Entwicklung (React, HTML, CSS, JS)",
+    title: "Front-End Web Entwicklung",
     company: "IT School",
     description:
       "Erster intensiver Kontakt mit moderner Webentwicklung. Solide Grundlagen in React, JavaScript, HTML, CSS, Git und Bootstrap erworben. Eigene Projekte gebaut und die Basis für den weiteren Weg gelegt.",
     tags: ["React", "HTML", "CSS", "JavaScript", "Git", "Bootstrap"],
-    icon: "💻",
+    icon: <Code size={24} />,
     highlights: [
       "Abschluss Front-End Web Entwicklung (IT School)",
       "Erste komplette Projekte in React umgesetzt",
@@ -30,7 +31,7 @@ const journeyData = [
     description:
       "Vertiefung im Bereich User Interface & Experience Design mit Figma und Miro. Vom Wireframe bis zum Prototyp, kreative Lösungen für digitale Produkte entwickelt.",
     tags: ["UI/UX", "Figma", "Miro", "Design Thinking"],
-    icon: "🎨",
+    icon: <GraduationCap size={24} />,
     highlights: [
       "UI/UX Design Zertifikat (IT School)",
       "Interaktive Prototypen mit Figma erstellt",
@@ -53,7 +54,7 @@ const journeyData = [
       "Linux",
       "AI Integration",
     ],
-    icon: "🚀",
+    icon: <Rocket size={24} />,
     highlights: [
       "Erste Full Stack Projekte mit Next.js & MongoDB realisiert",
       "Deployments auf Linux-Server und in der Cloud",
@@ -77,7 +78,7 @@ const journeyData = [
       "Kundenprojekte",
       "Freelancing",
     ],
-    icon: "👨‍💻",
+    icon: <Briefcase size={24} />,
     highlights: [
       "Gründung von AG WebDev als selbstständiges Business",
       "Erfolgreiche Projekte für Kunden in Deutschland & Schweiz",
@@ -91,6 +92,7 @@ export default function ProfessionalJourney() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isCompactView, setIsCompactView] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -98,7 +100,6 @@ export default function ProfessionalJourney() {
     offset: ["start center", "end center"],
   });
 
-  // Toggle dark mode
   useEffect(() => {
     document.documentElement.setAttribute(
       "data-theme",
@@ -106,7 +107,16 @@ export default function ProfessionalJourney() {
     );
   }, [isDarkMode]);
 
-  // Parallax effects
+  // Auto-detect mobile view
+  useEffect(() => {
+    const handleResize = () => {
+      setIsCompactView(window.innerWidth > 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 1], [1, 1, 0.8]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
@@ -143,15 +153,30 @@ export default function ProfessionalJourney() {
             </motion.p>
           </div>
 
-          <button
-            className={styles.themeToggle}
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            aria-label={
-              isDarkMode ? "Zum Light Mode wechseln" : "Zum Dark Mode wechseln"
-            }
-          >
-            {isDarkMode ? "☀️" : "🌙"}
-          </button>
+          <div className={styles.headerControls}>
+            <button
+              className={styles.viewToggle}
+              onClick={() => setIsCompactView(!isCompactView)}
+              aria-label={
+                isCompactView
+                  ? "Zur Kartenansicht wechseln"
+                  : "Zur kompakten Ansicht wechseln"
+              }
+            >
+              {isCompactView ? "🔍 Expand" : "✏️ Compact"}
+            </button>
+            <button
+              className={styles.themeToggle}
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              aria-label={
+                isDarkMode
+                  ? "Zum Light Mode wechseln"
+                  : "Zum Dark Mode wechseln"
+              }
+            >
+              {isDarkMode ? "☀️ Light" : "🌙 Dark"}
+            </button>
+          </div>
         </div>
 
         <div className={styles.timelineWrapper}>
@@ -178,7 +203,7 @@ export default function ProfessionalJourney() {
                 key={index}
                 className={`${styles.timelineItem} ${
                   activeIndex === index ? styles.active : ""
-                }`}
+                } ${isCompactView ? styles.compact : ""}`}
                 onClick={() => setActiveIndex(index)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -187,7 +212,7 @@ export default function ProfessionalJourney() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 whileHover={{
-                  scale: 1.02,
+                  scale: isCompactView ? 1.02 : 1,
                   transition: { duration: 0.2 },
                 }}
               >
@@ -213,7 +238,7 @@ export default function ProfessionalJourney() {
                 </motion.div>
 
                 <AnimatePresence mode="wait">
-                  {activeIndex === index && (
+                  {(activeIndex === index || !isCompactView) && (
                     <motion.div
                       className={styles.itemContent}
                       initial={{ height: 0, opacity: 0 }}

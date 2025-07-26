@@ -20,7 +20,7 @@ export default function HeroSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    // Reset animation props to avoid glitches (nu include imaginea!)
+    // GSAP: NU RESETA IMAGINEA
     gsap.set(
       [
         leftRef.current,
@@ -34,13 +34,12 @@ export default function HeroSection() {
       { clearProps: "opacity,transform,scale" }
     );
 
-    // Split text for title animation
+    // SplitText for title
     if (titleRef.current) {
       const splitTitle = new SplitText(titleRef.current, {
         type: "chars,words",
         charsClass: styles.titleChar,
       });
-
       gsap.set(splitTitle.chars, {
         y: 40,
         opacity: 0,
@@ -48,20 +47,15 @@ export default function HeroSection() {
       });
     }
 
-    // Check if mobile view
+    // Detect mobile
     const isMobile = window.innerWidth < 800;
 
-    // Sequential load animation (NU include imaginea in tl.set!)
+    // Animation timeline: FĂRĂ imagine
     const tl = gsap.timeline();
-    tl.set(
-      [
-        preheadRef.current,
-        subtitleRef.current,
-        ctaRef.current,
-        // imageRef.current, // SCAOS imaginea de aici!
-      ],
-      { opacity: 0, y: isMobile ? 20 : 30 }
-    )
+    tl.set([preheadRef.current, subtitleRef.current, ctaRef.current], {
+      opacity: 0,
+      y: isMobile ? 20 : 30,
+    })
       .set([leftRef.current, rightRef.current], { opacity: 1 })
       .to(preheadRef.current, {
         y: 0,
@@ -93,14 +87,13 @@ export default function HeroSection() {
         { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
         "-=0.5"
       )
-      // Dacă vrei efect subtil, doar scale sau y (fără opacity!)
+      // imaginea NU e animată pe opacity sau scale, doar y
       .to(
         imageRef.current,
         {
-          scale: 1,
+          y: isMobile ? 0 : 20,
           duration: 1,
           ease: "expo.out",
-          y: isMobile ? 0 : 20,
         },
         "-=1"
       )
@@ -115,7 +108,7 @@ export default function HeroSection() {
         "-=1.2"
       );
 
-    // Floating & Parallax (ok, după ce e LCP, nu afectează auditul)
+    // Floating & parallax (doar după load, nu la start)
     if (!isMobile) {
       gsap.to(imageRef.current, {
         y: 20,
@@ -143,55 +136,21 @@ export default function HeroSection() {
       });
 
       parallaxTl
-        .to(
-          imageRef.current,
-          {
-            y: -200,
-            scale: 1.05,
-            ease: "none",
-          },
-          0
-        )
-        .to(
-          rightRef.current,
-          {
-            x: 150,
-            opacity: 0.8,
-            ease: "none",
-          },
-          0
-        )
-        .to(
-          leftRef.current,
-          {
-            y: 100,
-            opacity: 0.9,
-            ease: "none",
-          },
-          0
-        )
+        .to(imageRef.current, { y: -200, scale: 1.05, ease: "none" }, 0)
+        .to(rightRef.current, { x: 150, opacity: 0.8, ease: "none" }, 0)
+        .to(leftRef.current, { y: 100, opacity: 0.9, ease: "none" }, 0)
         .to(
           titleRef.current,
-          {
-            scale: 0.9,
-            y: 50,
-            opacity: 0.8,
-            ease: "none",
-          },
+          { scale: 0.9, y: 50, opacity: 0.8, ease: "none" },
           0
         )
         .to(
           decorationRef.current,
-          {
-            y: -100,
-            x: 50,
-            scale: 1.2,
-            ease: "none",
-          },
+          { y: -100, x: 50, scale: 1.2, ease: "none" },
           0
         );
 
-      // Mouse parallax (opțional)
+      // Mousemove parallax
       if (heroRef.current) {
         heroRef.current.addEventListener("mousemove", (e) => {
           const xPos = e.clientX / window.innerWidth - 0.5;
@@ -203,14 +162,12 @@ export default function HeroSection() {
             duration: 1.5,
             ease: "power1.out",
           });
-
           gsap.to(decorationRef.current, {
             x: xPos * 40,
             y: yPos * 30,
             duration: 1.5,
             ease: "power1.out",
           });
-
           gsap.to(titleRef.current, {
             x: xPos * -10,
             duration: 1.5,
@@ -265,6 +222,7 @@ export default function HeroSection() {
             priority
             className={styles.heroImage}
             ref={imageRef}
+            // fără loading="lazy" !!!
           />
           <div className={styles.imageOverlay}></div>
           <div className={styles.imageDecoration} ref={decorationRef}></div>
