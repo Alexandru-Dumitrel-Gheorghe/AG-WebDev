@@ -24,7 +24,7 @@ export default function WebentwicklungCTA() {
         {/* Laptop mockup peste telefon */}
         <div className={styles.laptopImgWrapper}>
           <Image
-            src="/images/fraga-projekt.png"
+            src="/images/Fraga-projekt.png"
             alt="Web-Projekt am Laptop"
             width={270}
             height={160}
