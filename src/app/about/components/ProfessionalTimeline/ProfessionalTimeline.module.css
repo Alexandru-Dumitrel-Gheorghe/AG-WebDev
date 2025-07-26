@@ -3,11 +3,12 @@
   min-height: 100vh;
   padding: 8rem 2rem;
   background: var(--bg-color);
-  position: relative; /* <-- ASTA E CHEIA */
+  position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.3s ease;
 }
 
 .journeyContainer {
@@ -25,27 +26,44 @@
   padding: 0 clamp(1rem, 4vw, 4rem);
   position: relative;
   z-index: 2;
-  text-align: left; /* nu centrat */
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
+
 .headerContent {
   max-width: 42rem;
 }
+
+.themeToggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  transition: transform 0.3s ease;
+  position: sticky;
+  top: 1rem;
+}
+
+.themeToggle:hover {
+  transform: scale(1.1);
+}
+
 .sectionTitle {
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 700;
   font-family: "Inter", sans-serif;
-  color: var(--section-title-color, #222);
+  color: var(--section-title-color);
   letter-spacing: -0.05em;
   margin: 0 0 20px;
   line-height: 1.13;
   position: relative;
   transition: color 0.3s ease;
-  background: none !important;
-  -webkit-background-clip: unset !important;
-  background-clip: unset !important;
-  color: #222; /* fallback dacă nu ai variabilă */
-  display: block;
 }
+
 .sectionTitle::after {
   content: "";
   position: absolute;
@@ -53,12 +71,13 @@
   left: 0;
   width: 56px;
   height: 4px;
-  background: var(--accent-color, #fc6b28);
+  background: var(--accent-color);
   border-radius: 4px;
   transition: background 0.3s ease;
 }
+
 .sectionDesc {
-  color: var(--section-desc-color, #555);
+  color: var(--section-desc-color);
   font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   font-weight: 400;
   line-height: 1.6;
@@ -67,6 +86,7 @@
   position: relative;
   transition: color 0.3s ease;
 }
+
 .sectionDesc::before {
   content: "";
   position: absolute;
@@ -74,15 +94,8 @@
   top: 8px;
   height: calc(100% - 16px);
   width: 2px;
-  background: var(--section-desc-line, #eee);
+  background: var(--section-desc-line);
   transition: background 0.3s ease;
-}
-.sectionSubtitle {
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
 }
 
 .timelineWrapper {
@@ -98,11 +111,13 @@
   bottom: 0;
   width: 4px;
   height: 100%;
-  background: rgba(255, 93, 42, 0.2);
+  background: var(--timeline-line-bg);
   border-radius: 2px;
   overflow: hidden;
   z-index: 1;
+  transition: background 0.3s ease;
 }
+
 .progressIndicator {
   position: absolute;
   top: 0;
@@ -112,6 +127,7 @@
   will-change: height;
   border-radius: 2px;
   z-index: 2;
+  transition: background 0.3s ease;
 }
 
 .timelineItems {
@@ -133,19 +149,21 @@
   align-items: center;
   gap: 2rem;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid;
+  border-bottom: 2px solid var(--item-marker-border);
   padding-bottom: 1rem;
   transition: all 0.3s ease;
   transform-origin: left center;
 }
+
 .timelineItem.active .itemMarker {
   border-bottom: none !important;
 }
+
 .itemIcon {
   width: 70px;
   height: 70px;
-  background: var(--bg-color);
-  border: 3px solid;
+  background: var(--item-icon-bg);
+  border: 3px solid var(--item-icon-border);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -157,9 +175,9 @@
 }
 
 .timelineItem.active .itemIcon {
-  background: var(--accent-color);
-  color: white;
-  border-color: var(--accent-color);
+  background: var(--active-item-icon-bg);
+  color: var(--active-item-icon-text);
+  border-color: var(--active-item-icon-border);
 }
 
 .itemYear {
@@ -186,6 +204,7 @@
   color: var(--text-color);
   margin-bottom: 0.5rem;
   line-height: 1.2;
+  transition: color 0.3s ease;
 }
 
 .itemCompany {
@@ -193,6 +212,7 @@
   font-weight: 600;
   color: var(--accent-color);
   margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .itemDescription {
@@ -201,6 +221,7 @@
   color: var(--text-secondary);
   margin-bottom: 2rem;
   max-width: 800px;
+  transition: color 0.3s ease;
 }
 
 .itemHighlights {
@@ -214,6 +235,7 @@
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  transition: color 0.3s ease;
 }
 
 .highlightsList {
@@ -229,12 +251,14 @@
   margin-bottom: 0.8rem;
   display: flex;
   align-items: flex-start;
+  transition: color 0.3s ease;
 }
 
 .highlightBullet {
   color: var(--accent-color);
   margin-right: 0.8rem;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .itemTags {
@@ -244,9 +268,9 @@
 }
 
 .tag {
-  background: var(--bg-color);
-  color: var(--accent-color);
-  border: 1px solid var(--accent-color);
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border: 1px solid var(--tag-border);
   padding: 0.5rem 1.2rem;
   border-radius: 2rem;
   font-size: 0.95rem;
@@ -255,8 +279,8 @@
 }
 
 .timelineItem.active .tag {
-  background: var(--accent-color);
-  color: white;
+  background: var(--active-tag-bg);
+  color: var(--active-tag-text);
 }
 
 .controls {
@@ -268,9 +292,9 @@
 }
 
 .controlButton {
-  background: none;
+  background: var(--control-button-bg);
   border: none;
-  color: var(--text-color);
+  color: var(--control-button-text);
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -280,7 +304,7 @@
 }
 
 .controlButton:hover:not(:disabled) {
-  color: var(--accent-color);
+  color: var(--control-button-hover);
   transform: translateY(-2px);
 }
 
@@ -298,7 +322,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--text-secondary);
+  background: var(--dot-bg);
   opacity: 0.3;
   border: none;
   cursor: pointer;
@@ -306,7 +330,7 @@
 }
 
 .dot.active {
-  background: var(--accent-color);
+  background: var(--active-dot-bg);
   opacity: 1;
   transform: scale(1.2);
 }
@@ -319,6 +343,7 @@
   filter: blur(80px);
   z-index: 1;
   pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 .decorativeOrb1 {
@@ -380,6 +405,14 @@
 
   .sectionHeader {
     margin-bottom: 3rem;
+    flex-direction: column;
+  }
+
+  .themeToggle {
+    position: static;
+    align-self: flex-end;
+    margin-top: -3.5rem;
+    margin-bottom: 1rem;
   }
 
   .timelineWrapper {

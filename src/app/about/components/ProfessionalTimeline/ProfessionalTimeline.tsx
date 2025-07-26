@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -10,59 +10,79 @@ import styles from "./ProfessionalTimeline.module.css";
 
 const journeyData = [
   {
-    year: "2023 - Present",
-    title: "Lead Product Designer",
-    company: "Nexus Innovations",
+    year: "2020 – 2021",
+    title: "Front-End Web Entwicklung (React, HTML, CSS, JS)",
+    company: "IT School",
     description:
-      "Spearheading design vision for AI-powered SaaS platform. Established design ops practice reducing delivery time by 30%.",
-    tags: ["Design Systems", "AI Interfaces", "Team Leadership"],
-    icon: "🚀",
+      "Erster intensiver Kontakt mit moderner Webentwicklung. Solide Grundlagen in React, JavaScript, HTML, CSS, Git und Bootstrap erworben. Eigene Projekte gebaut und die Basis für den weiteren Weg gelegt.",
+    tags: ["React", "HTML", "CSS", "JavaScript", "Git", "Bootstrap"],
+    icon: "💻",
     highlights: [
-      "Launched v4.0 with 98% user satisfaction",
-      "Built 15-person cross-functional team",
-      "Featured in TechCrunch Design Annual",
+      "Abschluss Front-End Web Entwicklung (IT School)",
+      "Erste komplette Projekte in React umgesetzt",
+      "Moderne Developer-Workflows mit Git kennengelernt",
     ],
   },
   {
-    year: "2020 - 2023",
-    title: "Senior UI/UX Designer",
-    company: "PixelForge Studio",
+    year: "2021 – 2022",
+    title: "UI/UX Design",
+    company: "IT School",
     description:
-      "Designed award-winning mobile experiences for Fortune 500 clients. Pioneered accessibility initiatives reaching WCAG 2.1 AA standards.",
-    tags: ["Mobile Design", "Accessibility", "Design Thinking"],
+      "Vertiefung im Bereich User Interface & Experience Design mit Figma und Miro. Vom Wireframe bis zum Prototyp, kreative Lösungen für digitale Produkte entwickelt.",
+    tags: ["UI/UX", "Figma", "Miro", "Design Thinking"],
     icon: "🎨",
     highlights: [
-      "3x Best Design Award winner",
-      "Increased engagement by 65%",
-      "Mentored 8 junior designers",
+      "UI/UX Design Zertifikat (IT School)",
+      "Interaktive Prototypen mit Figma erstellt",
+      "Praxisprojekte & Zusammenarbeit im Team",
     ],
   },
   {
-    year: "2017 - 2020",
-    title: "UX Designer",
-    company: "DigitalFlow",
+    year: "2023 – 2024",
+    title: "Selbststudium & Skill-Upgrade",
+    company: "Selbststudium",
     description:
-      "Transformed legacy enterprise software into modern, user-friendly experiences. Conducted 50+ user research sessions annually.",
-    tags: ["Enterprise UX", "User Research", "Prototyping"],
-    icon: "🔍",
+      "Eigenständiges Lernen und Vertiefung in Full Stack Entwicklung. Fokus auf Node.js, Next.js, TypeScript, MongoDB und DevOps-Grundlagen. Cloud, API-Integrationen und Automatisierung.",
+    tags: [
+      "Node.js",
+      "Next.js",
+      "TypeScript",
+      "MongoDB",
+      "API",
+      "Docker",
+      "Linux",
+      "AI Integration",
+    ],
+    icon: "🚀",
     highlights: [
-      "Reduced support tickets by 40%",
-      "Established research practice",
-      "Featured in UX Collective",
+      "Erste Full Stack Projekte mit Next.js & MongoDB realisiert",
+      "Deployments auf Linux-Server und in der Cloud",
+      "Automatisierungen & OpenAI API Integration",
     ],
   },
   {
-    year: "2015 - 2017",
-    title: "Design Intern",
-    company: "CreativeMinds",
+    year: "2024 – Jetzt",
+    title: "Freiberuflicher Full Stack Entwickler",
+    company: "AG WebDev",
     description:
-      "Supported product design across web and mobile platforms. Won innovation hackathon for AR navigation concept.",
-    tags: ["Visual Design", "Interaction", "Rapid Prototyping"],
-    icon: "🌱",
+      "Als Freelancer Entwicklung von maßgeschneiderten Webseiten und komplexen Systemen für B2B-Kunden. Komplettservice von Design über Frontend & Backend bis SEO, Wartung und digitales Marketing.",
+    tags: [
+      "Full Stack",
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "SEO",
+      "Shopify",
+      "Kundenprojekte",
+      "Freelancing",
+    ],
+    icon: "👨‍💻",
     highlights: [
-      "Intern of the Year 2016",
-      "2 patents filed (co-inventor)",
-      "Launched 3 production features",
+      "Gründung von AG WebDev als selbstständiges Business",
+      "Erfolgreiche Projekte für Kunden in Deutschland & Schweiz",
+      "Komplette Kundenbetreuung & Beratung",
+      "Implementierung moderner SEO-Strategien",
     ],
   },
 ];
@@ -70,12 +90,21 @@ const journeyData = [
 export default function ProfessionalJourney() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start center", "end center"],
   });
+
+  // Toggle dark mode
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDarkMode ? "dark" : "light"
+    );
+  }, [isDarkMode]);
 
   // Parallax effects
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
@@ -101,7 +130,7 @@ export default function ProfessionalJourney() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
             >
-              Professional Odyssey
+              Mein Beruflicher Werdegang
             </motion.h2>
             <motion.p
               className={styles.sectionDesc}
@@ -110,9 +139,19 @@ export default function ProfessionalJourney() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              A decade of crafting exceptional digital experiences
+              Meine Reise durch die Welt der Webentwicklung und Design
             </motion.p>
           </div>
+
+          <button
+            className={styles.themeToggle}
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            aria-label={
+              isDarkMode ? "Zum Light Mode wechseln" : "Zum Dark Mode wechseln"
+            }
+          >
+            {isDarkMode ? "☀️" : "🌙"}
+          </button>
         </div>
 
         <div className={styles.timelineWrapper}>
@@ -192,7 +231,7 @@ export default function ProfessionalJourney() {
 
                       <div className={styles.itemHighlights}>
                         <h5 className={styles.highlightsTitle}>
-                          Key Achievements:
+                          Wichtige Erfolge:
                         </h5>
                         <ul className={styles.highlightsList}>
                           {item.highlights.map((highlight, i) => (
@@ -243,7 +282,7 @@ export default function ProfessionalJourney() {
             onClick={() => setActiveIndex((prev) => Math.max(0, prev - 1))}
             disabled={activeIndex === 0}
           >
-            Previous
+            Zurück
           </button>
           <div className={styles.dots}>
             {journeyData.map((_, index) => (
@@ -253,7 +292,7 @@ export default function ProfessionalJourney() {
                   activeIndex === index ? styles.active : ""
                 }`}
                 onClick={() => setActiveIndex(index)}
-                aria-label={`Go to step ${index + 1}`}
+                aria-label={`Gehe zu Schritt ${index + 1}`}
               />
             ))}
           </div>
@@ -266,7 +305,7 @@ export default function ProfessionalJourney() {
             }
             disabled={activeIndex === journeyData.length - 1}
           >
-            Next
+            Weiter
           </button>
         </motion.div>
       </motion.div>
