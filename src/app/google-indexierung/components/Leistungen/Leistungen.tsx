@@ -3,39 +3,37 @@ import styles from "./Leistungen.module.css";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link"; // Doar dacă folosești Next.js
+import Link from "next/link";
 
+// Servicii specifice Google Indexierung / SEO
 const services = [
   {
-    title: "Webdesign",
-    description: "Modernes, responsives und performantes Webdesign.",
+    title: "Google Indexierung",
+    description:
+      "Wir sorgen dafür, dass Ihre Website schnell und vollständig in den Google-Index aufgenommen wird.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <rect
-          x="3"
-          y="4"
-          width="18"
-          height="16"
-          rx="2"
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
           stroke="currentColor"
           strokeWidth="1.7"
         />
-        <rect
-          x="7"
-          y="8"
-          width="10"
-          height="8"
-          rx="1.5"
+        <path
+          d="M12 8v8M9.5 10.5C9.5 9.11929 10.6193 8 12 8s2.5 1.11929 2.5 2.5c0 1.3807-1.1193 2.5-2.5 2.5"
           stroke="currentColor"
           strokeWidth="1.7"
+          strokeLinecap="round"
         />
       </svg>
     ),
-    link: "/webdesign",
+    link: "/google-indexierung",
   },
   {
-    title: "Webentwicklung",
-    description: "Moderne Websites und Web-Apps mit neuesten Technologien.",
+    title: "Crawlbarkeit & technische Optimierung",
+    description:
+      "Wir stellen sicher, dass Google Ihre Seiten optimal crawlen und analysieren kann – inkl. robots.txt, Sitemap & Core Web Vitals.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <rect
@@ -67,56 +65,12 @@ const services = [
         />
       </svg>
     ),
-    link: "/Webentwicklung",
+    link: "/google-indexierung/technik",
   },
   {
-    title: "SEO & Marketing",
-    description: "Ihre Website auf Top-Positionen bei Google.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="M9 12l2 2 4-4"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-    link: "/seo",
-  },
-  {
-    title: "Google Indexierung",
+    title: "Sitemap-Erstellung & Optimierung",
     description:
-      "Wir sorgen dafür, dass Ihre Website von Google schnell & effektiv gefunden wird.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="M12 8v8M9.5 10.5C9.5 9.11929 10.6193 8 12 8s2.5 1.11929 2.5 2.5c0 1.3807-1.1193 2.5-2.5 2.5"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-    link: "/google-indexierung",
-  },
-  {
-    title: "Wartung & Support",
-    description: "Zuverlässige Pflege und technische Unterstützung.",
+      "Automatische Generierung, Optimierung und Einreichung Ihrer XML-Sitemaps für beste Indexierungsquoten.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <rect
@@ -136,11 +90,63 @@ const services = [
         />
       </svg>
     ),
-    link: "/wartung-support",
+    link: "/google-indexierung/sitemap",
   },
   {
-    title: "Beratung",
-    description: "Individuelle Strategien für Ihren Online-Erfolg.",
+    title: "Optimierung von Meta-Tags",
+    description:
+      "Strukturierte Meta-Tags, Title, Description & Canonical für bessere Auffindbarkeit & Ranking.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <path
+          d="M9 12l2 2 4-4"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+    link: "/google-indexierung/meta-tags",
+  },
+  {
+    title: "Content-Indexierung & Struktur",
+    description:
+      "Optimale Seitenstruktur, interne Verlinkung und semantische HTML-Auszeichnung für maximale Sichtbarkeit.",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <rect
+          x="7"
+          y="8"
+          width="10"
+          height="8"
+          rx="1.5"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <rect
+          x="3"
+          y="4"
+          width="18"
+          height="16"
+          rx="2"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+      </svg>
+    ),
+    link: "/google-indexierung/content",
+  },
+  {
+    title: "Indexierungs-Überwachung & Reporting",
+    description:
+      "Laufende Kontrolle Ihrer Indexierung in der Google Search Console, mit verständlichen Berichten & Monitoring.",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
         <path
@@ -151,7 +157,7 @@ const services = [
         <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="1.7" />
       </svg>
     ),
-    link: "/beratung",
+    link: "/google-indexierung/reporting",
   },
 ];
 
@@ -324,8 +330,9 @@ export default function Leistungen() {
             Leistungen
           </h2>
           <p className={styles.sectionDesc} ref={descRef}>
-            Hochwertige Dienstleistungen für moderne Unternehmen. Von kreativen
-            Markenauftritten bis zu leistungsstarken Web-Lösungen.
+            Ihre Website auf Google sichtbar machen: Von technischer Optimierung
+            bis zur nachhaltigen Überwachung der Indexierung – alles aus einer
+            Hand.
           </p>
         </div>
       </div>
@@ -341,9 +348,7 @@ export default function Leistungen() {
             <div className={styles.icon}>{service.icon}</div>
             <h3 className={styles.title}>{service.title}</h3>
             <p className={styles.description}>{service.description}</p>
-            <Link href={service.link} className={styles.learnMore}>
-              Mehr erfahren<span className={styles.arrow}>&rarr;</span>
-            </Link>
+
             <div className={styles.hoverIndicator}></div>
           </div>
         ))}

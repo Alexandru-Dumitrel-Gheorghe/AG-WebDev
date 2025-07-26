@@ -44,6 +44,7 @@ const funFacts = [
 export default function PersonalSection() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoRotating, setIsAutoRotating] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -66,11 +67,19 @@ export default function PersonalSection() {
 
   // Auto-rotate facts
   useEffect(() => {
+    if (!isAutoRotating) return;
+
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % funFacts.length);
     }, 8000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isAutoRotating]);
+
+  const handleDotClick = (index: number) => {
+    setActiveIndex(index);
+    setIsAutoRotating(false);
+    setTimeout(() => setIsAutoRotating(true), 15000);
+  };
 
   return (
     <section className={styles.personalSection} ref={ref}>
@@ -124,7 +133,7 @@ export default function PersonalSection() {
                   className={`${styles.navDot} ${
                     activeIndex === index ? styles.active : ""
                   }`}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => handleDotClick(index)}
                   aria-label={`Gehe zu Fakt ${index + 1}`}
                 />
               ))}
@@ -144,11 +153,13 @@ export default function PersonalSection() {
                   }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                 >
-                  <div className={styles.emoji}>{fact.emoji}</div>
-                  <h3 className={styles.factTitle}>{fact.title}</h3>
-                  <p className={styles.factDescription}>{fact.description}</p>
-                  <div className={styles.highlight}>
-                    <span>✨</span> {fact.highlight}
+                  <div className={styles.factContent}>
+                    <div className={styles.emoji}>{fact.emoji}</div>
+                    <h3 className={styles.factTitle}>{fact.title}</h3>
+                    <p className={styles.factDescription}>{fact.description}</p>
+                    <div className={styles.highlight}>
+                      <span>✨</span> {fact.highlight}
+                    </div>
                   </div>
                 </motion.div>
               ))}
