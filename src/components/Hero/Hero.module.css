@@ -188,6 +188,7 @@
   transition: box-shadow 0.3s ease, background 0.3s ease;
   opacity: 1 !important; /* <--- ADĂUGĂ această linie */
   transform: none !important; /* <--- ADĂUGĂ această linie */
+  margin-top: 2rem;
 }
 
 .imageOverlay {
