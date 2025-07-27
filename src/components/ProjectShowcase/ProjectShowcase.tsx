@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./ProjectShowcase.module.css";
 
 type Project = {
@@ -14,26 +15,30 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Fashion Shop",
-    description: "E-commerce de lux cu colecții handmade și integrare Stripe",
-    image: "/images/certus-case.png",
-    technologies: ["Next.js", "Stripe", "Tailwind"],
-    liveUrl: "#",
-    codeUrl: "#",
+    title: "Oberholzer Umzugservice",
+    description:
+      "Neues Corporate Design, ultra-schnelle Ladezeiten und Google #1 für das Haupt-Keyword. Mobile-first UI/UX mit maximaler Conversion.",
+    image: "/images/oberholzer-projekt.png",
+    technologies: ["Next.js", "Framer Motion", "SEO"],
+    liveUrl: "https://oberholzerch.netlify.app/",
+    codeUrl: "/casestudy/oberholzer",
   },
   {
-    title: "Yoga Platform",
-    description: "Platformă de învățare online cu lecții video interactive",
-    image: "/images/case-mockup-oberholzer.png",
-    technologies: ["React", "Sanity", "Cloudinary"],
-    liveUrl: "#",
+    title: "Certus Solutions",
+    description:
+      "Webauftritt für Vertrieb von Fenstern, Türen, Aluminiumzäunen & Rollläden. Komplett in Next.js mit TypeScript, inklusive SEO, Referenz-Galerie & Kontaktmodul.",
+    image: "/images/certus-projekt.svg",
+    technologies: ["React", "Next.js", "CSS Modules"],
+    liveUrl: "https://www.certussolutions.de/",
+    codeUrl: "referenzen/certus-solutions",
   },
   {
-    title: "Portfolio Creative",
-    description: "Website portofoliu cu animații custom și design minimalist",
-    image: "/images/Fraga-projekt.png",
-    technologies: ["GSAP", "Webflow", "Figma"],
-    liveUrl: "#",
+    title: "Fraga Online Shop",
+    description:
+      "Modernes Shop-Erlebnis mit Shopify-Backend und Next.js-Frontend. Individuelles Design, Conversion-Optimierung & superschnelle Pages.",
+    image: "/images/fraga-projekt.svg",
+    technologies: ["Next.js", "Shopify", "Figma"],
+    liveUrl: "https://e-commerce-one-tau-76.vercel.app/",
     codeUrl: "#",
   },
 ];
@@ -131,7 +136,7 @@ export default function ProjectShowcase() {
                       className={styles.primaryButton}
                       aria-label={`View ${project.title} live demo`}
                     >
-                      View Live
+                      Live
                       <span className={styles.buttonArrow}>
                         <svg
                           width="16"
@@ -158,16 +163,14 @@ export default function ProjectShowcase() {
                       </span>
                     </a>
                   )}
-                  {project.codeUrl && (
-                    <a
-                      href={project.codeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  {project.codeUrl && project.codeUrl !== "#" && (
+                    <Link
+                      href={`/${project.codeUrl}`}
                       className={styles.secondaryButton}
-                      aria-label={`View ${project.title} source code`}
+                      aria-label={`View ${project.title} case study`}
                     >
-                      View Code
-                    </a>
+                      Case Studies
+                    </Link>
                   )}
                 </div>
               </div>

@@ -120,6 +120,12 @@
   --active-item-icon-text: #121212;
   --active-item-icon-border: #ff8c5a;
 }
+:root {
+  --accent-color: 252, 107, 40;
+  --bg-color: 255, 255, 255;
+  --text-color: #151515;
+  --text-secondary: #5a5a5a;
+}
 
 .aboutIntro {
   --bg-color: #fff;

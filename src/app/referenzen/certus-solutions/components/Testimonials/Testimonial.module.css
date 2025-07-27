@@ -1,0 +1,217 @@
+.testimonialSection {
+  width: 100%;
+  padding: 4rem 0;
+  background: var(--leistungen-bg);
+  position: relative;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+/* Floating Orbs */
+.parallaxOrbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.orb1,
+.orb2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0.12;
+}
+
+.orb1 {
+  width: 280px;
+  height: 280px;
+  background: var(--orb1-gradient);
+  left: 10%;
+  top: 30%;
+}
+
+.orb2 {
+  width: 200px;
+  height: 200px;
+  background: var(--orb2-gradient);
+  right: 15%;
+  bottom: 20%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonialCard {
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  padding: 4rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.testimonialCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--card-hover-gradient);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.testimonialCard:hover {
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--card-hover-border);
+}
+
+.testimonialCard:hover::before {
+  opacity: 0.3;
+}
+
+.quoteWrapper {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.quoteIcon {
+  position: absolute;
+  left: -1.5rem;
+  top: -1.5rem;
+  z-index: -1;
+}
+
+.quoteText {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+  font-style: italic;
+  margin: 0;
+  padding-left: 3rem;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  position: relative;
+  z-index: 1;
+  padding-left: 3rem;
+}
+
+.authorName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--menu-box-bg);
+}
+
+.authorTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dropdown-link-text);
+}
+
+.authorCompany {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--dropdown-link-text);
+  opacity: 0.8;
+}
+
+.companyLogo {
+  position: absolute;
+  right: 4rem;
+  bottom: 3rem;
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
+}
+
+.testimonialCard:hover .companyLogo {
+  opacity: 0.3;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .testimonialSection {
+    padding: 4rem 0;
+  }
+
+  .testimonialCard {
+    padding: 3rem 2rem;
+  }
+
+  .quoteText {
+    padding-left: 2rem;
+  }
+
+  .authorInfo {
+    padding-left: 2rem;
+  }
+
+  .companyLogo {
+    right: 2rem;
+    bottom: 2rem;
+    width: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .parallaxOrbs {
+    display: none;
+  }
+
+  .testimonialCard {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .quoteText {
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
+  }
+
+  .quoteIcon {
+    left: -0.5rem;
+    top: -1rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .authorInfo {
+    padding-left: 1.5rem;
+  }
+
+  .companyLogo {
+    display: none;
+  }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .testimonialCard {
+  background: var(--header-bg-scrolled);
+}
+
+[data-theme="dark"] .quoteText {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .authorTitle,
+[data-theme="dark"] .authorCompany {
+  color: var(--dropdown-link-text);
+}

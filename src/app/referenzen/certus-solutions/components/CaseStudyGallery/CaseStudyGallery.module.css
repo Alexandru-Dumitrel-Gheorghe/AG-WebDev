@@ -1,0 +1,366 @@
+/* Base Styles */
+.gallerySection {
+  width: 100%;
+  padding: 120px 0;
+  background: var(--leistungen-bg);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  perspective: 1000px;
+}
+
+/* Floating Orbs */
+.parallaxOrbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.orb1,
+.orb2,
+.orb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0.15;
+  transform-style: preserve-3d;
+}
+
+.orb1 {
+  width: 320px;
+  height: 320px;
+  background: var(--orb1-gradient);
+  left: 4vw;
+  top: 12vh;
+}
+
+.orb2 {
+  width: 240px;
+  height: 240px;
+  background: var(--orb2-gradient);
+  right: 12vw;
+  top: 36vh;
+}
+
+.orb3 {
+  width: 180px;
+  height: 180px;
+  background: var(--orb3-gradient);
+  right: 6vw;
+  bottom: 8vh;
+}
+
+/* Header */
+.header {
+  max-width: 1500px;
+  margin: 0 auto 60px;
+  padding: 0 clamp(1rem, 4vw, 4rem);
+  position: relative;
+  z-index: 2;
+}
+
+.headerContent {
+  max-width: 42rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  color: var(--section-title-color);
+  letter-spacing: -0.05em;
+  margin: 0 0 20px;
+  line-height: 1.13;
+  position: relative; /* <-- OBLIGATORIU pentru linie sub titlu! */
+  display: inline-block; /* (optional, ca să nu fie toată linia pe toată lățimea) */
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 56px;
+  height: 4px;
+  background: var(--accent-color); /* sau #fc6b28 */
+  border-radius: 4px;
+  z-index: 3;
+}
+
+.sectionDesc {
+  color: var(--section-desc-color);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 24px 0 0;
+  padding-left: 16px;
+  position: relative;
+}
+
+.sectionDesc::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  height: calc(100% - 16px);
+  width: 2px;
+  background: var(--section-desc-line);
+}
+
+/* Gallery Grid */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 4rem);
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+  padding: 0;
+  display: flex;
+  min-height: 320px;
+  border: 1px solid var(--card-border);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--card-hover-gradient);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.highlightItem {
+  grid-column: span 2;
+}
+
+.wideItem {
+  grid-column: 1 / -1;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+
+.highlightItem .imageContainer,
+.wideItem .imageContainer {
+  aspect-ratio: 2/1;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+  transition: opacity 0.6s ease;
+}
+
+.imageCaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  color: white;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.6s ease;
+  z-index: 2;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 8px;
+  font-family: "Inter", sans-serif;
+}
+
+.description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hoverIndicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 2;
+}
+
+/* Hover Effects */
+.card:hover {
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--card-hover-border);
+  transform: translateY(-5px);
+}
+
+.card:hover::before {
+  opacity: 0.6;
+}
+
+.card:hover .galleryImage {
+  transform: scale(1.05);
+}
+
+.card:hover .imageOverlay {
+  opacity: 0.1;
+}
+
+.card:hover .imageCaption {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card:hover .hoverIndicator {
+  transform: scaleX(1);
+}
+
+/* Results Card */
+.resultsCard {
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+  max-width: 1300px;
+  margin: 4rem auto 0;
+  padding: 3rem;
+  position: relative;
+  z-index: 2;
+  border: 1px solid var(--card-border);
+}
+
+.resultsContent {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.resultsTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--section-title-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.statCard {
+  background: var(--card-hover-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 1rem;
+  color: var(--card-desc-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .orb1 {
+    width: 200px;
+    height: 200px;
+    filter: blur(40px);
+  }
+  .orb2 {
+    width: 150px;
+    height: 150px;
+    filter: blur(30px);
+  }
+  .orb3 {
+    width: 120px;
+    height: 120px;
+    filter: blur(25px);
+  }
+
+  .highlightItem {
+    grid-column: span 1;
+  }
+
+  .imageContainer {
+    aspect-ratio: 1.5/1 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .parallaxOrbs {
+    display: none;
+  }
+
+  .gallerySection {
+    padding: 80px 0;
+  }
+
+  .resultsCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .statCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .statValue {
+    font-size: 2rem;
+  }
+}
