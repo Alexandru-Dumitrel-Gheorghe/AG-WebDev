@@ -20,7 +20,7 @@ export default function HeroSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    // GSAP: NU RESETA IMAGINEA
+    // GSAP: Reset props pentru animatie
     gsap.set(
       [
         leftRef.current,
@@ -34,7 +34,7 @@ export default function HeroSection() {
       { clearProps: "opacity,transform,scale" }
     );
 
-    // SplitText for title
+    // SplitText pentru titlu animat
     if (titleRef.current) {
       const splitTitle = new SplitText(titleRef.current, {
         type: "chars,words",
@@ -47,10 +47,9 @@ export default function HeroSection() {
       });
     }
 
-    // Detect mobile
     const isMobile = window.innerWidth < 800;
 
-    // Animation timeline: FĂRĂ imagine
+    // Timeline animatii
     const tl = gsap.timeline();
     tl.set([preheadRef.current, subtitleRef.current, ctaRef.current], {
       opacity: 0,
@@ -87,7 +86,6 @@ export default function HeroSection() {
         { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
         "-=0.5"
       )
-      // imaginea NU e animată pe opacity sau scale, doar y
       .to(
         imageRef.current,
         {
@@ -108,7 +106,7 @@ export default function HeroSection() {
         "-=1.2"
       );
 
-    // Floating & parallax (doar după load, nu la start)
+    // Parallax, floating și mouse parallax
     if (!isMobile) {
       gsap.to(imageRef.current, {
         y: 20,
@@ -152,7 +150,7 @@ export default function HeroSection() {
 
       // Mousemove parallax
       if (heroRef.current) {
-        heroRef.current.addEventListener("mousemove", (e) => {
+        const mouseMove = (e: MouseEvent) => {
           const xPos = e.clientX / window.innerWidth - 0.5;
           const yPos = e.clientY / window.innerHeight - 0.5;
 
@@ -173,16 +171,23 @@ export default function HeroSection() {
             duration: 1.5,
             ease: "power1.out",
           });
-        });
+        };
+        heroRef.current.addEventListener("mousemove", mouseMove);
+
+        return () => {
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+          gsap.killTweensOf("*");
+          if (heroRef.current) {
+            heroRef.current.removeEventListener("mousemove", mouseMove);
+          }
+        };
       }
     }
 
+    // Clean up scrolltrigger și event listeners
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       gsap.killTweensOf("*");
-      if (heroRef.current) {
-        heroRef.current.removeEventListener("mousemove", () => {});
-      }
     };
   }, []);
 
@@ -192,7 +197,6 @@ export default function HeroSection() {
         <span className={styles.prehead} ref={preheadRef}>
           → BRANDING
         </span>
-
         <h1 className={styles.title} ref={titleRef}>
           DIGITALE <br />
           <span className={styles.highlight}>LÖSUNGEN</span>
@@ -205,7 +209,6 @@ export default function HeroSection() {
           und nachweislich Ergebnisse bringen für Ihren nachhaltigen
           Online-Erfolg.
         </p>
-
         <a href="#kontakt" className={styles.ctaBtn} ref={ctaRef}>
           <span className={styles.ctaText}>Jetzt Kontakt aufnehmen</span>
           <span className={styles.ctaArrow}>&rarr;</span>
