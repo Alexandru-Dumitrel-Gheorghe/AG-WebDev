@@ -18,9 +18,13 @@ export default function HeroSection() {
   const decorationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Verificăm dacă suntem pe client
+    if (typeof window === "undefined") return;
+
+    // Înregistrăm plugin-urile GSAP
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    // GSAP: Reset props pentru animatie
+    // Resetăm proprietățile pentru animații
     gsap.set(
       [
         leftRef.current,
@@ -34,7 +38,7 @@ export default function HeroSection() {
       { clearProps: "opacity,transform,scale" }
     );
 
-    // SplitText pentru titlu animat
+    // Animare SplitText pentru titlu
     if (titleRef.current) {
       const splitTitle = new SplitText(titleRef.current, {
         type: "chars,words",
@@ -49,7 +53,7 @@ export default function HeroSection() {
 
     const isMobile = window.innerWidth < 800;
 
-    // Timeline animatii
+    // Timeline pentru animații
     const tl = gsap.timeline();
     tl.set([preheadRef.current, subtitleRef.current, ctaRef.current], {
       opacity: 0,
@@ -63,9 +67,7 @@ export default function HeroSection() {
         ease: "power3.out",
       })
       .to(
-        titleRef.current
-          ? titleRef.current.querySelectorAll(`.${styles.titleChar}`)
-          : [],
+        titleRef.current?.querySelectorAll(`.${styles.titleChar}`) || [],
         {
           y: 0,
           opacity: 1,
@@ -106,8 +108,9 @@ export default function HeroSection() {
         "-=1.2"
       );
 
-    // Parallax, floating și mouse parallax
-    if (!isMobile) {
+    // Efecte de paralaxă doar pe desktop
+    if (!isMobile && heroRef.current) {
+      // Animări flutuante
       gsap.to(imageRef.current, {
         y: 20,
         x: 10,
@@ -124,6 +127,7 @@ export default function HeroSection() {
         ease: "none",
       });
 
+      // Paralaxă la scroll
       const parallaxTl = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
@@ -148,43 +152,41 @@ export default function HeroSection() {
           0
         );
 
-      // Mousemove parallax
-      if (heroRef.current) {
-        const mouseMove = (e: MouseEvent) => {
-          const xPos = e.clientX / window.innerWidth - 0.5;
-          const yPos = e.clientY / window.innerHeight - 0.5;
+      // Paralaxă la mișcarea mouse-ului
+      const mouseMove = (e: MouseEvent) => {
+        const xPos = e.clientX / window.innerWidth - 0.5;
+        const yPos = e.clientY / window.innerHeight - 0.5;
 
-          gsap.to(imageRef.current, {
-            x: xPos * 30,
-            y: yPos * 20,
-            duration: 1.5,
-            ease: "power1.out",
-          });
-          gsap.to(decorationRef.current, {
-            x: xPos * 40,
-            y: yPos * 30,
-            duration: 1.5,
-            ease: "power1.out",
-          });
-          gsap.to(titleRef.current, {
-            x: xPos * -10,
-            duration: 1.5,
-            ease: "power1.out",
-          });
-        };
-        heroRef.current.addEventListener("mousemove", mouseMove);
+        gsap.to(imageRef.current, {
+          x: xPos * 30,
+          y: yPos * 20,
+          duration: 1.5,
+          ease: "power1.out",
+        });
+        gsap.to(decorationRef.current, {
+          x: xPos * 40,
+          y: yPos * 30,
+          duration: 1.5,
+          ease: "power1.out",
+        });
+        gsap.to(titleRef.current, {
+          x: xPos * -10,
+          duration: 1.5,
+          ease: "power1.out",
+        });
+      };
 
-        return () => {
-          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-          gsap.killTweensOf("*");
-          if (heroRef.current) {
-            heroRef.current.removeEventListener("mousemove", mouseMove);
-          }
-        };
-      }
+      heroRef.current.addEventListener("mousemove", mouseMove);
+
+      // Cleanup
+      return () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        gsap.killTweensOf("*");
+        heroRef.current?.removeEventListener("mousemove", mouseMove);
+      };
     }
 
-    // Clean up scrolltrigger și event listeners
+    // Cleanup general
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       gsap.killTweensOf("*");
@@ -225,7 +227,6 @@ export default function HeroSection() {
             priority
             className={styles.heroImage}
             ref={imageRef}
-            // fără loading="lazy" !!!
           />
           <div className={styles.imageOverlay}></div>
           <div className={styles.imageDecoration} ref={decorationRef}></div>
