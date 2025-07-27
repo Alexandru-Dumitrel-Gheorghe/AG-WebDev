@@ -21,7 +21,7 @@ const projects: Project[] = [
     image: "/images/oberholzer-projekt.png",
     technologies: ["Next.js", "Framer Motion", "SEO"],
     liveUrl: "https://oberholzerch.netlify.app/",
-    codeUrl: "/casestudy/oberholzer",
+    codeUrl: "/referenzen/oberholzer-umzugservice",
   },
   {
     title: "Certus Solutions",
@@ -30,7 +30,7 @@ const projects: Project[] = [
     image: "/images/certus-projekt.svg",
     technologies: ["React", "Next.js", "CSS Modules"],
     liveUrl: "https://www.certussolutions.de/",
-    codeUrl: "referenzen/certus-solutions",
+    codeUrl: "/referenzen/certus-solutions",
   },
   {
     title: "Fraga Online Shop",
@@ -39,7 +39,7 @@ const projects: Project[] = [
     image: "/images/fraga-projekt.svg",
     technologies: ["Next.js", "Shopify", "Figma"],
     liveUrl: "https://e-commerce-one-tau-76.vercel.app/",
-    codeUrl: "#",
+    codeUrl: "/referenzen/fraga-online-shop",
   },
 ];
 
@@ -165,7 +165,7 @@ export default function ProjectShowcase() {
                   )}
                   {project.codeUrl && project.codeUrl !== "#" && (
                     <Link
-                      href={`/${project.codeUrl}`}
+                      href={project.codeUrl}
                       className={styles.secondaryButton}
                       aria-label={`View ${project.title} case study`}
                     >
