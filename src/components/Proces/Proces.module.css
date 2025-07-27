@@ -3,11 +3,14 @@
   width: 100%;
   padding: 4rem 0;
   background: var(--bg-color);
-  position: relative;
   overflow: hidden;
   font-family: "Inter", system-ui, sans-serif;
   margin-top: -4rem;
   transition: background 0.3s ease;
+}
+
+.desktopProcessWrapper {
+  position: relative;
 }
 
 .parallaxBg {

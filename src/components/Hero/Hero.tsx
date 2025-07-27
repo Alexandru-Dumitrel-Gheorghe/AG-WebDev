@@ -6,6 +6,11 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
+// Only load GSAP plugins on client side
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+}
+
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
@@ -18,13 +23,36 @@ export default function HeroSection() {
   const decorationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Verificăm dacă suntem pe client
-    if (typeof window === "undefined") return;
+    // Early return if not on client or refs not ready
+    if (typeof window === "undefined" || !heroRef.current) return;
 
-    // Înregistrăm plugin-urile GSAP
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+    const isMobile = window.innerWidth < 800;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-    // Resetăm proprietățile pentru animații
+    // Set initial styles without animation if reduced motion is preferred
+    if (prefersReducedMotion) {
+      gsap.set(
+        [
+          preheadRef.current,
+          subtitleRef.current,
+          ctaRef.current,
+          titleRef.current?.querySelectorAll(`.${styles.titleChar}`) || [],
+          imageRef.current,
+          decorationRef.current,
+        ],
+        {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          scale: 1,
+        }
+      );
+      return;
+    }
+
+    // Reset properties for animations
     gsap.set(
       [
         leftRef.current,
@@ -38,9 +66,10 @@ export default function HeroSection() {
       { clearProps: "opacity,transform,scale" }
     );
 
-    // Animare SplitText pentru titlu
+    // SplitText animation for title
+    let splitTitle: SplitText | null = null;
     if (titleRef.current) {
-      const splitTitle = new SplitText(titleRef.current, {
+      splitTitle = new SplitText(titleRef.current, {
         type: "chars,words",
         charsClass: styles.titleChar,
       });
@@ -51,10 +80,11 @@ export default function HeroSection() {
       });
     }
 
-    const isMobile = window.innerWidth < 800;
+    // Main timeline for animations
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.out" },
+    });
 
-    // Timeline pentru animații
-    const tl = gsap.timeline();
     tl.set([preheadRef.current, subtitleRef.current, ctaRef.current], {
       opacity: 0,
       y: isMobile ? 20 : 30,
@@ -64,10 +94,9 @@ export default function HeroSection() {
         y: 0,
         opacity: 1,
         duration: 0.7,
-        ease: "power3.out",
       })
       .to(
-        titleRef.current?.querySelectorAll(`.${styles.titleChar}`) || [],
+        splitTitle?.chars || [],
         {
           y: 0,
           opacity: 1,
@@ -78,16 +107,8 @@ export default function HeroSection() {
         },
         "-=0.3"
       )
-      .to(
-        subtitleRef.current,
-        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
-        "-=0.7"
-      )
-      .to(
-        ctaRef.current,
-        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
-        "-=0.5"
-      )
+      .to(subtitleRef.current, { y: 0, opacity: 1, duration: 0.7 }, "-=0.7")
+      .to(ctaRef.current, { y: 0, opacity: 1, duration: 0.7 }, "-=0.5")
       .to(
         imageRef.current,
         {
@@ -108,9 +129,9 @@ export default function HeroSection() {
         "-=1.2"
       );
 
-    // Efecte de paralaxă doar pe desktop
+    // Only add complex effects on desktop
     if (!isMobile && heroRef.current) {
-      // Animări flutuante
+      // Floating animations with will-change
       gsap.to(imageRef.current, {
         y: 20,
         x: 10,
@@ -127,7 +148,7 @@ export default function HeroSection() {
         ease: "none",
       });
 
-      // Paralaxă la scroll
+      // Parallax on scroll
       const parallaxTl = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
@@ -152,8 +173,13 @@ export default function HeroSection() {
           0
         );
 
-      // Paralaxă la mișcarea mouse-ului
+      // Mouse move effects with debounce
+      let lastTime = 0;
       const mouseMove = (e: MouseEvent) => {
+        const now = Date.now();
+        if (now - lastTime < 16) return; // ~60fps
+        lastTime = now;
+
         const xPos = e.clientX / window.innerWidth - 0.5;
         const yPos = e.clientY / window.innerHeight - 0.5;
 
@@ -162,17 +188,20 @@ export default function HeroSection() {
           y: yPos * 20,
           duration: 1.5,
           ease: "power1.out",
+          overwrite: true,
         });
         gsap.to(decorationRef.current, {
           x: xPos * 40,
           y: yPos * 30,
           duration: 1.5,
           ease: "power1.out",
+          overwrite: true,
         });
         gsap.to(titleRef.current, {
           x: xPos * -10,
           duration: 1.5,
           ease: "power1.out",
+          overwrite: true,
         });
       };
 
@@ -183,13 +212,15 @@ export default function HeroSection() {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         gsap.killTweensOf("*");
         heroRef.current?.removeEventListener("mousemove", mouseMove);
+        splitTitle?.revert();
       };
     }
 
-    // Cleanup general
+    // General cleanup
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       gsap.killTweensOf("*");
+      splitTitle?.revert();
     };
   }, []);
 
@@ -227,6 +258,7 @@ export default function HeroSection() {
             priority
             className={styles.heroImage}
             ref={imageRef}
+            loading="eager"
           />
           <div className={styles.imageOverlay}></div>
           <div className={styles.imageDecoration} ref={decorationRef}></div>

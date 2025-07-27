@@ -65,9 +65,14 @@ export default function DesignThinkingProcess() {
       setIsMobile(window.innerWidth < 1024);
     };
 
+    // Use requestAnimationFrame for resize handler
+    const debouncedResize = () => {
+      requestAnimationFrame(handleResize);
+    };
+
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", debouncedResize);
+    return () => window.removeEventListener("resize", debouncedResize);
   }, []);
 
   return (
@@ -91,7 +96,7 @@ export default function DesignThinkingProcess() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
           >
             <span className={styles.underline}>Design Thinking Prozess</span>
           </motion.h1>
@@ -100,7 +105,7 @@ export default function DesignThinkingProcess() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
           >
             Ein bewährtes Vorgehen für kreative, nutzerzentrierte Lösungen. Von
             der Empathie bis zum Testen – jeder Schritt bringt Ihr Projekt näher
@@ -145,7 +150,7 @@ function DesktopProcess({
   );
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className={styles.desktopProcessWrapper}>
       <div className={styles.stages}>
         {stages.map((stage, index) => (
           <motion.div
@@ -158,7 +163,7 @@ function DesktopProcess({
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
           >
             <div className={styles.stageMarker}>
               <motion.div
