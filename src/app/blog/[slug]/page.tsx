@@ -135,7 +135,8 @@ function generateJsonLd(meta: Metadata, slug: string) {
       : (meta.openGraph?.images as { url: string })?.url ?? "",
     author: {
       "@type": "Person",
-      name: "AG WebDev",
+      name: "Alexandru Gheorghe",
+      url: "https://www.ag-webdev.de/",
     },
     publisher: {
       "@type": "Organization",
@@ -150,6 +151,37 @@ function generateJsonLd(meta: Metadata, slug: string) {
   };
 }
 
+// --- BreadcrumbList JSON-LD ---
+function BreadcrumbJsonLd({ slug, title }: { slug: string; title: string }) {
+  const items = [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Blog",
+      item: "https://www.ag-webdev.de/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: title,
+      item: `https://www.ag-webdev.de/blog/${slug}`,
+    },
+  ];
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: items,
+        }),
+      }}
+      key="breadcrumb-jsonld"
+    />
+  );
+}
+
 // --- Componenta Page, cu fallback la notFound() pentru slugs necunoscute ---
 export default async function Page({ params }: any) {
   const awaitedParams = await params;
@@ -160,11 +192,16 @@ export default async function Page({ params }: any) {
 
   return (
     <>
-      {/* Injectează JSON-LD în head pentru SEO */}
+      {/* JSON-LD pentru Article */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         key="jsonld"
+      />
+      {/* JSON-LD pentru BreadcrumbList */}
+      <BreadcrumbJsonLd
+        slug={awaitedParams.slug}
+        title={meta.title as string}
       />
       {/* Afișează conținutul blogului */}
       <BlogPostClient slug={awaitedParams.slug} />

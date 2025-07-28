@@ -1,0 +1,232 @@
+.container {
+  max-width: 1000px;
+  margin: 8rem auto;
+  padding: 0 1.5rem;
+  color: var(--text-color);
+  position: relative;
+}
+
+.backgroundGradient {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  right: 0;
+  height: 150%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 40% 50%,
+    #fc6b2820 0%,
+    transparent 70%
+  );
+  opacity: 0.8;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-color);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--section-desc-line);
+  padding: 3rem 2.5rem;
+  margin-bottom: 3rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--section-desc-line);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.iconContainer {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--logo-bg);
+  color: var(--logo-color);
+  font-size: 2rem;
+  box-shadow: 0 4px 12px rgba(252, 107, 40, 0.2);
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--section-title-color);
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0.5rem 0 0;
+  color: var(--accent-color);
+  opacity: 0.9;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--section-desc-line);
+  background: var(--bg-color);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section.active {
+  box-shadow: 0 8px 25px rgba(252, 107, 40, 0.12);
+  border: 1.5px solid var(--accent-color);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background: var(--bg-color);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  color: var(--text-color);
+  text-align: left;
+  font-family: inherit;
+}
+
+.sectionHeader:hover {
+  background: var(--section-desc-line);
+}
+
+.section.active .sectionHeader {
+  background: var(--section-desc-line);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--section-title-color);
+}
+
+.chevron {
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.section.active .chevron {
+  color: var(--accent-color);
+}
+
+.sectionContent {
+  padding: 0 2rem 1.5rem;
+  background: var(--bg-color);
+  font-size: 1.05rem;
+  color: var(--text-color);
+  line-height: 1.7;
+}
+
+.sectionContent strong {
+  color: var(--section-title-color);
+  font-weight: 600;
+}
+
+.footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--section-desc-line);
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--section-desc-color);
+  opacity: 0.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+    margin: 6rem auto;
+  }
+
+  .card {
+    padding: 2rem 1.5rem;
+  }
+
+  .headerContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.2rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .sectionHeader {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .sectionContent {
+    padding: 0 1.5rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .iconContainer {
+    width: 70px;
+    height: 70px;
+  }
+
+  .sectionHeader {
+    padding: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+  }
+
+  .sectionContent {
+    font-size: 0.95rem;
+    padding: 0 1rem 1rem;
+  }
+
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+  }
+}

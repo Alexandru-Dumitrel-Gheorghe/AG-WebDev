@@ -119,11 +119,14 @@ export default function Footer() {
         <div className={styles.copyContainer}>
           © {new Date().getFullYear()} AG WebDev. Alle Rechte vorbehalten.
           <div className={styles.legalLinks}>
+            <Link href="/impressum" className={styles.legalLink}>
+              Impressum
+            </Link>
             <Link href="/datenschutz" className={styles.legalLink}>
               Datenschutz
             </Link>
-            <Link href="/impressum" className={styles.legalLink}>
-              Impressum
+            <Link href="/agb" className={styles.legalLink}>
+              AGB
             </Link>
           </div>
         </div>

@@ -1,10 +1,11 @@
 import BeratungClient from "./BeratungClient";
+import StructuredDataBeratung from "./StructuredDataBeratung";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Beratung & Strategie | AG WebDev",
+  title: "Digitale Beratung & Strategie Freelancer Deutschland | AG WebDev",
   description:
-    "Individuelle Beratung und maßgeschneiderte Strategien für Ihren digitalen Erfolg. Wir begleiten Sie von der Analyse bis zur Umsetzung – persönlich & kompetent.",
+    "Individuelle digitale Beratung, Strategieentwicklung und persönliche Begleitung vom Freelance Webentwickler – AG WebDev. Für Unternehmen und Selbstständige deutschlandweit.",
   keywords: [
     "Beratung",
     "Digitale Strategie",
@@ -13,30 +14,32 @@ export const metadata: Metadata = {
     "Webdesign Beratung",
     "Online Marketing",
     "Digitale Transformation",
+    "Strategieberatung Freelancer",
     "AG WebDev",
+    "Freelance Beratung Deutschland",
   ],
   openGraph: {
-    title: "Beratung & Strategie | AG WebDev",
+    title: "Digitale Beratung & Strategie Freelancer Deutschland | AG WebDev",
     description:
-      "Individuelle Beratung, digitale Strategien und persönliche Begleitung auf dem Weg zum Online-Erfolg.",
+      "Digitale Beratung, Strategieentwicklung und persönliche Begleitung zum Online-Erfolg. Beratung deutschlandweit für Unternehmen und Selbstständige.",
     url: "https://www.ag-webdev.de/beratung",
     siteName: "AG WebDev",
     type: "website",
     images: [
       {
-        url: "/images/beratung-og.jpg",
+        url: "https://www.ag-webdev.de/images/beratung-hero.png",
         width: 1200,
         height: 630,
-        alt: "Beratung & Strategie bei AG WebDev",
+        alt: "Digitale Beratung & Strategie bei AG WebDev",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beratung & Strategie | AG WebDev",
+    title: "Digitale Beratung & Strategie Freelancer | AG WebDev",
     description:
-      "Digitale Beratung, Strategieentwicklung und Online-Erfolg mit AG WebDev.",
-    images: ["/images/beratung-og.jpg"],
+      "Digitale Beratung, Strategieentwicklung und Online-Erfolg deutschlandweit mit AG WebDev.",
+    images: ["https://www.ag-webdev.de/images/beratung-hero.png"],
     creator: "@ag_webdev",
   },
   alternates: {
@@ -44,7 +47,11 @@ export const metadata: Metadata = {
   },
 };
 
-// AICI este cheia: trebuie să existe și un default export cu un React Component!
 export default function Page() {
-  return <BeratungClient />;
+  return (
+    <>
+      <StructuredDataBeratung />
+      <BeratungClient />
+    </>
+  );
 }

@@ -1,16 +1,16 @@
-// app/webdesign/page.tsx
-
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import WebdesignClient from "./WebdesignClient";
+import StructuredDataWebdesign from "./StructuredDataWebdesign";
 
-// SEO Meta Tags pentru pagina de Webdesign
+// SEO Meta Tags pentru pagina de Webdesign (doar Freelancer, nu Agentur!)
 export const metadata: Metadata = {
-  title: "Webdesign Agentur – Modernes Webdesign | AG WebDev",
+  title: "Webdesign Freelancer Deutschland – Modernes Webdesign | AG WebDev",
   description:
-    "Modernes, responsives und performantes Webdesign für Ihren Erfolg. Jetzt individuell beraten lassen – AG WebDev.",
+    "Modernes, responsives und performantes Webdesign für Unternehmen und Selbstständige in ganz Deutschland. Maßgeschneiderte Websites, WordPress, UI/UX Design & SEO von Freelance Webdesigner AG WebDev.",
   keywords: [
     "Webdesign",
-    "Webdesign Agentur",
+    "Webdesigner Freelancer",
+    "Webdesign Deutschland",
     "Responsive Webdesign",
     "SEO",
     "Website erstellen",
@@ -18,17 +18,20 @@ export const metadata: Metadata = {
     "WordPress",
     "Modernes Webdesign",
     "Webentwicklung",
+    "UI/UX Design",
     "Webseite Deutschland",
+    "Freelance Webdesigner",
+    "Webdesign Service Deutschland",
   ],
   openGraph: {
-    title: "Webdesign Agentur – Modernes Webdesign | AG WebDev",
+    title: "Webdesign Freelancer Deutschland – Modernes Webdesign | AG WebDev",
     description:
-      "Modernes, responsives und performantes Webdesign für Ihren Erfolg. Jetzt individuell beraten lassen – AG WebDev.",
+      "Modernes, responsives und performantes Webdesign für Unternehmen, Startups und Selbstständige in ganz Deutschland. Individuell, professionell, schnell – AG WebDev, Freelance Webdesigner.",
     url: "https://www.ag-webdev.de/webdesign",
     type: "website",
     images: [
       {
-        url: "https://www.ag-webdev.de/images/og-webdesign.jpg",
+        url: "https://www.ag-webdev.de/images/hero-about1.png",
         width: 1200,
         height: 630,
         alt: "Modernes Webdesign von AG WebDev",
@@ -41,5 +44,10 @@ export const metadata: Metadata = {
 };
 
 export default function WebdesignPage() {
-  return <WebdesignClient />;
+  return (
+    <>
+      <StructuredDataWebdesign />
+      <WebdesignClient />
+    </>
+  );
 }

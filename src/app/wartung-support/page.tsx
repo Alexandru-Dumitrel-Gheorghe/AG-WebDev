@@ -1,4 +1,5 @@
 import WartungSupportClient from "./WartungSupportClient";
+import StructuredDataWartungSupport from "./StructuredDataWartungSupport";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/maintenance-support-og.jpg",
+        url: "/images/maintenance-support.png",
         width: 1200,
         height: 630,
         alt: "Wartung & Support bei AG WebDev",
@@ -47,5 +48,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <WartungSupportClient />;
+  return (
+    <>
+      <StructuredDataWartungSupport />
+      <WartungSupportClient />
+    </>
+  );
 }

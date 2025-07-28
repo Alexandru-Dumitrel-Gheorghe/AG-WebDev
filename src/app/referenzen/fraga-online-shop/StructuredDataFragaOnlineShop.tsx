@@ -1,0 +1,51 @@
+export default function StructuredDataFragaOnlineShop() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Project",
+    name: "Fraga Online Shop",
+    alternateName: "Fraga Online Shop Referenz",
+    description:
+      "E-Commerce Entwicklung, Webdesign und Shopify-Schnittstelle für Fraga Online Shop. Umgesetzt von AG WebDev – individuelle Lösungen für maximalen Erfolg.",
+    url: "https://www.ag-webdev.de/referenzen/fraga-online-shop",
+    image: ["https://www.ag-webdev.de/images/certus-projekt.png"],
+    datePublished: "2024-07-20",
+    creator: {
+      "@type": "Person",
+      name: "Alexandru Gheorghe",
+      url: "https://www.ag-webdev.de/",
+      email: "contact@ag-webdev.de",
+      sameAs: [
+        "https://github.com/Alexandru-Dumitrel-Gheorghe",
+        "https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/",
+      ],
+    },
+    about: {
+      "@type": "Organization",
+      name: "Fraga Online Shop",
+      url: "https://e-commerce-one-tau-76.vercel.app/", // Dacă nu există site live, lasă doar numele
+    },
+    keywords: [
+      "E-Commerce",
+      "Online Shop",
+      "Webentwicklung",
+      "Shopify",
+      "UI/UX Design",
+      "Referenz",
+      "AG WebDev",
+    ],
+    inLanguage: "de",
+    workPerformed:
+      "Konzeption, E-Commerce Webentwicklung, UI/UX Design, Shopify-Anbindung, Performance-Optimierung.",
+    audience: {
+      "@type": "Audience",
+      audienceType: "B2B",
+    },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      key="structured-data-fraga"
+    />
+  );
+}

@@ -1,22 +1,49 @@
 import { Metadata } from "next";
 import SeoClient from "./SeoClient";
+import StructuredDataSeo from "./StructuredDataSeo";
 
 export const metadata: Metadata = {
-  title: "SEO Agentur Deutschland | Suchmaschinenoptimierung vom Profi",
+  title:
+    "SEO Freelancer Deutschland – Suchmaschinenoptimierung vom Profi | AG WebDev",
   description:
-    "SEO Dienstleistungen für Unternehmen in Deutschland – Steigern Sie Ihre Sichtbarkeit, Besucherzahlen und Umsatz mit professioneller Suchmaschinenoptimierung.",
-  keywords:
-    "SEO, Suchmaschinenoptimierung, Deutschland, Google Ranking, SEO Agentur, Sichtbarkeit, Online Marketing",
-  alternates: { canonical: "https://dein-domain.de/seo" },
+    "Professionelle SEO-Dienstleistungen vom Freelancer für Unternehmen und Selbstständige in ganz Deutschland. Bessere Sichtbarkeit, mehr Kunden und nachhaltiges Wachstum durch Suchmaschinenoptimierung von AG WebDev.",
+  keywords: [
+    "SEO",
+    "SEO Freelancer",
+    "Suchmaschinenoptimierung",
+    "Deutschland",
+    "Google Ranking",
+    "SEO Beratung",
+    "SEO Dienstleistungen",
+    "Online Marketing",
+    "AG WebDev",
+    "SEO Experte",
+    "Freelancer SEO",
+    "SEO Service Deutschland",
+  ],
+  alternates: { canonical: "https://www.ag-webdev.de/seo" },
   openGraph: {
-    title: "SEO Dienstleistungen Deutschland",
-    description: "SEO vom Profi – Sichtbarkeit & Umsatz steigern",
-    url: "https://dein-domain.de/seo",
+    title: "SEO Freelancer Deutschland – SEO vom Profi | AG WebDev",
+    description:
+      "SEO für Unternehmen und Selbstständige – Optimieren Sie Ihre Website, steigern Sie Sichtbarkeit und Umsatz. Jetzt individuelle SEO-Beratung vom Freelancer sichern.",
+    url: "https://www.ag-webdev.de/seo",
     type: "website",
+    images: [
+      {
+        url: "https://www.ag-webdev.de/images/seo-hero.png",
+        width: 1200,
+        height: 630,
+        alt: "SEO Freelancer Deutschland",
+      },
+    ],
   },
 };
 
-// Default export trebuie să fie o funcție React component:
 export default function Page() {
-  return <SeoClient />;
+  return (
+    <>
+      <StructuredDataSeo />
+      <SeoClient />
+    </>
+  );
 }

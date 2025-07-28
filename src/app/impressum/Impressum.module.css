@@ -1,0 +1,334 @@
+.container {
+  max-width: 1000px;
+  margin: 8rem auto;
+  padding: 0 1rem;
+  color: var(--text-color);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--section-desc-line);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--logo-bg);
+  color: var(--logo-color);
+  font-size: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--section-title-color);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+  color: var(--accent-color);
+}
+
+.description {
+  margin: 0.5rem 0 0;
+  color: var(--section-desc-color);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--section-desc-line);
+  background: var(--bg-color);
+}
+
+.sectionButton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-color);
+  border: none;
+  cursor: pointer;
+  gap: 1rem;
+  transition: all 0.2s;
+  color: var(--text-color);
+}
+
+.sectionButton:hover {
+  background: var(--section-desc-line);
+}
+
+.sectionButton.active {
+  background: var(--logo-bg);
+}
+
+.sectionIcon {
+  color: var(--accent-color);
+}
+
+.sectionTitle {
+  flex: 1;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--section-title-color);
+}
+
+.chevron {
+  transition: transform 0.2s;
+  color: var(--text-secondary);
+}
+
+.chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.sectionContent {
+  padding: 0 1.5rem 1.5rem;
+  background: var(--bg-color);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.infoCard {
+  background: var(--bg-color);
+  border-radius: 10px;
+  padding: 1.25rem;
+  border: 1px solid var(--section-desc-line);
+  transition: all 0.2s;
+}
+
+.infoCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--timeline-line-bg);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.cardHeader h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.companyName {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.infoItem a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.infoItem a:hover {
+  text-decoration: underline;
+}
+
+.personCard {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-color);
+  border-radius: 10px;
+  border: 1px solid var(--section-desc-line);
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--logo-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+}
+
+.personInfo h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.personInfo p {
+  margin: 0.25rem 0 0;
+  color: var(--section-desc-color);
+  font-size: 0.95rem;
+}
+
+.legalCard {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-color);
+  border-radius: 10px;
+  border: 1px solid var(--section-desc-line);
+}
+
+.legalIcon {
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.legalNote {
+  font-size: 0.9rem;
+  color: var(--section-desc-color);
+  margin-top: 0.25rem;
+}
+
+.noticeCard {
+  padding: 1.5rem;
+  background: var(--bg-color);
+  border-radius: 10px;
+  border: 1px solid var(--section-desc-line);
+}
+
+.noticeHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.noticeHeader h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.noticeCard p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.creditsCard {
+  padding: 1.5rem;
+  background: var(--bg-color);
+  border-radius: 10px;
+  border: 1px solid var(--section-desc-line);
+}
+
+.creditsCard h3 {
+  margin: 0 0 1rem;
+  color: var(--accent-color);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.creditsCard ul {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.creditsCard li {
+  margin-bottom: 0.5rem;
+}
+
+.licenseText {
+  font-size: 0.9rem;
+  color: var(--section-desc-color);
+  line-height: 1.6;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--section-desc-line);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--section-desc-color);
+}
+
+.footerNote {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .logo {
+    margin: 0 auto;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .personCard,
+  .legalCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .avatar {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .sectionButton {
+    padding: 1rem;
+  }
+
+  .sectionContent {
+    padding: 0 1rem 1rem;
+  }
+}
