@@ -137,6 +137,7 @@ h1 {
   --text-color: #151515;
   --text-secondary: #5a5a5a;
 }
+
 :root {
   --bg-color: #ffffff;
   --text-color: #222222;
@@ -194,6 +195,7 @@ h1 {
   --logo-bg: #29211c;
   --logo-color: #ff8c5a;
 }
+
 .aboutIntro {
   --bg-color: #fff;
   --text-color: #161616;
