@@ -14,9 +14,9 @@ export default function WebentwicklungClient() {
   return (
     <>
       <WebentwicklungHero />
+      <WebDevelopmentServicesSection />
       <WebentwicklungProzess />
       <CTASection />
-      <WebDevelopmentServicesSection />
       <Technologies />
       <WarumAgWebdev />
       <PricingCTA />

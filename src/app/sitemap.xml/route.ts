@@ -12,6 +12,9 @@ const pages = [
   { loc: "https://www.ag-webdev.de/wartung-support", priority: 0.8 },
   { loc: "https://www.ag-webdev.de/beratung", priority: 0.8 },
   { loc: "https://www.ag-webdev.de/blog", priority: 0.7 },
+  { loc: "https://www.ag-webdev.de/impressum", priority: 0.7 },
+  { loc: "https://www.ag-webdev.de/datenschutz", priority: 0.7 },
+  { loc: "https://www.ag-webdev.de/agb", priority: 0.7 },
   {
     loc: "https://www.ag-webdev.de/blog/wie-funktioniert-google-indexierung",
     priority: 0.7,
