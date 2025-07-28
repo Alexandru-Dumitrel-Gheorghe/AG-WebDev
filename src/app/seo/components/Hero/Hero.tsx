@@ -19,7 +19,7 @@ export default function SeoHero() {
           if (letter) {
             letter.style.animation = `${
               styles.letterFadeIn
-            } 0.1s ease-out forwards ${index * 0.03}s`;
+            } 0.4s ease-out forwards ${index * 0.05}s`;
           }
         });
       }
@@ -30,20 +30,19 @@ export default function SeoHero() {
 
   // Animatie subtitle & butoane
   useEffect(() => {
-    const animateElements = () => {
-      if (subtitleRef.current) {
-        subtitleRef.current.style.animation = `${styles.fadeInUp} 0.8s ease-out 0.6s forwards`;
-      }
-      if (buttonRef.current) {
-        buttonRef.current.style.animation = `${styles.fadeInUp} 0.8s ease-out 0.8s forwards`;
-      }
-    };
-    animateElements();
+    if (subtitleRef.current) {
+      subtitleRef.current.style.animation = `${styles.fadeInUp} 0.8s ease-out 0.6s forwards`;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.style.animation = `${styles.fadeInUp} 0.8s ease-out 0.8s forwards`;
+    }
   }, []);
 
-  // Texte SEO
-  const titleText = "SEO für nachhaltigen Erfolg";
-  // Partea 1: SEO   |   Partea 2: für nachhaltigen Erfolg
+  // TEXT - SEO HERO
+  const titleText = "SEO und Marketing";
+  const highlightStart = 0;
+  const highlightEnd = "SEO".length;
+
   return (
     <section className={styles.hero}>
       {/* Elemente decorative */}
@@ -54,40 +53,32 @@ export default function SeoHero() {
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title} ref={titleRef} style={{ opacity: 0 }}>
-            {"SEO ".split("").map((char, idx) => (
-              <span
-                key={idx}
-                ref={(el) => {
-                  lettersRef.current[idx] = el;
-                }}
-                className={`${styles.letter} ${styles.highlightLetter}`}
-                style={{
-                  opacity: 0,
-                  display: char === " " ? "inline" : "inline-block",
-                }}
-              >
-                {char}
-              </span>
-            ))}
-            <br />
-            {"MARKETING".split("").map((char, idx) => (
-              <span
-                key={idx + 100}
-                ref={(el) => {
-                  lettersRef.current[idx + 100] = el;
-                }}
-                className={styles.letter}
-                style={{
-                  opacity: 0,
-                  display: char === " " ? "inline" : "inline-block",
-                }}
-              >
-                {char}
-              </span>
-            ))}
+            {titleText.split("").map((char, index) => {
+              const isHighlight =
+                index >= highlightStart && index < highlightEnd;
+              const isSpace = char === " ";
+              return (
+                <span
+                  key={index}
+                  ref={(el) => {
+                    lettersRef.current[index] = el;
+                  }}
+                  className={`${styles.letter} ${
+                    isHighlight ? styles.highlightLetter : ""
+                  }`}
+                  style={{
+                    opacity: 0,
+                    display: isSpace ? "inline" : "inline-block",
+                  }}
+                >
+                  {char}
+                </span>
+              );
+            })}
           </h1>
 
           <div className={styles.titleUnderline} />
+
           <p className={styles.subtitle} ref={subtitleRef}>
             Wir sorgen dafür, dass Sie bei Google & Co. gefunden werden – mit
             <span className={styles.subtitleHighlight}>
