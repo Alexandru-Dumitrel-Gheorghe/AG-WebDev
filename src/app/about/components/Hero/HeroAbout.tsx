@@ -25,8 +25,11 @@ export default function HeroAbout() {
     >
       <div className={styles.orb1} />
       <div className={styles.orb2} />
+      <div className={styles.orb3} />
+      <div className={styles.particles} />
       <div className={styles.container}>
         <div className={styles.imageWrapper}>
+          <div className={styles.imageBorder} />
           <img
             src="/images/profil.jpg"
             alt="Alexandru AG WebDev"
@@ -38,7 +41,9 @@ export default function HeroAbout() {
         </div>
         <div className={styles.content}>
           <span className={styles.subtitle}>LET ME SHARE A LITTLE</span>
-          <h1 className={styles.title}>Über Mich</h1>
+          <h1 className={styles.title}>
+            <span className={styles.titleHighlight}>Über</span> Mich
+          </h1>
           <div className={styles.divider} />
           <div className={styles.name}>
             ALEXANDRU / <span className={styles.highlight}>AG WebDev</span>

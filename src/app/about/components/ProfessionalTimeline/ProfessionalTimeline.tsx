@@ -92,8 +92,10 @@ export default function ProfessionalJourney() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isCompactView, setIsCompactView] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
+
+  // Adăugăm refs pentru fiecare item!
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -107,19 +109,20 @@ export default function ProfessionalJourney() {
     );
   }, [isDarkMode]);
 
-  // Auto-detect mobile view
-  useEffect(() => {
-    const handleResize = () => {
-      setIsCompactView(window.innerWidth > 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 1], [1, 1, 0.8]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
+
+  // scroll smooth când se schimbă activeIndex
+  useEffect(() => {
+    if (itemRefs.current[activeIndex]) {
+      itemRefs.current[activeIndex]?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  }, [activeIndex]);
 
   return (
     <section className={styles.journeySection} ref={ref}>
@@ -152,31 +155,6 @@ export default function ProfessionalJourney() {
               Meine Reise durch die Welt der Webentwicklung und Design
             </motion.p>
           </div>
-
-          <div className={styles.headerControls}>
-            <button
-              className={styles.viewToggle}
-              onClick={() => setIsCompactView(!isCompactView)}
-              aria-label={
-                isCompactView
-                  ? "Zur Kartenansicht wechseln"
-                  : "Zur kompakten Ansicht wechseln"
-              }
-            >
-              {isCompactView ? "🔍 Expand" : "✏️ Compact"}
-            </button>
-            <button
-              className={styles.themeToggle}
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              aria-label={
-                isDarkMode
-                  ? "Zum Light Mode wechseln"
-                  : "Zum Dark Mode wechseln"
-              }
-            >
-              {isDarkMode ? "☀️ Light" : "🌙 Dark"}
-            </button>
-          </div>
         </div>
 
         <div className={styles.timelineWrapper}>
@@ -201,9 +179,12 @@ export default function ProfessionalJourney() {
             {journeyData.map((item, index) => (
               <motion.div
                 key={index}
+                ref={(el) => {
+                  itemRefs.current[index] = el;
+                }}
                 className={`${styles.timelineItem} ${
                   activeIndex === index ? styles.active : ""
-                } ${isCompactView ? styles.compact : ""}`}
+                }`}
                 onClick={() => setActiveIndex(index)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -212,7 +193,7 @@ export default function ProfessionalJourney() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 whileHover={{
-                  scale: isCompactView ? 1.02 : 1,
+                  scale: 1.02,
                   transition: { duration: 0.2 },
                 }}
               >
@@ -238,7 +219,7 @@ export default function ProfessionalJourney() {
                 </motion.div>
 
                 <AnimatePresence mode="wait">
-                  {(activeIndex === index || !isCompactView) && (
+                  {activeIndex === index && (
                     <motion.div
                       className={styles.itemContent}
                       initial={{ height: 0, opacity: 0 }}

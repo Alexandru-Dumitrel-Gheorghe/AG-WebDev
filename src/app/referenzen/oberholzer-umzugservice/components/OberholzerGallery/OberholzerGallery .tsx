@@ -4,14 +4,14 @@ import styles from "./OberholzerGallery.module.css";
 
 const images = [
   {
-    src: "/images/cta-background.png",
+    src: "/images/oberholzer-projekt.png",
     alt: "Digitales Kunden-Dashboard Oberholzer",
     caption: "Modernes Dashboard: Alle Umzüge und Anfragen im Blick",
     highlight: true,
     orbColor: "var(--orb1-gradient)",
   },
   {
-    src: "/images/cta-background.png",
+    src: "/images/image3.png",
     alt: "Mobile Optimierung Oberholzer",
     caption: "Mobile First – blitzschnell & voll responsive für unterwegs",
     orbColor: "var(--orb2-gradient)",

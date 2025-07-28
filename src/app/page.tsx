@@ -1,4 +1,4 @@
-import StructuredDataHome from "@/components/SEO/StructuredDataHome";
+import StructuredDataHome from "@/components/SEO/StructuredDataHome"; // sau StructuredHomeSeo
 
 import Hero from "@/components/Hero/Hero";
 import AboutMe from "@/components/About/About";
@@ -14,7 +14,8 @@ import PricingCTA from "./webdesign/components/PricingCTA/PricingCTA";
 import CTASection from "@/components/CTASection/CTASection";
 import BlogCTA from "@/components/BlogCTA/BlogCTA";
 
-// DEFINIȚIA DIRECTĂ! Fără import din metadata.ts!
+// Definiție metadata direct aici, cum ai pus deja!
+
 export const metadata = {
   title: "Webdesign & Webentwicklung Freelancer | Alexandru Gheorghe",
   description:

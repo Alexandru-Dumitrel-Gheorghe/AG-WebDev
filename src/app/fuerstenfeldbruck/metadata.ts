@@ -14,11 +14,11 @@ export const metadata: Metadata = {
     "AG WebDev",
   ],
   alternates: {
-    canonical: "https://ag-webdev.de/fuerstenfeldbruck",
+    canonical: "https://www.ag-webdev.de/fuerstenfeldbruck",
   },
   openGraph: {
     type: "website",
-    url: "https://ag-webdev.de/fuerstenfeldbruck",
+    url: "https://www.ag-webdev.de/fuerstenfeldbruck",
     title: "Webdesign Fürstenfeldbruck | Webseite erstellen & SEO Agentur",
     description:
       "AG WebDev ist Ihre Agentur für Webdesign, Webseiten-Erstellung und Suchmaschinenoptimierung in Fürstenfeldbruck.",
@@ -26,23 +26,14 @@ export const metadata: Metadata = {
     locale: "de_DE",
     images: [
       {
-        url: "https://ag-webdev.de/images/ffb-hero.png", // Pune o poză reprezentativă reală aici!
+        url: "https://www.ag-webdev.de/images/ffb-hero.png",
         width: 1200,
         height: 630,
         alt: "Webdesign Fürstenfeldbruck AG WebDev",
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@ag_webdev",
-    title: "Webdesign Fürstenfeldbruck | Webseite erstellen & SEO Agentur",
-    description:
-      "Webdesign & SEO vom Profi in Fürstenfeldbruck. Lassen Sie sich unverbindlich beraten!",
-    images: [
-      "https://ag-webdev.de/images/ffb-hero.png", // Pune o poză reprezentativă reală aici!
-    ],
-  },
+
   robots: {
     index: true,
     follow: true,

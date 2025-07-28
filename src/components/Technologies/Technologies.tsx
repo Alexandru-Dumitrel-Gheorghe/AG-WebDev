@@ -99,11 +99,28 @@ const technologies: Record<Tab, Tech[]> = {
   ],
 };
 
+const tabLabels = {
+  frontend: "Frontend",
+  backend: "Backend & Tools",
+};
+
 const Technologies = () => {
   const [activeTab, setActiveTab] = useState<Tab>("frontend");
   const [selectedTech, setSelectedTech] = useState<Tech | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+
+  // Tabs IDs
+  const tabIds: Record<Tab, string> = {
+    frontend: "tab-frontend",
+    backend: "tab-backend",
+  };
+
+  // Panel IDs
+  const panelIds: Record<Tab, string> = {
+    frontend: "tabpanel-frontend",
+    backend: "tabpanel-backend",
+  };
 
   return (
     <section className={styles.section} ref={ref}>
@@ -137,32 +154,33 @@ const Technologies = () => {
           <p className={styles.subtitle}>
             Moderne Technologien für außergewöhnliche Ergebnisse.
           </p>
-          <div className={styles.tabs}>
-            <button
-              className={`${styles.tab} ${
-                activeTab === "frontend" ? styles.active : ""
-              }`}
-              onClick={() => {
-                setActiveTab("frontend");
-                setSelectedTech(null);
-              }}
-              aria-selected={activeTab === "frontend"}
-            >
-              Frontend
-            </button>
-            <button
-              className={`${styles.tab} ${
-                activeTab === "backend" ? styles.active : ""
-              }`}
-              onClick={() => {
-                setActiveTab("backend");
-                setSelectedTech(null);
-              }}
-              aria-selected={activeTab === "backend"}
-            >
-              Backend & Tools
-            </button>
+          <div
+            className={styles.tabs}
+            role="tablist"
+            aria-label="Technologien Tabs"
+          >
+            {(["frontend", "backend"] as Tab[]).map((tab) => (
+              <button
+                key={tab}
+                id={tabIds[tab]}
+                role="tab"
+                type="button"
+                aria-selected={activeTab === tab}
+                aria-controls={panelIds[tab]}
+                tabIndex={activeTab === tab ? 0 : -1}
+                className={`${styles.tab} ${
+                  activeTab === tab ? styles.active : ""
+                }`}
+                onClick={() => {
+                  setActiveTab(tab);
+                  setSelectedTech(null);
+                }}
+              >
+                {tabLabels[tab]}
+              </button>
+            ))}
           </div>
+          {/* Details Panel */}
           <AnimatePresence mode="wait">
             {selectedTech ? (
               <motion.div
@@ -172,6 +190,8 @@ const Technologies = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3 }}
+                role="region"
+                aria-live="polite"
               >
                 <div
                   className={styles.techDetailIcon}
@@ -208,6 +228,8 @@ const Technologies = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3 }}
+                role="region"
+                aria-live="polite"
               >
                 <span>
                   Wähle eine Technologie
@@ -222,6 +244,9 @@ const Technologies = () => {
         {/* Right Side - Tech Grid */}
         <motion.div
           className={styles.techGrid}
+          id={panelIds[activeTab]}
+          role="tabpanel"
+          aria-labelledby={tabIds[activeTab]}
           initial={{ opacity: 0, x: 100, rotateY: -45 }}
           animate={
             isInView
@@ -252,6 +277,7 @@ const Technologies = () => {
               whileTap={{ scale: 0.97 }}
               style={{ "--tech-color": tech.color } as React.CSSProperties}
               aria-label={tech.name}
+              type="button"
             >
               <div className={styles.techIcon}>{tech.icon}</div>
               <span className={styles.techLabel}>{tech.name}</span>

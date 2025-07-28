@@ -116,7 +116,7 @@
 .contactBtn {
   display: none;
   background: var(--accent-color);
-  color: white;
+  color: #fff !important;
   border: none;
   border-radius: 8px;
   padding: 0.7rem 1.5rem;
@@ -124,6 +124,7 @@
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
+  text-shadow: none;
 }
 
 .contactBtn:hover {

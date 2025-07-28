@@ -18,7 +18,7 @@ const projects: Project[] = [
     title: "Oberholzer Umzugservice",
     description:
       "Neues Corporate Design, ultra-schnelle Ladezeiten und Google #1 für das Haupt-Keyword. Mobile-first UI/UX mit maximaler Conversion.",
-    image: "/images/oberholzer-projekt.png",
+    image: "/images/oberholzer-projekt1.png",
     technologies: ["Next.js", "Framer Motion", "SEO"],
     liveUrl: "https://oberholzerch.netlify.app/",
     codeUrl: "/referenzen/oberholzer-umzugservice",
@@ -27,7 +27,7 @@ const projects: Project[] = [
     title: "Certus Solutions",
     description:
       "Webauftritt für Vertrieb von Fenstern, Türen, Aluminiumzäunen & Rollläden. Komplett in Next.js mit TypeScript, inklusive SEO, Referenz-Galerie & Kontaktmodul.",
-    image: "/images/certus-projekt.svg",
+    image: "/images/certus-projekt.png",
     technologies: ["React", "Next.js", "CSS Modules"],
     liveUrl: "https://www.certussolutions.de/",
     codeUrl: "/referenzen/certus-solutions",
@@ -36,7 +36,7 @@ const projects: Project[] = [
     title: "Fraga Online Shop",
     description:
       "Modernes Shop-Erlebnis mit Shopify-Backend und Next.js-Frontend. Individuelles Design, Conversion-Optimierung & superschnelle Pages.",
-    image: "/images/fraga-projekt.svg",
+    image: "/images/fraga-projekt1.png",
     technologies: ["Next.js", "Shopify", "Figma"],
     liveUrl: "https://e-commerce-one-tau-76.vercel.app/",
     codeUrl: "/referenzen/fraga-online-shop",

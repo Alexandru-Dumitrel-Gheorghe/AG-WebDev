@@ -23,7 +23,6 @@ export default function HeroSection() {
   const decorationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Early return if not on client or refs not ready
     if (typeof window === "undefined" || !heroRef.current) return;
 
     const isMobile = window.innerWidth < 800;
@@ -31,197 +30,190 @@ export default function HeroSection() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    // Set initial styles without animation if reduced motion is preferred
-    if (prefersReducedMotion) {
+    // Asigură-te că fonturile sunt încărcate înainte de SplitText
+    document.fonts.ready.then(() => {
+      let splitTitle: SplitText | null = null;
+
+      if (prefersReducedMotion) {
+        const chars =
+          titleRef.current?.querySelectorAll(`.${styles.titleChar}`) ?? [];
+
+        gsap.set(
+          [
+            preheadRef.current,
+            subtitleRef.current,
+            ctaRef.current,
+            ...chars,
+            imageRef.current,
+            decorationRef.current,
+          ],
+          {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            scale: 1,
+          }
+        );
+        return;
+      }
+
+      // Reset props
       gsap.set(
         [
+          leftRef.current,
+          rightRef.current,
+          titleRef.current,
           preheadRef.current,
           subtitleRef.current,
           ctaRef.current,
-          titleRef.current?.querySelectorAll(`.${styles.titleChar}`) || [],
-          imageRef.current,
           decorationRef.current,
         ],
-        {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          scale: 1,
-        }
+        { clearProps: "opacity,transform,scale" }
       );
-      return;
-    }
 
-    // Reset properties for animations
-    gsap.set(
-      [
-        leftRef.current,
-        rightRef.current,
-        titleRef.current,
-        preheadRef.current,
-        subtitleRef.current,
-        ctaRef.current,
-        decorationRef.current,
-      ],
-      { clearProps: "opacity,transform,scale" }
-    );
+      // SplitText
+      if (titleRef.current) {
+        splitTitle = new SplitText(titleRef.current, {
+          type: "chars,words",
+          charsClass: styles.titleChar,
+        });
+        gsap.set(splitTitle.chars, {
+          y: 40,
+          opacity: 0,
+          rotateX: 90,
+        });
+      }
 
-    // SplitText animation for title
-    let splitTitle: SplitText | null = null;
-    if (titleRef.current) {
-      splitTitle = new SplitText(titleRef.current, {
-        type: "chars,words",
-        charsClass: styles.titleChar,
-      });
-      gsap.set(splitTitle.chars, {
-        y: 40,
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.set([preheadRef.current, subtitleRef.current, ctaRef.current], {
         opacity: 0,
-        rotateX: 90,
-      });
-    }
-
-    // Main timeline for animations
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.out" },
-    });
-
-    tl.set([preheadRef.current, subtitleRef.current, ctaRef.current], {
-      opacity: 0,
-      y: isMobile ? 20 : 30,
-    })
-      .set([leftRef.current, rightRef.current], { opacity: 1 })
-      .to(preheadRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
+        y: isMobile ? 20 : 30,
       })
-      .to(
-        splitTitle?.chars || [],
-        {
-          y: 0,
-          opacity: 1,
-          rotateX: 0,
-          duration: 1.2,
-          stagger: 0.03,
-          ease: "back.out(1.7)",
-        },
-        "-=0.3"
-      )
-      .to(subtitleRef.current, { y: 0, opacity: 1, duration: 0.7 }, "-=0.7")
-      .to(ctaRef.current, { y: 0, opacity: 1, duration: 0.7 }, "-=0.5")
-      .to(
-        imageRef.current,
-        {
-          y: isMobile ? 0 : 20,
-          duration: 1,
-          ease: "expo.out",
-        },
-        "-=1"
-      )
-      .to(
-        decorationRef.current,
-        {
-          scale: 1,
-          opacity: 0.3,
-          duration: 1.5,
-          ease: "elastic.out(1, 0.5)",
-        },
-        "-=1.2"
-      );
-
-    // Only add complex effects on desktop
-    if (!isMobile && heroRef.current) {
-      // Floating animations with will-change
-      gsap.to(imageRef.current, {
-        y: 20,
-        x: 10,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      gsap.to(decorationRef.current, {
-        rotation: 360,
-        duration: 120,
-        repeat: -1,
-        ease: "none",
-      });
-
-      // Parallax on scroll
-      const parallaxTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1.5,
-        },
-      });
-
-      parallaxTl
-        .to(imageRef.current, { y: -200, scale: 1.05, ease: "none" }, 0)
-        .to(rightRef.current, { x: 150, opacity: 0.8, ease: "none" }, 0)
-        .to(leftRef.current, { y: 100, opacity: 0.9, ease: "none" }, 0)
+        .set([leftRef.current, rightRef.current], { opacity: 1 })
+        .to(preheadRef.current, { y: 0, opacity: 1, duration: 0.7 })
         .to(
-          titleRef.current,
-          { scale: 0.9, y: 50, opacity: 0.8, ease: "none" },
-          0
+          splitTitle?.chars || [],
+          {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            duration: 1.2,
+            stagger: 0.03,
+            ease: "back.out(1.7)",
+          },
+          "-=0.3"
+        )
+        .to(subtitleRef.current, { y: 0, opacity: 1, duration: 0.7 }, "-=0.7")
+        .to(ctaRef.current, { y: 0, opacity: 1, duration: 0.7 }, "-=0.5")
+        .to(
+          imageRef.current,
+          {
+            y: isMobile ? 0 : 20,
+            duration: 1,
+            ease: "expo.out",
+          },
+          "-=1"
         )
         .to(
           decorationRef.current,
-          { y: -100, x: 50, scale: 1.2, ease: "none" },
-          0
+          {
+            scale: 1,
+            opacity: 0.3,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.5)",
+          },
+          "-=1.2"
         );
 
-      // Mouse move effects with debounce
-      let lastTime = 0;
-      const mouseMove = (e: MouseEvent) => {
-        const now = Date.now();
-        if (now - lastTime < 16) return; // ~60fps
-        lastTime = now;
-
-        const xPos = e.clientX / window.innerWidth - 0.5;
-        const yPos = e.clientY / window.innerHeight - 0.5;
-
+      if (!isMobile && heroRef.current) {
         gsap.to(imageRef.current, {
-          x: xPos * 30,
-          y: yPos * 20,
-          duration: 1.5,
-          ease: "power1.out",
-          overwrite: true,
+          y: 20,
+          x: 10,
+          duration: 4,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
         });
+
         gsap.to(decorationRef.current, {
-          x: xPos * 40,
-          y: yPos * 30,
-          duration: 1.5,
-          ease: "power1.out",
-          overwrite: true,
+          rotation: 360,
+          duration: 120,
+          repeat: -1,
+          ease: "none",
         });
-        gsap.to(titleRef.current, {
-          x: xPos * -10,
-          duration: 1.5,
-          ease: "power1.out",
-          overwrite: true,
+
+        const parallaxTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5,
+          },
         });
-      };
 
-      heroRef.current.addEventListener("mousemove", mouseMove);
+        parallaxTl
+          .to(imageRef.current, { y: -200, scale: 1.05, ease: "none" }, 0)
+          .to(rightRef.current, { x: 150, opacity: 0.8, ease: "none" }, 0)
+          .to(leftRef.current, { y: 100, opacity: 0.9, ease: "none" }, 0)
+          .to(
+            titleRef.current,
+            { scale: 0.9, y: 50, opacity: 0.8, ease: "none" },
+            0
+          )
+          .to(
+            decorationRef.current,
+            { y: -100, x: 50, scale: 1.2, ease: "none" },
+            0
+          );
 
-      // Cleanup
+        let lastTime = 0;
+        const mouseMove = (e: MouseEvent) => {
+          const now = Date.now();
+          if (now - lastTime < 16) return;
+          lastTime = now;
+
+          const xPos = e.clientX / window.innerWidth - 0.5;
+          const yPos = e.clientY / window.innerHeight - 0.5;
+
+          gsap.to(imageRef.current, {
+            x: xPos * 30,
+            y: yPos * 20,
+            duration: 1.5,
+            ease: "power1.out",
+            overwrite: true,
+          });
+          gsap.to(decorationRef.current, {
+            x: xPos * 40,
+            y: yPos * 30,
+            duration: 1.5,
+            ease: "power1.out",
+            overwrite: true,
+          });
+          gsap.to(titleRef.current, {
+            x: xPos * -10,
+            duration: 1.5,
+            ease: "power1.out",
+            overwrite: true,
+          });
+        };
+
+        heroRef.current.addEventListener("mousemove", mouseMove);
+
+        return () => {
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+          gsap.killTweensOf("*");
+          heroRef.current?.removeEventListener("mousemove", mouseMove);
+          splitTitle?.revert();
+        };
+      }
+
       return () => {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         gsap.killTweensOf("*");
-        heroRef.current?.removeEventListener("mousemove", mouseMove);
         splitTitle?.revert();
       };
-    }
-
-    // General cleanup
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      gsap.killTweensOf("*");
-      splitTitle?.revert();
-    };
+    });
   }, []);
 
   return (

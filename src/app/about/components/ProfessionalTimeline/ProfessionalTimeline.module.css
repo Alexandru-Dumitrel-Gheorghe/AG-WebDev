@@ -1,16 +1,14 @@
-/* ProfessionalTimeline.module.css */
-
 .journeySection {
   width: 100%;
   min-height: 100vh;
-  padding: 6rem 1rem;
+  padding: 10rem 1rem;
   background: var(--bg-color);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
+  margin-bottom: 0px;
 }
 
 .journeyContainer {
@@ -29,44 +27,6 @@
   position: relative;
   z-index: 2;
   text-align: left;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.headerContent {
-  max-width: 42rem;
-}
-
-.headerControls {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.themeToggle,
-.viewToggle {
-  background: var(--control-button-bg);
-  border: none;
-  color: var(--control-button-text);
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.6rem 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.themeToggle:hover,
-.viewToggle:hover {
-  background: var(--accent-color);
-  color: white;
-  transform: translateY(-2px);
 }
 
 .sectionTitle {
@@ -162,7 +122,7 @@
   transition: all 0.3s ease;
 }
 
-.timelineItem.compact {
+.timelineItem.mobile {
   background: var(--card-bg);
   border-radius: 12px;
   padding: 1.5rem;
@@ -170,9 +130,9 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.timelineItem.active.compact {
+.timelineItem.active.mobile {
   border-color: var(--accent-color);
-  box-shadow: 0 8px 24px rgba(252, 107, 40, 0.15);
+  box-shadow: 0 8px 24px rgba(var(--accent-rgb), 0.15);
 }
 
 .itemMarker {
@@ -183,16 +143,16 @@
   transition: all 0.3s ease;
 }
 
-.timelineItem.compact .itemMarker {
+.timelineItem.mobile .itemMarker {
   margin-bottom: 0;
 }
 
-.timelineItem:not(.compact) .itemMarker {
+.timelineItem:not(.mobile) .itemMarker {
   border-bottom: 2px solid var(--item-marker-border);
   padding-bottom: 1rem;
 }
 
-.timelineItem.active:not(.compact) .itemMarker {
+.timelineItem.active:not(.mobile) .itemMarker {
   border-bottom: none;
 }
 
@@ -231,7 +191,7 @@
   transition: all 0.3s ease;
 }
 
-.timelineItem.compact .itemContent {
+.timelineItem.mobile .itemContent {
   padding-left: 0;
   margin-top: 1rem;
   padding-bottom: 0;
@@ -445,17 +405,7 @@
 @media (max-width: 768px) {
   .journeySection {
     padding: 4rem 1rem;
-  }
-
-  .sectionHeader {
-    margin-bottom: 2rem;
-    flex-direction: column;
-  }
-
-  .headerControls {
-    margin-top: 1rem;
-    width: 100%;
-    justify-content: flex-end;
+    min-height: auto;
   }
 
   .timelineWrapper {
@@ -471,7 +421,7 @@
     gap: 1rem;
   }
 
-  .timelineItem.compact {
+  .timelineItem.mobile {
     padding: 1.2rem;
   }
 
