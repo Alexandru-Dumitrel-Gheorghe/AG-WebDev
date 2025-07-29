@@ -102,8 +102,8 @@ export default function GoogleIndexierungHero() {
           </p>
 
           <div className={styles.buttons} ref={buttonRef}>
-            <a href="#contact" className={styles.primaryButton}>
-              Jetzt optimieren
+            <a href="/kontakt" className={styles.primaryButton}>
+              Kostenlose Beratung
               <span className={styles.buttonArrow}>
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                   <path
@@ -123,8 +123,8 @@ export default function GoogleIndexierungHero() {
                 </svg>
               </span>
             </a>
-            <a href="#portfolio" className={styles.secondaryButton}>
-              <span className={styles.buttonText}>Ergebnisse ansehen</span>
+            <a href="/kontakt" className={styles.secondaryButton}>
+              <span className={styles.buttonText}>Projekt besprechen</span>
               <span className={styles.buttonHoverEffect} />
             </a>
           </div>

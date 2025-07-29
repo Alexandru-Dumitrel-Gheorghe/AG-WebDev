@@ -87,8 +87,8 @@ export default function Hero() {
           </p>
 
           <div className={styles.buttons} ref={buttonRef}>
-            <a href="#kontakt" className={styles.primaryButton}>
-              Erstberatung vereinbaren
+            <a href="/kontakt" className={styles.primaryButton}>
+              Kostenlose Beratung
               <span className={styles.buttonArrow}>
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                   <path
@@ -108,8 +108,8 @@ export default function Hero() {
                 </svg>
               </span>
             </a>
-            <a href="#leistungen" className={styles.secondaryButton}>
-              <span className={styles.buttonText}>Leistungen entdecken</span>
+            <a href="/kontakt" className={styles.secondaryButton}>
+              <span className={styles.buttonText}>Projekt besprechen</span>
               <span className={styles.buttonHoverEffect} />
             </a>
           </div>

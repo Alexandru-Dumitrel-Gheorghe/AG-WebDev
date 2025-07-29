@@ -198,7 +198,7 @@ export default function HeroSection() {
           Umgebung. Profitieren Sie von starker Sichtbarkeit, mehr Kunden und
           nachhaltigem Geschäftserfolg – individuell entwickelt für Ihre Ziele.
         </p>
-        <a href="#kontakt" className={styles.ctaBtn} ref={ctaRef}>
+        <a href="/kontakt" className={styles.ctaBtn} ref={ctaRef}>
           <span className={styles.ctaText}>Kostenlose Beratung sichern</span>
           <span className={styles.ctaArrow}>&rarr;</span>
           <span className={styles.ctaHover}></span>

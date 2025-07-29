@@ -91,7 +91,7 @@ export default function WebDesignHero() {
           </p>
 
           <div className={styles.buttons} ref={buttonRef}>
-            <a href="#contact" className={styles.primaryButton}>
+            <a href="/kontakt" className={styles.primaryButton}>
               Projekt besprechen
               <span className={styles.buttonArrow}>
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
@@ -112,8 +112,8 @@ export default function WebDesignHero() {
                 </svg>
               </span>
             </a>
-            <a href="#portfolio" className={styles.secondaryButton}>
-              <span className={styles.buttonText}>Zum Portfolio</span>
+            <a href="/kontakt" className={styles.secondaryButton}>
+              <span className={styles.buttonText}>Kostenlose Beratung</span>
               <span className={styles.buttonHoverEffect} />
             </a>
           </div>
