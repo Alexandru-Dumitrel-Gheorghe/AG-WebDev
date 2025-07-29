@@ -71,12 +71,12 @@ export default function Footer() {
               </Link>
             </li>
             <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/webentwicklung">
+              <Link className={styles.navLink} href="/Webentwicklung">
                 Webentwicklung
               </Link>
             </li>
             <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/seo-marketing">
+              <Link className={styles.navLink} href="/seo">
                 SEO & Marketing
               </Link>
             </li>
@@ -113,7 +113,7 @@ export default function Footer() {
               </Link>
             </li>
             <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/ueber-mich">
+              <Link className={styles.navLink} href="/about">
                 Über mich
               </Link>
             </li>
