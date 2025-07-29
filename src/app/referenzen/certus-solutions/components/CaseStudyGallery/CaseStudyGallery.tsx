@@ -4,30 +4,24 @@ import styles from "./CaseStudyGallery.module.css";
 
 const images = [
   {
-    src: "/images/cta-background.png",
-    alt: "Dashboard Certus Solutions",
-    caption: "Neues Dashboard: Alle Aufträge und Leads im Blick",
+    src: "/referenzen/laptop-certus.png",
+    alt: "Homepage auf Laptop",
+    caption: "Modernes Webdesign – große Darstellung für Desktop und Laptop",
     highlight: true,
     orbColor: "var(--orb1-gradient)",
   },
   {
-    src: "/images/cta-background.png",
-    alt: "Mobile Optimierung Certus",
-    caption: "Mobile First – blitzschnell und responsive",
+    src: "/referenzen/referenzen-phone-certus.png",
+    alt: "Homepage auf Smartphone",
+    caption: "Mobile Ansicht – perfekt optimiert für alle Smartphones",
     orbColor: "var(--orb2-gradient)",
   },
   {
-    src: "/images/cta-background.png",
-    alt: "Leadgenerierung Certus",
-    caption: "Effiziente Leadgenerierung direkt aus dem Portal",
+    src: "/referenzen/referenzen-certus-tablet.png",
+    alt: "Homepage auf Tablet",
+    caption: "Optimale Darstellung auch auf Tablets – flexibel und elegant",
     wide: true,
     orbColor: "var(--orb3-gradient)",
-  },
-  {
-    src: "/images/cta-background.png",
-    alt: "SEO Performance Certus",
-    caption: "SEO-Optimierte Landingpages für Top-Rankings",
-    orbColor: "var(--orb1-gradient)",
   },
 ];
 

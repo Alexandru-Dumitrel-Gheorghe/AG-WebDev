@@ -132,7 +132,7 @@ export default function Hero() {
         <div className={styles.visual}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/certus-case.png"
+              src="/images/certus-referenzen.png"
               alt="Case Study Certus Solutions Website"
               fill
               className={styles.image}

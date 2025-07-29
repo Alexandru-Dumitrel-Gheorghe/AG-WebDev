@@ -4,31 +4,24 @@ import styles from "./Gallery.module.css";
 
 const images = [
   {
-    src: "/images/fraga-dashboard.png",
-    alt: "Dashboard Fraga Online-Shop",
-    caption:
-      "Shop-Dashboard: Produkte, Bestellungen, Analytics auf einen Blick.",
+    src: "/referenzen/fraga-refernezen.png",
+    alt: "Homepage auf Laptop – Fraga Online-Shop",
+    caption: "Hochwertige Startseite für Desktop und Laptop – klar & modern",
     highlight: true,
     orbColor: "var(--orb1-gradient)",
   },
   {
-    src: "/images/fraga-mobile.png",
-    alt: "Mobile Optimierung Fraga",
-    caption: "Mobile First – schneller Checkout und perfekte Darstellung.",
+    src: "/referenzen/referenzen-phone-fraga.png",
+    alt: "Homepage auf Smartphone – Fraga Online-Shop",
+    caption: "Perfekte Darstellung und schnelle Bestellungen auf jedem Handy",
     orbColor: "var(--orb2-gradient)",
   },
   {
-    src: "/images/fraga-collection.png",
-    alt: "Produktübersicht Fraga",
-    caption: "Conversion-starke Produktübersicht mit Filter und Animation.",
+    src: "/referenzen/fraga-referenzen-tablet.png",
+    alt: "Homepage auf Tablet – Fraga Online-Shop",
+    caption: "Responsive Webdesign – Ihr Shop optimal auf jedem Tablet",
     wide: true,
     orbColor: "var(--orb3-gradient)",
-  },
-  {
-    src: "/images/fraga-seo.png",
-    alt: "SEO Performance Fraga",
-    caption: "SEO-Optimierte Shopseiten für Top-Rankings bei Google.",
-    orbColor: "var(--orb1-gradient)",
   },
 ];
 

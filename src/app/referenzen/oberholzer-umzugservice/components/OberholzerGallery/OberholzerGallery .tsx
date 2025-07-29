@@ -4,30 +4,24 @@ import styles from "./OberholzerGallery.module.css";
 
 const images = [
   {
-    src: "/images/oberholzer-projekt.png",
-    alt: "Digitales Kunden-Dashboard Oberholzer",
-    caption: "Modernes Dashboard: Alle Umzüge und Anfragen im Blick",
+    src: "/referenzen/laptop-oberholzer.png",
+    alt: "Homepage auf Laptop – Oberholzer",
+    caption: "Moderne Startseite in voller Größe für PC & Laptop",
     highlight: true,
     orbColor: "var(--orb1-gradient)",
   },
   {
-    src: "/images/image3.png",
-    alt: "Mobile Optimierung Oberholzer",
-    caption: "Mobile First – blitzschnell & voll responsive für unterwegs",
+    src: "/referenzen/oberholzer-phone.png",
+    alt: "Homepage auf Smartphone – Oberholzer",
+    caption: "Mobile Ansicht – optimiert für alle Smartphones",
     orbColor: "var(--orb2-gradient)",
   },
   {
-    src: "/images/cta-background.png",
-    alt: "Buchungssystem Oberholzer",
-    caption: "Einfache & effiziente Buchung direkt über das Portal",
+    src: "/referenzen/oberrholzer-tablet.png",
+    alt: "Homepage auf Tablet – Oberholzer",
+    caption: "Flexibles Webdesign – ideal für Tablets jeder Größe",
     wide: true,
     orbColor: "var(--orb3-gradient)",
-  },
-  {
-    src: "/images/cta-background.png",
-    alt: "SEO Performance Oberholzer",
-    caption: "SEO-optimierte Seiten für beste Sichtbarkeit in der Schweiz",
-    orbColor: "var(--orb1-gradient)",
   },
 ];
 

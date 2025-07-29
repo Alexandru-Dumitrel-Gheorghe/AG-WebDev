@@ -131,7 +131,7 @@ export default function Hero() {
         <div className={styles.visual}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/oberholzer-projekt.png" // schimbă dacă ai alt path pentru imagine!
+              src="/images/oberholzer-referenzen.png" // schimbă dacă ai alt path pentru imagine!
               alt="Case Study Oberholzer Umzugservice Website"
               fill
               className={styles.image}

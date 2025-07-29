@@ -129,7 +129,7 @@ export default function Hero() {
         <div className={styles.visual}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/Fraga-projekt.png"
+              src="/images/fraga-refernezen.png"
               alt="Fraga Online Shop Vorschau"
               fill
               className={styles.image}
