@@ -5,6 +5,7 @@
   background: var(--bg-color);
   color: var(--text-color);
   overflow-x: hidden;
+  margin-top: 5rem;
 }
 
 /* Hero Section with Banner Image */
@@ -373,7 +374,6 @@
   .hero {
     min-height: 45vh;
     margin-bottom: 3rem;
-    margin-top: 5rem;
   }
 
   .hero h1 {
