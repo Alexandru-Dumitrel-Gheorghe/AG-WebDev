@@ -8,7 +8,7 @@ import { Sun, Moon, Menu, X, ChevronRight } from "lucide-react";
 
 const menuLinks = [
   { label: "Home", href: "/" },
-  { label: "Über uns", href: "/about" },
+  { label: "Über Mich", href: "/about" },
   { label: "Projekte", href: "#projects" },
   { label: "Leistungen", href: "#services" },
   { label: "Kontakt", href: "/kontakt" },
