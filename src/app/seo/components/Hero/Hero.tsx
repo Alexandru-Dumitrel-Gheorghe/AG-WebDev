@@ -39,7 +39,7 @@ export default function SeoHero() {
   }, []);
 
   // TEXT - SEO HERO
-  const titleText = "SEO und Marketing";
+  const titleText = "SEO & Marketing";
   const highlightStart = 0;
   const highlightEnd = "SEO".length;
 
@@ -94,7 +94,7 @@ export default function SeoHero() {
 
           <div className={styles.buttons} ref={buttonRef}>
             <a href="#contact" className={styles.primaryButton}>
-              SEO-Beratung anfragen
+              Beratung anfragen
               <span className={styles.buttonArrow}>
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                   <path
@@ -115,9 +115,7 @@ export default function SeoHero() {
               </span>
             </a>
             <a href="#leistungen" className={styles.secondaryButton}>
-              <span className={styles.buttonText}>
-                SEO-Leistungen entdecken
-              </span>
+              <span className={styles.buttonText}>Projekt besprechen</span>
               <span className={styles.buttonHoverEffect} />
             </a>
           </div>

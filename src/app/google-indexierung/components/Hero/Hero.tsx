@@ -9,7 +9,6 @@ export default function GoogleIndexierungHero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
 
-  // Animatie titlu litera cu litera
   useEffect(() => {
     const animateTitle = () => {
       if (titleRef.current) {
@@ -28,7 +27,6 @@ export default function GoogleIndexierungHero() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Animatie subtitle & butoane
   useEffect(() => {
     const animateElements = () => {
       if (subtitleRef.current) {
@@ -41,9 +39,9 @@ export default function GoogleIndexierungHero() {
     animateElements();
   }, []);
 
-  const titleText = "Google Indexierung";
-  const highlightStart = 0;
-  const highlightEnd = "Google".length;
+  const titleFirst = "Google";
+  const titleSecond = "Indexierung";
+  let idxCount = 0;
 
   return (
     <section className={styles.hero}>
@@ -55,28 +53,44 @@ export default function GoogleIndexierungHero() {
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title} ref={titleRef} style={{ opacity: 0 }}>
-            {titleText.split("").map((char, index) => {
-              const isHighlight =
-                index >= highlightStart && index < highlightEnd;
-              const isSpace = char === " ";
+            {/* Google (highlight) */}
+            {titleFirst.split("").map((char, idx) => {
+              idxCount = idx;
               return (
                 <span
-                  key={index}
+                  key={idx}
                   ref={(el) => {
-                    lettersRef.current[index] = el;
+                    lettersRef.current[idx] = el;
                   }}
-                  className={`${styles.letter} ${
-                    isHighlight ? styles.highlightLetter : ""
-                  }`}
+                  className={`${styles.letter} ${styles.highlightLetter}`}
                   style={{
                     opacity: 0,
-                    display: isSpace ? "inline" : "inline-block",
+                    display: char === " " ? "inline" : "inline-block",
                   }}
                 >
                   {char}
                 </span>
               );
             })}
+            {/* Linie nouă */}
+            <br />
+            {/* Indexierung (normal) */}
+            {titleSecond.split("").map((char, idx) => (
+              <span
+                key={idx + idxCount + 1}
+                ref={(el) => {
+                  lettersRef.current[idx + idxCount + 1] = el;
+                }}
+                className={styles.letter}
+                style={{
+                  opacity: 0,
+                  display: char === " " ? "inline" : "inline-block",
+                  color: "var(--text-primary)",
+                }}
+              >
+                {char}
+              </span>
+            ))}
           </h1>
           <div className={styles.titleUnderline} />
           <p className={styles.subtitle} ref={subtitleRef}>

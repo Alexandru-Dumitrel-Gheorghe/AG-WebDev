@@ -39,13 +39,14 @@ export default function Hero() {
     animateElements();
   }, []);
 
-  // Titlu și subtitle pentru Oberholzer
-  const line1 = "Oberholzer Umzugservice –";
-  const line2 = "Schweizer Präzision, digital umgesetzt";
+  const titleFirst = "Oberholzer";
+  const titleSecond = "Umzugservice";
+
+  // INDEXING pentru animație continuă
+  let idxCount = 0;
 
   return (
     <section className={styles.hero}>
-      {/* Elemente decorative */}
       <div className={styles.decorativeCircle1} />
       <div className={styles.decorativeCircle2} />
       <div className={styles.decorativeLine} />
@@ -53,32 +54,39 @@ export default function Hero() {
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title} ref={titleRef} style={{ opacity: 0 }}>
-            {line1.split("").map((char, idx) => (
-              <span
-                key={idx}
-                ref={(el) => {
-                  lettersRef.current[idx] = el;
-                }}
-                className={`${styles.letter} ${styles.highlightLetter}`}
-                style={{
-                  opacity: 0,
-                  display: char === " " ? "inline" : "inline-block",
-                }}
-              >
-                {char}
-              </span>
-            ))}
+            {/* Oberholzer highlight */}
+            {titleFirst.split("").map((char, idx) => {
+              idxCount = idx; // save last index
+              return (
+                <span
+                  key={idx}
+                  ref={(el) => {
+                    lettersRef.current[idx] = el;
+                  }}
+                  className={`${styles.letter} ${styles.highlightLetter}`}
+                  style={{
+                    opacity: 0,
+                    display: char === " " ? "inline" : "inline-block",
+                  }}
+                >
+                  {char}
+                </span>
+              );
+            })}
+            {/* BR după primul cuvânt */}
             <br />
-            {line2.split("").map((char, idx) => (
+            {/* Umzugservice normal */}
+            {titleSecond.split("").map((char, idx) => (
               <span
-                key={idx + 100}
+                key={idx + idxCount + 1}
                 ref={(el) => {
-                  lettersRef.current[idx + 100] = el;
+                  lettersRef.current[idx + idxCount + 1] = el;
                 }}
                 className={styles.letter}
                 style={{
                   opacity: 0,
                   display: char === " " ? "inline" : "inline-block",
+                  color: "var(--text-primary)",
                 }}
               >
                 {char}
@@ -131,7 +139,7 @@ export default function Hero() {
         <div className={styles.visual}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/oberholzer-referenzen.png" // schimbă dacă ai alt path pentru imagine!
+              src="/images/oberholzer-referenzen.png"
               alt="Case Study Oberholzer Umzugservice Website"
               fill
               className={styles.image}

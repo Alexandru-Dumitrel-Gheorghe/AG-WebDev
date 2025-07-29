@@ -37,6 +37,10 @@
 h1 {
   font-size: clamp(2.5rem, 8vw, 5.2rem); /* sau ce folosești tu */
 }
+:root {
+  --certus-yellow: #fc6b28;
+  --certus-black: #232323;
+}
 
 [data-theme="dark"] {
   /* Dark mode colors */

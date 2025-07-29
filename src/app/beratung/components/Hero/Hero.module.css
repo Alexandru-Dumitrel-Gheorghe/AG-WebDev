@@ -418,3 +418,11 @@
     font-size: 1rem;
   }
 }
+.mobileOnly {
+  display: none;
+}
+@media (max-width: 600px) {
+  .mobileOnly {
+    display: block;
+  }
+}

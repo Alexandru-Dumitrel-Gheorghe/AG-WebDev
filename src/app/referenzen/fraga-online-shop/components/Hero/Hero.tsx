@@ -39,8 +39,16 @@ export default function Hero() {
     animateElements();
   }, []);
 
-  const line1 = "Fraga Online Shop –";
-  const line2 = "Shopify x Next.js Commerce";
+  const titleFirst = "Fraga";
+  const titleSecond = "Demo";
+  const space = " ";
+
+  // Combini ambele cuvinte într-un singur array, marchezi separat pentru highlight
+  const fullTitleArr = [
+    ...titleFirst.split("").map((char) => ({ char, highlight: true })),
+    { char: space, highlight: false },
+    ...titleSecond.split("").map((char) => ({ char, highlight: false })),
+  ];
 
   return (
     <section className={styles.hero}>
@@ -51,35 +59,24 @@ export default function Hero() {
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title} ref={titleRef} style={{ opacity: 0 }}>
-            {line1.split("").map((char, idx) => (
+            {fullTitleArr.map((item, idx) => (
               <span
                 key={idx}
                 ref={(el) => {
                   lettersRef.current[idx] = el;
                 }}
-                className={`${styles.letter} ${styles.highlightLetter}`}
+                className={
+                  item.highlight
+                    ? `${styles.letter} ${styles.highlightLetter}`
+                    : styles.letter
+                }
                 style={{
                   opacity: 0,
-                  display: char === " " ? "inline" : "inline-block",
+                  display: item.char === " " ? "inline" : "inline-block",
+                  color: item.highlight ? undefined : "var(--text-primary)",
                 }}
               >
-                {char}
-              </span>
-            ))}
-            <br />
-            {line2.split("").map((char, idx) => (
-              <span
-                key={idx + 100}
-                ref={(el) => {
-                  lettersRef.current[idx + 100] = el;
-                }}
-                className={styles.letter}
-                style={{
-                  opacity: 0,
-                  display: char === " " ? "inline" : "inline-block",
-                }}
-              >
-                {char}
+                {item.char}
               </span>
             ))}
           </h1>
@@ -87,21 +84,22 @@ export default function Hero() {
           <div className={styles.titleUnderline} />
 
           <p className={styles.subtitle} ref={subtitleRef}>
-            Der Fraga Online-Shop kombiniert die Flexibilität von Shopify im
-            Backend mit der Performance von Next.js & React im Frontend.
-            Modernes UI, blitzschnelle Ladezeiten und intuitive Produkterfahrung
-            sorgen für mehr Umsatz.
-            <br />
+            Interaktiver Demo-Shop für <b>Fraga</b> – gebaut mit modernem
+            Tech-Stack:
             <span className={styles.subtitleHighlight}>
-              Entwickelt mit Next.js, TypeScript, modularem CSS & Shopify API.
+              {" "}
+              Shopify-Backend, Next.js & React-Frontend, modularem CSS,
+              blitzschnell & SEO-optimiert.
             </span>
+            <br />
+            Schnelle Produktdarstellung, responsives Design & intuitive User
+            Experience – ideal als Vorlage für moderne E-Commerce Projekte!
           </p>
 
           <div className={styles.buttons} ref={buttonRef}>
             <a href="/kontakt" className={styles.primaryButton}>
               Projekt starten
               <span className={styles.buttonArrow}>
-                {/* SVG arrow */}
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                   <path
                     d="M3.33325 12.6667L12.6666 3.33337"
@@ -130,7 +128,7 @@ export default function Hero() {
           <div className={styles.imageWrapper}>
             <Image
               src="/images/fraga-refernezen.png"
-              alt="Fraga Online Shop Vorschau"
+              alt="Fraga Demo Online Shop Vorschau"
               fill
               className={styles.image}
               quality={100}

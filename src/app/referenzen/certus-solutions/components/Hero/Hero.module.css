@@ -419,3 +419,10 @@
     font-size: 1rem;
   }
 }
+.letter {
+  color: inherit; /* Mosteneste din .title */
+}
+
+.highlightLetter {
+  color: #fc6b28;
+}

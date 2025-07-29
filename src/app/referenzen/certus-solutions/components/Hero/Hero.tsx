@@ -3,12 +3,13 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
 
-export default function Hero() {
+export default function CertusShowcaseHero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const lettersRef = useRef<(HTMLSpanElement | null)[]>([]);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
 
+  // Animatie titlu litera cu litera (doar pe "Certus")
   useEffect(() => {
     const animateTitle = () => {
       if (titleRef.current) {
@@ -18,7 +19,7 @@ export default function Hero() {
           if (letter) {
             letter.style.animation = `${
               styles.letterFadeIn
-            } 0.1s ease-out forwards ${index * 0.03}s`;
+            } 0.4s ease-out forwards ${index * 0.05}s`;
           }
         });
       }
@@ -27,6 +28,7 @@ export default function Hero() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Animatie subtitle & butoane
   useEffect(() => {
     const animateElements = () => {
       if (subtitleRef.current) {
@@ -39,10 +41,10 @@ export default function Hero() {
     animateElements();
   }, []);
 
-  // Titlu și subtitle specifice Certus Solutions
-  const titleText = "Certus Solutions – Digitaler Vertrieb neu gedacht";
-  const line1 = "Certus Solutions –";
-  const line2 = "Digitaler Vertrieb neu gedacht";
+  const titleFirst = "Certus";
+  const titleSecond = "Solutions";
+  const highlightStart = 0;
+  const highlightEnd = titleFirst.length;
 
   return (
     <section className={styles.hero}>
@@ -54,56 +56,50 @@ export default function Hero() {
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title} ref={titleRef} style={{ opacity: 0 }}>
-            {line1.split("").map((char, idx) => (
-              <span
-                key={idx}
-                ref={(el) => {
-                  lettersRef.current[idx] = el;
-                }}
-                className={`${styles.letter} ${styles.highlightLetter}`}
-                style={{
-                  opacity: 0,
-                  display: char === " " ? "inline" : "inline-block",
-                }}
-              >
-                {char}
-              </span>
-            ))}
-            <br />
-            {line2.split("").map((char, idx) => (
-              <span
-                key={idx + 100}
-                ref={(el) => {
-                  lettersRef.current[idx + 100] = el;
-                }}
-                className={styles.letter}
-                style={{
-                  opacity: 0,
-                  display: char === " " ? "inline" : "inline-block",
-                }}
-              >
-                {char}
-              </span>
-            ))}
+            {/* Animatie litera cu litera pe "Certus", static pe "Solutions" */}
+            {`${titleFirst} ${titleSecond}`.split("").map((char, index) => {
+              const isHighlight =
+                index >= highlightStart && index < highlightEnd;
+              const isSpace = char === " ";
+              let letterStyle = {
+                opacity: 0,
+                display: isSpace ? "inline" : "inline-block",
+                ...(isHighlight && !isSpace ? { color: "#fc6b28" } : {}),
+                // Nu adăuga nicio culoare pentru Solutions!
+              } as React.CSSProperties;
+
+              return (
+                <span
+                  key={index}
+                  ref={(el) => {
+                    lettersRef.current[index] = el;
+                  }}
+                  className={`${styles.letter} ${
+                    isHighlight ? styles.highlightLetter : ""
+                  }`}
+                  style={letterStyle}
+                >
+                  {char}
+                </span>
+              );
+            })}
           </h1>
-
           <div className={styles.titleUnderline} />
-
           <p className={styles.subtitle} ref={subtitleRef}>
-            Innovative Web-Lösungen für die Bauelemente-Branche: Von
-            individueller Angebots­konfiguration bis zu automatisiertem Vertrieb
-            –
+            Showcase: Moderne B2B-Präsentationsseite für die
+            Bauelemente-Branche.
             <span className={styles.subtitleHighlight}>
               {" "}
-              mit Next.js, TypeScript und maximaler Performance.
+              Individuelles Design, High-End SEO & optimale Performance –
+              entwickelt mit Next.js & TypeScript.
             </span>
             <br />
-            Entwicklung, SEO, Design & Support aus einer Hand.
+            <b>Präsentiert: Fenster, Türen, Jalousien und mehr</b> –
+            maßgeschneiderte Lösungen für Unternehmen, Architekten und Händler.
           </p>
-
           <div className={styles.buttons} ref={buttonRef}>
-            <a href="/kontakt" className={styles.primaryButton}>
-              Projekt starten
+            <a href="#portfolio" className={styles.primaryButton}>
+              Zum Projekt-Showcase
               <span className={styles.buttonArrow}>
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                   <path
@@ -123,8 +119,8 @@ export default function Hero() {
                 </svg>
               </span>
             </a>
-            <a href="/referenzen" className={styles.secondaryButton}>
-              <span className={styles.buttonText}>Weitere Projekte</span>
+            <a href="#contact" className={styles.secondaryButton}>
+              <span className={styles.buttonText}>Kontakt aufnehmen</span>
               <span className={styles.buttonHoverEffect} />
             </a>
           </div>
@@ -133,7 +129,7 @@ export default function Hero() {
           <div className={styles.imageWrapper}>
             <Image
               src="/images/certus-referenzen.png"
-              alt="Case Study Certus Solutions Website"
+              alt="Certus Solutions Referenz – B2B Webdesign"
               fill
               className={styles.image}
               quality={100}

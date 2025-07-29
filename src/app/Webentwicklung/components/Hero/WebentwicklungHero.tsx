@@ -39,9 +39,12 @@ export default function WebentwicklungHero() {
   }, []);
 
   // TEXT - WEBENTWICKLUNG HERO
-  const titleText = "Webentwicklung neu gedacht";
+  const titleFirst = "Webentwicklung";
+  const titleSecond = "neu gedacht";
   const highlightStart = 0;
-  const highlightEnd = "Webentwicklung".length;
+  const highlightEnd = titleFirst.length;
+
+  let idxCount = 0;
 
   return (
     <section className={styles.hero}>
@@ -53,28 +56,44 @@ export default function WebentwicklungHero() {
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title} ref={titleRef} style={{ opacity: 0 }}>
-            {titleText.split("").map((char, index) => {
-              const isHighlight =
-                index >= highlightStart && index < highlightEnd;
-              const isSpace = char === " ";
+            {/* Webentwicklung (highlight) */}
+            {titleFirst.split("").map((char, idx) => {
+              idxCount = idx;
               return (
                 <span
-                  key={index}
+                  key={idx}
                   ref={(el) => {
-                    lettersRef.current[index] = el;
+                    lettersRef.current[idx] = el;
                   }}
-                  className={`${styles.letter} ${
-                    isHighlight ? styles.highlightLetter : ""
-                  }`}
+                  className={`${styles.letter} ${styles.highlightLetter}`}
                   style={{
                     opacity: 0,
-                    display: isSpace ? "inline" : "inline-block",
+                    display: char === " " ? "inline" : "inline-block",
                   }}
                 >
                   {char}
                 </span>
               );
             })}
+            {/* Linie nouă */}
+            <br />
+            {/* neu gedacht (normal) */}
+            {titleSecond.split("").map((char, idx) => (
+              <span
+                key={idx + idxCount + 1}
+                ref={(el) => {
+                  lettersRef.current[idx + idxCount + 1] = el;
+                }}
+                className={styles.letter}
+                style={{
+                  opacity: 0,
+                  display: char === " " ? "inline" : "inline-block",
+                  color: "var(--text-primary)",
+                }}
+              >
+                {char}
+              </span>
+            ))}
           </h1>
 
           <div className={styles.titleUnderline} />
