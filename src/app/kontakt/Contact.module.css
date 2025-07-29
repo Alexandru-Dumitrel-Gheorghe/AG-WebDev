@@ -2,78 +2,99 @@
 .contactPage {
   width: 100%;
   min-height: 100vh;
-  background: var(--contact-bg);
-  margin-top: 2rem;
-  transition: background 0.3s ease;
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin-top: 5rem;
 }
 
-/* Hero Section */
+/* Hero Section with Banner Image */
 .hero {
   width: 100%;
-  padding: 8rem 2rem 6rem;
-  background: var(--hero-bg);
-  text-align: center;
+  height: 400px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   overflow: hidden;
-  transition: background 0.5s ease;
+}
+
+.heroImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bannerImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .heroContent {
-  max-width: 1200px;
-  margin: 0 auto;
   position: relative;
   z-index: 2;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  color: white;
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
-  color: var(--hero-title-color);
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  transition: color 0.3s ease;
+  color: white;
 }
 
 .hero p {
-  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-  color: var(--hero-text-color);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.9);
   max-width: 700px;
   margin: 0 auto;
-  transition: color 0.3s ease;
 }
 
 /* Contact Content */
 .contactContent {
   width: 100%;
   padding: 4rem 0;
+  background: var(--bg-color);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 2.5rem;
 }
 
 /* Contact Information */
 .contactInfo {
   background: var(--contact-info-bg);
   border-radius: 1rem;
-  padding: 2.5rem;
+  padding: 2rem;
   box-shadow: var(--contact-info-shadow);
   border: 1px solid var(--contact-info-border);
-  transition: all 0.3s ease;
 }
 
 .contactInfo h2 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   color: var(--contact-title-color);
   position: relative;
   padding-bottom: 0.5rem;
-  transition: color 0.3s ease;
 }
 
 .contactInfo h2::after {
@@ -84,14 +105,12 @@
   width: 3rem;
   height: 3px;
   background: var(--accent-color);
-  transition: background 0.3s ease;
 }
 
 .contactInfo p {
   color: var(--contact-text-color);
   margin-bottom: 2rem;
   line-height: 1.6;
-  transition: color 0.3s ease;
 }
 
 .infoGrid {
@@ -104,27 +123,25 @@
 .infoItem {
   display: flex;
   align-items: flex-start;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .infoIcon {
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
-  background: var(--info-icon-bg);
+  background: rgba(var(--accent-color-rgb), 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-color);
   flex-shrink: 0;
-  transition: all 0.3s ease;
 }
 
 .infoText h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 0.3rem;
   color: var(--contact-title-color);
-  transition: color 0.3s ease;
 }
 
 .infoText a,
@@ -134,6 +151,7 @@
   transition: color 0.2s;
   margin: 0;
   line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 .infoText a:hover {
@@ -142,20 +160,20 @@
 
 .socialLinks {
   display: flex;
-  gap: 1.2rem;
+  gap: 1rem;
   margin-top: 1.5rem;
 }
 
 .socialLinks a {
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
-  background: var(--social-icon-bg);
+  background: rgba(var(--accent-color-rgb), 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-color);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: all 0.2s;
 }
 
@@ -169,19 +187,17 @@
 .contactForm {
   background: var(--contact-form-bg);
   border-radius: 1rem;
-  padding: 2.5rem;
+  padding: 2rem;
   box-shadow: var(--contact-form-shadow);
   border: 1px solid var(--contact-form-border);
-  transition: all 0.3s ease;
 }
 
 .contactForm h2 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   color: var(--contact-title-color);
   position: relative;
   padding-bottom: 0.5rem;
-  transition: color 0.3s ease;
 }
 
 .contactForm h2::after {
@@ -192,18 +208,16 @@
   width: 3rem;
   height: 3px;
   background: var(--accent-color);
-  transition: background 0.3s ease;
 }
 
 .contactForm p {
   color: var(--contact-text-color);
   margin-bottom: 2rem;
   line-height: 1.6;
-  transition: color 0.3s ease;
 }
 
 .formGroup {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .formGroup label {
@@ -211,7 +225,7 @@
   margin-bottom: 0.5rem;
   font-weight: 500;
   color: var(--form-label-color);
-  transition: color 0.3s ease;
+  font-size: 0.95rem;
 }
 
 .required {
@@ -221,10 +235,10 @@
 .formGroup input,
 .formGroup textarea {
   width: 100%;
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   border: 1px solid var(--form-input-border);
   border-radius: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   transition: all 0.2s;
   background: var(--form-input-bg);
   color: var(--form-input-color);
@@ -234,7 +248,7 @@
 .formGroup textarea:focus {
   outline: none;
   border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px var(--form-input-focus-shadow);
+  box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.2);
 }
 
 .formGroup textarea {
@@ -246,9 +260,9 @@
   border-color: var(--error-color) !important;
 }
 
-.errorMessage {
+.errorText {
   color: var(--error-color);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-top: 0.3rem;
   display: block;
 }
@@ -282,70 +296,44 @@
   );
   color: var(--button-text-color);
   border: none;
-  padding: 1.05rem 2.5rem;
-  border-radius: 0.6rem;
-  font-size: 1.12rem;
-  font-family: "Inter", sans-serif;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
-  box-shadow: var(--button-shadow);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  transition: all 0.21s cubic-bezier(0.57, 1.52, 0.49, 0.87);
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
 
-.submitButton:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  background: var(--button-hover-overlay);
-  transition: width 0.28s cubic-bezier(0.57, 1.52, 0.49, 0.87);
-  border-radius: 0.6rem 0 0 0.6rem;
-  z-index: 1;
-  pointer-events: none;
-}
-
 .submitButton:hover {
-  background: linear-gradient(
-    90deg,
-    var(--accent-light) 0%,
-    var(--accent-color) 100%
-  );
-  box-shadow: var(--button-hover-shadow);
-  transform: translateY(-2px) scale(1.03);
-}
-
-.submitButton:hover:before {
-  width: 100%;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.3);
 }
 
 .submitButton:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: var(--button-active-shadow);
+  transform: translateY(0);
 }
 
 .submitButton:disabled {
   background: var(--button-disabled-bg);
   color: var(--button-disabled-color);
   cursor: not-allowed;
-  box-shadow: none;
   transform: none;
-  opacity: 0.75;
+  box-shadow: none;
 }
 
 .spinner {
-  width: 1.2rem;
-  height: 1.2rem;
-  border: 2px solid var(--spinner-border);
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  border-top-color: var(--spinner-color);
+  border-top-color: white;
   animation: spin 1s ease-in-out infinite;
 }
 
@@ -356,28 +344,41 @@
 }
 
 /* Responsive Design */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
-}
 
-@media (max-width: 600px) {
   .hero {
-    padding: 6rem 1.5rem 4rem;
+    height: 350px;
   }
 
   .contactContent {
     padding: 2rem 0;
   }
+}
 
-  .container {
-    padding: 0 1.5rem;
-    gap: 2rem;
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero {
+    height: 300px;
   }
 
   .contactInfo,
   .contactForm {
     padding: 1.5rem;
+  }
+
+  .submitButton {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.95rem;
   }
 }

@@ -99,7 +99,7 @@ export default function Erfolgsmessung() {
           </p>
           <a
             className={styles.button}
-            href="https://fraga-shop.de"
+            href="https://e-commerce-one-tau-76.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -1,7 +1,9 @@
 "use client";
+
 import { useForm } from "react-hook-form";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   FaPhone,
   FaEnvelope,
@@ -10,7 +12,6 @@ import {
   FaLinkedin,
   FaGithub,
 } from "react-icons/fa";
-import { IoMdSend } from "react-icons/io";
 import { SiUpwork } from "react-icons/si";
 import emailjs from "emailjs-com";
 import styles from "./Contact.module.css";
@@ -65,8 +66,18 @@ export default function ContactPage() {
 
   return (
     <div className={styles.contactPage}>
-      {/* Hero Section */}
+      {/* Hero Section with Banner Image */}
       <section className={styles.hero}>
+        <div className={styles.heroImage}>
+          <Image
+            src="/images/contact-banner.png"
+            alt="Contact Banner"
+            fill
+            priority
+            className={styles.bannerImage}
+          />
+          <div className={styles.heroOverlay}></div>
+        </div>
         <div className={styles.heroContent}>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -220,9 +231,7 @@ export default function ContactPage() {
                 className={errors.name ? styles.error : ""}
               />
               {errors.name && (
-                <span className={styles.errorMessage}>
-                  {errors.name.message}
-                </span>
+                <span className={styles.errorText}>{errors.name.message}</span>
               )}
             </div>
 
@@ -244,9 +253,7 @@ export default function ContactPage() {
                 className={errors.email ? styles.error : ""}
               />
               {errors.email && (
-                <span className={styles.errorMessage}>
-                  {errors.email.message}
-                </span>
+                <span className={styles.errorText}>{errors.email.message}</span>
               )}
             </div>
 
@@ -263,7 +270,7 @@ export default function ContactPage() {
                 className={errors.subject ? styles.error : ""}
               />
               {errors.subject && (
-                <span className={styles.errorMessage}>
+                <span className={styles.errorText}>
                   {errors.subject.message}
                 </span>
               )}
@@ -287,7 +294,7 @@ export default function ContactPage() {
                 className={errors.message ? styles.error : ""}
               />
               {errors.message && (
-                <span className={styles.errorMessage}>
+                <span className={styles.errorText}>
                   {errors.message.message}
                 </span>
               )}
@@ -298,7 +305,11 @@ export default function ContactPage() {
               className={styles.submitButton}
               disabled={isSubmitting}
             >
-              Senden
+              {isLoading ? (
+                <span className={styles.spinner}></span>
+              ) : (
+                "Nachricht senden"
+              )}
             </button>
           </motion.form>
         </div>

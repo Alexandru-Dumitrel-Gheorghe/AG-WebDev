@@ -35,7 +35,7 @@ export default function Footer() {
           <div className={styles.socials}>
             <a
               className={styles.socialLink}
-              href="https://github.com/agwebdev"
+              href="https://github.com/Alexandru-Dumitrel-Gheorghe"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -44,7 +44,7 @@ export default function Footer() {
             </a>
             <a
               className={styles.socialLink}
-              href="https://www.linkedin.com/in/agwebdev"
+              href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
