@@ -17,7 +17,8 @@ import BlogCTA from "@/components/BlogCTA/BlogCTA";
 // Definiție metadata direct aici, cum ai pus deja!
 
 export const metadata = {
-  title: "Webdesign & Webentwicklung Freelancer | Alexandru Gheorghe",
+  title:
+    "Webdesign & Webentwicklung Freelancer – Professionelle Websites & SEO",
   description:
     "Freelancer für modernes Webdesign und Webentwicklung mit Next.js und React. Individuelle Websites, SEO & Support direkt vom Entwickler. Jetzt beraten lassen!",
   keywords: [
