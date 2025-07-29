@@ -4,19 +4,21 @@
   min-height: 100vh;
   background: var(--bg-color);
   color: var(--text-color);
-  margin-top: 5rem;
+  overflow-x: hidden;
 }
 
 /* Hero Section with Banner Image */
 .hero {
   width: 100%;
-  height: 400px;
+  min-height: 60vh;
+  max-height: 800px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  margin-bottom: 4rem;
 }
 
 .heroImage {
@@ -30,6 +32,8 @@
 .bannerImage {
   object-fit: cover;
   object-position: center;
+  width: 100%;
+  height: 100%;
 }
 
 .heroOverlay {
@@ -45,12 +49,13 @@
   position: relative;
   z-index: 2;
   max-width: 1200px;
-  padding: 0 1.5rem;
+  width: 100%;
+  padding: 0 2rem;
   color: white;
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
@@ -58,7 +63,7 @@
 }
 
 .hero p {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
   color: rgba(255, 255, 255, 0.9);
   max-width: 700px;
   margin: 0 auto;
@@ -67,30 +72,30 @@
 /* Contact Content */
 .contactContent {
   width: 100%;
-  padding: 4rem 0;
+  padding: 2rem 0 4rem;
   background: var(--bg-color);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
 /* Contact Information */
 .contactInfo {
   background: var(--contact-info-bg);
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 2.5rem;
   box-shadow: var(--contact-info-shadow);
   border: 1px solid var(--contact-info-border);
 }
 
 .contactInfo h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
   color: var(--contact-title-color);
   position: relative;
@@ -123,12 +128,12 @@
 .infoItem {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .infoIcon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   background: rgba(var(--accent-color-rgb), 0.1);
   display: flex;
@@ -139,7 +144,7 @@
 }
 
 .infoText h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 0.3rem;
   color: var(--contact-title-color);
 }
@@ -160,20 +165,20 @@
 
 .socialLinks {
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
   margin-top: 1.5rem;
 }
 
 .socialLinks a {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 50%;
   background: rgba(var(--accent-color-rgb), 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-color);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   transition: all 0.2s;
 }
 
@@ -187,13 +192,13 @@
 .contactForm {
   background: var(--contact-form-bg);
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 2.5rem;
   box-shadow: var(--contact-form-shadow);
   border: 1px solid var(--contact-form-border);
 }
 
 .contactForm h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
   color: var(--contact-title-color);
   position: relative;
@@ -217,7 +222,7 @@
 }
 
 .formGroup {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .formGroup label {
@@ -235,10 +240,10 @@
 .formGroup input,
 .formGroup textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   border: 1px solid var(--form-input-border);
   border-radius: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all 0.2s;
   background: var(--form-input-bg);
   color: var(--form-input-color);
@@ -296,15 +301,15 @@
   );
   color: var(--button-text-color);
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
+  padding: 1.05rem 2.5rem;
+  border-radius: 0.6rem;
+  font-size: 1.12rem;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   transition: all 0.2s;
   width: 100%;
   position: relative;
@@ -312,8 +317,13 @@
 }
 
 .submitButton:hover {
+  background: linear-gradient(
+    90deg,
+    var(--accent-light) 0%,
+    var(--accent-color) 100%
+  );
+  box-shadow: var(--button-hover-shadow);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.3);
 }
 
 .submitButton:active {
@@ -344,22 +354,50 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .hero {
-    height: 350px;
+    min-height: 50vh;
   }
 
-  .contactContent {
-    padding: 2rem 0;
+  .heroContent {
+    padding: 0 1.5rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .hero {
+    min-height: 45vh;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .contactContent {
+    padding: 1rem 0 3rem;
+  }
+
+  .contactInfo,
+  .contactForm {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    min-height: 40vh;
+  }
+
   .hero h1 {
     font-size: 2rem;
   }
@@ -368,8 +406,9 @@
     font-size: 1rem;
   }
 
-  .hero {
-    height: 300px;
+  .container {
+    padding: 0 1.5rem;
+    gap: 2rem;
   }
 
   .contactInfo,
@@ -377,8 +416,36 @@
     padding: 1.5rem;
   }
 
+  .infoItem {
+    gap: 1rem;
+  }
+
+  .infoIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
   .submitButton {
     padding: 0.9rem 1.5rem;
-    font-size: 0.95rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero {
+    min-height: 35vh;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .contactInfo,
+  .contactForm {
+    padding: 1.25rem;
   }
 }
