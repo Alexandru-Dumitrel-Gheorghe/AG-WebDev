@@ -1,6 +1,6 @@
 .leistungenSection {
   width: 100%;
-  padding: 5rem 0;
+  padding: 2rem 0;
   background: var(--leistungen-bg);
   position: relative;
   overflow: hidden;
@@ -286,7 +286,7 @@
 
 @media (max-width: 768px) {
   .leistungenSection {
-    padding: 80px 0 40px;
+    padding: 0px 0 40px;
   }
 
   .header {

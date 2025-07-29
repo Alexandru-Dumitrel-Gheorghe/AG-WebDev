@@ -1,6 +1,6 @@
-// src/components/Footer/Footer.tsx
 import styles from "./Footer.module.css";
 import Link from "next/link";
+import Image from "next/image";
 import {
   FaGithub,
   FaLinkedin,
@@ -14,16 +14,24 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.wave}></div>
       <div className={styles.container}>
-        {/* Left: Logo & Info */}
-        <div className={styles.left}>
-          <Link href="/" className={styles.logo}>
-            <span className={styles.logoText}>AG</span>
-            <span className={styles.logoSub}>WebDev</span>
-          </Link>
-          <p className={styles.desc}>
-            Individuelle Webentwicklung, SEO & digitales Wachstum aus
-            Deutschland.
-          </p>
+        {/* Logo & Info */}
+        <div className={styles.logoColumn}>
+          <div className={styles.logoContainer}>
+            <Link href="/" className={styles.logoImgLink} aria-label="Home">
+              <Image
+                src="/logo-2.png"
+                alt="AG WebDev Logo"
+                width={135}
+                height={42}
+                className={styles.logoImg}
+                priority
+              />
+            </Link>
+            <p className={styles.desc}>
+              Professionelle Webentwicklung, SEO & digitale Lösungen aus
+              Deutschland.
+            </p>
+          </div>
           <div className={styles.socials}>
             <a
               className={styles.socialLink}
@@ -53,43 +61,73 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Center: Navigation */}
-        <div className={styles.center}>
-          <nav className={styles.nav}>
-            <span className={styles.navTitle}>Seiten</span>
-            <ul className={styles.navList}>
-              <li>
-                <Link className={styles.navLink} href="/">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link className={styles.navLink} href="/webdesign">
-                  Webdesign
-                </Link>
-              </li>
-              <li>
-                <Link className={styles.navLink} href="/Webentwicklung">
-                  Webentwicklung
-                </Link>
-              </li>
-              <li>
-                <Link className={styles.navLink} href="/seo">
-                  SEO
-                </Link>
-              </li>
-              <li>
-                <Link className={styles.navLink} href="/kontakt">
-                  Kontakt
-                </Link>
-              </li>
-            </ul>
-          </nav>
+        {/* Leistungen */}
+        <div className={styles.navColumn}>
+          <h3 className={styles.navTitle}>Leistungen</h3>
+          <ul className={styles.navList}>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/webdesign">
+                Webdesign
+              </Link>
+            </li>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/webentwicklung">
+                Webentwicklung
+              </Link>
+            </li>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/seo-marketing">
+                SEO & Marketing
+              </Link>
+            </li>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/google-indexierung">
+                Google Indexierung
+              </Link>
+            </li>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/wartung-support">
+                Wartung & Support
+              </Link>
+            </li>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/beratung">
+                Beratung
+              </Link>
+            </li>
+          </ul>
         </div>
 
-        {/* Right: Contact */}
-        <div className={styles.right}>
-          <span className={styles.navTitle}>Kontakt</span>
+        {/* Navigation */}
+        <div className={styles.navColumn}>
+          <h3 className={styles.navTitle}>Navigation</h3>
+          <ul className={styles.navList}>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/">
+                Start
+              </Link>
+            </li>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/blog">
+                Blog
+              </Link>
+            </li>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/ueber-mich">
+                Über mich
+              </Link>
+            </li>
+            <li className={styles.navListItem}>
+              <Link className={styles.navLink} href="/kontakt">
+                Kontakt
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className={styles.contactColumn}>
+          <h3 className={styles.navTitle}>Kontakt</h3>
           <address className={styles.contact}>
             <div className={styles.contactItem}>
               <FaMapMarkerAlt className={styles.contactIcon} />
@@ -114,16 +152,21 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Line */}
+      {/* Copyright */}
       <div className={styles.copy}>
         <div className={styles.copyContainer}>
-          © {new Date().getFullYear()} AG WebDev. Alle Rechte vorbehalten.
+          <span>
+            © {new Date().getFullYear()} AG WebDev. Alle Rechte vorbehalten.
+          </span>
           <div className={styles.legalLinks}>
             <Link href="/datenschutz" className={styles.legalLink}>
               Datenschutz
             </Link>
             <Link href="/impressum" className={styles.legalLink}>
               Impressum
+            </Link>
+            <Link href="/agb" className={styles.legalLink}>
+              AGB
             </Link>
           </div>
         </div>
