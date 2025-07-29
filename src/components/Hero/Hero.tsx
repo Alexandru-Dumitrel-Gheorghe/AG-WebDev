@@ -234,7 +234,7 @@ export default function HeroSection() {
           und nachweislich Ergebnisse bringen für Ihren nachhaltigen
           Online-Erfolg.
         </p>
-        <a href="#kontakt" className={styles.ctaBtn} ref={ctaRef}>
+        <a href="/kontakt" className={styles.ctaBtn} ref={ctaRef}>
           <span className={styles.ctaText}>Jetzt Kontakt aufnehmen</span>
           <span className={styles.ctaArrow}>&rarr;</span>
           <span className={styles.ctaHover}></span>

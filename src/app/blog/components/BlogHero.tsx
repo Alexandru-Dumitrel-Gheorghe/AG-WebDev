@@ -14,8 +14,7 @@ export default function BlogMainHero() {
           </div>
 
           <h1 className={styles.mainTitle}>
-            Wir verwandeln <span className={styles.highlight}>Ideen</span> in
-            <span className={styles.highlight}> digitale Lösungen</span>
+            Experten <span className={styles.highlight}>Blog</span>
           </h1>
 
           <p className={styles.subtitle}>

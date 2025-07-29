@@ -258,7 +258,17 @@ h1 {
   --dropdown-link-hover-bg: #fc6b28;
   --dropdown-link-hover-text: #fff;
 }
+:root {
+  --btn-bg: #fc6b28;
+  --btn-text: #fff;
+  --btn-hover-bg: #ff7a39;
+}
 
+[data-theme="dark"] {
+  --btn-bg: #fc6b28;
+  --btn-text: #1a1a1a; /* Textul pe dark mode să fie închis, nu alb! */
+  --btn-hover-bg: #ff8a50;
+}
 [data-theme="dark"] {
   /* Dark mode colors */
   --header-bg: #111;
