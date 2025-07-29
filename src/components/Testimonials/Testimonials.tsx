@@ -243,6 +243,7 @@ export default function Testimonials() {
             className={styles.navButton}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Vorheriges Testimonial" // ← adaugă asta!
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
@@ -253,12 +254,14 @@ export default function Testimonials() {
               />
             </svg>
           </motion.button>
+
           <div className={styles.pagination}></div>
           <motion.button
             ref={nextRef}
             className={styles.navButton}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Nächstes Testimonial" // ← adaugă asta!
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path

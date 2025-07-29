@@ -60,7 +60,7 @@
 }
 
 .highlight {
-  color: var(--accent-color);
+  color: #fc6b28;
   font-weight: 600;
   position: relative;
   display: inline-block;
@@ -215,6 +215,11 @@
     animation: none !important;
     transition: none !important;
   }
+}
+.prehead {
+  color: #eb6b2a; /* portocaliu închis cu contrast mare */
+  background: none;
+  font-weight: 700;
 }
 
 /* Responsive styles */

@@ -27,7 +27,7 @@ export default function WebentwicklungCTA() {
             src="/images/Fraga-projekt.png"
             alt="Web-Projekt am Laptop"
             width={270}
-            height={160}
+            height={157} // <-- nu 160! (270 / 1.714 ≈ 157.6)
             className={styles.laptopImg}
             priority
           />

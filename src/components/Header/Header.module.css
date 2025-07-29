@@ -116,7 +116,7 @@
 .contactBtn {
   display: none;
   background: var(--accent-color);
-  color: #fff !important;
+  color: #222 !important;
   border: none;
   border-radius: 8px;
   padding: 0.7rem 1.5rem;
