@@ -104,7 +104,7 @@ export default function Footer() {
           <ul className={styles.navList}>
             <li className={styles.navListItem}>
               <Link className={styles.navLink} href="/">
-                Start
+                Zur Startseite von AG WebDev
               </Link>
             </li>
             <li className={styles.navListItem}>
