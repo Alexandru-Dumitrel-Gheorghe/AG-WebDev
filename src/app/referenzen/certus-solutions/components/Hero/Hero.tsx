@@ -119,7 +119,7 @@ export default function CertusShowcaseHero() {
                 </svg>
               </span>
             </a>
-            <a href="#contact" className={styles.secondaryButton}>
+            <a href="/kontakt" className={styles.secondaryButton}>
               <span className={styles.buttonText}>Kontakt aufnehmen</span>
               <span className={styles.buttonHoverEffect} />
             </a>

@@ -205,7 +205,7 @@ export default function WarumAgWebdev() {
               />
             </div>
             <div className={styles.imageBadge}>
-              <span>10+ Jahre Expertise</span>
+              <span>5+ Jahre Expertise</span>
             </div>
             <div className={styles.imageDecoration} />
           </div>
