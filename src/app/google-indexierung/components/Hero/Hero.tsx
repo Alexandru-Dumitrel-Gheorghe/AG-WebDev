@@ -1,13 +1,23 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
+import BuchenModal from "@/components/Buchenmodal/Buchenmodal";
+const HERO_PLAN = { name: "Google Indexierung" };
 
 export default function GoogleIndexierungHero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const lettersRef = useRef<(HTMLSpanElement | null)[]>([]);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+
+  // Modal state
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => setModalOpen(false);
 
   useEffect(() => {
     const animateTitle = () => {
@@ -123,7 +133,11 @@ export default function GoogleIndexierungHero() {
                 </svg>
               </span>
             </a>
-            <a href="/kontakt" className={styles.secondaryButton}>
+            <a
+              href="#"
+              className={styles.secondaryButton}
+              onClick={handleOpenModal}
+            >
               <span className={styles.buttonText}>Projekt besprechen</span>
               <span className={styles.buttonHoverEffect} />
             </a>
@@ -147,6 +161,12 @@ export default function GoogleIndexierungHero() {
         <span className={styles.scrollText}>Scrollen</span>
         <div className={styles.scrollLine} />
       </div>
+      {/* MODAL */}
+      <BuchenModal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        plan={HERO_PLAN}
+      />
     </section>
   );
 }

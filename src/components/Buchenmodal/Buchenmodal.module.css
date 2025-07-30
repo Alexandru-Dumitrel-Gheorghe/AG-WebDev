@@ -24,7 +24,7 @@
 }
 
 .modalContent {
-  background: white;
+  background: var(--bg-color);
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   width: 100%;
@@ -32,23 +32,22 @@
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  border: 1px solid var(--section-desc-line);
 }
 
 .modalHeader {
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--section-desc-line);
   position: sticky;
   top: 0;
-  background: white;
+  background: var(--bg-color);
   z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 16px 16px 0 0;
-  background: linear-gradient(to right, #3b82f6, #2563eb);
-  color: white;
+  background: var(--accent-color);
+  color: var(--active-tag-text);
 }
 
 .headerContent {
@@ -61,7 +60,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
-  color: white;
+  color: var(--active-tag-text);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -75,7 +74,7 @@
 
 .priceBadge {
   background: rgba(255, 255, 255, 0.15);
-  color: white;
+  color: var(--active-tag-text);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -88,7 +87,7 @@
 .closeButton {
   background: rgba(255, 255, 255, 0.2);
   border: none;
-  color: white;
+  color: var(--active-tag-text);
   font-size: 1.25rem;
   cursor: pointer;
   transition: all 0.2s;
@@ -141,18 +140,19 @@
 .formGroup label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--text-color);
 }
 
 .formGroup input,
 .formGroup select,
 .formGroup textarea {
   padding: 0.75rem 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--section-desc-line);
   border-radius: 8px;
   font-size: 0.95rem;
   transition: all 0.2s;
-  background: white;
+  background: var(--bg-color);
+  color: var(--text-color);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
@@ -160,8 +160,8 @@
 .formGroup select:focus,
 .formGroup textarea:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--timeline-line-bg);
 }
 
 .formGroup textarea {
@@ -183,17 +183,17 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--section-desc-line);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
   flex: 1;
   justify-content: center;
-  background: white;
+  background: var(--bg-color);
 }
 
 .contactMethod:hover {
-  border-color: #93c5fd;
+  border-color: var(--accent-color);
 }
 
 .contactMethod input {
@@ -201,26 +201,27 @@
 }
 
 .contactMethod svg {
-  color: #6b7280;
+  color: var(--text-secondary);
   font-size: 1.1rem;
 }
 
 .contactMethod span {
   font-size: 0.875rem;
+  color: var(--text-secondary);
 }
 
 .contactMethod input:checked + svg {
-  color: #3b82f6;
+  color: var(--accent-color);
 }
 
 .contactMethod input:checked ~ span {
-  color: #3b82f6;
+  color: var(--accent-color);
   font-weight: 600;
 }
 
 .contactMethod:has(input:checked) {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: var(--accent-color);
+  background: var(--timeline-line-bg);
 }
 
 .termsGroup {
@@ -233,33 +234,33 @@
 .termsGroup input[type="checkbox"] {
   width: 1.1em;
   height: 1.1em;
-  accent-color: #3b82f6;
+  accent-color: var(--accent-color);
   cursor: pointer;
   flex-shrink: 0;
 }
 
 .termsLabel {
   font-size: 0.9rem;
-  color: #4b5563;
+  color: var(--text-secondary);
   line-height: 1.5;
   cursor: pointer;
 }
 
 .legalLink {
-  color: #3b82f6;
+  color: var(--accent-color);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s;
 }
 
 .legalLink:hover {
-  color: #2563eb;
+  color: var(--control-button-hover);
   text-decoration: underline;
 }
 
 .submitButton {
-  background: linear-gradient(to right, #3b82f6, #2563eb);
-  color: white;
+  background: var(--accent-color);
+  color: var(--active-tag-text);
   border: none;
   border-radius: 8px;
   padding: 1rem;
@@ -272,12 +273,12 @@
   justify-content: center;
   gap: 0.5rem;
   margin-top: 0.5rem;
-  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 6px var(--timeline-line-bg);
 }
 
 .submitButton:hover {
-  background: linear-gradient(to right, #2563eb, #1d4ed8);
-  box-shadow: 0 6px 8px rgba(59, 130, 246, 0.3);
+  background: var(--control-button-hover);
+  box-shadow: 0 6px 8px var(--timeline-line-bg);
   transform: translateY(-1px);
 }
 
@@ -286,7 +287,7 @@
 }
 
 .submitButton:disabled {
-  background: #d1d5db;
+  background: var(--section-desc-line);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -302,7 +303,7 @@
 }
 
 .successIconContainer {
-  background: #d1fae5;
+  background: var(--timeline-line-bg);
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -313,26 +314,26 @@
 
 .successIcon {
   font-size: 2.5rem;
-  color: #10b981;
+  color: var(--accent-color);
 }
 
 .successState h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-color);
   margin: 0;
 }
 
 .successState p {
-  color: #4b5563;
+  color: var(--text-secondary);
   line-height: 1.6;
   max-width: 400px;
   margin: 0;
 }
 
 .closeSuccessButton {
-  background: linear-gradient(to right, #3b82f6, #2563eb);
-  color: white;
+  background: var(--accent-color);
+  color: var(--active-tag-text);
   border: none;
   border-radius: 8px;
   padding: 0.75rem 1.5rem;
@@ -341,13 +342,13 @@
   cursor: pointer;
   transition: all 0.2s;
   margin-top: 1rem;
-  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 6px var(--timeline-line-bg);
 }
 
 .closeSuccessButton:hover {
-  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  background: var(--control-button-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 6px 8px var(--timeline-line-bg);
 }
 
 /* Responsive styles */

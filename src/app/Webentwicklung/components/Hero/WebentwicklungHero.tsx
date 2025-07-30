@@ -1,13 +1,24 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
+import BuchenModal from "@/components/Buchenmodal/Buchenmodal";
+
+const HERO_PLAN = { name: "Webentwicklung Projekt" };
 
 export default function WebentwicklungHero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const lettersRef = useRef<(HTMLSpanElement | null)[]>([]);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+
+  // Modal
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => setModalOpen(false);
 
   // Animatie titlu litera cu litera
   useEffect(() => {
@@ -75,7 +86,6 @@ export default function WebentwicklungHero() {
                 </span>
               );
             })}
-            {/* Linie nouă */}
             <br />
             {/* neu gedacht (normal) */}
             {titleSecond.split("").map((char, idx) => (
@@ -111,6 +121,7 @@ export default function WebentwicklungHero() {
           </p>
 
           <div className={styles.buttons} ref={buttonRef}>
+            {/* Prima ramane ca link */}
             <a href="/kontakt" className={styles.primaryButton}>
               Kostenlose Beratung
               <span className={styles.buttonArrow}>
@@ -132,7 +143,15 @@ export default function WebentwicklungHero() {
                 </svg>
               </span>
             </a>
-            <a href="/kontakt" className={styles.secondaryButton}>
+            {/* A doua deschide modalul */}
+            <a
+              href="#"
+              className={styles.secondaryButton}
+              onClick={(e) => {
+                e.preventDefault();
+                setModalOpen(true);
+              }}
+            >
               <span className={styles.buttonText}>Projekt besprechen</span>
               <span className={styles.buttonHoverEffect} />
             </a>
@@ -156,6 +175,12 @@ export default function WebentwicklungHero() {
         <span className={styles.scrollText}>Scrollen</span>
         <div className={styles.scrollLine} />
       </div>
+      {/* Modal */}
+      <BuchenModal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        plan={HERO_PLAN}
+      />
     </section>
   );
 }
