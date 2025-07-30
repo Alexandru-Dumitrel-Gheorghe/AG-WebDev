@@ -33,7 +33,7 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   display: block;
-  opacity: 1; /* Changed from 0 to prevent FOUC */
+  opacity: 1;
   will-change: transform, opacity;
   transform-style: preserve-3d;
   transition: color 0.3s ease;
@@ -87,7 +87,7 @@
   max-width: clamp(300px, 40vw, 520px);
   margin-bottom: clamp(1.5rem, 3vw, 2.6rem);
   line-height: 1.5;
-  opacity: 1; /* Changed from 0 to prevent FOUC */
+  opacity: 1;
   will-change: transform, opacity;
   transform-style: preserve-3d;
   transition: color 0.3s ease;
@@ -109,7 +109,7 @@
   overflow: hidden;
   position: relative;
   max-width: fit-content;
-  opacity: 1; /* Changed from 0 to prevent FOUC */
+  opacity: 1;
   will-change: transform, opacity;
   transform-style: preserve-3d;
 }
@@ -178,6 +178,13 @@
   object-fit: cover;
   border-radius: 0 0 0 80px;
   margin-top: 2rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  will-change: transform, opacity;
+}
+
+.heroImage.loaded {
+  opacity: 1;
 }
 
 .imageOverlay {
@@ -205,39 +212,26 @@
   transition: border-color 0.3s ease;
 }
 
-/* Reduced motion styles */
-@media (prefers-reduced-motion: reduce) {
-  .heroImage,
-  .imageDecoration,
-  .titleChar,
-  .prehead,
-  .subtitle,
-  .ctaBtn {
-    animation: none !important;
-    transition: none !important;
+/* Tablet-specific styles */
+@media (min-width: 801px) and (max-width: 1100px) {
+  .hero {
+    padding-inline: clamp(1rem, 4vw, 60px);
   }
-}
-.prehead {
-  color: #eb6b2a; /* portocaliu închis cu contrast mare */
-  background: none;
-  font-weight: 700;
-}
 
-/* Responsive styles */
-@media (max-width: 1100px) {
   .left {
-    padding-left: clamp(1rem, 3vw, 40px);
+    padding-left: clamp(1rem, 4vw, 60px);
   }
 
-  .right {
-    min-width: min(220px, 35%);
+  .title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
   }
 
-  .heroImage {
-    border-radius: 0 0 0 60px;
+  .imageWrapper {
+    height: 85vh;
   }
 }
 
+/* Mobile styles */
 @media (max-width: 800px) {
   .hero {
     flex-direction: column;
@@ -314,6 +308,7 @@
   }
 }
 
+/* Small mobile devices */
 @media (max-width: 480px) {
   .left {
     padding: 1.5rem;
@@ -347,5 +342,22 @@
 
   .imageWrapper {
     height: 50vh;
+  }
+}
+
+/* Reduced motion styles */
+@media (prefers-reduced-motion: reduce) {
+  .heroImage,
+  .imageDecoration,
+  .titleChar,
+  .prehead,
+  .subtitle,
+  .ctaBtn {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .heroImage {
+    opacity: 1 !important;
   }
 }
