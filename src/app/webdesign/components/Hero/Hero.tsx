@@ -1,13 +1,24 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
+import BuchenModal from "@/components/Buchenmodal/Buchenmodal";
+
+const HERO_PLAN = { name: "Individuelles Webprojekt" };
 
 export default function WebDesignHero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const lettersRef = useRef<(HTMLSpanElement | null)[]>([]);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+
+  // Modal
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => setModalOpen(false);
 
   // Animatie titlu litera cu litera
   useEffect(() => {
@@ -91,7 +102,12 @@ export default function WebDesignHero() {
           </p>
 
           <div className={styles.buttons} ref={buttonRef}>
-            <a href="/kontakt" className={styles.primaryButton}>
+            {/* <a> păstrat, doar adaugi onClick */}
+            <a
+              href="#"
+              className={styles.primaryButton}
+              onClick={handleOpenModal}
+            >
               Projekt besprechen
               <span className={styles.buttonArrow}>
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
@@ -136,6 +152,12 @@ export default function WebDesignHero() {
         <span className={styles.scrollText}>Scrollen</span>
         <div className={styles.scrollLine} />
       </div>
+      {/* MODAL */}
+      <BuchenModal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        plan={HERO_PLAN}
+      />
     </section>
   );
 }

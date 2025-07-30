@@ -2,25 +2,61 @@
 
 import styles from "./PricingCTA.module.css";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // sau 'next/router' dacă folosești pages/
+import BuchenModal from "@/components/Buchenmodal/Buchenmodal";
+import { useRouter } from "next/navigation";
+
+const PLANS = [
+  {
+    name: "Landingpage Basic",
+    price: "€ 800",
+    features: [
+      "1 moderne Landingpage (Onepager), keine Unterseiten.",
+      "Individuelles responsives Design.",
+      "Standard SEO-Optimierung (OnPage).",
+      "Kontaktformular & Call-to-Action.",
+      "Schnelle Ladezeiten (Performance Optimierung).",
+    ],
+    desc: "Beste Wahl für Startups & Aktionen",
+  },
+  {
+    name: "Pro Webseite",
+    price: "€ 2.000",
+    features: [
+      "Bis zu 10 individuelle Seiten.",
+      "Responsives & modernes Webdesign.",
+      "Erweiterte SEO-Optimierung (OnPage/Struktur).",
+      "Mehrsprachigkeit (DE/EN/weitere).",
+      "Basic Wartung (3 Monate inklusive).",
+    ],
+    desc: "Am beliebtesten",
+  },
+];
 
 export default function PricingCTA() {
   const [isMobile, setIsMobile] = useState(false);
-  const router = useRouter();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Funcție pentru redirect la /kontakt
-  const handleKontakt = () => {
-    router.push("/kontakt");
+  // @ts-ignore
+  const handleOpenModal = (plan) => {
+    setSelectedPlan(plan);
+    setModalOpen(true);
   };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedPlan(null);
+  };
+
+  // Vechea funcție pentru redirect
+  // const handleKontakt = () => { router.push("/kontakt"); };
 
   return (
     <section className={styles.ctaSection}>
@@ -33,6 +69,7 @@ export default function PricingCTA() {
           }`}
         >
           <div className={styles.cardHeader}>
+            {/* SVG aici */}
             <svg width={22} height={22} fill="none" viewBox="0 0 24 24">
               <path
                 d="M7 8h10M7 12h4m-8 8V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"
@@ -42,31 +79,21 @@ export default function PricingCTA() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span className={styles.cardTitle}>Landingpage Basic</span>
+            <span className={styles.cardTitle}>{PLANS[0].name}</span>
           </div>
-          <div className={styles.cardDesc}>
-            Beste Wahl für Startups & Aktionen
-          </div>
-          <div className={styles.price}>€ 800</div>
+          <div className={styles.cardDesc}>{PLANS[0].desc}</div>
+          <div className={styles.price}>{PLANS[0].price}</div>
           <ul className={styles.featureList}>
-            <li>
-              <span>✔</span> 1 moderne Landingpage (Onepager), keine
-              Unterseiten.
-            </li>
-            <li>
-              <span>✔</span> Individuelles responsives Design.
-            </li>
-            <li>
-              <span>✔</span> Standard SEO-Optimierung (OnPage).
-            </li>
-            <li>
-              <span>✔</span> Kontaktformular & Call-to-Action.
-            </li>
-            <li>
-              <span>✔</span> Schnelle Ladezeiten (Performance Optimierung).
-            </li>
+            {PLANS[0].features.map((f, i) => (
+              <li key={i}>
+                <span>✔</span> {f}
+              </li>
+            ))}
           </ul>
-          <button className={styles.cardButton} onClick={handleKontakt}>
+          <button
+            className={styles.cardButton}
+            onClick={() => handleOpenModal(PLANS[0])}
+          >
             Jetzt anfragen
           </button>
         </div>
@@ -82,7 +109,11 @@ export default function PricingCTA() {
             Vergleichen Sie unsere Angebote und entscheiden Sie sich für die
             Lösung, die Ihren Anforderungen und Zielen am besten entspricht.
           </p>
-          <button className={styles.centerButton} onClick={handleKontakt}>
+          {/* Poți lăsa pe acesta cu redirect sau să deschidă și el modalul fără plan selectat */}
+          <button
+            className={styles.centerButton}
+            onClick={() => handleOpenModal(null)}
+          >
             Unverbindlich beraten lassen <span>&rarr;</span>
           </button>
         </div>
@@ -103,32 +134,32 @@ export default function PricingCTA() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span className={styles.cardTitle}>Pro Webseite</span>
+            <span className={styles.cardTitle}>{PLANS[1].name}</span>
           </div>
-          <div className={styles.cardDesc}>Am beliebtesten</div>
-          <div className={styles.price}>€ 2.000</div>
+          <div className={styles.cardDesc}>{PLANS[1].desc}</div>
+          <div className={styles.price}>{PLANS[1].price}</div>
           <ul className={styles.featureList}>
-            <li>
-              <span>✔</span> Bis zu 10 individuelle Seiten.
-            </li>
-            <li>
-              <span>✔</span> Responsives & modernes Webdesign.
-            </li>
-            <li>
-              <span>✔</span> Erweiterte SEO-Optimierung (OnPage/Struktur).
-            </li>
-            <li>
-              <span>✔</span> Mehrsprachigkeit (DE/EN/weitere).
-            </li>
-            <li>
-              <span>✔</span> Basic Wartung (3 Monate inklusive).
-            </li>
+            {PLANS[1].features.map((f, i) => (
+              <li key={i}>
+                <span>✔</span> {f}
+              </li>
+            ))}
           </ul>
-          <button className={styles.cardButton} onClick={handleKontakt}>
+          <button
+            className={styles.cardButton}
+            onClick={() => handleOpenModal(PLANS[1])}
+          >
             Jetzt anfragen
           </button>
         </div>
       </div>
+
+      {/* MODAL */}
+      <BuchenModal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        plan={selectedPlan}
+      />
     </section>
   );
 }

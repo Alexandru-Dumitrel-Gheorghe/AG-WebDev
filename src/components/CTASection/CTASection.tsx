@@ -1,8 +1,21 @@
 "use client";
 import styles from "./CTASection.module.css";
 import Image from "next/image";
+import { useState } from "react";
+import BuchenModal from "../Buchenmodal/Buchenmodal";
+
+const CTA_PLAN = {
+  name: "Webentwicklung (Individuell)",
+  price: "", // sau adaugi un preț dacă vrei, altfel lasă gol
+};
 
 export default function WebentwicklungCTA() {
+  // Modal state
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
   return (
     <section className={styles.cta}>
       <div className={styles.left}>
@@ -27,7 +40,7 @@ export default function WebentwicklungCTA() {
             src="/images/Fraga-projekt.png"
             alt="Web-Projekt am Laptop"
             width={270}
-            height={157} // <-- nu 160! (270 / 1.714 ≈ 157.6)
+            height={157}
             className={styles.laptopImg}
             priority
           />
@@ -49,10 +62,21 @@ export default function WebentwicklungCTA() {
           <br />
           Starten Sie Ihr nächstes Projekt mit uns!
         </p>
-        <a className={styles.ctaBtn} href="/kontakt">
+        <button
+          className={styles.ctaBtn}
+          type="button"
+          onClick={handleOpenModal}
+        >
           Jetzt Projekt starten
-        </a>
+        </button>
       </div>
+
+      {/* MODAL */}
+      <BuchenModal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        plan={CTA_PLAN}
+      />
     </section>
   );
 }
