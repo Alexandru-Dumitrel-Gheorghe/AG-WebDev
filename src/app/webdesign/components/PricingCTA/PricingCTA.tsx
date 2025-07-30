@@ -2,19 +2,25 @@
 
 import styles from "./PricingCTA.module.css";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation"; // sau 'next/router' dacă folosești pages/
 
 export default function PricingCTA() {
   const [isMobile, setIsMobile] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
-    handleResize(); // Set initial value
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Funcție pentru redirect la /kontakt
+  const handleKontakt = () => {
+    router.push("/kontakt");
+  };
 
   return (
     <section className={styles.ctaSection}>
@@ -60,7 +66,9 @@ export default function PricingCTA() {
               <span>✔</span> Schnelle Ladezeiten (Performance Optimierung).
             </li>
           </ul>
-          <button className={styles.cardButton}>Jetzt anfragen</button>
+          <button className={styles.cardButton} onClick={handleKontakt}>
+            Jetzt anfragen
+          </button>
         </div>
 
         {/* Center CTA */}
@@ -74,7 +82,7 @@ export default function PricingCTA() {
             Vergleichen Sie unsere Angebote und entscheiden Sie sich für die
             Lösung, die Ihren Anforderungen und Zielen am besten entspricht.
           </p>
-          <button className={styles.centerButton}>
+          <button className={styles.centerButton} onClick={handleKontakt}>
             Unverbindlich beraten lassen <span>&rarr;</span>
           </button>
         </div>
@@ -116,7 +124,9 @@ export default function PricingCTA() {
               <span>✔</span> Basic Wartung (3 Monate inklusive).
             </li>
           </ul>
-          <button className={styles.cardButton}>Jetzt anfragen</button>
+          <button className={styles.cardButton} onClick={handleKontakt}>
+            Jetzt anfragen
+          </button>
         </div>
       </div>
     </section>
