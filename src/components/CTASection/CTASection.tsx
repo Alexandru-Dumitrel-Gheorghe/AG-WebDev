@@ -49,7 +49,7 @@ export default function WebentwicklungCTA() {
           <br />
           Starten Sie Ihr nächstes Projekt mit uns!
         </p>
-        <a className={styles.ctaBtn} href="#contact">
+        <a className={styles.ctaBtn} href="/kontakt">
           Jetzt Projekt starten
         </a>
       </div>
