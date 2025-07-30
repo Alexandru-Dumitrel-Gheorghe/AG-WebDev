@@ -2,7 +2,22 @@
 import styles from "./WarumAgWebdev.module.css";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+// Animations config
+const sectionVariants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1 + 0.1, duration: 0.5, ease: "easeOut" },
+  }),
+};
 
 const highlights = [
   {
@@ -111,20 +126,42 @@ const stats = [
 
 export default function WarumAgWebdev() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [animate, setAnimate] = useState(false);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     setIsDarkMode(mediaQuery.matches);
 
-    const handler = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
+    const handler = (e) => setIsDarkMode(e.matches);
     mediaQuery.addEventListener("change", handler);
 
-    return () => mediaQuery.removeEventListener("change", handler);
+    // Observer to trigger once when visible
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        if (
+          rect.top < window.innerHeight * 0.9 && // 90% vizibilitate
+          rect.bottom > window.innerHeight * 0.2
+        ) {
+          setAnimate(true);
+        }
+      }
+    };
+
+    // Start with animation if deja e in viewport
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      mediaQuery.removeEventListener("change", handler);
+    };
   }, []);
 
   return (
     <section
       className={`${styles.whySection} ${isDarkMode ? styles.dark : ""}`}
+      ref={sectionRef}
     >
       <div className={styles.bgPattern} aria-hidden="true" />
       <div className={styles.bgShape} />
@@ -132,10 +169,9 @@ export default function WarumAgWebdev() {
       <div className={styles.container}>
         <div className={styles.left}>
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            variants={sectionVariants}
+            initial="hidden"
+            animate={animate ? "visible" : "hidden"}
             className={styles.headerContainer}
           >
             <span className={styles.preTitle}>Warum uns wählen?</span>
@@ -153,10 +189,10 @@ export default function WarumAgWebdev() {
               <motion.div
                 key={i}
                 className={styles.highlightCard}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
+                variants={cardVariants}
+                initial="hidden"
+                animate={animate ? "visible" : "hidden"}
+                custom={i}
                 whileHover={{ y: -5 }}
               >
                 <div className={styles.iconWrapper}>
@@ -172,10 +208,10 @@ export default function WarumAgWebdev() {
 
           <motion.div
             className={styles.stats}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            variants={sectionVariants}
+            initial="hidden"
+            animate={animate ? "visible" : "hidden"}
+            transition={{ delay: 0.3 }}
           >
             {stats.map((stat, i) => (
               <div key={i} className={styles.statItem}>
@@ -188,10 +224,10 @@ export default function WarumAgWebdev() {
 
         <motion.div
           className={styles.right}
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          variants={sectionVariants}
+          initial="hidden"
+          animate={animate ? "visible" : "hidden"}
+          transition={{ delay: 0.2 }}
         >
           <div className={styles.imageContainer}>
             <div className={styles.imageCircle}>

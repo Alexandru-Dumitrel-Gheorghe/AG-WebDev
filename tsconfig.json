@@ -27,7 +27,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/WarumWir/WarumWir.jsx"
+    "src/components/WarumWir/WarumWir.jsx",
+    "src/app/projekte/components/ProjectDetail/ProjectDetail.jsx",
+    "src/app/webdesign/components/WarumAgWebdev/WarumAgWebdev.jsx"
   ],
   "exclude": ["node_modules"]
 }

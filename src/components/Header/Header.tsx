@@ -5,12 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X, ChevronRight } from "lucide-react";
+import { useMenuScroll } from "@/components/Hooks/useMenuScroll";
 
 const menuLinks = [
   { label: "Home", href: "/" },
   { label: "Über Mich", href: "/about" },
-  { label: "Projekte", href: "#projects" },
-  { label: "Leistungen", href: "#services" },
+  { label: "Projekte", href: "#projects", scrollToId: "projects" },
+  { label: "Leistungen", href: "#services", scrollToId: "services" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 
@@ -18,8 +19,9 @@ export default function HeaderAGWebDev() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const { handleMenuClick } = useMenuScroll(setOpen);
 
-  // Toggle dark mode
+  // Dark mode
   const toggleDarkMode = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
@@ -70,11 +72,22 @@ export default function HeaderAGWebDev() {
         <nav className={styles.desktopNav}>
           <ul className={styles.navList}>
             {menuLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className={styles.navLink}>
-                  {link.label}
-                  <div className={styles.navLinkUnderline} />
-                </Link>
+              <li key={link.label}>
+                {link.scrollToId ? (
+                  <a
+                    href={`/#${link.scrollToId}`}
+                    className={styles.navLink}
+                    onClick={(e) => handleMenuClick(e, link)}
+                  >
+                    {link.label}
+                    <div className={styles.navLinkUnderline} />
+                  </a>
+                ) : (
+                  <Link href={link.href} className={styles.navLink}>
+                    {link.label}
+                    <div className={styles.navLinkUnderline} />
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -134,19 +147,36 @@ export default function HeaderAGWebDev() {
               <ul className={styles.mobileNavList}>
                 {menuLinks.map((link, index) => (
                   <motion.li
-                    key={link.href}
+                    key={link.label}
                     initial={{ x: 20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: index * 0.05 + 0.1 }}
                   >
-                    <Link
-                      href={link.href}
-                      className={styles.mobileNavLink}
-                      onClick={() => setOpen(false)}
-                    >
-                      <span>{link.label}</span>
-                      <ChevronRight size={20} className={styles.chevronIcon} />
-                    </Link>
+                    {link.scrollToId ? (
+                      <a
+                        href={`/#${link.scrollToId}`}
+                        className={styles.mobileNavLink}
+                        onClick={(e) => handleMenuClick(e, link)}
+                      >
+                        <span>{link.label}</span>
+                        <ChevronRight
+                          size={20}
+                          className={styles.chevronIcon}
+                        />
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className={styles.mobileNavLink}
+                        onClick={() => setOpen(false)}
+                      >
+                        <span>{link.label}</span>
+                        <ChevronRight
+                          size={20}
+                          className={styles.chevronIcon}
+                        />
+                      </Link>
+                    )}
                   </motion.li>
                 ))}
               </ul>

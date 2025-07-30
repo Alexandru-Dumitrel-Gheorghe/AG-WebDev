@@ -310,7 +310,11 @@ export default function Leistungen() {
   }, []);
 
   return (
-    <section className={styles.leistungenSection} ref={sectionRef}>
+    <section
+      className={styles.leistungenSection}
+      ref={sectionRef}
+      id="services"
+    >
       {/* Floating orbs background */}
       <div className={styles.parallaxOrbs}>
         <span ref={orb1Ref} className={styles.orb1}></span>

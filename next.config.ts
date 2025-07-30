@@ -36,7 +36,6 @@ const nextConfig = {
         permanent: true,
       },
       { source: "/barrierefreiheit", destination: "/about", permanent: true }, // sau unde vrei tu
-      { source: "/projekte", destination: "/referenzen", permanent: true }, // sau altă pagină proiecte
 
       // Blog-guides și blog-performance vechi -> Blog nou
       { source: "/blog-guides", destination: "/blog", permanent: true },

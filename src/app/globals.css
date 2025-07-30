@@ -16,15 +16,6 @@
 }
 /* global.css */
 
-section h1,
-article h1,
-aside h1,
-nav h1 {
-  font-size: clamp(2rem, 5vw, 3rem); /* sau orice dimensiune vrei tu */
-  font-weight: 700;
-  line-height: 1.1;
-}
-
 :root {
   /* Light mode colors */
   --bg-color: #fff;
@@ -44,9 +35,7 @@ nav h1 {
   --image-shadow: 0 14px 68px rgba(17, 17, 17, 0.2),
     0 2px 18px rgba(255, 93, 42, 0.08);
 }
-h1 {
-  font-size: clamp(2.5rem, 8vw, 5.2rem); /* sau ce folosești tu */
-}
+
 :root {
   --certus-yellow: #fc6b28;
   --certus-black: #232323;
