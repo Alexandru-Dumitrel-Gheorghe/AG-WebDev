@@ -30,14 +30,12 @@ export default function HeroSection() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    // Asigură-te că fonturile sunt încărcate înainte de SplitText
     document.fonts.ready.then(() => {
       let splitTitle: SplitText | null = null;
 
       if (prefersReducedMotion) {
         const chars =
           titleRef.current?.querySelectorAll(`.${styles.titleChar}`) ?? [];
-
         gsap.set(
           [
             preheadRef.current,
@@ -57,7 +55,6 @@ export default function HeroSection() {
         return;
       }
 
-      // Reset props
       gsap.set(
         [
           leftRef.current,
@@ -71,7 +68,6 @@ export default function HeroSection() {
         { clearProps: "opacity,transform,scale" }
       );
 
-      // SplitText
       if (titleRef.current) {
         splitTitle = new SplitText(titleRef.current, {
           type: "chars,words",
@@ -222,17 +218,16 @@ export default function HeroSection() {
         <span className={styles.prehead} ref={preheadRef}>
           → BRANDING
         </span>
+        {/* OPTIMIZED H1 FOR SEO */}
         <h1 className={styles.title} ref={titleRef}>
-          DIGITALE <br />
-          <span className={styles.highlight}>LÖSUNGEN</span>
+          Webdesign & <br />
+          <span className={styles.highlight}>Webentwicklung </span>
         </h1>
         <p className={styles.subtitle} ref={subtitleRef}>
-          Wir entwickeln{" "}
-          <span className={styles.highlight}>Leistungsstarke,</span>{" "}
-          benutzerfreundliche Websites, die Marken sichtbar machen, Vertrauen
-          schaffen <br />
-          und nachweislich Ergebnisse bringen für Ihren nachhaltigen
-          Online-Erfolg.
+          Moderner <span className={styles.highlight}>Webdesigner</span> für
+          individuelle, leistungsstarke und benutzerfreundliche Websites. Marken
+          sichtbar machen, Vertrauen schaffen und nachhaltige Online-Ergebnisse
+          liefern.
         </p>
         <a href="/kontakt" className={styles.ctaBtn} ref={ctaRef}>
           <span className={styles.ctaText}>Jetzt Kontakt aufnehmen</span>
@@ -244,7 +239,7 @@ export default function HeroSection() {
         <div className={styles.imageWrapper}>
           <Image
             src="/images/hero.png"
-            alt="Profilbild"
+            alt="Profilbild – Webdesigner aus Deutschland"
             width={720}
             height={900}
             priority
