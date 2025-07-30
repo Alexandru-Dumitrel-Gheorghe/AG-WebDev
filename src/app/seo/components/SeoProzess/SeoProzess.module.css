@@ -1,6 +1,6 @@
 .section {
   width: 100%;
-  padding: rem 0;
+  padding: 8rem 0;
   background: var(--prozess-bg);
   overflow: hidden;
 }
