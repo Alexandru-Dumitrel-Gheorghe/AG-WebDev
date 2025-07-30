@@ -83,7 +83,8 @@ export default function Hero() {
               Wartung & technischer Support
             </span>{" "}
             für Ihre Website – damit Ihr Online-Auftritt stets sicher, aktuell
-            und leistungsstark bleibt.
+            und leistungsstark bleibt. Schnelle Updates, persönliche Betreuung
+            und maximale Sicherheit direkt vom Experten.
           </p>
 
           <div className={styles.buttons} ref={buttonRef}>

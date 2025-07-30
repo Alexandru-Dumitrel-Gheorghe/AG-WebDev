@@ -138,7 +138,7 @@ export default function OberholzerErfolg() {
     <section className={styles.aboutSection} ref={sectionRef}>
       <div className={styles.topContent}>
         <div className={styles.left} ref={leftRef}>
-          <h1 ref={headingRef} className={styles.typewriter}>
+          <h2 ref={headingRef} className={styles.typewriter}>
             Case Study:{" "}
             <span className={styles.name}>Oberholzer Umzugservice</span>
             <br />
@@ -147,7 +147,7 @@ export default function OberholzerErfolg() {
             vereint. Für Oberholzer wurde eine Website entwickelt, die nicht nur
             überzeugt, sondern auch messbar mehr Anfragen und Sichtbarkeit
             bringt.
-          </h1>
+          </h2>
         </div>
         <div className={styles.right} ref={rightRef}>
           <p>

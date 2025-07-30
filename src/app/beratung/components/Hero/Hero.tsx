@@ -83,7 +83,8 @@ export default function Hero() {
               Beratung & Strategien
             </span>{" "}
             für Ihren digitalen Erfolg – persönlich, transparent und
-            zielgerichtet.
+            zielgerichtet. Als erfahrener Webdesigner und Entwickler biete ich
+            Ihnen maßgeschneiderte Lösungen für erfolgreiche Online-Projekte.
           </p>
 
           <div className={styles.buttons} ref={buttonRef}>

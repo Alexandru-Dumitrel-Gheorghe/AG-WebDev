@@ -81,12 +81,12 @@ export default function Erfolgsmessung() {
     <section className={styles.aboutSection} ref={sectionRef}>
       <div className={styles.topContent}>
         <div className={styles.left} ref={leftRef}>
-          <h1 ref={headingRef} className={styles.typewriter}>
+          <h2 ref={headingRef} className={styles.typewriter}>
             Case Study: <span className={styles.name}>Fraga Online Shop</span>
             <br />
             Modernes E-Commerce mit Headless Shopify – von Backend bis UI, alles
             nahtlos verknüpft und für Conversion optimiert.
-          </h1>
+          </h2>
         </div>
         <div className={styles.right} ref={rightRef}>
           <p>

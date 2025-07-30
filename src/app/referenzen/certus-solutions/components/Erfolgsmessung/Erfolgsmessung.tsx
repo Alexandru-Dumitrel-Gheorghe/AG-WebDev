@@ -138,14 +138,14 @@ export default function CertusErfolg() {
     <section className={styles.aboutSection} ref={sectionRef}>
       <div className={styles.topContent}>
         <div className={styles.left} ref={leftRef}>
-          <h1 ref={headingRef} className={styles.typewriter}>
+          <h2 ref={headingRef} className={styles.typewriter}>
             Case Study: <span className={styles.name}>Certus Solutions</span>
             <br />
             Vom klassischen Vertrieb zur digitalen Branchenlösung – so haben wir
             für Certus Solutions ein modernes B2B-Portal umgesetzt, das Prozesse
             automatisiert, Leads generiert und neue Standards in Performance,
             Design und Conversion setzt.
-          </h1>
+          </h2>
         </div>
         <div className={styles.right} ref={rightRef}>
           <p>

@@ -148,12 +148,12 @@ export default function About() {
     <section className={styles.aboutSection} ref={sectionRef}>
       <div className={styles.topContent}>
         <div className={styles.left} ref={leftRef}>
-          <h1 ref={headingRef} className={styles.typewriter}>
+          <h2 ref={headingRef} className={styles.typewriter}>
             Hey! Ich bin <span className={styles.name}>Alexandru</span>, ein
             leidenschaftlicher Webentwickler und UI/UX-Designer aus Deutschland.
             Ich kombiniere modernes Design mit klarer Strategie, um einzigartige
             digitale Erlebnisse und starke Markenauftritte zu schaffen.
-          </h1>
+          </h2>
         </div>
         <div className={styles.right} ref={rightRef}>
           <p>

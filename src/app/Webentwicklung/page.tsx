@@ -30,13 +30,13 @@ export const metadata: Metadata = {
       "Webentwicklung Freelancer Deutschland – Moderne Web-Apps & Websites | AG WebDev",
     description:
       "Moderne Webentwicklung für Unternehmen und Startups in ganz Deutschland. Individuelle, leistungsstarke Lösungen mit modernsten Technologien – Next.js, React, Node.js.",
-    url: "https://www.ag-webdev.de/webentwicklung",
+    url: "https://www.ag-webdev.de/Webentwicklung",
     siteName: "AG WebDev",
     locale: "de_DE",
     type: "website",
     images: [
       {
-        url: "https://www.ag-webdev.de/images/webentwicklung-hero.png",
+        url: "https://www.ag-webdev.de/images/Webentwicklung-hero.png",
         width: 1200,
         height: 630,
         alt: "Moderne Webentwicklung von AG WebDev",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://www.ag-webdev.de/webentwicklung",
+    canonical: "https://www.ag-webdev.de/Webentwicklung",
   },
 };
 
@@ -57,8 +57,8 @@ function StructuredData() {
     alternateName: "AG WebDev",
     description:
       "Freelance Webentwickler – Full-Stack Webentwicklung & digitale Lösungen für Unternehmen in Deutschland. Entwicklung von Websites, Web-Apps und APIs.",
-    url: "https://www.ag-webdev.de/webentwicklung",
-    image: "https://www.ag-webdev.de/images/webentwicklung-hero.png",
+    url: "https://www.ag-webdev.de/Webentwicklung",
+    image: "https://www.ag-webdev.de/images/Webentwicklung-hero.png",
     email: "contact@ag-webdev.de",
     telephone: "+49 157 7215 8264",
     address: {
