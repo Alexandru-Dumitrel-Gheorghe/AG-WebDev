@@ -91,7 +91,7 @@ export default function DesignThinkingProcess() {
           className={styles.sectionHeader}
           style={{ y: yText, opacity: opacityText }}
         >
-          <motion.h1
+          <motion.h2
             className={styles.sectionTitle}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export default function DesignThinkingProcess() {
             viewport={{ once: true, margin: "0px 0px -100px 0px" }}
           >
             <span className={styles.underline}>Design Thinking Prozess</span>
-          </motion.h1>
+          </motion.h2>
           <motion.p
             className={styles.sectionDesc}
             initial={{ opacity: 0, y: 20 }}

@@ -39,7 +39,7 @@ export default function WebentwicklungCTA() {
 
       <div className={styles.right}>
         <div className={styles.headingWrapper}>
-          <h1 className={styles.mainTitle}>Moderne</h1>
+          <h2 className={styles.mainTitle}>Moderne</h2>
           <h2 className={styles.subTitle}>Webentwicklung für Ihren Erfolg</h2>
         </div>
         <p className={styles.desc}>
