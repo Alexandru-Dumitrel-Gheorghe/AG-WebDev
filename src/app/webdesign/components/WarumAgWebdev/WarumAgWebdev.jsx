@@ -119,7 +119,7 @@ const highlights = [
 ];
 
 const stats = [
-  { value: "10+", label: "Jahre Erfahrung" },
+  { value: "5+", label: "Jahre Erfahrung" },
   { value: "97%", label: "Kundenzufriedenheit" },
   { value: "200+", label: "Projekte abgeschlossen" },
 ];
