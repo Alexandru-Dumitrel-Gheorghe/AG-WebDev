@@ -13,6 +13,7 @@ import Testimonials from "@/components/Testimonials/Testimonials";
 import PricingCTA from "./webdesign/components/PricingCTA/PricingCTA";
 import CTASection from "@/components/CTASection/CTASection";
 import BlogCTA from "@/components/BlogCTA/BlogCTA";
+import BenefitsSection from "@/components/BenefitsSection/BenefitsSection";
 
 // Definiție metadata direct aici, cum ai pus deja!
 
@@ -79,6 +80,7 @@ export default function HomePage() {
           <Hero />
           <AboutMe />
           <Leistungen />
+          <BenefitsSection />
           <ProjectShowcase />
           <BlogCTA />
           <WarumAgWebdev />

@@ -142,7 +142,26 @@ nav h1 {
   --active-item-icon-text: #121212;
   --active-item-icon-border: #ff8c5a;
 }
+/* Updated color variables */
+:root {
+  --bg-color: #f8f9fa;
+  --item-bg: #ffffff;
+  --text-color: #2d3748;
+  --section-title-color: #1a202c;
+  --section-desc-color: #4a5568;
+  --accent-color: #fc6b28;
+  --accent-hover: #e05a1f;
+}
 
+[data-theme="dark"] {
+  --bg-color: #1a202c;
+  --item-bg: #2d3748;
+  --text-color: #f7fafc;
+  --section-title-color: #ffffff;
+  --section-desc-color: #cbd5e0;
+  --accent-color: #fc6b28;
+  --accent-hover: #ff8c5a;
+}
 :root {
   --accent-color: 252, 107, 40;
   --bg-color: 255, 255, 255;
