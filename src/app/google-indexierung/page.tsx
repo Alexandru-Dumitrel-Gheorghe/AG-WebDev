@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GoogleIndexierungClient from "./GoogleIndexierungClient";
 import StructuredDataGoogleIndexierung from "./StructuredDataGoogleIndexierung";
+import StructuredBreadcrumbsGoogleIndexierung from "./StructuredBreadcrumbsGoogleIndexierung";
 
 export const metadata: Metadata = {
   title:
@@ -41,6 +42,7 @@ export default function GoogleIndexierungPage() {
   return (
     <>
       <StructuredDataGoogleIndexierung />
+      <StructuredBreadcrumbsGoogleIndexierung />
       <GoogleIndexierungClient />
     </>
   );

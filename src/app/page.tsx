@@ -14,6 +14,7 @@ import PricingCTA from "./webdesign/components/PricingCTA/PricingCTA";
 import CTASection from "@/components/CTASection/CTASection";
 import BlogCTA from "@/components/BlogCTA/BlogCTA";
 import BenefitsSection from "@/components/BenefitsSection/BenefitsSection";
+import StructuredServices from "@/components/SEO/StructuredServices";
 
 // Definiție metadata direct aici, cum ai pus deja!
 
@@ -75,6 +76,7 @@ export default function HomePage() {
   return (
     <>
       <StructuredDataHome />
+      <StructuredServices />
       <main>
         <ScrollAnimationProvider>
           <Hero />

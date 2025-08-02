@@ -1,5 +1,6 @@
 import BeratungClient from "./BeratungClient";
 import StructuredDataBeratung from "./StructuredDataBeratung";
+import StructuredBreadcrumbsBeratung from "./StructuredBreadcrumbsBeratung";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -51,6 +52,7 @@ export default function Page() {
   return (
     <>
       <StructuredDataBeratung />
+      <StructuredBreadcrumbsBeratung />
       <BeratungClient />
     </>
   );

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import WebentwicklungClient from "./WebentwicklungClient";
+import StructuredDataWebentwicklungService from "./StructuredDataWebentwicklungService";
+import StructuredBreadcrumbsWebentwicklung from "./StructuredBreadcrumbsWebentwicklung";
 
 // SEO Meta Tags (fără Agentur!)
 export const metadata: Metadata = {
@@ -104,8 +106,10 @@ function StructuredData() {
 export default function WebentwicklungPage() {
   return (
     <>
-      <WebentwicklungClient />
+      <StructuredDataWebentwicklungService />
+      <StructuredBreadcrumbsWebentwicklung />
       <StructuredData />
+      <WebentwicklungClient />
     </>
   );
 }

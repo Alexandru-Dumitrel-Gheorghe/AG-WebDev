@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import WebdesignClient from "./WebdesignClient";
 import StructuredDataWebdesign from "./StructuredDataWebdesign";
+import StructuredBreadcrumbsWebdesign from "./StructuredBreadcrumbsWebdesign";
 
 // SEO Meta Tags pentru pagina de Webdesign (doar Freelancer, nu Agentur!)
 export const metadata: Metadata = {
@@ -47,6 +48,7 @@ export default function WebdesignPage() {
   return (
     <>
       <StructuredDataWebdesign />
+      <StructuredBreadcrumbsWebdesign /> {/* <- Adaugă aici */}
       <WebdesignClient />
     </>
   );

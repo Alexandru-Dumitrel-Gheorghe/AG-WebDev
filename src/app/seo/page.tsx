@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import SeoClient from "./SeoClient";
 import StructuredDataSeo from "./StructuredDataSeo";
+import StructuredBreadcrumbsSeo from "./StructuredBreadcrumbsSeo";
 
 export const metadata: Metadata = {
   title:
@@ -43,6 +44,7 @@ export default function Page() {
   return (
     <>
       <StructuredDataSeo />
+      <StructuredBreadcrumbsSeo />
       <SeoClient />
     </>
   );

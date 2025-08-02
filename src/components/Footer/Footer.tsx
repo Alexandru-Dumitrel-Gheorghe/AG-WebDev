@@ -131,8 +131,15 @@ export default function Footer() {
           <address className={styles.contact}>
             <div className={styles.contactItem}>
               <FaMapMarkerAlt className={styles.contactIcon} />
-              <span>82256 Fürstenfeldbruck, Deutschland</span>
+              <span>
+                82256{" "}
+                <Link href="/fuerstenfeldbruck" className={styles.contactLink}>
+                  Fürstenfeldbruck
+                </Link>
+                , Deutschland
+              </span>
             </div>
+
             <div className={styles.contactItem}>
               <FaPhone className={styles.contactIcon} />
               <a href="tel:+4915772158264" className={styles.contactLink}>

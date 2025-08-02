@@ -1,5 +1,6 @@
 import WartungSupportClient from "./WartungSupportClient";
 import StructuredDataWartungSupport from "./StructuredDataWartungSupport";
+import StructuredBreadcrumbsWartungSupport from "./StructuredBreadcrumbsWartungSupport";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -51,6 +52,7 @@ export default function Page() {
   return (
     <>
       <StructuredDataWartungSupport />
+      <StructuredBreadcrumbsWartungSupport />
       <WartungSupportClient />
     </>
   );
