@@ -12,7 +12,7 @@ export default function WozuEineHomepage() {
       <div className={styles.blogContainer}>
         {/* Titlu și Intro */}
         <div className={styles.introBox}>
-          <h1 className={styles.mainTitle}>Wozu eine eigene Homepage?</h1>
+          <h2 className={styles.mainTitle}>Wozu eine eigene Homepage?</h2>
           <p className={styles.introText}>
             Im digitalen Zeitalter ist eine professionelle Homepage für
             Freelancer unverzichtbar. Sie ist nicht nur Ihre Visitenkarte im
