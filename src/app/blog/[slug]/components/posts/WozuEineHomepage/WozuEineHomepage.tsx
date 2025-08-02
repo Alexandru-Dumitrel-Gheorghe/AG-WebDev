@@ -122,9 +122,9 @@ export default function WozuEineHomepage() {
             .
           </p>
           <p className={styles.sectionDesc}>
-            <b>Stichworte:</b> Homepage Freelancer, Website erstellen, AG
-            WebDev, Webdesign Bayern, SEO Freelancer, professionelle Website,
-            Sichtbarkeit, Portfolio online
+            <b>Unser Rat:</b> Treffen Sie Ihre Entscheidung nicht nur nach
+            aktuellen Bedürfnissen, sondern auch nach der geplanten Entwicklung
+            in den nächsten 3-5 Jahren.
           </p>
         </section>
       </div>
