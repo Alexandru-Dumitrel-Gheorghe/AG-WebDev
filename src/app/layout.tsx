@@ -46,10 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#fc6b28" />
         <meta name="msapplication-TileColor" content="#fc6b28" />
-        {/* Preload Hero Images */}
-        <link rel="preload" href="/images/ffb-hero.png" as="image" />
-        <link rel="preload" href="/images/hero.png" as="image" />
-        {/* SEO (opțional, pentru preview) */}
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"

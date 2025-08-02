@@ -10,7 +10,7 @@ import { useMenuScroll } from "@/components/Hooks/useMenuScroll";
 const menuLinks = [
   { label: "Home", href: "/" },
   { label: "Über Mich", href: "/about" },
-  { label: "Projekte", href: "#projects", scrollToId: "projects" },
+  { label: "Referenzen", href: "#projects", scrollToId: "projects" },
   { label: "Leistungen", href: "#services", scrollToId: "services" },
   { label: "Kontakt", href: "/kontakt" },
 ];

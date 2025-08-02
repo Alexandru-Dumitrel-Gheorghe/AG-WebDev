@@ -175,7 +175,7 @@ export default function ContactPage() {
                 <FaGithub />
               </a>
               <a
-                href="https://www.upwork.com/"
+                href="https://www.upwork.com/freelancers/~01f29b37dec515c59f?mp_source=share"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Upwork"

@@ -3,7 +3,7 @@ import styles from "./Leistungen.module.css";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link"; // Doar dacă folosești Next.js
+import Link from "next/link";
 
 const services = [
   {
@@ -164,7 +164,6 @@ export default function Leistungen() {
   const orb2Ref = useRef<HTMLSpanElement>(null);
   const orb3Ref = useRef<HTMLSpanElement>(null);
 
-  // Add card to ref array
   const addToCardsRef = (el: HTMLDivElement | null, index: number) => {
     if (el && !cardsRef.current.includes(el)) {
       cardsRef.current[index] = el;
@@ -256,7 +255,7 @@ export default function Leistungen() {
     });
 
     // Card hover animations
-    cardsRef.current.forEach((card, index) => {
+    cardsRef.current.forEach((card) => {
       const icon = card.querySelector(`.${styles.icon}`);
       const hoverIndicator = card.querySelector(`.${styles.hoverIndicator}`);
 
@@ -342,13 +341,16 @@ export default function Leistungen() {
             ref={(el) => addToCardsRef(el, index)}
             style={{ transformStyle: "preserve-3d" }}
           >
-            <div className={styles.icon}>{service.icon}</div>
+            <div className={styles.iconWrapper}>
+              <div className={styles.icon}>{service.icon}</div>
+            </div>
             <h3 className={styles.title}>{service.title}</h3>
             <p className={styles.description}>{service.description}</p>
             <Link href={service.link} className={styles.learnMore}>
               Mehr erfahren<span className={styles.arrow}>&rarr;</span>
             </Link>
             <div className={styles.hoverIndicator}></div>
+            <div className={styles.cardGlow}></div>
           </div>
         ))}
       </div>

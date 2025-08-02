@@ -247,8 +247,9 @@ export default function HeroSection() {
             }`}
             ref={imageRef}
             loading="eager"
-            onLoadingComplete={() => setImageLoaded(true)}
+            onLoad={() => setImageLoaded(true)}
           />
+
           <div className={styles.imageOverlay}></div>
           <div className={styles.imageDecoration} ref={decorationRef}></div>
         </div>
