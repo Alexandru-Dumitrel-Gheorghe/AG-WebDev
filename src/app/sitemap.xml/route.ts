@@ -15,12 +15,19 @@ const pages = [
   { loc: "https://www.ag-webdev.de/impressum", priority: 0.7 },
   { loc: "https://www.ag-webdev.de/datenschutz", priority: 0.7 },
   { loc: "https://www.ag-webdev.de/agb", priority: 0.7 },
+
+  // Blog / Unterseiten
   {
     loc: "https://www.ag-webdev.de/blog/wie-funktioniert-google-indexierung",
     priority: 0.7,
   },
   { loc: "https://www.ag-webdev.de/blog/webdesign-trends-2025", priority: 0.7 },
   { loc: "https://www.ag-webdev.de/blog/seo-fuer-anfanger", priority: 0.7 },
+  { loc: "https://www.ag-webdev.de/blog/wozu-eine-homepage", priority: 0.7 },
+  {
+    loc: "https://www.ag-webdev.de/blog/wordpress-oder-headless-cms",
+    priority: 0.7,
+  },
 
   // Referenzen / Projekte
   {

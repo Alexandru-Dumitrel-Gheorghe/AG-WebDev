@@ -79,6 +79,32 @@ const blogMeta: Record<string, Metadata> = {
       canonical: "https://www.ag-webdev.de/blog/seo-fuer-anfanger",
     },
   },
+  "wozu-eine-homepage": {
+    title: "Wozu eine eigene Homepage für Freelancer? - AG WebDev",
+    description:
+      "Erfahren Sie, warum eine professionelle Homepage für Freelancer und Selbstständige unverzichtbar ist. Tipps, Checkliste und Extra-Tipps von AG WebDev.",
+    keywords:
+      "Homepage Freelancer, Website erstellen, AG WebDev, Webdesign Bayern, SEO Freelancer, Portfolio online",
+    openGraph: {
+      title: "Wozu eine eigene Homepage für Freelancer? - AG WebDev",
+      description:
+        "Entdecken Sie die wichtigsten Gründe, warum jede/r Freelancer eine eigene Homepage braucht. Jetzt informieren!",
+      images: [
+        {
+          url: "https://www.ag-webdev.de/images/homepage-blog.png",
+          width: 1200,
+          height: 630,
+          alt: "Wozu eine eigene Homepage",
+        },
+      ],
+      type: "article",
+      url: "https://www.ag-webdev.de/blog/wozu-eine-homepage",
+    },
+    alternates: {
+      canonical: "https://www.ag-webdev.de/blog/wozu-eine-homepage",
+    },
+  },
+
   "wordpress-oder-headless-cms": {
     title: "WordPress vs. Headless CMS: Vergleich 2025 - AG WebDev",
     description:

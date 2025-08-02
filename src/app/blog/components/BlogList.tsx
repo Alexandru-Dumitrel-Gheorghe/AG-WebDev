@@ -41,6 +41,16 @@ const posts = [
     cover: "/images/headless-blog.png",
     readTime: "7 Min. Lesezeit",
   },
+
+  {
+    slug: "wozu-eine-homepage",
+    title: "Wozu eine eigene Homepage für Freelancer?",
+    excerpt:
+      "Warum braucht jeder Freelancer heutzutage eine eigene Website? Die wichtigsten Gründe, Tipps & Checkliste von AG WebDev.",
+    date: "01. August 2025",
+    cover: "/images/homepage-blog.png",
+    readTime: "5 Min. Lesezeit",
+  },
 ];
 
 export default function BlogList() {
