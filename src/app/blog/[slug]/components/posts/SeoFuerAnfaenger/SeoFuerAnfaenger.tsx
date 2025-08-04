@@ -11,9 +11,9 @@ export default function SeoFuerAnfaenger() {
       {/* Conținut blog cu container limitat */}
       <div className={styles.blogContainer}>
         <div className={styles.introBox}>
-          <h1 className={styles.mainTitle}>
+          <h2 className={styles.mainTitle}>
             SEO für Anfänger: Der Komplette Leitfaden
-          </h1>
+          </h2>
           <p className={styles.introText}>
             SEO ist kein Hexenwerk, sondern eine erlernbare Fähigkeit. Dieser
             umfassende Guide führt Sie Schritt für Schritt durch alle Aspekte

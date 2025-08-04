@@ -11,9 +11,9 @@ export default function WordpressOderHeadlessCMS() {
       {/* Restul conținutului blogului */}
       <div className={styles.blogContainer}>
         <div className={styles.introBox}>
-          <h1 className={styles.mainTitle}>
+          <h2 className={styles.mainTitle}>
             WordPress vs Headless CMS: Der Strategische Vergleich
-          </h1>
+          </h2>
           <p className={styles.introText}>
             Die Wahl des richtigen CMS ist eine strategische Entscheidung mit
             langfristigen Auswirkungen. In diesem detaillierten Vergleich

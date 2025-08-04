@@ -11,9 +11,9 @@ export default function WebdesignTrends2025() {
       {/* Blog content */}
       <div className={styles.blogContainer}>
         <div className={styles.introBox}>
-          <h1 className={styles.mainTitle}>
+          <h2 className={styles.mainTitle}>
             Webdesign Trends 2025: Die Zukunft gestalten
-          </h1>
+          </h2>
           <p className={styles.introText}>
             2025 steht im Zeichen einer neuen Ära des Webdesigns - wo Ästhetik
             auf Nutzerzentrierung trifft und immersive Erlebnisse zum Standard

@@ -11,9 +11,9 @@ export default function WieFunktioniertGoogleIndexierung() {
       {/* Conținut blog cu container limitat */}
       <div className={styles.blogContainer}>
         <div className={styles.introBox}>
-          <h1 className={styles.mainTitle}>
+          <h2 className={styles.mainTitle}>
             Die Geheimnisse der Google Indexierung: Ein Kompletter Leitfaden
-          </h1>
+          </h2>
           <p className={styles.introText}>
             Die Google Indexierung ist das Fundament Ihrer Online-Sichtbarkeit.
             In diesem umfassenden Guide enthüllen wir die geheimen Mechanismen
