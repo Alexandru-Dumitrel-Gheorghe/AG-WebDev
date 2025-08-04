@@ -88,12 +88,6 @@ function StructuredData() {
         availableLanguage: ["de", "en", "ro"],
       },
     ],
-    hasOccupation: {
-      "@type": "Occupation",
-      name: "Webentwickler (Freiberufler)",
-      description:
-        "Full-Stack Entwicklung, API Entwicklung, Web-App Entwicklung",
-    },
   };
   return (
     <script
