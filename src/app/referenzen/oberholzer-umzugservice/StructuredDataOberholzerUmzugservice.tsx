@@ -1,7 +1,11 @@
+"use client";
+import React from "react";
+
 export default function StructuredDataOberholzerUmzugservice() {
-  const jsonLd = {
+  // Schema principală pentru proiect (CreativeWork)
+  const projectSchema = {
     "@context": "https://schema.org",
-    "@type": "Project",
+    "@type": "CreativeWork",
     name: "Oberholzer Umzugservice Website",
     alternateName: "Oberholzer Umzugservice Webdesign",
     description:
@@ -9,7 +13,7 @@ export default function StructuredDataOberholzerUmzugservice() {
     url: "https://www.ag-webdev.de/referenzen/oberholzer-umzugservice",
     image: ["https://www.ag-webdev.de/images/oberholzer-projekt1.png"],
     datePublished: "2024-07-25",
-    creator: {
+    author: {
       "@type": "Person",
       name: "Alexandru Gheorghe",
       url: "https://www.ag-webdev.de/",
@@ -24,29 +28,61 @@ export default function StructuredDataOberholzerUmzugservice() {
       name: "Oberholzer Umzugservice",
       url: "https://oberholzerch.netlify.app/",
     },
-    keywords: [
-      "Webdesign",
-      "Webentwicklung",
-      "Umzugservice",
-      "Schweiz",
-      "SEO",
-      "Branding",
-      "Referenz",
-      "AG WebDev",
-    ],
+    keywords:
+      "Webdesign, Webentwicklung, Umzugservice, Schweiz, SEO, Branding, Referenz, AG WebDev",
     inLanguage: "de",
     workPerformed:
-      "Konzeption, Webentwicklung, Branding, Performance-Optimierung, SEO.",
+      "Konzeption, Webentwicklung, Branding, Performance-Optimierung, SEO",
     audience: {
       "@type": "Audience",
       audienceType: "B2B",
     },
+    publisher: {
+      "@type": "Organization",
+      name: "AG WebDev",
+      url: "https://www.ag-webdev.de/",
+    },
   };
+
+  // Review autentic de la client, legat de proiect
+  const reviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    itemReviewed: {
+      "@type": "CreativeWork",
+      name: "Oberholzer Umzugservice Website",
+      url: "https://www.ag-webdev.de/referenzen/oberholzer-umzugservice",
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "5",
+      bestRating: "5",
+    },
+    author: {
+      "@type": "Person",
+      name: "Lirim Zenki",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Oberholzer GmbH",
+    },
+    datePublished: "2025-07-14", // Poți pune data reală a review-ului de pe Google
+    reviewBody:
+      "Meine Erwartungen wurden weit übertroffen. Schnelle Umsetzung, leichte Einrichtung und top Support! Vielen Dank Alex! Grüsse aus der Schweiz.",
+  };
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      key="structured-data-oberholzer"
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+        key="structured-data-oberholzer-project"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+        key="structured-data-oberholzer-review"
+      />
+    </>
   );
 }
