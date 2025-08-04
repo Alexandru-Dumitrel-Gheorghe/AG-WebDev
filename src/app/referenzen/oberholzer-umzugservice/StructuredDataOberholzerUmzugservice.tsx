@@ -2,7 +2,7 @@
 import React from "react";
 
 export default function StructuredDataOberholzerUmzugservice() {
-  // Schema principală pentru proiect (CreativeWork)
+  // Project (CreativeWork) schema
   const projectSchema = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -44,31 +44,42 @@ export default function StructuredDataOberholzerUmzugservice() {
     },
   };
 
-  // Review autentic de la client, legat de proiect
-  const reviewSchema = {
+  // Service + Review pentru stele (dacă vrei rich snippet pe Google)
+  const serviceSchema = {
     "@context": "https://schema.org",
-    "@type": "Review",
-    itemReviewed: {
-      "@type": "CreativeWork",
-      name: "Oberholzer Umzugservice Website",
-      url: "https://www.ag-webdev.de/referenzen/oberholzer-umzugservice",
+    "@type": "Service",
+    name: "Webdesign & Webentwicklung für Umzugsunternehmen",
+    serviceType: "Webdesign, Webentwicklung",
+    areaServed: {
+      "@type": "Country",
+      name: "Schweiz",
     },
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: "5",
-      bestRating: "5",
-    },
-    author: {
+    provider: {
       "@type": "Person",
-      name: "Lirim Zenki",
+      name: "Alexandru Gheorghe",
+      url: "https://www.ag-webdev.de/",
+      email: "contact@ag-webdev.de",
+      sameAs: [
+        "https://github.com/Alexandru-Dumitrel-Gheorghe",
+        "https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/",
+      ],
     },
-    publisher: {
-      "@type": "Organization",
-      name: "Oberholzer GmbH",
+    url: "https://www.ag-webdev.de/referenzen/oberholzer-umzugservice",
+    review: {
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: "Lirim Zenki",
+      },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "5",
+        bestRating: "5",
+      },
+      datePublished: "2025-07-14",
+      reviewBody:
+        "Meine Erwartungen wurden weit übertroffen. Schnelle Umsetzung, leichte Einrichtung und top Support! Vielen Dank Alex! Grüsse aus der Schweiz.",
     },
-    datePublished: "2025-07-14", // Poți pune data reală a review-ului de pe Google
-    reviewBody:
-      "Meine Erwartungen wurden weit übertroffen. Schnelle Umsetzung, leichte Einrichtung und top Support! Vielen Dank Alex! Grüsse aus der Schweiz.",
   };
 
   return (
@@ -80,8 +91,8 @@ export default function StructuredDataOberholzerUmzugservice() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-        key="structured-data-oberholzer-review"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        key="structured-data-oberholzer-service"
       />
     </>
   );
