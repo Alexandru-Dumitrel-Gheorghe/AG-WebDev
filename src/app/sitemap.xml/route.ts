@@ -4,7 +4,7 @@ const pages = [
   { loc: "https://www.ag-webdev.de/", priority: 1.0 },
   { loc: "https://www.ag-webdev.de/about", priority: 0.8 },
   { loc: "https://www.ag-webdev.de/kontakt", priority: 0.8 },
-  { loc: "https://www.ag-webdev.de/fuerstenfeldbruck", priority: 0.7 },
+  { loc: "https://www.ag-webdev.de/fuerstenfeldbruck", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/webdesign", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/webentwicklung", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/seo", priority: 0.9 },

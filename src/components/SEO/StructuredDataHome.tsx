@@ -4,25 +4,48 @@ import React from "react";
 export default function StructuredDataHome() {
   return (
     <>
-      {/* Organization + Reviews + AggregateRating */}
+      {/* Organization + LocalBusiness + Reviews + AggregateRating */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "AG WebDev",
+            "@type": ["Organization", "LocalBusiness"],
+            name: "AG WebDev - Webdesign Agentur Fürstenfeldbruck",
             url: "https://www.ag-webdev.de",
             logo: "https://www.ag-webdev.de/images/logo.png",
+            image: ["https://www.ag-webdev.de/images/ffb-hero.png"],
             description:
-              "Professionelles Webdesign, Webentwicklung und SEO in ganz Deutschland.",
+              "Professionelle Webdesign Agentur in Fürstenfeldbruck. Spezialisiert auf moderne Websites, Webentwicklung mit React/Next.js und SEO-Optimierung für Unternehmen in Bayern.",
+            telephone: "+49 157 7215 8264",
+            priceRange: "$$",
             address: {
               "@type": "PostalAddress",
               streetAddress: "Stockmeierweg 11",
               addressLocality: "Fürstenfeldbruck",
+              addressRegion: "Bayern",
               postalCode: "82256",
               addressCountry: "DE",
             },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: "48.177772",
+              longitude: "11.251801",
+            },
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                ],
+                opens: "09:00",
+                closes: "18:00",
+              },
+            ],
             contactPoint: [
               {
                 "@type": "ContactPoint",
@@ -30,6 +53,7 @@ export default function StructuredDataHome() {
                 email: "contact@ag-webdev.de",
                 contactType: "customer support",
                 availableLanguage: ["German", "English"],
+                areaServed: "DE",
               },
             ],
             sameAs: [
@@ -102,15 +126,24 @@ export default function StructuredDataHome() {
             name: "Alexandru Gheorghe",
             jobTitle: "Freelancer Webdesigner & Entwickler",
             url: "https://www.ag-webdev.de",
+            image: "https://www.ag-webdev.de/images/profil.jpg",
             worksFor: {
               "@type": "Organization",
-              name: "AG WebDev",
+              name: "AG WebDev - Webdesign Agentur Fürstenfeldbruck",
             },
             sameAs: [
               "https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/",
               "https://github.com/Alexandru-Dumitrel-Gheorghe",
             ],
             email: "contact@ag-webdev.de",
+            telephone: "+49 157 7215 8264",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Fürstenfeldbruck",
+              addressRegion: "Bayern",
+              postalCode: "82256",
+              addressCountry: "DE",
+            },
             alumniOf: [
               {
                 "@type": "EducationalOrganization",
@@ -125,6 +158,14 @@ export default function StructuredDataHome() {
                 description: "UI/UX Design",
               },
             ],
+            knowsAbout: [
+              "Webdesign",
+              "Webentwicklung",
+              "React",
+              "Next.js",
+              "SEO",
+              "UI/UX Design",
+            ],
           }),
         }}
       />
@@ -136,13 +177,37 @@ export default function StructuredDataHome() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "AG WebDev",
+            name: "AG WebDev - Webdesign & Entwicklung",
             url: "https://www.ag-webdev.de",
             potentialAction: {
               "@type": "SearchAction",
               target: "https://www.ag-webdev.de/search?q={search_term_string}",
               "query-input": "required name=search_term_string",
             },
+            inLanguage: "de",
+            copyrightHolder: {
+              "@type": "Organization",
+              name: "AG WebDev - Webdesign Agentur Fürstenfeldbruck",
+            },
+          }),
+        }}
+      />
+
+      {/* Breadcrumb */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Startseite",
+                item: "https://www.ag-webdev.de",
+              },
+            ],
           }),
         }}
       />

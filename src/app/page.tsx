@@ -1,4 +1,6 @@
-import StructuredDataHome from "@/components/SEO/StructuredDataHome"; // sau StructuredHomeSeo
+import StructuredDataHome from "@/components/SEO/StructuredDataHome";
+import StructuredServices from "@/components/SEO/StructuredServices";
+import StructuredLocalBusiness from "@/components/SEO/StructuredLocalBusines";
 
 import Hero from "@/components/Hero/Hero";
 import AboutMe from "@/components/About/About";
@@ -14,15 +16,14 @@ import PricingCTA from "./webdesign/components/PricingCTA/PricingCTA";
 import CTASection from "@/components/CTASection/CTASection";
 import BlogCTA from "@/components/BlogCTA/BlogCTA";
 import BenefitsSection from "@/components/BenefitsSection/BenefitsSection";
-import StructuredServices from "@/components/SEO/StructuredServices";
 
 // Definiție metadata direct aici, cum ai pus deja!
 
 export const metadata = {
   title:
-    "Webdesign & Webentwicklung Freelancer – Professionelle Websites & SEO",
+    "Webdesign Freelancer in Fürstenfeldbruck | AG WebDev - Moderne Websites & SEO",
   description:
-    "Freelancer für modernes Webdesign und Webentwicklung mit Next.js und React. Individuelle Websites, SEO & Support direkt vom Entwickler. Jetzt beraten lassen!",
+    "Alexandru Gheorghe: Ihr Freelancer für Webdesign & Entwicklung in Fürstenfeldbruck. Individuelle Websites mit Next.js & React, SEO-Optimierung & Support. Kostenlose Beratung!",
   keywords: [
     "Webdesign Freelancer",
     "Webentwicklung",
@@ -77,6 +78,7 @@ export default function HomePage() {
     <>
       <StructuredDataHome />
       <StructuredServices />
+      <StructuredLocalBusiness /> {/* <-- ADĂUGAT */}
       <main>
         <ScrollAnimationProvider>
           <Hero />
