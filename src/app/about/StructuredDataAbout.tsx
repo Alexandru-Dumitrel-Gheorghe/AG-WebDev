@@ -1,4 +1,7 @@
 // app/about/StructuredDataAbout.tsx
+"use client";
+import React from "react";
+
 export default function StructuredDataAbout() {
   const data = {
     "@context": "https://schema.org",
@@ -6,7 +9,7 @@ export default function StructuredDataAbout() {
     name: "Alexandru Gheorghe",
     alternateName: "AG WebDev",
     url: "https://www.ag-webdev.de/about",
-    image: "https://www.ag-webdev.de/images/profil.jpg", // înlocuiește cu poza ta reală dacă ai
+    image: "https://www.ag-webdev.de/images/profil.jpg",
     jobTitle: "Freelance Webdesigner & Entwickler",
     description:
       "Freelance Webdesigner, UI/UX Designer und SEO Spezialist aus Fürstenfeldbruck. Professionelle Websites und Beratung deutschlandweit.",
@@ -26,6 +29,18 @@ export default function StructuredDataAbout() {
       "@type": "Country",
       name: "Deutschland",
     },
+    knowsAbout: [
+      "Webdesign",
+      "Webentwicklung",
+      "SEO",
+      "UI/UX Design",
+      "React",
+      "Next.js",
+      "Frontend Entwicklung",
+      "Backend Entwicklung",
+      "Beratung",
+      "Digitale Strategie",
+    ],
   };
 
   return (
