@@ -1,8 +1,10 @@
+// components/StructuredDataOberholzerUmzugservice.jsx
 "use client";
+
 import React from "react";
 
 export default function StructuredDataOberholzerUmzugservice() {
-  // Project (CreativeWork) schema
+  // 1) Contextul proiectului (CreativeWork)
   const projectSchema = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -44,55 +46,53 @@ export default function StructuredDataOberholzerUmzugservice() {
     },
   };
 
-  // Service + Review pentru stele (dacă vrei rich snippet pe Google)
-  const serviceSchema = {
+  // 2) Pentru rich snippet cu stele: tratăm proiectul ca un "Product"
+  const productSchema = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Webdesign & Webentwicklung für Umzugsunternehmen",
-    serviceType: "Webdesign, Webentwicklung",
-    areaServed: {
-      "@type": "Country",
-      name: "Schweiz",
-    },
-    provider: {
-      "@type": "Person",
-      name: "Alexandru Gheorghe",
-      url: "https://www.ag-webdev.de/",
-      email: "contact@ag-webdev.de",
-      sameAs: [
-        "https://github.com/Alexandru-Dumitrel-Gheorghe",
-        "https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/",
-      ],
+    "@type": "Product",
+    name: "Oberholzer Umzugservice Website",
+    image: ["https://www.ag-webdev.de/images/oberholzer-projekt1.png"],
+    description:
+      "Website, Branding und Performance-Optimierung für Oberholzer Umzugservice, realisiert von AG WebDev.",
+    brand: {
+      "@type": "Organization",
+      name: "AG WebDev",
     },
     url: "https://www.ag-webdev.de/referenzen/oberholzer-umzugservice",
-    review: {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Lirim Zenki",
+    review: [
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Lirim Zenki",
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+        datePublished: "2025-07-14",
+        reviewBody:
+          "Meine Erwartungen wurden weit übertroffen. Schnelle Umsetzung, leichte Einrichtung und top Support! Vielen Dank Alex! Grüsse aus der Schweiz.",
       },
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-      },
-      datePublished: "2025-07-14",
-      reviewBody:
-        "Meine Erwartungen wurden weit übertroffen. Schnelle Umsetzung, leichte Einrichtung und top Support! Vielen Dank Alex! Grüsse aus der Schweiz.",
-    },
+    ],
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
-        key="structured-data-oberholzer-project"
+        key="ld-json-oberholzer-project"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(projectSchema),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-        key="structured-data-oberholzer-service"
+        key="ld-json-oberholzer-product"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema),
+        }}
       />
     </>
   );
