@@ -11,7 +11,10 @@ export default function FFBPage() {
       <FFBStructuredData />
       <StructuredBreadcrumbsFFB />
       <StructuredServicesFFB />
-      <FFBClient />
+      {/* Main content cu ID pentru structured data */}
+      <main id="main-content">
+        <FFBClient />
+      </main>
     </>
   );
 }
