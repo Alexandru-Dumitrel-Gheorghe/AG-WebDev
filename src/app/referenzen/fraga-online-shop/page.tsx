@@ -1,13 +1,15 @@
+// app/referenzen/fraga-online-shop/page.tsx sau .jsx
 import type { Metadata } from "next";
 import FragaOnlineShopClient from "./fraga-online-shopClient";
 import StructuredDataFragaOnlineShop from "./StructuredDataFragaOnlineShop";
 
 export const metadata: Metadata = {
   title:
-    "Referenz: Fraga Online Shop – E-Commerce Entwicklung & Webdesign | AG WebDev",
+    "Demo Referenz: Fraga Online Shop – E-Commerce Entwicklung & Webdesign | AG WebDev",
   description:
-    "Erfolgreicher Launch des Fraga Online Shops – individuelle E-Commerce Entwicklung, modernes Webdesign, Schnittstellen & Optimierung. Ihr Referenz-Projekt von AG WebDev.",
+    "Demo-Projekt für Fraga Online Shop: Individuelle E-Commerce Entwicklung, modernes Webdesign und Shopify-Anbindung. Diese Referenz dient nur zur Demonstration im AG WebDev Portfolio.",
   keywords: [
+    "Demo",
     "Referenz",
     "E-Commerce",
     "Online Shop",
@@ -18,13 +20,13 @@ export const metadata: Metadata = {
     "Fraga Online Shop",
     "Projekt",
     "AG WebDev",
-    "Individuelle Webseiten",
-    "Website Entwicklung",
+    "Portfolio",
   ],
   openGraph: {
-    title: "Referenz: Fraga Online Shop – E-Commerce & Webdesign | AG WebDev",
+    title:
+      "Demo Referenz: Fraga Online Shop – E-Commerce & Webdesign | AG WebDev",
     description:
-      "Individuelle Entwicklung, Shopify-Anbindung und Design für Fraga Online Shop. Premium E-Commerce Referenz von AG WebDev.",
+      "Premium Demo-Projekt: Entwicklung, Shopify-Anbindung und Design für Fraga Online Shop. Kein echter Shop, nur ein Portfolio-Referenz von AG WebDev.",
     url: "https://www.ag-webdev.de/referenzen/fraga-online-shop",
     type: "website",
     images: [
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
         url: "https://www.ag-webdev.de/images/certus-projekt.png",
         width: 1200,
         height: 630,
-        alt: "Referenz Fraga Online Shop Webentwicklung",
+        alt: "Demo Referenz Fraga Online Shop Webentwicklung",
       },
     ],
   },
