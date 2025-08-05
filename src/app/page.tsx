@@ -79,7 +79,7 @@ export default function HomePage() {
       <StructuredDataHome />
       <StructuredServices />
       <StructuredLocalBusiness /> {/* <-- ADĂUGAT */}
-      <main>
+      <main id="main-content">
         <ScrollAnimationProvider>
           <Hero />
           <AboutMe />

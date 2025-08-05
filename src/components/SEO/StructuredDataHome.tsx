@@ -116,6 +116,24 @@ export default function StructuredDataHome() {
         }}
       />
 
+      {/* mainContentOfPage */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Webdesign Freelancer in Fürstenfeldbruck | AG WebDev",
+            url: "https://www.ag-webdev.de",
+            mainContentOfPage: {
+              "@type": "WebPageElement",
+              cssSelector: "#main-content",
+              text: "AG WebDev ist Ihr Webdesign Freelancer und Experte für individuelle Webentwicklung in Fürstenfeldbruck und Umgebung. Wir bieten modernes Webdesign, leistungsstarke Websites mit Next.js und React, SEO-Optimierung, professionelle Animationen, UI/UX Design und persönliche Beratung. Spezialisiert auf maßgeschneiderte Lösungen für Unternehmen, Start-ups und Selbstständige in Deutschland. Unser Fokus liegt auf Performance, Sicherheit, Responsive Design, Google-Indexierung und nachhaltigem Online-Erfolg. Kostenlose Erstberatung & langfristiger Support inklusive.",
+            },
+          }),
+        }}
+      />
+
       {/* Person */}
       <script
         type="application/ld+json"
