@@ -160,7 +160,7 @@ export default function WebentwicklungHero() {
         <div className={styles.visual}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/webentwicklung-hero.png"
+              src="/referenzen/mitarbeiter-dashboard.png"
               alt="Moderne Webentwicklung Benutzeroberfläche"
               fill
               className={styles.image}

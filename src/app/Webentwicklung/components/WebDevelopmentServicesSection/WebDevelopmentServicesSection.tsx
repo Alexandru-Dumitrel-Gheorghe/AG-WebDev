@@ -3,133 +3,61 @@ import styles from "./WebDesignServicesSection.module.css";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  FiTool,
+  FiClock,
+  FiSearch,
+  FiShield,
+  FiBarChart2,
+  FiRefreshCw,
+} from "react-icons/fi";
 
 const services = [
   {
-    title: "Individuelle Webentwicklung",
+    title: "Individuelle Firmen-Tools",
     description:
-      "Maßgeschneiderte Lösungen und Programmierung für Ihre Anforderungen.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <rect
-          x="3"
-          y="5"
-          width="18"
-          height="14"
-          rx="2.5"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="M8 10l4 4 4-4"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-    link: "#entwicklung",
+      "Wir entwickeln digitale Tools für interne Unternehmensprozesse – z.B. Timetask für Zeiterfassung, Auftragsverwaltung, Arbeitsanweisung-Suche und vieles mehr.",
+    icon: <FiTool size={36} />,
+    link: "#tools",
   },
   {
-    title: "Google Indexierung",
+    title: "Zeiterfassung & Aufgabenmanagement",
     description:
-      "Optimale technische Voraussetzungen für schnelle & nachhaltige Aufnahme im Google-Index.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="M7 12l3 3 7-7"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-    link: "#indexierung",
+      "Mit Timetask erfassen und verwalten Ihre Teams Arbeitszeiten und Aufträge effizient und transparent – alles nach Ihren Anforderungen.",
+    icon: <FiClock size={36} />,
+    link: "#timetask",
   },
   {
-    title: "SEO-Optimierung",
+    title: "Arbeitsanweisung-Suche",
     description:
-      "Modernste technische und strukturelle SEO-Maßnahmen für Top-Sichtbarkeit.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="M9 12l2 2 4-4"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-    link: "#seo",
+      "Schnelles Auffinden und Verwalten von Arbeitsanweisungen, Dokumenten oder Produktionshinweisen für alle Mitarbeiter.",
+    icon: <FiSearch size={36} />,
+    link: "#arbeitsanweisung",
   },
   {
     title: "Sicherheit & Datenschutz",
     description:
-      "Schutz vor Angriffen, DSGVO-konforme Entwicklung und sichere Datenübertragung.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <rect
-          x="5"
-          y="8"
-          width="14"
-          height="10"
-          rx="2"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="M12 12v3"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-        <circle cx="12" cy="11" r="1" fill="currentColor" />
-      </svg>
-    ),
+      "Datenschutzkonforme Entwicklung, sichere Datenübertragung und Schutz vor externen Angriffen (DSGVO ready).",
+    icon: <FiShield size={36} />,
     link: "#sicherheit",
+  },
+  {
+    title: "Reporting & Effizienz-Analysen",
+    description:
+      "Individuelle Dashboards und Statistiken zur Optimierung von Arbeitsabläufen und zur transparenten Erfolgsmessung.",
+    icon: <FiBarChart2 size={36} />,
+    link: "#reporting",
   },
   {
     title: "Wartung & Support",
     description:
-      "Updates, Monitoring und schnelle Fehlerbehebung – alles aus einer Hand.",
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <rect
-          x="4"
-          y="5"
-          width="16"
-          height="14"
-          rx="2"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="M4 8l8 5 8-5"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
+      "Updates, Monitoring und schnelle Fehlerbehebung für Ihre digitalen Tools – alles aus einer Hand.",
+    icon: <FiRefreshCw size={36} />,
     link: "#wartung",
   },
 ];
 
-export default function WebDevelopmentServicesSection() {
+export default function WebDesignServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
@@ -294,11 +222,13 @@ export default function WebDevelopmentServicesSection() {
       <div className={styles.header}>
         <div className={styles.headerContent}>
           <h2 className={styles.sectionTitle} ref={titleRef}>
-            Webentwicklung Leistungen
+            Digitale Tools & Webentwicklung
           </h2>
           <p className={styles.sectionDesc} ref={descRef}>
-            Zukunftssichere Entwicklung, höchste Performance und maximale
-            Sicherheit – für Ihren nachhaltigen Online-Erfolg.
+            Wir entwickeln maßgeschneiderte digitale Tools wie Timetask,
+            Arbeitsanweisung-Suche & mehr – speziell für interne Abläufe in
+            Unternehmen. Effizienz, Performance und höchste Sicherheit stehen
+            dabei im Fokus.
           </p>
         </div>
       </div>

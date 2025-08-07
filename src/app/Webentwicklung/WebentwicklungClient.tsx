@@ -9,12 +9,14 @@ import FAQ from "@/components/FAQ/FAQ";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import CTASection from "@/components/CTASection/CTASection";
 import Technologies from "@/components/Technologies/Technologies";
+import CaseStudyGallery from "./components/CaseStudyGallery/CaseStudyGallery";
 
 export default function WebentwicklungClient() {
   return (
     <>
       <WebentwicklungHero />
       <WebDevelopmentServicesSection />
+      <CaseStudyGallery />
       <WebentwicklungProzess />
       <CTASection />
       <Technologies />

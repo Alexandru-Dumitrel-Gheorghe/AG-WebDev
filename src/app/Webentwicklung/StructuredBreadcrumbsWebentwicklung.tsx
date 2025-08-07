@@ -1,4 +1,3 @@
-// components/SEO/StructuredBreadcrumbsWebentwicklung.tsx
 "use client";
 import React from "react";
 
@@ -16,7 +15,7 @@ export default function StructuredBreadcrumbsWebentwicklung() {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Webentwicklung",
+        name: "Digitale Tools & Prozess-Software",
         item: "https://www.ag-webdev.de/Webentwicklung",
       },
     ],
@@ -26,7 +25,7 @@ export default function StructuredBreadcrumbsWebentwicklung() {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-      key="structured-breadcrumb-webentwicklung"
+      key="structured-breadcrumb-tools"
     />
   );
 }
