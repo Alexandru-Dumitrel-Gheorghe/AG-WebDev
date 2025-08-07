@@ -17,8 +17,6 @@ import CTASection from "@/components/CTASection/CTASection";
 import BlogCTA from "@/components/BlogCTA/BlogCTA";
 import BenefitsSection from "@/components/BenefitsSection/BenefitsSection";
 
-// Definiție metadata direct aici, cum ai pus deja!
-
 export const metadata = {
   title:
     "Webdesign Freelancer in Fürstenfeldbruck | AG WebDev - Moderne Websites & SEO",

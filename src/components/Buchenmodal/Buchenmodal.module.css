@@ -1,11 +1,38 @@
+/* Buchenmodal.module.css */
+
+/* Custom Scrollbar */
+.modalContent::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+  margin: 8px 0;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: all 0.3s ease;
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: var(--control-button-hover);
+}
+
+/* Modal Overlay */
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,30 +50,33 @@
   }
 }
 
+/* Modal Content */
 .modalContent {
   background: var(--bg-color);
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   width: 100%;
   max-width: 800px;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
   border: 1px solid var(--section-desc-line);
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) transparent;
 }
 
+/* Modal Header */
 .modalHeader {
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--section-desc-line);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
-  background: var(--bg-color);
+  background: var(--accent-color);
   z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 16px 16px 0 0;
-  background: var(--accent-color);
   color: var(--active-tag-text);
 }
 
@@ -105,6 +135,7 @@
   transform: rotate(90deg);
 }
 
+/* Form Container */
 .formContainer {
   padding: 2rem;
 }
@@ -293,6 +324,7 @@
   box-shadow: none;
 }
 
+/* Success State */
 .successState {
   display: flex;
   flex-direction: column;
