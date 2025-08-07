@@ -36,7 +36,7 @@ export default function BlogMainHero() {
         <div className={styles.imageWrapper}>
           {/* Eliminăm gradientOverlay, gridPattern și circleAccent pentru că vrem doar imaginea */}
           <Image
-            src="/images/Google-Indexierung-hero2.png" // Înlocuiește cu calea ta corectă
+            src="/images/blog-hero1.png" // Înlocuiește cu calea ta corectă
             alt="Blog Hero Bild"
             fill
             style={{ objectFit: "cover" }}
