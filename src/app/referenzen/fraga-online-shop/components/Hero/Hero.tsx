@@ -109,11 +109,12 @@ export default function Hero() {
 
           <div className={styles.buttons} ref={buttonRef}>
             <a
-              href="#"
+              href="https://e-commerce-one-tau-76.vercel.app/"
               className={styles.primaryButton}
-              onClick={handleOpenModal}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Projekt starten
+              Zur Website
               <span className={styles.buttonArrow}>
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                   <path
@@ -133,8 +134,9 @@ export default function Hero() {
                 </svg>
               </span>
             </a>
-            <a href="/referenzen" className={styles.secondaryButton}>
-              <span className={styles.buttonText}>Weitere Projekte</span>
+
+            <a href="/kontakt" className={styles.secondaryButton}>
+              <span className={styles.buttonText}>Kontakt aufnehmen</span>
               <span className={styles.buttonHoverEffect} />
             </a>
           </div>

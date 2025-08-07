@@ -98,8 +98,11 @@ export default function CertusShowcaseHero() {
             maßgeschneiderte Lösungen für Unternehmen, Architekten und Händler.
           </p>
           <div className={styles.buttons} ref={buttonRef}>
-            <a href="#portfolio" className={styles.primaryButton}>
-              Zum Projekt-Showcase
+            <a
+              href="https://www.certussolutions.de/"
+              className={styles.primaryButton}
+            >
+              Zur Website
               <span className={styles.buttonArrow}>
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                   <path
