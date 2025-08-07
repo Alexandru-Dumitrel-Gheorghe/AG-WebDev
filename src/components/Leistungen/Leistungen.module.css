@@ -1,7 +1,7 @@
 /* Leistungen.module.css */
 .leistungenSection {
   width: 100%;
-  padding: 140px 0;
+  padding: 160px 0;
   background: linear-gradient(
     135deg,
     var(--leistungen-bg) 0%,
@@ -11,7 +11,6 @@
   overflow: hidden;
   z-index: 1;
   perspective: 1000px;
-  transition: all 0.4s ease;
 }
 
 /* Floating orbs background */
@@ -28,7 +27,7 @@
 .orb3 {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(90px);
   pointer-events: none;
   will-change: transform;
   opacity: 0.2;
@@ -37,24 +36,24 @@
 }
 
 .orb1 {
-  width: 400px;
-  height: 400px;
+  width: 420px;
+  height: 420px;
   background: radial-gradient(circle, var(--orb1-color) 0%, transparent 70%);
   left: 4vw;
   top: 12vh;
 }
 
 .orb2 {
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   background: radial-gradient(circle, var(--orb2-color) 0%, transparent 70%);
   right: 12vw;
   top: 36vh;
 }
 
 .orb3 {
-  width: 250px;
-  height: 250px;
+  width: 280px;
+  height: 280px;
   background: radial-gradient(circle, var(--orb3-color) 0%, transparent 70%);
   right: 6vw;
   bottom: 8vh;
@@ -62,7 +61,7 @@
 
 .header {
   max-width: 1600px;
-  margin: 0 auto 80px;
+  margin: 0 auto 100px;
   padding: 0 clamp(1.5rem, 5vw, 5rem);
   position: relative;
   z-index: 2;
@@ -83,7 +82,6 @@
   position: relative;
   transform-style: preserve-3d;
   will-change: transform;
-  transition: color 0.3s ease;
 }
 
 .sectionTitle::after {
@@ -109,7 +107,6 @@
   position: relative;
   transform-style: preserve-3d;
   will-change: transform;
-  transition: color 0.3s ease;
 }
 
 .sectionDesc::before {
@@ -128,7 +125,7 @@
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-  gap: 30px;
+  gap: 32px;
   max-width: 1500px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 5rem);
@@ -138,13 +135,13 @@
 
 .card {
   background: var(--card-bg);
-  border-radius: 20px;
+  border-radius: 24px;
   box-shadow: var(--card-shadow);
-  padding: 48px 36px;
+  padding: 52px 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 320px;
+  min-height: 340px;
   border: 1px solid var(--card-border);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
@@ -175,24 +172,15 @@
 .card:hover {
   box-shadow: var(--card-hover-shadow);
   border-color: var(--card-hover-border);
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
 }
 
 .card:hover::before {
   opacity: 1;
 }
 
-.card:hover .sectionTitle::after {
-  width: 80px;
-}
-
-.card:hover .sectionDesc::before {
-  height: calc(100% - 8px);
-  top: 4px;
-}
-
 .iconWrapper {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
   position: relative;
   z-index: 1;
 }
@@ -202,15 +190,15 @@
   align-items: center;
   justify-content: center;
   color: var(--accent-color);
-  width: 60px;
-  height: 60px;
-  border-radius: 18px;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
   background: var(--card-icon-bg);
-  padding: 12px;
+  padding: 14px;
   transition: all 0.4s ease;
   position: relative;
   z-index: 1;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .icon svg {
@@ -221,12 +209,11 @@
   font-size: clamp(1.5rem, 2vw, 1.7rem);
   font-weight: 700;
   color: var(--card-title-color);
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   letter-spacing: -0.02em;
   font-family: "Inter", sans-serif;
   position: relative;
   z-index: 1;
-  transition: color 0.3s ease;
 }
 
 .description {
@@ -237,13 +224,12 @@
   margin: 0;
   position: relative;
   z-index: 1;
-  transition: color 0.3s ease;
 }
 
 .learnMore {
   display: inline-flex;
   align-items: center;
-  margin-top: 28px;
+  margin-top: 32px;
   color: var(--accent-color);
   font-weight: 600;
   font-size: 1.1rem;
@@ -279,7 +265,7 @@
 }
 
 .learnMore:hover .arrow {
-  transform: translateX(4px);
+  transform: translateX(6px);
 }
 
 .hoverIndicator {
@@ -291,93 +277,97 @@
   background: var(--accent-color);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1),
-    background 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
   z-index: 1;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 24px 24px;
 }
 
 .cardGlow {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
   background: radial-gradient(
     circle at center,
     var(--accent-color) 0%,
     transparent 70%
   );
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease;
   z-index: 0;
   pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
 .card:hover .cardGlow {
-  opacity: 0.08;
+  opacity: 0.1;
 }
 
 @media (max-width: 1024px) {
   .leistungenSection {
-    padding: 120px 0 60px;
+    padding: 140px 0 80px;
   }
 
   .orb1 {
-    width: 300px;
-    height: 300px;
-    filter: blur(60px);
+    width: 320px;
+    height: 320px;
+    filter: blur(70px);
   }
 
   .orb2 {
-    width: 220px;
-    height: 220px;
-    filter: blur(50px);
+    width: 240px;
+    height: 240px;
+    filter: blur(60px);
   }
 
   .orb3 {
-    width: 180px;
-    height: 180px;
-    filter: blur(40px);
+    width: 200px;
+    height: 200px;
+    filter: blur(50px);
+  }
+
+  .card {
+    padding: 44px 32px;
   }
 }
 
 @media (max-width: 768px) {
   .leistungenSection {
-    padding: 100px 0 40px;
+    padding: 120px 0 60px;
   }
 
   .header {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
   }
 
   .card {
     min-height: auto;
     padding: 36px 28px;
-    border-radius: 16px;
+    border-radius: 20px;
   }
 
   .icon {
-    width: 54px;
-    height: 54px;
-    border-radius: 16px;
-  }
-
-  .hoverIndicator {
-    height: 4px;
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
   }
 }
 
 @media (max-width: 480px) {
+  .leistungenSection {
+    padding: 100px 0 40px;
+  }
+
   .sectionDesc::before {
-    top: 4px;
-    height: calc(100% - 8px);
+    top: 6px;
+    height: calc(100% - 12px);
     width: 2px;
   }
 
   .cardsGrid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
 
   .card {
@@ -385,6 +375,6 @@
   }
 
   .learnMore {
-    margin-top: 24px;
+    margin-top: 28px;
   }
 }
