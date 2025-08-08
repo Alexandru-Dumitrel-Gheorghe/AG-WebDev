@@ -88,7 +88,26 @@ nav h1 {
   --accent-color: var(--accent-color-dark);
   --icon-glow: 0 0 40px 0 #ff8c5a99, 0 0 0 0 #fff0;
 }
+:root {
+  --cta-bg: #ffffff;
+  --cta-bg-secondary: #f9f9f9;
+  --orb1-color: #fc6b28;
+  --orb2-color: #6b28fc;
+  --section-title-color: #222222;
+  --section-desc-color: #555555;
+  --accent-color: #fc6b28;
+  --control-button-hover: #ff8c5a;
+  --active-tag-text: #ffffff;
+}
 
+[data-theme="dark"] {
+  --cta-bg: #121212;
+  --cta-bg-secondary: #1a1a1a;
+  --orb1-color: #ff8c5a;
+  --orb2-color: #8c5aff;
+  --section-title-color: #f5f5f5;
+  --section-desc-color: #aaaaaa;
+}
 :root {
   --bg-color: #ffffff;
   --text-color: #222222;

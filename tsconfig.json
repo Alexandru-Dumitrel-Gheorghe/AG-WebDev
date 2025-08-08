@@ -29,7 +29,8 @@
     ".next/types/**/*.ts",
     "src/components/WarumWir/WarumWir.jsx",
     "src/app/projekte/components/ProjectDetail/ProjectDetail.jsx",
-    "src/app/webdesign/components/WarumAgWebdev/WarumAgWebdev.jsx"
+    "src/app/webdesign/components/WarumAgWebdev/WarumAgWebdev.jsx",
+    "src/components/PremiumCTA/PremiumCTA.jsx"
   ],
   "exclude": ["node_modules"]
 }

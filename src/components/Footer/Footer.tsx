@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./Footer.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,8 +10,16 @@ import {
   FaPhone,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.wave}></div>
@@ -21,8 +31,8 @@ export default function Footer() {
               <Image
                 src="/logo-2.png"
                 alt="AG WebDev Logo"
-                width={135}
-                height={42}
+                width={150}
+                height={50}
                 className={styles.logoImg}
                 priority
               />
@@ -41,6 +51,7 @@ export default function Footer() {
               aria-label="GitHub"
             >
               <FaGithub />
+              <span className={styles.socialTooltip}>GitHub</span>
             </a>
             <a
               className={styles.socialLink}
@@ -50,6 +61,7 @@ export default function Footer() {
               aria-label="LinkedIn"
             >
               <FaLinkedin />
+              <span className={styles.socialTooltip}>LinkedIn</span>
             </a>
             <a
               className={styles.socialLink}
@@ -57,6 +69,7 @@ export default function Footer() {
               aria-label="E-Mail"
             >
               <FaEnvelope />
+              <span className={styles.socialTooltip}>E-Mail</span>
             </a>
           </div>
         </div>
@@ -65,36 +78,21 @@ export default function Footer() {
         <div className={styles.navColumn}>
           <h3 className={styles.navTitle}>Leistungen</h3>
           <ul className={styles.navList}>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/webdesign">
-                Webdesign
-              </Link>
-            </li>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/Webentwicklung">
-                Webentwicklung
-              </Link>
-            </li>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/seo">
-                SEO & Marketing
-              </Link>
-            </li>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/google-indexierung">
-                Google Indexierung
-              </Link>
-            </li>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/wartung-support">
-                Wartung & Support
-              </Link>
-            </li>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/beratung">
-                Beratung
-              </Link>
-            </li>
+            {[
+              { href: "/webdesign", text: "Webdesign" },
+              { href: "/Webentwicklung", text: "Webentwicklung" },
+              { href: "/seo", text: "SEO & Marketing" },
+              { href: "/google-indexierung", text: "Google Indexierung" },
+              { href: "/wartung-support", text: "Wartung & Support" },
+              { href: "/beratung", text: "Beratung" },
+            ].map((item, index) => (
+              <li key={index} className={styles.navListItem}>
+                <Link className={styles.navLink} href={item.href}>
+                  {item.text}
+                  <FiArrowUpRight className={styles.linkArrow} />
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -102,26 +100,19 @@ export default function Footer() {
         <div className={styles.navColumn}>
           <h3 className={styles.navTitle}>Navigation</h3>
           <ul className={styles.navList}>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/">
-                Zur Startseite von AG WebDev
-              </Link>
-            </li>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/blog">
-                Blog
-              </Link>
-            </li>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/about">
-                Über mich
-              </Link>
-            </li>
-            <li className={styles.navListItem}>
-              <Link className={styles.navLink} href="/kontakt">
-                Kontakt
-              </Link>
-            </li>
+            {[
+              { href: "/", text: "Startseite" },
+              { href: "/blog", text: "Blog" },
+              { href: "/about", text: "Über mich" },
+              { href: "/kontakt", text: "Kontakt" },
+            ].map((item, index) => (
+              <li key={index} className={styles.navListItem}>
+                <Link className={styles.navLink} href={item.href}>
+                  {item.text}
+                  <FiArrowUpRight className={styles.linkArrow} />
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -166,15 +157,15 @@ export default function Footer() {
             © {new Date().getFullYear()} AG WebDev. Alle Rechte vorbehalten.
           </span>
           <div className={styles.legalLinks}>
-            <Link href="/datenschutz" className={styles.legalLink}>
-              Datenschutz
-            </Link>
-            <Link href="/impressum" className={styles.legalLink}>
-              Impressum
-            </Link>
-            <Link href="/agb" className={styles.legalLink}>
-              AGB
-            </Link>
+            {[
+              { href: "/datenschutz", text: "Datenschutz" },
+              { href: "/impressum", text: "Impressum" },
+              { href: "/agb", text: "AGB" },
+            ].map((item, index) => (
+              <Link key={index} href={item.href} className={styles.legalLink}>
+                {item.text}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
