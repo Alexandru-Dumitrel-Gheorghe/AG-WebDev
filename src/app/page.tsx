@@ -1,7 +1,6 @@
 import StructuredDataHome from "@/components/SEO/StructuredDataHome";
 import StructuredServices from "@/components/SEO/StructuredServices";
 import StructuredLocalBusiness from "@/components/SEO/StructuredLocalBusines";
-
 import Hero from "@/components/Hero/Hero";
 import AboutMe from "@/components/About/About";
 import Leistungen from "@/components/Leistungen/Leistungen";
@@ -16,6 +15,7 @@ import PricingCTA from "./webdesign/components/PricingCTA/PricingCTA";
 import CTASection from "@/components/CTASection/CTASection";
 import BlogCTA from "@/components/BlogCTA/BlogCTA";
 import BenefitsSection from "@/components/BenefitsSection/BenefitsSection";
+import ServiceAreas from "@/components/ServiceAreas/ServiceAreas";
 
 export const metadata = {
   title:
@@ -88,6 +88,7 @@ export default function HomePage() {
           <WarumAgWebdev />
           <TechStack />
           <Proces />
+          <ServiceAreas />
           <PricingCTA />
           <FAQ />
           <CTASection />
