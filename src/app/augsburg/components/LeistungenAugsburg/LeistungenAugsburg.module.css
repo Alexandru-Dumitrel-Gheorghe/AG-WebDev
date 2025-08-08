@@ -1,0 +1,380 @@
+/* Leistungen.module.css */
+.leistungenSection {
+  width: 100%;
+  padding: 160px 0;
+  background: linear-gradient(
+    135deg,
+    var(--leistungen-bg) 0%,
+    var(--leistungen-bg-secondary) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  perspective: 1000px;
+}
+
+/* Floating orbs background */
+.parallaxOrbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.orb1,
+.orb2,
+.orb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0.2;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
+
+.orb1 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--orb1-color) 0%, transparent 70%);
+  left: 4vw;
+  top: 12vh;
+}
+
+.orb2 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, var(--orb2-color) 0%, transparent 70%);
+  right: 12vw;
+  top: 36vh;
+}
+
+.orb3 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, var(--orb3-color) 0%, transparent 70%);
+  right: 6vw;
+  bottom: 8vh;
+}
+
+.header {
+  max-width: 1600px;
+  margin: 0 auto 100px;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+  position: relative;
+  z-index: 2;
+}
+
+.headerContent {
+  max-width: 48rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.5rem, 5vw, 3.2rem);
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  color: var(--section-title-color);
+  letter-spacing: -0.03em;
+  margin: 0 0 24px;
+  line-height: 1.1;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 70px;
+  height: 5px;
+  background: var(--accent-color);
+  border-radius: 5px;
+  transform: translateZ(0);
+  transition: all 0.4s ease;
+}
+
+.sectionDesc {
+  color: var(--section-desc-color);
+  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 24px 0 0;
+  padding-left: 20px;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.sectionDesc::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  height: calc(100% - 16px);
+  width: 3px;
+  background: var(--accent-color);
+  transform: translateZ(0);
+  transition: all 0.4s ease;
+  border-radius: 3px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 32px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  padding: 52px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 340px;
+  border: 1px solid var(--card-border);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.card:hover {
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--card-hover-border);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.iconWrapper {
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 1;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: var(--card-icon-bg);
+  padding: 14px;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.icon svg {
+  transition: all 0.4s ease;
+}
+
+.title {
+  font-size: clamp(1.5rem, 2vw, 1.7rem);
+  font-weight: 700;
+  color: var(--card-title-color);
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+.description {
+  font-size: clamp(1.05rem, 1.3vw, 1.1rem);
+  color: var(--card-desc-color);
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.learnMore {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 32px;
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.learnMore::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.learnMore:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.arrow {
+  margin-left: 8px;
+  font-size: 1.2em;
+  transition: transform 0.3s cubic-bezier(0.4, 1.5, 0.5, 1.2);
+}
+
+.learnMore:hover .arrow {
+  transform: translateX(6px);
+}
+
+.hoverIndicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
+  border-radius: 0 0 24px 24px;
+}
+
+.cardGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle at center,
+    var(--accent-color) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.card:hover .cardGlow {
+  opacity: 0.1;
+}
+
+@media (max-width: 1024px) {
+  .leistungenSection {
+    padding: 140px 0 80px;
+  }
+
+  .orb1 {
+    width: 320px;
+    height: 320px;
+    filter: blur(70px);
+  }
+
+  .orb2 {
+    width: 240px;
+    height: 240px;
+    filter: blur(60px);
+  }
+
+  .orb3 {
+    width: 200px;
+    height: 200px;
+    filter: blur(50px);
+  }
+
+  .card {
+    padding: 44px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .leistungenSection {
+    padding: 120px 0 60px;
+  }
+
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 36px 28px;
+    border-radius: 20px;
+  }
+
+  .icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leistungenSection {
+    padding: 100px 0 40px;
+  }
+
+  .sectionDesc::before {
+    top: 6px;
+    height: calc(100% - 12px);
+    width: 2px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    padding: 32px 24px;
+  }
+
+  .learnMore {
+    margin-top: 28px;
+  }
+}

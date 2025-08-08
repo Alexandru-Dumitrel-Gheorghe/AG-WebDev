@@ -30,7 +30,8 @@
     "src/components/WarumWir/WarumWir.jsx",
     "src/app/projekte/components/ProjectDetail/ProjectDetail.jsx",
     "src/app/webdesign/components/WarumAgWebdev/WarumAgWebdev.jsx",
-    "src/components/PremiumCTA/PremiumCTA.jsx"
+    "src/components/PremiumCTA/PremiumCTA.jsx",
+    "src/app/augsburg/components/HeroSectionAugsburg/HeroSectionAugsburg.jsx"
   ],
   "exclude": ["node_modules"]
 }

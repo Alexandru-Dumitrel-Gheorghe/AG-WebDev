@@ -5,6 +5,7 @@ const pages = [
   { loc: "https://www.ag-webdev.de/about", priority: 0.8 },
   { loc: "https://www.ag-webdev.de/kontakt", priority: 0.8 },
   { loc: "https://www.ag-webdev.de/fuerstenfeldbruck", priority: 0.9 },
+  { loc: "https://www.ag-webdev.de/augsburg", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/webdesign", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/webentwicklung", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/seo", priority: 0.9 },

@@ -1,0 +1,353 @@
+/* HeroSection.module.css */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--text-color);
+  padding: 4rem 0;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(252, 107, 40, 0.08) 0%,
+    rgba(252, 107, 40, 0.03) 100%
+  );
+}
+
+.augsburgSkyline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 120'%3E%3Cpath fill='%23fc6b28' opacity='0.1' d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  gap: 4rem;
+}
+
+.textContainer {
+  flex: 1;
+  max-width: 700px;
+}
+
+.title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.titleHighlight {
+  color: var(--accent-color);
+  position: relative;
+  display: inline-block;
+}
+
+.titleHighlight::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background-color: rgba(252, 107, 40, 0.2);
+  z-index: -1;
+  border-radius: 4px;
+  transform-origin: left;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 90%;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.primaryButton {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid var(--accent-color);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.primaryButton:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(252, 107, 40, 0.2);
+}
+
+.secondaryButton:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-3px);
+}
+.secondaryButton {
+  background-color: transparent;
+  color: var(--accent-color);
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid var(--accent-color);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.imageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  transform-style: preserve-3d;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform-origin: center;
+}
+
+.imageBadge {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform-origin: center;
+}
+
+.badgeText {
+  display: inline-block;
+  transform: translateZ(20px);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.scrollText {
+  margin-bottom: 0.5rem;
+  animation: bounce 2s infinite;
+}
+
+.scrollArrow {
+  width: 24px;
+  height: 36px;
+  border: 2px solid var(--accent-color);
+  border-radius: 12px;
+  position: relative;
+}
+
+.scrollArrow::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 10px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  animation: scrollAnimation 2s infinite;
+}
+
+@keyframes scrollAnimation {
+  0% {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(12px) translateX(-50%);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .backgroundOverlay {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 140, 90, 0.08) 0%,
+    rgba(255, 140, 90, 0.03) 100%
+  );
+}
+
+[data-theme="dark"] .augsburgSkyline {
+  opacity: 0.8;
+}
+
+[data-theme="dark"] .imageWrapper {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 1600px) {
+  .heroContent {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .title {
+    font-size: 3.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 8rem;
+    gap: 3rem;
+  }
+
+  .textContainer {
+    max-width: 100%;
+  }
+
+  .subtitle {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ctaButtons {
+    justify-content: center;
+  }
+
+  .imageContainer {
+    margin-top: 3rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    padding: 0 2rem;
+    padding-top: 6rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContent {
+    padding: 0 1.5rem;
+    padding-top: 3rem;
+  }
+  .scrollIndicator {
+    display: none;
+  }
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .ctaButtons {
+    margin-top: 2rem;
+  }
+}
