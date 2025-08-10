@@ -33,6 +33,7 @@ export default function About() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
+    // SplitText
     let splitTitle: any;
     if (headingRef.current) {
       splitTitle = new SplitText(headingRef.current, { type: "chars,words" });
@@ -53,6 +54,7 @@ export default function About() {
       });
     }
 
+    // Parallax & fade
     if (leftRef.current && rightRef.current && ratingsRef.current) {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -83,27 +85,15 @@ export default function About() {
         );
     }
 
+    // Hover timelines – doar transform/opacity (fără culori!)
     const hoverTimelines: HoverTimelineData[] = [];
     ratingCardsRef.current.forEach((card) => {
+      const glowEl = card.querySelector(`.${styles.glow}`);
       const hoverTl = gsap.timeline({ paused: true });
 
       hoverTl
         .to(card, { y: -15, scale: 1.03, duration: 0.3, ease: "power2.out" }, 0)
-        .to(
-          card.querySelector(`.${styles.platformName}`),
-          { color: "var(--active-tag-text)", duration: 0.2 },
-          0
-        )
-        .to(
-          card.querySelector(`.${styles.ratingValue}`),
-          { color: "var(--active-tag-text)", duration: 0.2 },
-          0
-        )
-        .to(
-          card.querySelector(`.${styles.glow}`),
-          { opacity: 1, duration: 0.3 },
-          0
-        );
+        .to(glowEl, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
 
       const onEnter = () => hoverTl.play();
       const onLeave = () => hoverTl.reverse();
@@ -114,6 +104,7 @@ export default function About() {
       hoverTimelines.push({ card, onEnter, onLeave, hoverTl });
     });
 
+    // 3D parallax
     const handleMouseMove = (e: MouseEvent) => {
       const xPos = e.clientX / window.innerWidth - 0.5;
       const yPos = e.clientY / window.innerHeight - 0.5;
@@ -134,7 +125,7 @@ export default function About() {
     sectionRef.current?.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
       sectionRef.current?.removeEventListener("mousemove", handleMouseMove);
 
       hoverTimelines.forEach(({ card, onEnter, onLeave }) => {
@@ -187,8 +178,9 @@ export default function About() {
           </a>
         </div>
       </div>
+
       <div className={styles.ratings} ref={ratingsRef}>
-        {/* Google Rating Card */}
+        {/* Google */}
         <div
           className={`${styles.ratingCard} ${styles.googleCard}`}
           ref={addToCardsRef}
@@ -205,10 +197,10 @@ export default function About() {
           </div>
           <div className={styles.ratingValue}>5.0 Bewertung</div>
           <div className={styles.reviews}>Empfohlen von Kunden</div>
-          <div className={styles.cardHoverEffect}></div>
+          <span className={styles.glow} />
         </div>
 
-        {/* Trustpilot Rating Card */}
+        {/* Trustpilot */}
         <div
           className={`${styles.ratingCard} ${styles.trustpilotCard}`}
           ref={addToCardsRef}
@@ -225,10 +217,10 @@ export default function About() {
           </div>
           <div className={styles.ratingValue}>Ausgezeichnet</div>
           <div className={styles.reviews}>Verifiziertes Profil</div>
-          <div className={styles.cardHoverEffect}></div>
+          <span className={styles.glow} />
         </div>
 
-        {/* Listando Badge Card */}
+        {/* Listando */}
         <div
           className={`${styles.ratingCard} ${styles.listandoCard}`}
           ref={addToCardsRef}
@@ -246,8 +238,8 @@ export default function About() {
               className={styles.listandoBadge}
             />
             <span className={styles.ratingValue}>Top Experte 2025</span>
-            <div className={styles.cardHoverEffect}></div>
           </a>
+          <span className={styles.glow} />
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 /* Leistungen.module.css */
 .leistungenSection {
   width: 100%;
-  padding: 160px 0;
+  padding: 100px 0;
   background: linear-gradient(
     135deg,
     var(--leistungen-bg) 0%,
