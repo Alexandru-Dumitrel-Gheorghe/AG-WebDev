@@ -1,4 +1,4 @@
-/* Hero section with optimized animations */
+/* Hero.module.css */
 .hero {
   display: flex;
   min-height: 100vh;
@@ -60,7 +60,7 @@
 }
 
 .highlight {
-  color: #fc6b28;
+  color: var(--accent-color);
   font-weight: 600;
   position: relative;
   display: inline-block;
@@ -79,6 +79,12 @@
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.title:hover .highlight::after,
+.highlight:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .subtitle {
@@ -181,6 +187,8 @@
   opacity: 0;
   transition: opacity 0.5s ease;
   will-change: transform, opacity;
+  position: relative;
+  z-index: 2;
 }
 
 .heroImage.loaded {
@@ -193,7 +201,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--image-overlay);
+  background: linear-gradient(
+    to right,
+    var(--bg-color) 0%,
+    transparent 30%,
+    transparent 70%,
+    var(--bg-color) 100%
+  );
   z-index: 1;
   transition: background 0.3s ease;
 }
@@ -210,6 +224,42 @@
   will-change: transform, opacity;
   transform-style: preserve-3d;
   transition: border-color 0.3s ease;
+}
+
+/* Floating decorative elements */
+.floatingElement1,
+.floatingElement2,
+.floatingElement3 {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--timeline-line-bg);
+  filter: blur(30px);
+  z-index: 0;
+  will-change: transform, opacity;
+}
+
+.floatingElement1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 10%;
+  background: rgba(252, 107, 40, 0.1);
+}
+
+.floatingElement2 {
+  width: 200px;
+  height: 200px;
+  bottom: 20%;
+  left: 15%;
+  background: rgba(252, 107, 40, 0.08);
+}
+
+.floatingElement3 {
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  right: 15%;
+  background: rgba(252, 107, 40, 0.05);
 }
 
 /* Tablet-specific styles */
@@ -298,12 +348,18 @@
     display: none;
   }
 
+  .floatingElement1,
+  .floatingElement2,
+  .floatingElement3 {
+    display: none;
+  }
+
   [data-theme="dark"] .imageOverlay {
     background: linear-gradient(
       to bottom,
-      rgba(17, 17, 17, 0.8) 0%,
-      rgba(17, 17, 17, 0.4) 30%,
-      rgba(17, 17, 17, 0) 60%
+      rgba(18, 18, 18, 0.8) 0%,
+      rgba(18, 18, 18, 0.4) 30%,
+      rgba(18, 18, 18, 0) 60%
     );
   }
 }
@@ -352,7 +408,10 @@
   .titleChar,
   .prehead,
   .subtitle,
-  .ctaBtn {
+  .ctaBtn,
+  .floatingElement1,
+  .floatingElement2,
+  .floatingElement3 {
     animation: none !important;
     transition: none !important;
   }
