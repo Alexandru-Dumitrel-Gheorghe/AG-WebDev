@@ -5,7 +5,7 @@
   overflow: hidden;
   perspective: 1000px;
   will-change: transform;
-  background: var(--section-bg);
+  background: var(--bg-color);
   position: relative;
   transition: background 0.3s ease;
   margin-bottom: 2rem;
@@ -30,7 +30,7 @@
   font-size: clamp(1.8rem, 4vw, 2.7rem);
   font-weight: 400;
   line-height: 1.16;
-  color: var(--text-primary);
+  color: var(--text-color);
   letter-spacing: -1px;
   min-height: 1.16em;
   transform-style: preserve-3d;
@@ -38,7 +38,7 @@
 }
 
 .typewriter {
-  border-right: 3px solid var(--text-primary);
+  border-right: 3px solid var(--text-color);
   white-space: pre-wrap;
   overflow: hidden;
   animation: blink-caret 0.75s step-end infinite;
@@ -50,13 +50,13 @@
     border-color: transparent;
   }
   50% {
-    border-color: var(--text-primary);
+    border-color: var(--text-color);
   }
 }
 
 .name {
   font-weight: 500;
-  color: var(--learn-more-color);
+  color: var(--accent-color);
   position: relative;
   display: inline-block;
   transition: color 0.3s ease;
@@ -69,7 +69,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--accent-primary);
+  background: var(--accent-color);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease, background 0.3s ease;
@@ -93,15 +93,15 @@
 
 .right p {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: var(--text-primary);
+  color: var(--text-color);
   line-height: 1.6;
   transform-style: preserve-3d;
   transition: color 0.3s ease;
 }
 
 .button {
-  background: var(--button-bg);
-  color: var(--button-text);
+  background: var(--tag-bg);
+  color: var(--tag-text);
   padding: 14px 36px 14px 26px;
   width: min(240px, 100%);
   border-radius: 14px;
@@ -111,11 +111,12 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  box-shadow: var(--button-shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   overflow: hidden;
   position: relative;
   transform-style: preserve-3d;
+  border: 1px solid var(--tag-border);
 }
 
 .button::before {
@@ -125,7 +126,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--accent-primary);
+  background: var(--accent-color);
   transform: translateX(-100%);
   transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1),
     background 0.3s ease;
@@ -139,7 +140,8 @@
 
 .button:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--button-hover-shadow);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  color: var(--active-tag-text);
 }
 
 .icon {
@@ -153,69 +155,203 @@
   transform: translateX(4px);
 }
 
-.stats {
+/* Ratings Section */
+.ratings {
   display: flex;
-  gap: clamp(16px, 2vw, 32px);
+  gap: clamp(16px, 2vw, 24px);
   margin-top: 32px;
   will-change: transform, opacity;
   transform-style: preserve-3d;
 }
 
-.statCard {
-  background: var(--stat-bg);
-  border-radius: 12px;
+.ratingCard {
+  background: var(--tag-bg);
+  border-radius: 16px;
   flex: 1;
-  padding: clamp(24px, 2.5vw, 36px) clamp(16px, 2vw, 32px);
+  padding: clamp(24px, 2.5vw, 36px) clamp(16px, 2vw, 24px);
   display: flex;
   flex-direction: column;
-  gap: 38px;
+  gap: 16px;
   min-width: 0;
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   will-change: transform;
-  box-shadow: var(--stat-shadow);
-  border: 1px solid var(--stat-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--tag-border);
+  align-items: center;
+  text-align: center;
 }
 
-.statCard::before {
+.ratingCard::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #4285f4 0%, #34a853 100%);
+  z-index: 2;
+}
+
+.ratingCard:nth-child(2)::before {
+  background: linear-gradient(90deg, #00b67a 0%, #5bc2a5 100%);
+}
+
+.ratingCard:nth-child(3)::before {
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--control-button-hover) 100%
+  );
+}
+
+.platform {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  z-index: 3;
+}
+
+.platformName {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  transition: color 0.3s ease;
+  z-index: 3;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  margin: 8px 0;
+  z-index: 3;
+}
+
+.starIcon {
+  color: #ffc107;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  filter: drop-shadow(0 2px 4px rgba(255, 193, 7, 0.3));
+  z-index: 3;
+}
+
+.ratingValue {
+  color: var(--text-color);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 600;
+  line-height: 1;
+  z-index: 3;
+  transition: color 0.3s ease;
+}
+
+.reviews {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  color: var(--text-secondary);
+  opacity: 0.8;
+  z-index: 3;
+}
+
+.glow {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(
+    circle,
+    rgba(66, 133, 244, 0.15) 0%,
+    rgba(66, 133, 244, 0) 70%
+  );
+  border-radius: 50%;
+  top: -50px;
+  right: -50px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ratingCard:nth-child(2) .glow {
+  background: radial-gradient(
+    circle,
+    rgba(0, 182, 122, 0.15) 0%,
+    rgba(0, 182, 122, 0) 70%
+  );
+}
+
+.ratingCard:nth-child(3) .glow {
+  background: radial-gradient(
+    circle,
+    rgba(252, 107, 40, 0.15) 0%,
+    rgba(252, 107, 40, 0) 70%
+  );
+}
+
+.ratingCard:hover .glow {
+  opacity: 1;
+}
+
+.googleIcon {
+  color: #4285f4;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  filter: drop-shadow(0 2px 4px rgba(66, 133, 244, 0.2));
+}
+
+.trustpilotIcon {
+  color: #00b67a;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  filter: drop-shadow(0 2px 4px rgba(0, 182, 122, 0.2));
+}
+
+.listandoLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  width: 100%;
   height: 100%;
-  background: var(--stat-hover-gradient);
+  z-index: 3;
+}
+
+.listandoBadge {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  border-radius: 12px;
+  filter: drop-shadow(0 4px 8px rgba(252, 107, 40, 0.15));
+  transition: transform 0.3s ease;
+}
+
+.platformGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    var(--control-button-hover) 100%
+  );
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 1;
 }
 
-.statCard:hover::before {
+.ratingCard:hover .platformGradient {
   opacity: 1;
 }
 
-.statCard:hover {
-  box-shadow: var(--stat-hover-shadow);
+.ratingCard:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  background: var(--active-tag-bg);
+  border-color: var(--active-tag-bg);
 }
 
-.statLabel {
-  color: var(--stat-label);
-  font-size: clamp(1rem, 1.2vw, 1.15rem);
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 2;
-  transition: color 0.3s ease;
-}
-
-.statValue {
-  color: var(--stat-value);
-  font-size: clamp(2rem, 5vw, 3.1rem);
-  font-weight: 500;
-  line-height: 1;
-  position: relative;
-  z-index: 2;
-  transition: color 0.3s ease;
+.ratingCard:hover .platformName,
+.ratingCard:hover .ratingValue,
+.ratingCard:hover .reviews {
+  color: var(--active-tag-text);
 }
 
 /* Floating particles background */
@@ -228,12 +364,12 @@
   height: 100%;
   background-image: radial-gradient(
       circle at 20% 30%,
-      var(--particle-gradient-1) 0%,
+      rgba(252, 107, 40, 0.05) 0%,
       transparent 20%
     ),
     radial-gradient(
       circle at 80% 70%,
-      var(--particle-gradient-2) 0%,
+      rgba(255, 140, 90, 0.05) 0%,
       transparent 20%
     );
   z-index: -1;
@@ -261,12 +397,12 @@
 }
 
 @media (max-width: 750px) {
-  .stats {
+  .ratings {
     flex-direction: column;
     gap: 16px;
   }
 
-  .statCard {
+  .ratingCard {
     width: 100%;
   }
 }
@@ -291,7 +427,12 @@
     margin-right: auto;
   }
 
-  .statCard {
-    gap: 24px;
+  .platform {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .stars {
+    margin: 4px 0;
   }
 }

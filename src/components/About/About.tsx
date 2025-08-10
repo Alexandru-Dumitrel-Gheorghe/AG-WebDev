@@ -3,9 +3,10 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { FaGoogle, FaStar } from "react-icons/fa";
+import { SiTrustpilot } from "react-icons/si";
 import styles from "./About.module.css";
 
-// DECLARĂ TIPUL FOLOSIT LA hoverTimelines!
 type HoverTimelineData = {
   card: HTMLDivElement;
   onEnter: () => void;
@@ -18,22 +19,20 @@ export default function About() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-  const statCardsRef = useRef<HTMLDivElement[]>([]);
+  const ratingsRef = useRef<HTMLDivElement>(null);
+  const ratingCardsRef = useRef<HTMLDivElement[]>([]);
 
-  // RESETĂ ARRAY-UL DE REFURI LA FIECARE RENDER!
-  statCardsRef.current = [];
+  ratingCardsRef.current = [];
 
   const addToCardsRef = (el: HTMLDivElement | null) => {
-    if (el && !statCardsRef.current.includes(el)) {
-      statCardsRef.current.push(el);
+    if (el && !ratingCardsRef.current.includes(el)) {
+      ratingCardsRef.current.push(el);
     }
   };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    // SplitText Animation (fără typewriter)
     let splitTitle: any;
     if (headingRef.current) {
       splitTitle = new SplitText(headingRef.current, { type: "chars,words" });
@@ -54,8 +53,7 @@ export default function About() {
       });
     }
 
-    // Parallax și fade pe content la scroll
-    if (leftRef.current && rightRef.current && statsRef.current) {
+    if (leftRef.current && rightRef.current && ratingsRef.current) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -78,27 +76,34 @@ export default function About() {
           0.2
         )
         .fromTo(
-          statsRef.current,
+          ratingsRef.current,
           { y: 100, opacity: 0 },
           { y: 0, opacity: 1, duration: 1, ease: "elastic.out(1, 0.5)" },
           0.4
         );
     }
 
-    // Animatii hover pe carduri, cu cleanup corect!
     const hoverTimelines: HoverTimelineData[] = [];
-    statCardsRef.current.forEach((card) => {
-      const statLabel = card.querySelector(
-        `.${styles.statLabel}`
-      ) as HTMLElement;
-      const statValue = card.querySelector(
-        `.${styles.statValue}`
-      ) as HTMLElement;
+    ratingCardsRef.current.forEach((card) => {
       const hoverTl = gsap.timeline({ paused: true });
+
       hoverTl
         .to(card, { y: -15, scale: 1.03, duration: 0.3, ease: "power2.out" }, 0)
-        .to(statLabel, { color: "var(--stat-hover-text)", duration: 0.2 }, 0)
-        .to(statValue, { color: "var(--stat-hover-text)", duration: 0.2 }, 0);
+        .to(
+          card.querySelector(`.${styles.platformName}`),
+          { color: "var(--active-tag-text)", duration: 0.2 },
+          0
+        )
+        .to(
+          card.querySelector(`.${styles.ratingValue}`),
+          { color: "var(--active-tag-text)", duration: 0.2 },
+          0
+        )
+        .to(
+          card.querySelector(`.${styles.glow}`),
+          { opacity: 1, duration: 0.3 },
+          0
+        );
 
       const onEnter = () => hoverTl.play();
       const onLeave = () => hoverTl.reverse();
@@ -106,16 +111,14 @@ export default function About() {
       card.addEventListener("mouseenter", onEnter);
       card.addEventListener("mouseleave", onLeave);
 
-      // Push pentru cleanup!
       hoverTimelines.push({ card, onEnter, onLeave, hoverTl });
     });
 
-    // Parallax 3D la mouse move pe toată secțiunea
     const handleMouseMove = (e: MouseEvent) => {
       const xPos = e.clientX / window.innerWidth - 0.5;
       const yPos = e.clientY / window.innerHeight - 0.5;
 
-      gsap.to(statCardsRef.current, {
+      gsap.to(ratingCardsRef.current, {
         rotationY: xPos * 10,
         rotationX: yPos * -10,
         transformPerspective: 1000,
@@ -130,7 +133,6 @@ export default function About() {
     };
     sectionRef.current?.addEventListener("mousemove", handleMouseMove);
 
-    // CLEANUP
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       sectionRef.current?.removeEventListener("mousemove", handleMouseMove);
@@ -139,7 +141,6 @@ export default function About() {
         card.removeEventListener("mouseenter", onEnter);
         card.removeEventListener("mouseleave", onLeave);
       });
-      // SplitText cleanup dacă vrei să revii la starea inițială
       if (splitTitle && splitTitle.revert) splitTitle.revert();
     };
   }, []);
@@ -149,7 +150,7 @@ export default function About() {
       <div className={styles.topContent}>
         <div className={styles.left} ref={leftRef}>
           <h2 ref={headingRef} className={styles.typewriter}>
-            Hey! Ich bin <span className={styles.name}>Alexandru</span>, ein
+            Hallo! Ich bin <span className={styles.name}>Alexandru</span>, ein
             leidenschaftlicher Webentwickler und UI/UX-Designer aus Deutschland.
             Ich kombiniere modernes Design mit klarer Strategie, um einzigartige
             digitale Erlebnisse und starke Markenauftritte zu schaffen.
@@ -167,7 +168,7 @@ export default function About() {
             Unternehmen erfolgreich umgesetzt.
           </p>
           <a className={styles.button} href="/about">
-            Über mich
+            Mehr über mich
             <span className={styles.icon}>
               <svg
                 width="16"
@@ -186,35 +187,67 @@ export default function About() {
           </a>
         </div>
       </div>
+      <div className={styles.ratings} ref={ratingsRef}>
+        {/* Google Rating Card */}
+        <div
+          className={`${styles.ratingCard} ${styles.googleCard}`}
+          ref={addToCardsRef}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          <div className={styles.platform}>
+            <FaGoogle className={styles.platformIcon} />
+            <span className={styles.platformName}>Google</span>
+          </div>
+          <div className={styles.stars}>
+            {[...Array(5)].map((_, i) => (
+              <FaStar key={`google-${i}`} className={styles.starIcon} />
+            ))}
+          </div>
+          <div className={styles.ratingValue}>5.0 Bewertung</div>
+          <div className={styles.reviews}>Empfohlen von Kunden</div>
+          <div className={styles.cardHoverEffect}></div>
+        </div>
 
-      <div className={styles.stats} ref={statsRef}>
+        {/* Trustpilot Rating Card */}
         <div
-          className={styles.statCard}
+          className={`${styles.ratingCard} ${styles.trustpilotCard}`}
           ref={addToCardsRef}
           style={{ transformStyle: "preserve-3d" }}
         >
-          <span className={styles.statLabel}>
-            Zusammenarbeit auf Augenhöhe – das ist mein Credo.
-          </span>
-          <span className={styles.statValue}>10+</span>
+          <div className={styles.platform}>
+            <SiTrustpilot className={styles.platformIcon} />
+            <span className={styles.platformName}>Trustpilot</span>
+          </div>
+          <div className={styles.stars}>
+            {[...Array(5)].map((_, i) => (
+              <FaStar key={`trustpilot-${i}`} className={styles.starIcon} />
+            ))}
+          </div>
+          <div className={styles.ratingValue}>Ausgezeichnet</div>
+          <div className={styles.reviews}>Verifiziertes Profil</div>
+          <div className={styles.cardHoverEffect}></div>
         </div>
+
+        {/* Listando Badge Card */}
         <div
-          className={styles.statCard}
+          className={`${styles.ratingCard} ${styles.listandoCard}`}
           ref={addToCardsRef}
           style={{ transformStyle: "preserve-3d" }}
         >
-          <span className={styles.statLabel}>Abgeschlossene Projekte</span>
-          <span className={styles.statValue}>120+</span>
-        </div>
-        <div
-          className={styles.statCard}
-          ref={addToCardsRef}
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          <span className={styles.statLabel}>
-            Auszeichnungen & Plattform-Features
-          </span>
-          <span className={styles.statValue}>30+</span>
+          <a
+            href="https://www.listando.de/bayern/fuerstenfeldbruck/FHPOV50AE6/webdesign/ag-webdev/UHBUZMYf9I"
+            rel="noopener noreferrer"
+            target="_blank"
+            className={styles.listandoLink}
+          >
+            <img
+              src="https://listando.s3.eu-central-1.amazonaws.com/logo/badge/listando_topexperte_badge.png"
+              alt="Webdesigner auf Listando"
+              className={styles.listandoBadge}
+            />
+            <span className={styles.ratingValue}>Top Experte 2025</span>
+            <div className={styles.cardHoverEffect}></div>
+          </a>
         </div>
       </div>
     </section>
