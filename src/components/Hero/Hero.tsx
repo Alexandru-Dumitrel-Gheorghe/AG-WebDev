@@ -237,7 +237,7 @@ export default function HeroSection() {
       <div className={styles.right} ref={rightRef}>
         <div className={styles.imageWrapper}>
           <Image
-            src="/images/hero-home.png"
+            src="/images/hero-home2.png"
             alt="Profilbild – Webdesigner aus Deutschland"
             width={720}
             height={900}
