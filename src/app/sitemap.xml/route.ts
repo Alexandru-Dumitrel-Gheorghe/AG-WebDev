@@ -1,13 +1,15 @@
+// app/sitemap/route.ts (sau app/sitemap.xml/route.ts, după structura ta)
 import { NextResponse } from "next/server";
 
 const pages = [
+  // Pagini principale
   { loc: "https://www.ag-webdev.de/", priority: 1.0 },
   { loc: "https://www.ag-webdev.de/about", priority: 0.8 },
   { loc: "https://www.ag-webdev.de/kontakt", priority: 0.8 },
   { loc: "https://www.ag-webdev.de/fuerstenfeldbruck", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/augsburg", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/webdesign", priority: 0.9 },
-  { loc: "https://www.ag-webdev.de/webentwicklung", priority: 0.9 },
+  { loc: "https://www.ag-webdev.de/Webentwicklung", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/seo", priority: 0.9 },
   { loc: "https://www.ag-webdev.de/google-indexierung", priority: 0.8 },
   { loc: "https://www.ag-webdev.de/wartung-support", priority: 0.8 },
@@ -16,6 +18,9 @@ const pages = [
   { loc: "https://www.ag-webdev.de/impressum", priority: 0.7 },
   { loc: "https://www.ag-webdev.de/datenschutz", priority: 0.7 },
   { loc: "https://www.ag-webdev.de/agb", priority: 0.7 },
+
+  // ✅ Domain-Check (nou adăugat)
+  { loc: "https://www.ag-webdev.de/domain-check", priority: 0.9 },
 
   // Blog / Unterseiten
   {
@@ -60,9 +65,7 @@ export async function GET() {
     .join("");
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  >
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     ${urls}
   </urlset>`;
 

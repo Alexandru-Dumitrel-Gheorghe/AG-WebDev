@@ -1,0 +1,415 @@
+/* app/domain-check/styles.module.css */
+
+.clientContainer {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.searchInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.searchInputWrapper:focus-within {
+  box-shadow: 0 0 0 3px var(--accent-light);
+  border-color: var(--accent-color);
+}
+
+.searchInput {
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.25rem;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.expandButton:hover {
+  color: var(--accent-color);
+}
+
+.expandButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem 2rem;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(252, 107, 40, 0.3);
+}
+
+.searchButton:hover {
+  background: var(--control-button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(252, 107, 40, 0.4);
+}
+
+.searchButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.searchButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.suggestionsPanel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  margin-top: 0.5rem;
+  overflow: hidden;
+  z-index: 10;
+  transform-origin: top;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.suggestionsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--section-desc-line);
+}
+
+.suggestionsTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+  color: var(--accent-color);
+}
+
+.closeButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.suggestionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+  padding: 1.5rem;
+}
+
+.suggestionItem {
+  position: relative;
+  padding: 0.75rem 1rem;
+  background: var(--bg-color);
+  border: 1px solid var(--section-desc-line);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.suggestionItem:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--accent-color);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  transform: rotate(15deg);
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: var(--error-bg);
+  color: var(--error-text);
+  border-radius: 8px;
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.errorIcon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke-width: 2;
+}
+
+.errorText {
+  font-size: 0.95rem;
+}
+
+.resultCard {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  margin-top: 2rem;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease;
+}
+
+.resultHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--section-desc-line);
+}
+
+.domainInfo {
+  flex: 1;
+}
+
+.resultTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0 0 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.domainName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+  word-break: break-all;
+}
+
+.availabilityBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.availabilityBadge.available {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.availabilityBadge.unavailable {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.availabilityBadge svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 2;
+}
+
+.resultContent {
+  padding: 1.5rem;
+}
+
+.resultDescription {
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.primaryButton {
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 4px 15px rgba(252, 107, 40, 0.3);
+}
+
+.primaryButton:hover {
+  background: var(--control-button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(252, 107, 40, 0.4);
+}
+
+.secondaryButton {
+  background: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+
+.secondaryButton:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+.primaryButton svg,
+.secondaryButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .searchInput {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  .searchButton {
+    padding: 1rem 1.5rem;
+  }
+
+  .suggestionsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .resultHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .domainName {
+    font-size: 1.25rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .suggestionsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .searchButton span {
+    display: none;
+  }
+
+  .searchButton svg {
+    margin: 0;
+  }
+}

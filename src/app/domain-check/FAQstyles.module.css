@@ -1,0 +1,152 @@
+/* app/domain-check/styles.module.css */
+.faqSection {
+  background-color: var(--bg-color);
+  padding: 5rem 1rem;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--section-title-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.decorator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.line {
+  width: 60px;
+  height: 2px;
+  background-color: var(--section-desc-line);
+  transition: all 0.3s ease;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.faqCard {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faqItem {
+  transition: all 0.3s ease;
+}
+
+.faqItem[open] {
+  background-color: var(--accent-light);
+}
+
+.faqQuestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  cursor: pointer;
+  list-style: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.faqQuestion:hover {
+  color: var(--accent-color);
+}
+
+.faqQuestion::-webkit-details-marker {
+  display: none;
+}
+
+.faqQuestion span {
+  flex: 1;
+  margin-right: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.chevron {
+  transition: all 0.3s ease;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.faqItem[open] .chevron {
+  transform: rotate(180deg);
+  color: var(--accent-color);
+}
+
+.faqAnswer {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.faqAnswer p {
+  margin: 0;
+}
+
+.faqDivider {
+  height: 1px;
+  background-color: var(--section-desc-line);
+  margin: 0 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .faqSection {
+    padding: 3rem 1rem;
+  }
+
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .faqQuestion {
+    padding: 1.25rem;
+  }
+
+  .faqQuestion span {
+    font-size: 1rem;
+  }
+
+  .faqAnswer {
+    padding: 0 1.25rem 1.25rem;
+  }
+}
