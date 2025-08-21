@@ -16,6 +16,7 @@ import CTASection from "@/components/CTASection/CTASection";
 import BlogCTA from "@/components/BlogCTA/BlogCTA";
 import BenefitsSection from "@/components/BenefitsSection/BenefitsSection";
 import ServiceAreas from "@/components/ServiceAreas/ServiceAreas";
+import DomainCTA from "@/components/DomainCTA/DomainCTA";
 
 export const metadata = {
   title:
@@ -92,6 +93,7 @@ export default function HomePage() {
           <PricingCTA />
           <FAQ />
           <CTASection />
+          <DomainCTA />
           <Testimonials />
         </ScrollAnimationProvider>
       </main>
