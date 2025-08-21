@@ -13,7 +13,7 @@ const menuLinks = [
   { label: "Referenzen", href: "#projects", scrollToId: "projects" },
   { label: "Leistungen", href: "#services", scrollToId: "services" },
   { label: "Kontakt", href: "/kontakt" },
-  { label: "Domain-Check", href: "/domain-check" },
+  { label: "Domain Check", href: "/domain-check" },
 ];
 
 export default function HeaderAGWebDev() {
