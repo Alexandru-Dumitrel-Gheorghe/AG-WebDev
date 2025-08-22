@@ -143,7 +143,7 @@ export default function Footer() {
                 href="mailto:contact@ag-webdev.de"
                 className={styles.contactLink}
               >
-                contact@ag-webdev.de
+                kontakt@ag-webdev.de
               </a>
             </div>
           </address>

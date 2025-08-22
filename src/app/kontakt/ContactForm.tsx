@@ -131,7 +131,7 @@ export default function ContactPage() {
                 </div>
                 <div className={styles.infoText}>
                   <h3>E-Mail</h3>
-                  <a href="mailto:contact@ag-webdev.de">contact@ag-webdev.de</a>
+                  <a href="mailto:contact@ag-webdev.de">kontakt@ag-webdev.de</a>
                 </div>
               </div>
 

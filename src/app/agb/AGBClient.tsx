@@ -15,7 +15,7 @@ const sections = [
     content: `Der Vertrag kommt zustande mit:<br /><br />
       <strong>AG WebDev</strong><br />
       Fürstenfeldbruck, Deutschland<br />
-      E-Mail: contact@ag-webdev.de<br />
+      E-Mail: kontakt@ag-webdev.de<br />
       Telefon: +49 157 7215 8264`,
   },
   {

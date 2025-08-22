@@ -83,7 +83,7 @@ const sections = [
       <div className={styles.contactDetails}>
         <div className={styles.contactItem}>
           <Mail size={18} />
-          <span>contact@ag-webdev.de</span>
+          <span>kontakt@ag-webdev.de</span>
         </div>
         <div className={styles.contactItem}>
           <Phone size={18} />

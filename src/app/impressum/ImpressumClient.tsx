@@ -52,7 +52,7 @@ const ImpressumSections = [
             </div>
             <div className={styles.infoItem}>
               <Mail size={16} />
-              <a href="mailto:contact@ag-webdev.de">contact@ag-webdev.de</a>
+              <a href="mailto:contact@ag-webdev.de">kontakt@ag-webdev.de</a>
             </div>
             <div className={styles.infoItem}>
               <Link2 size={16} />
